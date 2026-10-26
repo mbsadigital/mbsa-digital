@@ -293,10 +293,10 @@ export default function Contact() {
                   Phone
                 </span>
                 <a
-                  href="tel:+15551234567"
+                  href="+919574696932/+447393107859"
                   className="text-sm sm:text-base hover:text-orange-400 font-medium transition-colors"
                 >
-                  +1 (555) 123-4567
+                  +919574696932/+447393107859
                 </a>
               </div>
 
@@ -306,11 +306,11 @@ export default function Contact() {
                   Email
                 </span>
                 <a
-                  href="mailto:a99236116@gmail.com"
+                  href="mbsadigitalsolutions@gmail.com"
                   className="inline-flex items-center gap-2 text-sm sm:text-base hover:text-orange-400 font-medium transition-colors"
                 >
                   <Mail className="w-4 h-4 text-orange-400" />
-                  a99236116@gmail.com
+                  mbsadigitalsolutions@gmail.com
                 </a>
               </div>
 
