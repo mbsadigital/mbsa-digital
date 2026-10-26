@@ -274,7 +274,7 @@ export default function Contact() {
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leSading-[1.04]">
                 Let&apos;s Talk
                 <br />
-                <span className="bg-gradient-to-r from-orange-400 via-[#F97316] to-amber-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(234,88,12,0.35)]">
+                <span className="text-[#EA580C]">
                   Growth
                 </span>
               </h2>

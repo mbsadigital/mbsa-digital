@@ -302,7 +302,7 @@ export default function Skills() {
             >
               Honeycomb Reactors.
               <br />
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(234,88,12,0.3)]">
+              <span className="text-[#EA580C]">
                 Hardware-Grade Execution.
               </span>
             </motion.h2>
@@ -417,7 +417,6 @@ export default function Skills() {
                 />
 
                 {/* Glow Accents */}
-                <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#EA580C]/15 blur-3xl dark:bg-[#EA580C]/25" />
 
                 {/* Image Badge + Subtitle & Title */}
                 <div className="flex items-start gap-4">
@@ -437,16 +436,7 @@ export default function Skills() {
                   </motion.div>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-[#EA580C]/10 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#EA580C] dark:bg-[#EA580C]/20 dark:text-[#FB923C]">
-                        <Cpu className="w-3 h-3 text-[#EA580C]" />
-                        {activeSkill.code}
-                      </span>
-                      <span className="font-mono text-[11px] text-stone-400 dark:text-stone-500 flex items-center gap-1">
-                        <Radio className="w-3 h-3 text-[#EA580C]/60" />
-                        {activeSkill.frequency}
-                      </span>
-                    </div>
+
                     <h3 className="mt-1.5 text-2xl font-black text-stone-900 dark:text-white sm:text-3xl leading-tight">
                       {activeSkill.name}
                     </h3>
@@ -468,23 +458,8 @@ export default function Skills() {
 
                 {/* Animated Mastery / Proficiency Benchmark Bar */}
                 <div className="mt-5 pt-4 border-t border-black/[0.06] dark:border-white/[0.06]">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-[#EA580C]" /> Execution Proficiency
-                    </span>
-                    <span className="font-mono text-xs font-black text-[#EA580C] dark:text-[#FB923C]">
-                      {activeSkill.proficiency}%
-                    </span>
-                  </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-stone-200/80 dark:bg-white/[0.08]">
-                    <motion.div
-                      key={`gauge-${activeSkill.id}`}
-                      initial={{ width: 0 }}
-                      animate={{ width: `${activeSkill.proficiency}%` }}
-                      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                      className="h-full rounded-full bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] shadow-[0_0_12px_rgba(234,88,12,0.6)]"
-                    />
-                  </div>
+
+
                 </div>
 
                 {/* Micro Tool Chips with Staggered Cascading Animation */}
@@ -562,21 +537,20 @@ function HexCell({
         />
       )}
 
-      {/* Hex Outer Border Shell */}
-      <div
-        className={`absolute inset-0 transition-all duration-500 ${isSelected
-          ? "bg-gradient-to-tr from-[#EA580C] via-[#FB923C] to-amber-200 drop-shadow-[0_10px_25px_rgba(234,88,12,0.45)] dark:to-white dark:drop-shadow-[0_10px_25px_rgba(234,88,12,0.6)]"
-          : "bg-black/10 drop-shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:bg-[#EA580C]/40 dark:bg-white/10 dark:drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] dark:hover:bg-white/25"
-          }`}
-        style={{
-          clipPath:
-            "polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)",
-        }}
-      />
+      {/* Hex Outer Border Shell (Only shown on active selection) */}
+      {isSelected && (
+        <div
+          className="absolute inset-0 bg-gradient-to-tr from-[#EA580C] via-[#FB923C] to-amber-200 drop-shadow-[0_10px_25px_rgba(234,88,12,0.45)] dark:to-white dark:drop-shadow-[0_10px_25px_rgba(234,88,12,0.6)] transition-all duration-500"
+          style={{
+            clipPath:
+              "polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)",
+          }}
+        />
+      )}
 
       {/* Hex Interior Chamber */}
       <div
-        className={`absolute inset-[2px] flex flex-col items-center justify-center backdrop-blur-xl transition-colors duration-300 ${isSelected
+        className={`absolute ${isSelected ? "inset-[2px]" : "inset-0"} flex flex-col items-center justify-center backdrop-blur-xl transition-colors duration-300 ${isSelected
           ? "bg-white dark:bg-[#111322]"
           : "bg-[#f5f3ef] group-hover:bg-[#ede9e3] dark:bg-[#090b14] dark:group-hover:bg-[#0e101c]"
           }`}

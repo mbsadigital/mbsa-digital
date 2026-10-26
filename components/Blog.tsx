@@ -129,7 +129,7 @@ export default function Blog() {
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-[1.08]">
               Engineering Scalable{" "}
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(234,88,12,0.35)]">
+              <span className="text-[#EA580C]">
                 Digital Growth.
               </span>
             </h2>

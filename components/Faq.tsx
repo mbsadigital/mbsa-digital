@@ -83,7 +83,7 @@ export default function Faq() {
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12] mb-8 sm:mb-10">
               Question People
               <br />
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(234,88,12,0.25)]">
+              <span className="text-[#EA580C]">
                 Ask Me
               </span>
             </h2>

@@ -22,7 +22,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: "hero", label: "Home", href: "/#hero", number: "01", subtitle: "Welcome & Hero" },
   { id: "services", label: "Services", href: "/#services", number: "02", subtitle: "Growth Solutions" },
-  { id: "projects", label: "Work", href: "/#projects", number: "03", subtitle: "Case Studies" },
+  { id: "projects", label: "Protfolio", href: "/#projects", number: "03", subtitle: "Case Studies" },
   { id: "analytics", label: "Analytics", href: "/#analytics", number: "04", subtitle: "Live GSC Proof" },
   { id: "about", label: "About", href: "/#about", number: "05", subtitle: "Profile & Dossier" },
   { id: "tools", label: "Skills", href: "/#tools", number: "06", subtitle: "Tools & Skills" },

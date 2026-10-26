@@ -869,7 +869,7 @@ export default function Gsc() {
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Category and {" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FB923C] via-[#F97316] to-[#EA580C] drop-shadow-[0_0_25px_rgba(234,88,12,0.45)]">
+              <span className="text-[#EA580C]">
                 Search &amp; Analytics Proof
               </span>
             </h2>

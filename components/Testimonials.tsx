@@ -133,7 +133,7 @@ export default function Testimonials() {
 
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Trusted by Founders.<br />
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent">
+              <span className="text-[#EA580C]">
                 Proven by Results.
               </span>
             </h2>
