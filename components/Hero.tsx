@@ -642,7 +642,7 @@ export default function Hero() {
                 md:text-[17px]
               "
             >
-              Hi, I&apos;m Muskan. I help Brands Show up When Real People Search —
+              Hi, I&apos;m Muskan. I help Brands Show up When Real People Search,
               whether that is a Google results page or an answer from ChatGPT,
               Gemini or Perplexity. I mix Technical SEO, honest content and clean
               websites so the traffic you earn turns into customers.
