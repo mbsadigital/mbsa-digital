@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Suspense, useRef, useMemo, useState, useEffect } from "react";
+import Image from "next/image";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -103,13 +104,62 @@ function NormalEarth({ isVisible }: { isVisible: boolean }) {
   );
 }
 
-function EarthLoadingFallback() {
-  return null;
+function checkWebGL(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(
+      window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch {
+    return false;
+  }
+}
+
+function EarthStaticFallback() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
+      <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center">
+        <Image
+          src="/orange-earth-globe.png"
+          alt="Digital Marketing Global Solutions"
+          fill
+          priority
+          sizes="(max-width: 640px) 280px, (max-width: 1024px) 460px, 580px"
+          className="object-contain drop-shadow-[0_0_35px_rgba(234,88,12,0.4)]"
+        />
+      </div>
+    </div>
+  );
+}
+
+class CanvasErrorBoundary extends React.Component<
+  { fallback: React.ReactNode; children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { fallback: React.ReactNode; children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch() {}
+  render() {
+    if (this.state.hasError) return this.props.fallback;
+    return this.props.children;
+  }
 }
 
 export default function HeroEarthCanvas() {
   const [isVisible, setIsVisible] = useState(true);
+  const [webglSupported, setWebglSupported] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setWebglSupported(checkWebGL());
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current || typeof IntersectionObserver === "undefined") return;
@@ -123,37 +173,43 @@ export default function HeroEarthCanvas() {
     return () => observer.disconnect();
   }, []);
 
+  if (!webglSupported) {
+    return <EarthStaticFallback />;
+  }
+
   return (
     <div ref={containerRef} className="w-full h-full">
-      <Canvas
-        camera={{
-          position: [0, 0, 6.8],
-          fov: 42,
-        }}
-        dpr={[1, 1.5]}
-        gl={{
-          antialias: true,
-          alpha: true,
-          powerPreference: "high-performance",
-          preserveDrawingBuffer: false,
-        }}
-      >
-        <Suspense fallback={<EarthLoadingFallback />}>
-          <ambientLight intensity={0.7} />
-          <directionalLight position={[-6, 4, 6]} intensity={3.8} color="#ffffff" />
-          <directionalLight position={[6, -2, -3]} intensity={1.2} color="#00d4ff" />
-          <pointLight position={[-4, 2, 4]} intensity={1.8} color="#e0f7fa" />
+      <CanvasErrorBoundary fallback={<EarthStaticFallback />}>
+        <Canvas
+          camera={{
+            position: [0, 0, 6.8],
+            fov: 42,
+          }}
+          dpr={[1, 1.5]}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+            preserveDrawingBuffer: false,
+          }}
+        >
+          <Suspense fallback={null}>
+            <ambientLight intensity={0.7} />
+            <directionalLight position={[-6, 4, 6]} intensity={3.8} color="#ffffff" />
+            <directionalLight position={[6, -2, -3]} intensity={1.2} color="#00d4ff" />
+            <pointLight position={[-4, 2, 4]} intensity={1.8} color="#e0f7fa" />
 
-          <NormalEarth isVisible={isVisible} />
+            <NormalEarth isVisible={isVisible} />
 
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            rotateSpeed={0.55}
-            autoRotate={false}
-          />
-        </Suspense>
-      </Canvas>
+            <OrbitControls
+              enableZoom={false}
+              enablePan={false}
+              rotateSpeed={0.55}
+              autoRotate={false}
+            />
+          </Suspense>
+        </Canvas>
+      </CanvasErrorBoundary>
     </div>
   );
 }
