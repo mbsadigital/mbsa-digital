@@ -127,12 +127,12 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-14 sm:py-20 lg:py-28 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[550px] lg:w-[750px] h-[320px] sm:h-[550px] rounded-full bg-[#EA580C]/[0.08] dark:bg-[#EA580C]/[0.12] blur-[120px] sm:blur-[160px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Eyebrow */}
         <div className="mb-6 sm:mb-8 lg:mb-12">
           <div className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#EA580C] dark:text-[#F97316]">
@@ -305,7 +305,7 @@ export default function Services() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 w-full"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 w-full"
               >
                 {currentCards.map((svc, idx) => {
                   const Icon = ICON_MAP[svc.iconName] || Search;

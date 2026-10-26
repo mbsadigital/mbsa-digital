@@ -101,7 +101,7 @@ export default function Blog() {
   }, [blogs, featuredArticle]);
 
   return (
-    <section id="blog" className="relative py-20 sm:py-28 lg:py-36 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden">
+    <section id="blog" className="relative py-16 sm:py-20 lg:py-24 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden">
       {/* Background Gradients & Ambient Glow */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute top-1/4 right-1/4 h-[550px] w-[550px] rounded-full bg-[#EA580C]/[0.07] blur-[160px]" />
@@ -321,7 +321,7 @@ export default function Blog() {
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {regularArticles.map((article, idx) => (
               <motion.article
                 key={article._id}

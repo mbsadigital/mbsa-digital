@@ -236,8 +236,8 @@ export default function Skills() {
 
   return (
     <section
-      id="tools"
-      className="relative overflow-hidden py-20 sm:py-28 lg:py-36 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500"
+      id="skills"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500"
     >
       {/* Precision Ambient Grids & Specular Rays */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -282,7 +282,7 @@ export default function Skills() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.15 }}
-        className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12"
+        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
       >
         {/* 3-Column Layout: Left Content | Center Honeycomb Hive | Right Animated Dossier Card */}
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">

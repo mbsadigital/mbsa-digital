@@ -61,12 +61,12 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="relative py-16 sm:py-24 lg:py-28 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Subtle ambient background glow */}
       <div className="absolute top-1/3 left-10 w-[350px] h-[350px] rounded-full bg-[#EA580C]/[0.06] dark:bg-[#EA580C]/[0.10] blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* ========================================================
               LEFT COLUMN: Header & "Book a 15 min call" Card

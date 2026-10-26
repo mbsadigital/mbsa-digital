@@ -223,7 +223,7 @@ export default function About() {
       id="about"
       className="
         relative overflow-hidden
-        py-12 sm:py-16 lg:py-20
+        py-16 sm:py-20 lg:py-24
         bg-white dark:bg-[#090807]
         text-slate-900 dark:text-white
         transition-colors duration-500
@@ -500,9 +500,8 @@ export default function About() {
                   p-4 sm:p-5
                   rounded-t-[22px]
                   bg-gradient-to-t
-                  from-white/95
-                  via-white-500
-                  to-white/80
+                  from-white/95 via-white/90 to-white/80
+                  dark:from-[#11100E]/95 dark:via-[#11100E]/90 dark:to-[#11100E]/80
                   backdrop-blur-xl
                   border-t
                   border-orange-500/30
@@ -519,7 +518,7 @@ export default function About() {
                   <div className="flex items-center justify-between gap-2 mb-2.5 cursor-pointer">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
-                      <h4 className="text-xs sm:text-sm font-bold text-black leading-tight">
+                      <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white leading-tight">
                         {CURRENT_ROLE.role}
                       </h4>
                     </div>
@@ -544,7 +543,7 @@ export default function About() {
 
                   {/* Expandable Body: Shown on hover */}
                   <div className="space-y-3 pt-1">
-                    <p className="text-[11.5px] sm:text-xs leading-relaxed text-stone-700">
+                    <p className="text-[11.5px] sm:text-xs leading-relaxed text-stone-700 dark:text-stone-300">
                       {CURRENT_ROLE.description}
                     </p>
 
@@ -552,9 +551,9 @@ export default function About() {
                     <div className="
                       p-2
                       rounded-xl
-                      bg-white/10
+                      bg-white/10 dark:bg-white/5
                       border
-                      border-white/15
+                      border-stone-200/40 dark:border-white/15
                       backdrop-blur-md
                       flex
                       items-center
@@ -564,25 +563,25 @@ export default function About() {
                       {/* India Flag & Label */}
                       <div className="flex items-center gap-1.5 shrink-0">
                         <IndiaFlag className="w-3.5 h-2.5" />
-                        <span className="text-[10px] font-bold text-black">
+                        <span className="text-[10px] font-bold text-stone-900 dark:text-white">
                           India
                         </span>
                       </div>
 
                       {/* Flight Path with Animated Airplane */}
                       <div className="flex-1 flex items-center justify-center relative px-1">
-                        <div className="w-full h-px border-t border-dashed border-orange-900/70 relative" />
+                        <div className="w-full h-px border-t border-dashed border-orange-500/70 relative" />
                         <div className="
                           absolute
                           px-1.5 py-0.5
                           rounded-full
-                          bg-black-500/30
+                          bg-orange-500/20
                           border
-                          border-orange-800/50
+                          border-orange-500/50
                           flex
                           items-center
                           justify-center
-                          text-orange-800
+                          text-orange-500
                           shadow-xs
                         ">
                           <Plane className="w-3.5 h-3.5 rotate-45 animate-pulse" />
@@ -591,7 +590,7 @@ export default function About() {
 
                       {/* UK Flag & Label */}
                       <div className="flex items-center gap-1.5 shrink-0">
-                        <span className="text-[10px] font-bold text-black ">
+                        <span className="text-[10px] font-bold text-stone-900 dark:text-white">
                           UK
                         </span>
                         <UKFlag className="w-3.5 h-2.5" />

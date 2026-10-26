@@ -30,6 +30,17 @@ export default function Projects() {
     setActiveIndex(((index % total) + total) % total);
   }, [total]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Auto-slide effect (every 4.5 seconds, pauses on hover)
   useEffect(() => {
     if (isPaused) return;
@@ -54,7 +65,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-20 sm:py-28 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Background ambient decorative glow */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#EA580C]/[0.07] dark:bg-[#EA580C]/[0.10] blur-[150px] pointer-events-none" />
@@ -176,8 +187,9 @@ export default function Projects() {
                 // relIndex 0 = Front Active: x: 0, y: 0, scale: 1, zIndex: 30
                 // relIndex 1 = Middle: x: 44px, y: -10px, scale: 0.96, zIndex: 20
                 // relIndex 2 = Back: x: 88px, y: -20px, scale: 0.92, zIndex: 10
-                const xOffset = relIndex * 44;
-                const yOffset = -relIndex * 10;
+                const stepX = isMobile ? 16 : 44;
+                const xOffset = relIndex * stepX;
+                const yOffset = -relIndex * (isMobile ? 8 : 10);
                 const scale = 1 - relIndex * 0.04;
                 const zIndex = 30 - relIndex * 10;
                 const opacity = relIndex === 0 ? 1 : relIndex === 1 ? 0.94 : 0.80;
@@ -212,7 +224,7 @@ export default function Projects() {
                     }}
                     className={`
                       absolute left-0 top-0
-                      w-[calc(100%-48px)] sm:w-[calc(100%-88px)]
+                      w-[calc(100%-36px)] sm:w-[calc(100%-88px)]
                       rounded-[32px] sm:rounded-[38px]
                       border-2
                       ${isFront
@@ -221,7 +233,7 @@ export default function Projects() {
                       }
                       bg-[#FFF8F3]
                       dark:bg-[#14110E]
-                      p-6 sm:p-7 md:p-8
+                      p-5 sm:p-7 md:p-8
                       overflow-hidden
                       transition-colors duration-300
                     `}

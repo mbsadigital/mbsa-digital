@@ -22,10 +22,10 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: "hero", label: "Home", href: "/#hero", number: "01", subtitle: "Welcome & Hero" },
   { id: "services", label: "Services", href: "/#services", number: "02", subtitle: "Growth Solutions" },
-  { id: "projects", label: "Protfolio", href: "/#projects", number: "03", subtitle: "Case Studies" },
+  { id: "projects", label: "Portfolio", href: "/#projects", number: "03", subtitle: "Case Studies" },
   { id: "analytics", label: "Analytics", href: "/#analytics", number: "04", subtitle: "Live GSC Proof" },
   { id: "about", label: "About", href: "/#about", number: "05", subtitle: "Profile & Dossier" },
-  { id: "tools", label: "Skills", href: "/#tools", number: "06", subtitle: "Tools & Skills" },
+  { id: "skills", label: "Skills", href: "/#skills", number: "06", subtitle: "Tools & Skills" },
   { id: "blog", label: "Blogs", href: "/#blog", number: "07", subtitle: "Articles & Guides" },
   { id: "contact", label: "Contact", href: "/#contact", number: "08", subtitle: "Start a Discussion" },
 ];
@@ -202,7 +202,7 @@ export default function Navbar() {
       "projects",
       "analytics",
       "about",
-      "tools",
+      "skills",
       "blog",
       "contact",
     ];

@@ -192,7 +192,8 @@ function Hero3DEarthDashboard() {
           relative
           w-full
           aspect-square
-          max-w-[340px]
+          max-w-[300px]
+          min-[360px]:max-w-[330px]
           min-[400px]:max-w-[380px]
           min-[480px]:max-w-[440px]
           sm:max-w-[500px]
@@ -470,10 +471,13 @@ export default function Hero() {
         transition-colors
         duration-500
         pt-24
-        sm:pt-38
-        lg:pt-26
-        pb-10
-        sm:pb-16  
+        sm:pt-28
+        md:pt-32
+        lg:pt-28
+        xl:pt-32
+        pb-12
+        sm:pb-16
+        lg:pb-20
         flex
         items-center
       "

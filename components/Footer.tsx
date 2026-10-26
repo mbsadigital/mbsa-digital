@@ -146,7 +146,7 @@ export default function Footer() {
         <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.035] bg-[linear-gradient(rgba(234,88,12,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(234,88,12,0.4)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-14 sm:pt-18 pb-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
 
         {/* ========================================================
             2. MAIN FOOTER 4-COLUMN GRID

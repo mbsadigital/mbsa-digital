@@ -89,7 +89,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative py-16 sm:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
       aria-label="Client Testimonials and Endorsements"
     >
       <style>{`

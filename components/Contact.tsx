@@ -255,9 +255,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden py-16 sm:py-24 lg:py-32 transition-colors duration-500"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24 transition-colors duration-500"
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 xl:gap-20 items-start">
           {/* ========================================================
               LEFT COLUMN: Let's Talk Growth & Contact Info
@@ -271,7 +271,7 @@ export default function Contact() {
                 </span>
               </div>
               {/* Main Headline */}
-              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leSading-[1.04]">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.04]">
                 Let&apos;s Talk
                 <br />
                 <span className="text-[#EA580C]">
@@ -288,35 +288,44 @@ export default function Contact() {
             {/* Contact Details with Clean Horizontal Lines */}
             <div className="mt-10 sm:mt-12 space-y-5">
               {/* Phone */}
-              <div className="pt-4 border-t border-white/20">
+              <div className="pt-4 border-t border-stone-200/80 dark:border-white/10">
                 <span className="block text-xs sm:text-sm font-semibold mb-1">
                   Phone
                 </span>
-                <a
-                  href="+919574696932/+447393107859"
-                  className="text-sm sm:text-base hover:text-orange-400 font-medium transition-colors"
-                >
-                  +919574696932/+447393107859
-                </a>
+                <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base font-medium">
+                  <a
+                    href="tel:+919574696932"
+                    className="hover:text-orange-500 transition-colors"
+                  >
+                    +91 95746 96932
+                  </a>
+                  <span className="text-stone-400">/</span>
+                  <a
+                    href="tel:+447393107859"
+                    className="hover:text-orange-500 transition-colors"
+                  >
+                    +44 7393 107859
+                  </a>
+                </div>
               </div>
 
               {/* Email */}
-              <div className="pt-4 border-t border-white/20">
-                <span className="block text-xs sm:text-sm font-semibold  mb-1">
+              <div className="pt-4 border-t border-stone-200/80 dark:border-white/10">
+                <span className="block text-xs sm:text-sm font-semibold mb-1">
                   Email
                 </span>
                 <a
                   href="mailto:mbsadigitalsolutions@gmail.com"
-                  className="inline-flex items-center gap-2 text-sm sm:text-base hover:text-orange-400 font-medium transition-colors"
+                  className="inline-flex items-center gap-2 text-sm sm:text-base hover:text-orange-500 font-medium transition-colors break-all"
                 >
-                  <Mail className="w-4 h-4 text-orange-400" />
+                  <Mail className="w-4 h-4 text-[#EA580C] shrink-0" />
                   mbsadigitalsolutions@gmail.com
                 </a>
               </div>
 
               {/* Connect With Us */}
-              <div className="pt-4 border-t border-white/20">
-                <span className="block text-xs sm:text-sm font-semibold  mb-3">
+              <div className="pt-4 border-t border-stone-200/80 dark:border-white/10">
+                <span className="block text-xs sm:text-sm font-semibold mb-3">
                   Connect With Us
                 </span>
                 <div className="flex items-center gap-3">
@@ -325,7 +334,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-orange-500 hover:bg- text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
+                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-orange-500 hover:bg-[#EA580C] text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
                   >
                     <LinkedInIcon className="w-4 h-4" />
                   </a>
