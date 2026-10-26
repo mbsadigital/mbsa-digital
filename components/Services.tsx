@@ -147,7 +147,7 @@ export default function Services() {
               <br />
               Ranking.
               <br />
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(234,88,12,0.3)]">
+              <span className="text-[#EA580C] ">
                 A Smarter Way
                 <br />
                 to Grow.

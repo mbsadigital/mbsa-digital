@@ -649,7 +649,7 @@ export default function Hero() {
               </div>
               <div className="px-1 sm:px-2 border-x border-stone-200 dark:border-white/10">
                 <div className="text-lg sm:text-2xl font-black text-stone-900 dark:text-white">
-                  40<span className="text-[#EA580C]">+</span>
+                  5<span className="text-[#EA580C]">+</span>
                 </div>
                 <div className="text-[10px] sm:text-xs font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
                   Happy Clients
@@ -657,7 +657,7 @@ export default function Hero() {
               </div>
               <div className="px-1 sm:px-2">
                 <div className="text-lg sm:text-2xl font-black text-stone-900 dark:text-white">
-                  85<span className="text-[#EA580C]">+</span>
+                  15<span className="text-[#EA580C]">+</span>
                 </div>
                 <div className="text-[10px] sm:text-xs font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
                   Projects Done

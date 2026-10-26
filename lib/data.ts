@@ -132,8 +132,8 @@ export const PROFILE_DATA: ProfileData = {
     { platform: "X", url: "https://x.com", handle: "@muskanshekh", icon: "Twitter" },
     { platform: "Pinterest", url: "https://pinterest.com", handle: "muskanshekh", icon: "Share2" },
   ],
-  email: "muskan.digital@example.com",
-  phone: "+44 (0) 20 7946 0912",
+  email: "mbsadigitalsolutions@gmail.com",
+  phone: "+447393107859",
   location: "London, UK / Remote Worldwide",
   availability: "Available for Q3/Q4 Advisory & Digital Growth Projects",
 };
