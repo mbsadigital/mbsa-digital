@@ -180,7 +180,7 @@ export default function Contact() {
     };
 
     try {
-      // 1. Primary: Next.js internal API route that forwards to a99236116@gmail.com
+      // 1. Primary: Next.js internal API route that forwards to mbsadigitalsolutions@gmail.com
       let isSuccess = false;
       try {
         const res = await fetch("/api/contact", {
@@ -202,7 +202,7 @@ export default function Contact() {
 
       // 2. Client fallback to FormSubmit direct AJAX if internal API route is unavailable
       if (!isSuccess) {
-        const fallbackRes = await fetch("https://formsubmit.co/ajax/a99236116@gmail.com", {
+        const fallbackRes = await fetch("https://formsubmit.co/ajax/mbsadigitalsolutions@gmail.com", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -246,7 +246,7 @@ export default function Contact() {
     }
   };
 
-  const mailtoFallbackUrl = `mailto:a99236116@gmail.com?subject=${encodeURIComponent(
+  const mailtoFallbackUrl = `mailto:mbsadigitalsolutions@gmail.com?subject=${encodeURIComponent(
     `Portfolio Inquiry: ${formState.service || "Growth"} from ${formState.name || "Visitor"}`
   )}&body=${encodeURIComponent(
     `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone || "Not provided"}\nService: ${formState.service || "General"}\n\nMessage:\n${formState.message}`
@@ -306,7 +306,7 @@ export default function Contact() {
                   Email
                 </span>
                 <a
-                  href="mbsadigitalsolutions@gmail.com"
+                  href="mailto:mbsadigitalsolutions@gmail.com"
                   className="inline-flex items-center gap-2 text-sm sm:text-base hover:text-orange-400 font-medium transition-colors"
                 >
                   <Mail className="w-4 h-4 text-orange-400" />
@@ -450,7 +450,7 @@ export default function Contact() {
                               className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600 dark:text-red-400 hover:underline"
                             >
                               <Mail className="w-3.5 h-3.5" />
-                              Open email client to send to a99236116@gmail.com directly &rarr;
+                              Open email client to send to mbsadigitalsolutions@gmail.com directly &rarr;
                             </a>
                           </div>
                         </motion.div>

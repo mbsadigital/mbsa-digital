@@ -105,19 +105,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        {/* LCP Critical Asset Preload */}
-        <link
-          rel="preload"
-          as="image"
-          href="/orange-earth-globe.png"
-          type="image/png"
-        />
         {/* Global Structured Data: WebSite & Person Entity */}
         <script
           type="application/ld+json"

@@ -7,6 +7,8 @@ import * as THREE from "three";
 
 const GLOBE_RADIUS = 2.18;
 
+const NORMAL_SCALE = new THREE.Vector2(0.85, 0.85);
+
 function NormalEarth({ isVisible }: { isVisible: boolean }) {
   const earthRef = useRef<THREE.Group>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
@@ -66,7 +68,7 @@ function NormalEarth({ isVisible }: { isVisible: boolean }) {
           <meshStandardMaterial
             map={dayMap}
             normalMap={normalMap}
-            normalScale={new THREE.Vector2(0.85, 0.85)}
+            normalScale={NORMAL_SCALE}
             roughnessMap={specularMap}
             roughness={0.42}
             metalness={0.12}

@@ -160,7 +160,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
    INSTANT STATIC GLOBE FALLBACK (Zero Buffering & Instant LCP)
 ========================================================= */
 
-function HeroEarthStaticGlobe() {
+export function HeroEarthStaticGlobe() {
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
       <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center">
@@ -169,7 +169,7 @@ function HeroEarthStaticGlobe() {
           alt="Digital Marketing Global Solutions"
           fill
           priority
-          sizes="(max-width: 640px) 280px, 460px"
+          sizes="(max-width: 640px) 280px, (max-width: 1024px) 460px, 580px"
           className="object-contain drop-shadow-[0_0_35px_rgba(234,88,12,0.4)]"
         />
       </div>
@@ -497,18 +497,10 @@ export default function Hero() {
           {/* =================================================
               LEFT COLUMN: HERO COPY & PROPOSITION
           ================================================= */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-6 flex flex-col justify-center"
-          >
+          <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Top Label Badge */}
             <div className="mb-4 flex flex-wrap items-center gap-3">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
+              <span
                 className="
                   inline-flex
                   items-center
@@ -529,18 +521,16 @@ export default function Hero() {
               >
                 <Search className="w-3.5 h-3.5" />
                 We Deliver Growth
-              </motion.div>
+              </span>
             </div>
 
-            {/* Main Headline */}
+            {/* Main Headline - Semantic H1 for SEO and Instant LCP */}
             <div className="relative mb-5">
-              <div className="relative select-none uppercase font-black leading-[0.90] tracking-[-0.035em]">
+              <h1 className="relative select-none uppercase font-black leading-[0.90] tracking-[-0.035em]">
                 {/* DIGITAL */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.25, duration: 0.6 }}
+                <span
                   className="
+                    block
                     text-[2.6rem]
                     min-[380px]:text-[3.2rem]
                     sm:text-[4.2rem]
@@ -552,14 +542,12 @@ export default function Hero() {
                   "
                 >
                   DIGITAL
-                </motion.div>
+                </span>
 
                 {/* MARKETING */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.35, duration: 0.6 }}
+                <span
                   className="
+                    block
                     text-[2.2rem]
                     min-[380px]:text-[2.8rem]
                     sm:text-[3.8rem]
@@ -574,14 +562,12 @@ export default function Hero() {
                   "
                 >
                   MARKETING
-                </motion.div>
+                </span>
 
                 {/* GROWTH */}
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.45, duration: 0.6 }}
+                <span
                   className="
+                    block
                     text-[2.6rem]
                     min-[380px]:text-[3.2rem]
                     sm:text-[4.2rem]
@@ -593,16 +579,11 @@ export default function Hero() {
                   "
                 >
                   GROWTH
-                </motion.div>
-              </div>
+                </span>
+              </h1>
 
               {/* Bottom Tagline */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="mt-4 flex items-center gap-3"
-              >
+              <div className="mt-4 flex items-center gap-3">
                 <span
                   className="
                     inline-flex
@@ -623,7 +604,7 @@ export default function Hero() {
                 </span>
 
                 <span className="hidden sm:block h-px w-16 bg-gradient-to-r from-orange-500 to-transparent" />
-              </motion.div>
+              </div>
             </div>
 
             {/* Description */}
@@ -756,7 +737,7 @@ export default function Hero() {
                 <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-orange-500 transition-colors" />
               </a>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* =================================================
               RIGHT COLUMN: REAL PHOTOREALISTIC 3D EARTH

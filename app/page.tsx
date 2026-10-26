@@ -87,17 +87,8 @@ export default function Home() {
       {/* Main Website Content Container */}
       <div className="flex-1 flex flex-col">
         <main className="flex-1 flex flex-col">
-          {/* 1. Hero Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.9,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <Hero />
-          </motion.div>
+          {/* 1. Hero Section (Rendered immediately for optimal LCP & Core Web Vitals) */}
+          <Hero />
 
           {/* 2. Results Strip: Proof within the first scroll (impressions, local growth, LCP, client names) */}
 

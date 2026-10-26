@@ -105,29 +105,10 @@ export const Banner: React.FC<BannerProps> = ({
   const [isPaused, setIsPaused] = useState(false);
 
   return (
-    <div className={`relative w-full overflow-hidden select-none py-8 sm:py-12 ${className}`}>
-      <style>{`
-        @keyframes marquee-scroll {
-          0% {
-            transform: translate3d(0, 0, 0);
-          }
-          100% {
-            transform: translate3d(-50%, 0, 0);
-          }
-        }
-
-        .marquee-track {
-          display: flex;
-          width: max-content;
-          will-change: transform;
-          animation: marquee-scroll ${speed}s linear infinite;
-        }
-
-        .marquee-paused {
-          animation-play-state: paused;
-        }
-      `}</style>
-
+    <div
+      className={`relative w-full overflow-hidden select-none py-8 sm:py-12 ${className}`}
+      style={{ "--marquee-speed": `${speed}s` } as React.CSSProperties}
+    >
       {/* Subtle dotted grid aura behind the ribbon matching the reference design */}
       <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(#EA580C_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none" />
 

@@ -143,3 +143,24 @@ video,
 canvas {
   max-width: 100%;
 }
+
+/* Tool Stack Infinite Marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll var(--marquee-speed, 36s) linear infinite;
+}
+
+.marquee-paused {
+  animation-play-state: paused !important;
+}

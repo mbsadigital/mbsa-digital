@@ -211,7 +211,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="mailto:a99236116@gmail.com"
+                  href="mailto:mbsadigitalsolutions@gmail.com"
                   aria-label="Email"
                   className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-orange-500 hover:bg-white text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
                 >
@@ -375,7 +375,7 @@ export default function Footer() {
 
             <div className="space-y-3.5 text-xs text-stone-600 dark:text-stone-300">
               <a
-                href="mailto:a99236116@gmail.com"
+                href="mailto:mbsadigitalsolutions@gmail.com"
                 className="flex items-start gap-2.5 p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 hover:border-orange-500/50 transition-colors group"
               >
                 <Mail className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
@@ -384,13 +384,13 @@ export default function Footer() {
                     Direct Email
                   </span>
                   <span className="font-semibold text-stone-800 dark:text-stone-200 group-hover:text-[#EA580C] transition-colors truncate block">
-                    a99236116@gmail.com
+                    mbsadigitalsolutions@gmail.com
                   </span>
                 </div>
               </a>
 
               <a
-                href="tel:+15551234567"
+                href="+919574696932/+447393107859"
                 className="flex items-start gap-2.5 p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 hover:border-orange-500/50 transition-colors group"
               >
                 <Phone className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
@@ -399,7 +399,7 @@ export default function Footer() {
                     Phone / WhatsApp
                   </span>
                   <span className="font-semibold text-stone-800 dark:text-stone-200 group-hover:text-[#EA580C] transition-colors">
-                    +1 (555) 123-4567
+                    +919574696932/+447393107859
                   </span>
                 </div>
               </a>

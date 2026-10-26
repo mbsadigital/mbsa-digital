@@ -13,8 +13,8 @@ export async function POST(req: Request) {
 
     const origin = req.headers.get("origin") || req.headers.get("referer") || "http://localhost:3000";
 
-    // Forward to FormSubmit to deliver the email to a99236116@gmail.com
-    const response = await fetch("https://formsubmit.co/ajax/a99236116@gmail.com", {
+    // Forward to FormSubmit to deliver the email to mbsadigitalsolutions@gmail.com
+    const response = await fetch("https://formsubmit.co/ajax/mbsadigitalsolutions@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
     if (data?.success === "true" || data?.success === true) {
       return NextResponse.json({
         success: true,
-        message: "Message sent successfully to a99236116@gmail.com!",
+        message: "Message sent successfully to mbsadigitalsolutions@gmail.com!",
       });
     }
 
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       return NextResponse.json({
         success: true,
         needsActivation: true,
-        message: "Sent! FormSubmit sent an activation email to a99236116@gmail.com. Please open Gmail (or Spam folder) and click 'Activate Form' once.",
+        message: "Sent! FormSubmit sent an activation email to mbsadigitalsolutions@gmail.com. Please open Gmail (or Spam folder) and click 'Activate Form' once.",
       });
     }
 
