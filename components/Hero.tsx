@@ -42,7 +42,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     bullets: ["Technical SEO", "Keyword Research", "SERP Analysis"],
     techStack: ["Search Console", "Core Web Vitals", "XML Sitemaps"],
     overlayPos: "top-[2%] left-0 sm:left-[-3%] lg:left-[-6%]",
-    image: "/banner/googlesearchconsole.jpeg",
+    image: "/banner/googlesearchconsole.png",
   },
   {
     id: "ahrefs",
