@@ -640,9 +640,6 @@ export default function Hero() {
                 text-sm
                 sm:text-base
                 md:text-[17px]
-               
-                leading-relaxed
-                font-normal
               "
             >
               Hi, I&apos;m Muskan. I help Brands Show up When Real People Search —
