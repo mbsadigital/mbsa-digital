@@ -631,18 +631,7 @@ export default function Hero() {
             </div>
 
             {/* Description */}
-            <p
-              className="
-                max-w-xl
-                text-sm
-                sm:text-base
-                md:text-[17px]
-                text-stone-600
-                dark:text-stone-300
-                leading-relaxed
-                font-normal
-              "
-            >
+            <p>
               Hi, I&apos;m Muskan. I help Brands Show up When Real People Search,
               whether that is a Google results page or an answer from ChatGPT,
               Gemini or Perplexity. I mix Technical SEO, honest content and clean
