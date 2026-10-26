@@ -163,15 +163,35 @@ const MARKETING_NODES: MarketingNodeData[] = [
 export function HeroEarthStaticGlobe() {
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
-      <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center">
-        <Image
-          src="/orange-earth-globe.png"
-          alt="Digital Marketing Global Solutions"
-          fill
-          priority
-          sizes="(max-width: 640px) 280px, (max-width: 1024px) 460px, 580px"
-          className="object-contain drop-shadow-[0_0_35px_rgba(234,88,12,0.4)]"
+      <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(234,88,12,0.45)]">
+        {/* Photorealistic Spherical Earth Background with 3D Shader Depth */}
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at 32% 30%, #FDBA74 0%, #FB923C 18%, #EA580C 45%, #9A3412 70%, #431407 90%, #1c0a02 100%)",
+            boxShadow:
+              "inset -20px -20px 50px rgba(0, 0, 0, 0.85), inset 10px 10px 30px rgba(255, 255, 255, 0.35)",
+          }}
         />
+
+        {/* Ambient Orbiting Latitude & Longitude Grid */}
+        <svg
+          viewBox="0 0 200 200"
+          className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen"
+        >
+          {/* Equator & Parallels */}
+          <ellipse cx="100" cy="100" rx="92" ry="32" fill="none" stroke="#FED7AA" strokeWidth="1.2" strokeDasharray="3 3" />
+          <ellipse cx="100" cy="70" rx="82" ry="24" fill="none" stroke="#FED7AA" strokeWidth="0.9" strokeDasharray="2 3" />
+          <ellipse cx="100" cy="130" rx="82" ry="24" fill="none" stroke="#FED7AA" strokeWidth="0.9" strokeDasharray="2 3" />
+          {/* Meridians */}
+          <ellipse cx="100" cy="100" rx="40" ry="92" fill="none" stroke="#FED7AA" strokeWidth="1.2" />
+          <ellipse cx="100" cy="100" rx="72" ry="92" fill="none" stroke="#FED7AA" strokeWidth="0.9" />
+          <line x1="100" y1="8" x2="100" y2="192" stroke="#FED7AA" strokeWidth="1.2" />
+        </svg>
+
+        {/* Cyan Atmospheric Rim Fresnel */}
+        <div className="absolute inset-0 rounded-full border-2 border-cyan-400/40 shadow-[inset_0_0_25px_rgba(34,211,238,0.5)]" />
       </div>
     </div>
   );
@@ -621,8 +641,7 @@ export default function Hero() {
                 text-sm
                 sm:text-base
                 md:text-[17px]
-                text-stone-600
-                dark:text-stone-300
+               
                 leading-relaxed
                 font-normal
               "

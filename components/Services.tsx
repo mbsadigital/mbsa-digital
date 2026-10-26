@@ -102,12 +102,10 @@ export default function Services() {
     enter: (direction: number) => ({
       x: direction > 0 ? 60 : -60,
       opacity: 0,
-      filter: "blur(4px)",
     }),
     center: {
       x: 0,
       opacity: 1,
-      filter: "blur(0px)",
       transition: {
         duration: 0.45,
         ease: [0.25, 1, 0.5, 1],
@@ -116,7 +114,6 @@ export default function Services() {
     exit: (direction: number) => ({
       x: direction > 0 ? -60 : 60,
       opacity: 0,
-      filter: "blur(4px)",
       transition: {
         duration: 0.35,
         ease: [0.25, 1, 0.5, 1],

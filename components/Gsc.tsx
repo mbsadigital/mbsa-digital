@@ -974,7 +974,6 @@ export default function Gsc() {
                   opacity: isCenter ? 1 : 0.45,
                   rotateY: totalCategorySlides > 1 ? offset * -14 : 0,
                   zIndex: isCenter ? 20 : 10,
-                  filter: isCenter ? "blur(0px)" : "blur(1.5px)",
                 }}
                 transition={{
                   type: "spring",

@@ -1106,12 +1106,10 @@ const CARDS_CONTAINER_VARIANTS: Variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 30 : -30,
     opacity: 0,
-    filter: "blur(3px)",
   }),
   center: {
     x: 0,
     opacity: 1,
-    filter: "blur(0px)",
     transition: {
       duration: 0.3,
       ease: [0.22, 1, 0.36, 1],
@@ -1121,7 +1119,6 @@ const CARDS_CONTAINER_VARIANTS: Variants = {
   exit: (direction: number) => ({
     x: direction > 0 ? -30 : 30,
     opacity: 0,
-    filter: "blur(3px)",
     transition: {
       duration: 0.2,
       ease: [0.22, 1, 0.36, 1],
@@ -2010,7 +2007,6 @@ function ServicesContent() {
                         opacity: isCenter ? 1 : 0.45,
                         rotateY: proofSlides.length > 1 ? offset * -14 : 0,
                         zIndex: isCenter ? 20 : 10,
-                        filter: isCenter ? "blur(0px)" : "blur(1.5px)",
                       }}
                       transition={{ type: "spring", stiffness: 280, damping: 24, mass: 0.8 }}
                       className={`absolute w-[88%] sm:w-[76%] md:w-[68%] aspect-[16/9] rounded-2xl overflow-hidden cursor-pointer ${isCenter

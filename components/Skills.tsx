@@ -174,11 +174,10 @@ const sectionContainerVariants: Variants = {
 };
 
 const leftItemVariants: Variants = {
-  hidden: { opacity: 0, y: 28, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       type: "spring",
       stiffness: 280,
@@ -205,7 +204,6 @@ const magneticCellVariants: Variants = {
       x: v.x,
       y: v.y,
       rotate: v.rotate,
-      filter: "blur(6px)",
     };
   },
   visible: (i: number) => ({
@@ -214,7 +212,6 @@ const magneticCellVariants: Variants = {
     x: 0,
     y: 0,
     rotate: 0,
-    filter: "blur(0px)",
     transition: {
       type: "spring",
       stiffness: 140,
@@ -397,9 +394,9 @@ export default function Skills() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSkill.id}
-                initial={{ opacity: 0, y: 22, scale: 0.94, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, y: -20, scale: 0.96, filter: "blur(6px)" }}
+                initial={{ opacity: 0, y: 22, scale: 0.94 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 300, damping: 26 }}
                 className="relative overflow-hidden rounded-3xl border border-orange-200/80 bg-white dark:bg-[#141210] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/10 sm:p-8"
               >
