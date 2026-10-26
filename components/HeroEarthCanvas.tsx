@@ -20,10 +20,14 @@ const GLOBE_RADIUS = 2.18;
 
 const NORMAL_SCALE = new THREE.Vector2(0.85, 0.85);
 
-function NormalEarth({ isVisible }: { isVisible: boolean }) {
+function NormalEarth({ isVisible, onReady }: { isVisible: boolean; onReady?: () => void }) {
   const earthRef = useRef<THREE.Group>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
   const atmosphereRef = useRef<THREE.Mesh>(null);
+
+  useEffect(() => {
+    onReady?.();
+  }, [onReady]);
 
   const { viewport } = useThree();
   const responsiveScale = useMemo(() => {
@@ -182,6 +186,7 @@ class CanvasErrorBoundary extends React.Component<
 
 export default function HeroEarthCanvas() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isEarthReady, setIsEarthReady] = useState(false);
   const [webglSupported, setWebglSupported] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -206,7 +211,16 @@ export default function HeroEarthCanvas() {
   }
 
   return (
-    <div ref={containerRef} className="w-full h-full">
+    <div ref={containerRef} className="relative w-full h-full">
+      {/* Instant Photorealistic Underlay - Eliminates any blank buffering flash while 3D WebGL textures stream in */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-700 ease-out pointer-events-none z-0 ${
+          isEarthReady ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <EarthStaticFallback />
+      </div>
+
       <CanvasErrorBoundary fallback={<EarthStaticFallback />}>
         <Canvas
           camera={{
@@ -227,7 +241,7 @@ export default function HeroEarthCanvas() {
             <directionalLight position={[6, -2, -3]} intensity={1.2} color="#00d4ff" />
             <pointLight position={[-4, 2, 4]} intensity={1.8} color="#e0f7fa" />
 
-            <NormalEarth isVisible={isVisible} />
+            <NormalEarth isVisible={isVisible} onReady={() => setIsEarthReady(true)} />
 
             <OrbitControls
               enableZoom={false}

@@ -631,22 +631,23 @@ export default function Hero() {
             </div>
 
             {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+            <p
               className="
                 max-w-xl
                 text-sm
                 sm:text-base
                 md:text-[17px]
+                text-stone-600
+                dark:text-stone-300
+                leading-relaxed
+                font-normal
               "
             >
               Hi, I&apos;m Muskan. I help Brands Show up When Real People Search,
               whether that is a Google results page or an answer from ChatGPT,
               Gemini or Perplexity. I mix Technical SEO, honest content and clean
               websites so the traffic you earn turns into customers.
-            </motion.p>
+            </p>
             {/* Stats Bar Under the Earth */}
             <div className="mt-6 sm:mt-8 w-full max-w-[460px] grid grid-cols-3 gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-2xl border border-stone-200/90 dark:border-white/10 shadow-sm text-center">
               <div className="px-1 sm:px-2">
@@ -676,10 +677,7 @@ export default function Hero() {
             </div>
 
             {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.6 }}
+            <div
               className="mt-6 sm:mt-8 flex flex-col min-[420px]:flex-row items-stretch min-[420px]:items-center gap-3 sm:gap-4"
             >
               {/* Primary Action */}
@@ -755,20 +753,17 @@ export default function Hero() {
                 <span>View My Work</span>
                 <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-orange-500 transition-colors" />
               </a>
-            </motion.div>
+            </div>
           </div>
 
           {/* =================================================
               RIGHT COLUMN: REAL PHOTOREALISTIC 3D EARTH
           ================================================= */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
+          <div
             className="lg:col-span-6 flex flex-col items-center justify-center w-full mt-6 sm:mt-8 lg:mt-0 lg:translate-x-6 xl:translate-x-10"
           >
             <Hero3DEarthDashboard />
-          </motion.div>
+          </div>
 
         </div>
       </div>
