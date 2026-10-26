@@ -627,7 +627,6 @@ export default function Hero() {
                   Explore Our Business Solution
                 </span>
 
-                <span className="hidden sm:block h-px w-16 bg-gradient-to-r from-orange-500 to-transparent" />
               </div>
             </div>
 
