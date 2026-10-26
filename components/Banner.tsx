@@ -78,7 +78,7 @@ const DEFAULT_ITEMS: BannerToolItem[] = [
   },
   {
     name: "Search Console",
-    logo: "/banner/googlesearchconsole.jpeg",
+    logo: "/banner/googlesearchconsole.png",
     bgTint: "bg-[#4285F4]/10 dark:bg-[#4285F4]/15 border-[#4285F4]/25",
     hoverBorder: "hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-[0_0_22px_rgba(59,130,246,0.4)]",
   },
