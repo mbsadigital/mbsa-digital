@@ -124,16 +124,16 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[550px] lg:w-[750px] h-[320px] sm:h-[550px] rounded-full bg-[#EA580C]/[0.08] dark:bg-[#EA580C]/[0.12] blur-[120px] sm:blur-[160px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[550px] lg:w-[750px] h-[320px] sm:h-[550px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.12] blur-[120px] sm:blur-[160px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Eyebrow */}
         <div className="mb-6 sm:mb-8 lg:mb-12">
-          <div className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#EA580C] dark:text-[#F97316]">
-            <span className="w-6 h-[2px] bg-[#EA580C] dark:bg-[#F97316] rounded-full" />
+          <div className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-[#14B8A6]">
+            <span className="w-6 h-[2px] bg-[#2563EB] dark:bg-[#14B8A6] rounded-full" />
             <span>WHAT I DO </span>
           </div>
         </div>
@@ -147,7 +147,7 @@ export default function Services() {
               <br />
               Ranking.
               <br />
-              <span className="text-[#EA580C] ">
+              <span className="text-[#2563EB] ">
                 A Smarter Way
                 <br />
                 to Grow.
@@ -163,7 +163,7 @@ export default function Services() {
             <div className="space-y-4">
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#C2410C] hover:to-[#9A3412] text-white text-sm font-semibold shadow-lg shadow-orange-500/25 active:scale-95 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
               >
                 <span>Explore All Services</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -180,14 +180,14 @@ export default function Services() {
             {/* Top Control Bar: Page indicator & Animated Left/Right Navigation Buttons */}
             <div className="flex items-center justify-between gap-4 mb-4 pb-2">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
                   Showing {currentPage === 0 ? "Services 01 – 06" : "Services 07 – 12"}{" "}
                   <span className="text-stone-400 font-normal">of 12 Total</span>
                 </span>
               </div>
 
-              {/* ANIMATED LEFT & RIGHT BUTTONS */}
+              {/* ANIMATED LEFT & RIGHT BUTTONS (Comfortable 44px+ mobile touch targets) */}
               <div className="flex items-center gap-2.5">
                 {/* Left Button */}
                 <button
@@ -200,9 +200,12 @@ export default function Services() {
                     relative
                     flex
                     items-center
+                    justify-center
                     gap-1.5
-                    px-3.5
-                    py-1.5
+                    min-h-[44px]
+                    min-w-[44px]
+                    px-4
+                    py-2.5
                     rounded-full
                     border
                     border-stone-300
@@ -210,7 +213,7 @@ export default function Services() {
                     hover:border-stone-900
                     dark:hover:border-white
                     bg-white
-                    dark:bg-[#120F0D]
+                    dark:bg-[#111B2E]
                     hover:bg-stone-900
                     dark:hover:bg-white
                     text-stone-700
@@ -225,25 +228,30 @@ export default function Services() {
                     duration-300
                     active:scale-95
                     cursor-pointer
+                    touch-manipulation
                   "
                 >
                   <ChevronLeft className="w-4 h-4 transition-transform duration-300 group-hover/btn:-translate-x-1" />
-                  <span className="hidden sm:inline">Prev </span>
+                  <span className="hidden min-[400px]:inline">Prev</span>
                 </button>
 
-                {/* Page dots indicator */}
-                <div className="flex items-center gap-1.5 px-2">
+                {/* Page dots indicator with generous tap areas */}
+                <div className="flex items-center gap-1.5 px-1 min-h-[44px]">
                   {[0, 1].map((dotIdx) => (
                     <button
                       key={dotIdx}
                       type="button"
                       onClick={() => handlePageSelect(dotIdx)}
                       aria-label={`Go to service pack ${dotIdx + 1}`}
-                      className={`h-2.5 rounded-full transition-all duration-300 ${currentPage === dotIdx
-                        ? "w-6 bg-stone-900 dark:bg-white shadow-sm"
-                        : "w-2.5 bg-stone-300 dark:bg-white/20 hover:bg-stone-400"
-                        }`}
-                    />
+                      className="p-2 touch-manipulation cursor-pointer"
+                    >
+                      <span
+                        className={`block h-2.5 rounded-full transition-all duration-300 ${currentPage === dotIdx
+                          ? "w-6 bg-stone-900 dark:bg-white shadow-sm"
+                          : "w-2.5 bg-stone-300 dark:bg-white/20 hover:bg-stone-400"
+                          }`}
+                      />
+                    </button>
                   ))}
                 </div>
 
@@ -258,9 +266,12 @@ export default function Services() {
                     relative
                     flex
                     items-center
+                    justify-center
                     gap-1.5
-                    px-4
-                    py-1.5
+                    min-h-[44px]
+                    min-w-[44px]
+                    px-4.5
+                    py-2.5
                     rounded-full
                     border
                     border-stone-900
@@ -280,6 +291,7 @@ export default function Services() {
                     hover:scale-105
                     active:scale-95
                     cursor-pointer
+                    touch-manipulation
                   "
                 >
                   {/* Subtle ping indicator */}
@@ -287,13 +299,13 @@ export default function Services() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
                   </span>
-                  <span>Next </span>
+                  <span>Next</span>
                   <ChevronRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </button>
               </div>
             </div>
 
-            {/* ANIMATED 6-CARD GRID CONTAINER */}
+            {/* ANIMATED 6-CARD GRID CONTAINER WITH TOUCH SWIPE */}
             <AnimatePresence mode="wait" custom={slideDirection}>
               <motion.div
                 key={currentPage}
@@ -302,7 +314,17 @@ export default function Services() {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 w-full"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.12}
+                onDragEnd={(_, info) => {
+                  if (info.offset.x < -45) {
+                    handleNextPage();
+                  } else if (info.offset.x > 45) {
+                    handlePrevPage();
+                  }
+                }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 w-full touch-pan-y"
               >
                 {currentCards.map((svc, idx) => {
                   const Icon = ICON_MAP[svc.iconName] || Search;
@@ -402,8 +424,8 @@ export default function Services() {
                       <div className="relative z-10">
                         <h3
                           className={`text-base sm:text-lg font-bold text-white transition-colors duration-300 drop-shadow-sm ${isSelected
-                            ? "text-[#F97316]"
-                            : "group-hover:text-[#F97316]"
+                            ? "text-[#14B8A6]"
+                            : "group-hover:text-[#14B8A6]"
                             }`}
                         >
                           {svc.title}

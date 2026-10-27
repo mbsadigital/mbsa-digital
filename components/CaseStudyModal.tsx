@@ -59,7 +59,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
             overflow-y-auto
             rounded-3xl
             bg-white
-            dark:bg-[#120F0D]
+            dark:bg-[#111B2E]
             border
             border-stone-200
             dark:border-orange-500/30
@@ -103,7 +103,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
 
           {/* Header Info */}
           <div className="mb-6 pr-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-[#EA580C]/20 border border-orange-200 dark:border-[#EA580C]/35 text-[#EA580C] dark:text-[#F97316] mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-[#2563EB]/20 border border-orange-200 dark:border-[#2563EB]/35 text-[#2563EB] dark:text-[#14B8A6] mb-3">
               {study.category} • {study.duration}
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white">
@@ -124,7 +124,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
               <div>
-                <div className="text-2xl sm:text-3xl font-black text-[#F97316] drop-shadow-[0_0_15px_rgba(234,88,12,0.8)]">
+                <div className="text-2xl sm:text-3xl font-black text-[#14B8A6] drop-shadow-[0_0_15px_rgba(37,99,235,0.8)]">
                   {study.heroMetric}
                 </div>
                 <div className="text-xs font-semibold text-white/90">
@@ -141,7 +141,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
                 key={i}
                 className="p-4 rounded-2xl bg-stone-50 dark:bg-white/[0.04] border border-stone-200 dark:border-white/10"
               >
-                <div className="text-xl font-extrabold text-[#EA580C] dark:text-[#F97316] mb-1">
+                <div className="text-xl font-extrabold text-[#2563EB] dark:text-[#14B8A6] mb-1">
                   {res.value}
                 </div>
                 <div className="text-xs font-bold text-stone-900 dark:text-white mb-0.5">
@@ -157,7 +157,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
           {/* Overview & Challenge */}
           <div className="space-y-6 mb-8">
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-wider text-[#EA580C] dark:text-[#F97316] mb-2">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6] mb-2">
                 Project Overview
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-[#A8A29E] leading-relaxed">
@@ -166,7 +166,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
             </div>
 
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-wider text-[#EA580C] dark:text-[#F97316] mb-2">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6] mb-2">
                 The Core Challenge
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-[#A8A29E] leading-relaxed">
@@ -175,13 +175,13 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
             </div>
 
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-wider text-[#EA580C] dark:text-[#F97316] mb-2">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6] mb-2">
                 Strategic Solution & Execution
               </h3>
               <div className="space-y-2">
                 {study.solution.map((sol, index) => (
                   <div key={index} className="flex items-start gap-2 text-xs sm:text-sm text-stone-700 dark:text-stone-300">
-                    <CheckCircle className="w-4 h-4 text-[#EA580C] dark:text-[#F97316] shrink-0 mt-0.5" />
+                    <CheckCircle className="w-4 h-4 text-[#2563EB] dark:text-[#14B8A6] shrink-0 mt-0.5" />
                     <span>{sol}</span>
                   </div>
                 ))}
@@ -214,7 +214,7 @@ export default function CaseStudyModal({ study, onClose }: CaseStudyModalProps) 
             <a
               href="#contact"
               onClick={onClose}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#C2410C] hover:to-[#9A3412] text-white text-xs sm:text-sm font-bold shadow-lg transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs sm:text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
             >
               <span>Discuss Your Project</span>
               <ArrowRight className="w-4 h-4" />

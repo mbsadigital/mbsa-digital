@@ -20,14 +20,14 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { id: "hero", label: "Home", href: "/#hero", number: "01", subtitle: "Welcome & Hero" },
-  { id: "services", label: "Services", href: "/#services", number: "02", subtitle: "Growth Solutions" },
-  { id: "projects", label: "Portfolio", href: "/#projects", number: "03", subtitle: "Case Studies" },
-  { id: "analytics", label: "Analytics", href: "/#analytics", number: "04", subtitle: "Live GSC Proof" },
-  { id: "about", label: "About", href: "/#about", number: "05", subtitle: "Profile & Dossier" },
-  { id: "skills", label: "Skills", href: "/#skills", number: "06", subtitle: "Tools & Skills" },
-  { id: "blog", label: "Blogs", href: "/#blog", number: "07", subtitle: "Articles & Guides" },
-  { id: "contact", label: "Contact", href: "/#contact", number: "08", subtitle: "Start a Discussion" },
+  { id: "hero", label: "Home", href: "/", number: "01", subtitle: "Welcome & Hero" },
+  { id: "services", label: "Services", href: "/services", number: "02", subtitle: "Growth Solutions" },
+  { id: "projects", label: "Portfolio", href: "/projects", number: "03", subtitle: "Case Studies" },
+  { id: "analytics", label: "Analytics", href: "/analytics", number: "04", subtitle: "Live GSC Proof" },
+  { id: "about", label: "About", href: "/about", number: "05", subtitle: "Profile & Dossier" },
+  { id: "skills", label: "Skills", href: "/skills", number: "06", subtitle: "Tools & Skills" },
+  { id: "blog", label: "Blogs", href: "/blog", number: "07", subtitle: "Articles & Guides" },
+  { id: "contact", label: "Contact", href: "/contact", number: "08", subtitle: "Start a Discussion" },
 ];
 
 /* ============================================================
@@ -267,6 +267,9 @@ export default function Navbar() {
   const currentActiveSection = useMemo(() => {
     if (pathname === "/services" || pathname.startsWith("/services/")) return "services";
     if (pathname === "/projects" || pathname.startsWith("/projects/")) return "projects";
+    if (pathname === "/analytics" || pathname.startsWith("/analytics/")) return "analytics";
+    if (pathname === "/about" || pathname.startsWith("/about/")) return "about";
+    if (pathname === "/skills" || pathname.startsWith("/skills/")) return "skills";
     if (
       pathname.startsWith("/blog") ||
       pathname.startsWith("/showblog") ||
@@ -275,6 +278,7 @@ export default function Navbar() {
     ) {
       return "blog";
     }
+    if (pathname === "/contact" || pathname.startsWith("/contact/")) return "contact";
     return activeSection;
   }, [pathname, activeSection]);
 
@@ -283,39 +287,35 @@ export default function Navbar() {
     e: React.MouseEvent<HTMLAnchorElement>,
     item: NavItem
   ) => {
-    e.preventDefault();
     setMobileMenuOpen(false);
 
-    if (pathname === "/") {
-      scrollToSection(item.id);
-    } else {
-      if (item.id === "hero") {
-        router.push("/");
+    // If clicking on current active page, smooth scroll to top / hero
+    if (pathname === item.href) {
+      e.preventDefault();
+      if (pathname === "/") {
+        scrollToSection(item.id);
       } else {
-        router.push(`/#${item.id}`);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     }
+    // Otherwise allow normal Next.js <Link> navigation to item.href
   };
 
   /* Brand Logo Click */
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
     setMobileMenuOpen(false);
     if (pathname === "/") {
+      e.preventDefault();
       scrollToSection("hero");
-    } else {
-      router.push("/");
     }
   };
 
   /* Contact CTA Click */
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
     setMobileMenuOpen(false);
-    if (pathname === "/") {
-      scrollToSection("contact");
-    } else {
-      router.push("/#contact");
+    if (pathname === "/contact") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -350,41 +350,41 @@ export default function Navbar() {
       ====================================================== */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isSubpage
-          ? "bg-[#FAF8F5]/90 dark:bg-[#080706]/90 backdrop-blur-2xl border-b border-orange-500/15 dark:border-orange-500/20 shadow-[0_8px_30px_rgba(234,88,12,0.06)] dark:shadow-[0_8px_35px_rgba(0,0,0,0.6)] py-2.5 sm:py-3"
+          ? "bg-[#F8FAFC]/90 dark:bg-[#0B1220]/90 backdrop-blur-2xl border-b border-orange-500/15 dark:border-orange-500/20 shadow-[0_8px_30px_rgba(37,99,235,0.06)] dark:shadow-[0_8px_35px_rgba(0,0,0,0.6)] py-2.5 sm:py-3"
           : "bg-transparent py-4 sm:py-5"
           }`}
       >
         {/* Subtle Top Gradient Accent Hairline */}
-        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#EA580C]/40 to-transparent pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#2563EB]/40 to-transparent pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* ==================================================
-              1. BRAND LOGO & IDENTITY
+              1. BRAND LOGO & IDENTITY (Compact below 768px)
           ================================================== */}
           <Link
             href="/"
             onClick={handleLogoClick}
-            className="group flex items-center gap-3 shrink-0"
+            className="group flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0"
           >
             {/* Animated Logo Monogram Badge */}
             <motion.div
               whileHover={{ scale: 1.05, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-[#EA580C] to-[#C2410C] text-white flex items-center justify-center font-black text-xs sm:text-sm shadow-md shadow-orange-500/25 border border-orange-400/40 overflow-hidden"
+              className="relative w-12.5 h-10.5 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white flex items-center justify-center font-black text-xs sm:text-sm shadow-md shadow-orange-500/25 border border-orange-400/40 overflow-hidden shrink-0"
             >
               {/* Inner ambient light overlay */}
               <span className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-white/20 pointer-events-none" />
-              <span className="relative z-10 tracking-tight">DM</span>
+              <span className="relative z-10 tracking-tight">MBSA</span>
             </motion.div>
 
-            {/* Brand Title & Tagline */}
-            <div className="flex flex-col text-left">
-              <span className="text-sm sm:text-base font-extrabold tracking-tight text-stone-900 dark:text-white group-hover:text-[#EA580C] dark:group-hover:text-[#F97316] transition-colors leading-tight">
-                Digital Growth
+            {/* Brand Title & Tagline - Compact & Truncate Safe on narrow screens */}
+            <div className="flex flex-col text-left min-w-0">
+              <span className="text-xs sm:text-sm md:text-base font-extrabold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors leading-tight truncate">
+                Digital Marketing
               </span>
-              <span className="text-[9px] sm:text-[10px] font-mono font-medium text-stone-500 dark:text-stone-400 leading-tight">
-                SEO &amp; Data Specialist
+              <span className="text-[8px] sm:text-[9.5px] font-mono font-medium text-stone-500 dark:text-stone-400 leading-tight truncate">
+                Technical SEO Specialist
               </span>
             </div>
           </Link>
@@ -392,7 +392,7 @@ export default function Navbar() {
           {/* ==================================================
               2. DESKTOP NAVIGATION PILL DOCK
           ================================================== */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 p-1.5 rounded-full bg-white/70 dark:bg-[#120F0D]/70 border border-orange-500/15 dark:border-orange-500/20 backdrop-blur-xl shadow-sm">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 p-1 xl:p-1.5 rounded-full bg-white/70 dark:bg-[#111B2E]/70 border border-blue-500/15 dark:border-blue-500/20 backdrop-blur-xl shadow-sm">
             {NAV_ITEMS.map((item) => {
               const isActive = currentActiveSection === item.id;
 
@@ -401,16 +401,16 @@ export default function Navbar() {
                   key={item.id}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item)}
-                  className={`relative px-3 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold transition-all duration-200 select-none ${isActive
+                  className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold transition-all duration-200 select-none ${isActive
                     ? "text-white"
-                    : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-orange-500/10"
+                    : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-blue-500/10"
                     }`}
                 >
                   {/* Sliding Animated Active Background Pill */}
                   {isActive && (
                     <motion.span
                       layoutId="activeNavPill"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] shadow-md shadow-orange-500/30"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] shadow-md shadow-[#2563EB]/25"
                       transition={{
                         type: "spring",
                         stiffness: 380,
@@ -434,17 +434,17 @@ export default function Navbar() {
               <ThemeToggle />
             </div>
 
-            {/* Start a Project Primary Action CTA Button */}
+            {/* Start a Project Primary Action CTA Button (Desktop & Tablet >= 768px only) */}
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={handleContactClick}
-              className="hidden sm:inline-flex group relative items-center gap-2 px-4.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#EA580C] via-[#EA580C] to-[#C2410C] hover:from-[#C2410C] hover:to-[#9A3412] text-white text-xs font-extrabold shadow-[0_4px_20px_rgba(234,88,12,0.32)] hover:shadow-[0_6px_25px_rgba(234,88,12,0.48)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 overflow-hidden"
+              className="hidden md:inline-flex group relative items-center gap-2 px-3.5 xl:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-extrabold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10">Start a Project</span>
               <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
 
-            {/* Mobile Menu Hamburger Toggle Button */}
+            {/* Mobile Menu Hamburger Toggle Button (Compact, clear touch target below 1024px) */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -454,7 +454,7 @@ export default function Navbar() {
                   : "Open navigation menu"
               }
               aria-expanded={mobileMenuOpen}
-              className="lg:hidden relative w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center border border-orange-500/25 dark:border-orange-500/30 bg-white/80 dark:bg-[#120F0D]/80 backdrop-blur-xl text-stone-800 dark:text-stone-200 hover:text-[#EA580C] hover:border-[#EA580C] transition-all shadow-sm cursor-pointer"
+              className="lg:hidden relative w-10 h-10 rounded-xl flex items-center justify-center border border-orange-500/25 dark:border-white/15 bg-white/85 dark:bg-[#111B2E]/85 backdrop-blur-xl text-stone-800 dark:text-stone-200 hover:text-[#2563EB] hover:border-[#2563EB] transition-all shadow-sm cursor-pointer touch-manipulation active:scale-95"
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -472,25 +472,25 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop Blur Layer */}
+            {/* Backdrop Blur Layer with touch event capture to reliably close */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+              className="fixed inset-0 z-40 bg-black/65 backdrop-blur-sm lg:hidden touch-none"
             />
 
-            {/* Floating Mobile Glass Drawer Panel */}
+            {/* Floating Mobile Glass Drawer Panel - Strictly constrained within viewport */}
             <motion.div
-              initial={{ opacity: 0, y: -16, scale: 0.98 }}
+              initial={{ opacity: 0, y: -12, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="fixed top-18 sm:top-20 left-4 right-4 z-50 p-4 sm:p-5 rounded-2xl bg-white/95 dark:bg-[#120F0D]/95 backdrop-blur-2xl border border-orange-500/25 dark:border-orange-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.35)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.8)] lg:hidden max-h-[calc(100vh-90px)] overflow-y-auto"
+              className="fixed top-[66px] sm:top-[74px] left-3 sm:left-4 right-3 sm:right-4 z-50 p-3 sm:p-4.5 rounded-2xl bg-white/95 dark:bg-[#0B1220]/95 backdrop-blur-2xl border border-orange-500/25 dark:border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.85)] lg:hidden max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain"
             >
-              {/* Clean Nav Links List */}
+              {/* Clean Nav Links List with generous touch targets (44px min) */}
               <nav className="flex flex-col gap-1">
                 {NAV_ITEMS.map((item) => {
                   const isActive = currentActiveSection === item.id;
@@ -500,31 +500,37 @@ export default function Navbar() {
                       key={item.id}
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item)}
-                      className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150 ${isActive
-                        ? "bg-[#EA580C] text-white shadow-md shadow-orange-500/25"
-                        : "text-stone-700 dark:text-stone-200 hover:text-[#EA580C] dark:hover:text-[#F97316] hover:bg-orange-500/10"
+                      className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 min-h-[44px] touch-manipulation active:scale-[0.99] ${isActive
+                        ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/25"
+                        : "text-stone-700 dark:text-stone-200 hover:text-[#2563EB] dark:hover:text-[#14B8A6] hover:bg-orange-500/10 active:bg-orange-500/15"
                         }`}
                     >
-                      <span>{item.label}</span>
+                      <div className="flex items-center gap-3">
+                        <span className={`text-[11px] font-mono font-bold ${isActive ? "text-white/80" : "text-stone-400"}`}>
+                          {item.number}
+                        </span>
+                        <span className="font-bold">{item.label}</span>
+                      </div>
+
                       {isActive ? (
-                        <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                        <span className="w-2 h-2 rounded-full bg-white shadow-xs" />
                       ) : (
-                        <ArrowRight className="w-3.5 h-3.5 text-stone-400 opacity-50" />
+                        <ArrowRight className="w-3.5 h-3.5 text-stone-400 opacity-60" />
                       )}
                     </Link>
                   );
                 })}
               </nav>
 
-              {/* Mobile Drawer Action Footer */}
-              <div className="mt-3 pt-3 border-t border-stone-200/80 dark:border-stone-800">
+              {/* Mobile Drawer Action Footer with full-width CTA */}
+              <div className="mt-2.5 pt-2.5 border-t border-stone-200/80 dark:border-white/10">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   onClick={handleContactClick}
-                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gradient-to-r from-[#EA580C] to-[#C2410C] text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-orange-500/25 active:scale-98 transition-transform"
+                  className="flex items-center justify-center gap-2 w-full min-h-[44px] py-3 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 active:scale-98 transition-all touch-manipulation"
                 >
                   <span>Start a Project</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </motion.div>

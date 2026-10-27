@@ -123,22 +123,22 @@ const EXPERIENCE: ExperienceItem[] = [
 const JOURNEY = [
   {
     title: "Diploma in Computer Engineering",
-    institution: "Parul University,Gujarat",
+    institution: "Parul University, Gujarat",
   },
   {
     title: "B.E Computer Engineering",
-    institution: "Neotech Institute of Technology,Gujarat",
+    institution: "Neotech Institute of Technology, Gujarat",
   },
   {
-    title: "SEO Carrer Begins",
+    title: "SEO Career Begins",
     institution: "Junior SEO Executive, then Senior SEO roles",
   },
   {
-    title: "Msc Advanced Computer Science",
-    institution: "University Of Essex, UK",
+    title: "MSc Advanced Computer Science",
+    institution: "University of Essex, UK",
   },
   {
-    title: "Uk Health and Beauty Brands",
+    title: "UK Health & Beauty Brands",
     institution: "September 2023 to November 2025, London",
   },
   {
@@ -176,8 +176,8 @@ function SectionTitle({
 }) {
   return (
     <div className="flex items-center gap-2.5 mb-3">
-      <div className="w-7 h-7 rounded-lg bg-[#EA580C]/10 dark:bg-[#EA580C]/15 flex items-center justify-center shrink-0">
-        <Icon className="w-3.5 h-3.5 text-[#EA580C]" />
+      <div className="w-7 h-7 rounded-lg bg-[#2563EB]/10 dark:bg-[#2563EB]/15 flex items-center justify-center shrink-0">
+        <Icon className="w-3.5 h-3.5 text-[#2563EB]" />
       </div>
 
       <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 dark:text-white">
@@ -239,7 +239,7 @@ export default function About() {
           className="absolute inset-0 opacity-[0.025] dark:opacity-[0.035]"
           style={{
             backgroundImage:
-              "radial-gradient(#EA580C 1px, transparent 1px)",
+              "radial-gradient(#2563EB 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         />
@@ -248,8 +248,8 @@ export default function About() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="flex items-center gap-3 mb-4 sm:mb-5">
-          <span className="w-8 h-px bg-[#EA580C] dark:bg-[#F97316]" />
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#EA580C] dark:text-[#F97316]">
+          <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
             About me
           </span>
         </div>
@@ -279,7 +279,7 @@ export default function About() {
               border border-orange-200/60
               dark:border-white/10
               p-4 sm:p-5
-              shadow-[0_15px_45px_rgba(234,88,12,0.06)]
+              shadow-[0_15px_45px_rgba(37,99,235,0.06)]
               dark:shadow-[0_15px_45px_rgba(0,0,0,0.35)]
               flex flex-col justify-between
             ">
@@ -289,7 +289,7 @@ export default function About() {
                   JOURNEY
                 </SectionTitle>
 
-                <div className="relative ml-1 pl-4 sm:pl-5 border-l-2 border-[#EA580C]/40 space-y-2.5 sm:space-y-3 pt-1">
+                <div className="relative ml-1 pl-4 sm:pl-5 border-l-2 border-[#2563EB]/40 space-y-2.5 sm:space-y-3 pt-1">
                   {JOURNEY.map((item, index) => (
                     <motion.div
                       key={item.title}
@@ -310,7 +310,7 @@ export default function About() {
                         w-2.5
                         h-2.5
                         rounded-full
-                        bg-[#EA580C]
+                        bg-[#2563EB]
                         ring-4
                         ring-orange-500/20
                       " />
@@ -350,7 +350,7 @@ export default function About() {
                     <SectionTitle icon={Award}>
                       CERTIFICATIONS
                     </SectionTitle>
-                    <span className="text-[10px] font-semibold text-[#EA580C] dark:text-orange-400 flex items-center gap-1">
+                    <span className="text-[10px] font-semibold text-[#2563EB] dark:text-orange-400 flex items-center gap-1">
                       <Eye className="w-3 h-3" />
                       <span>Click to view</span>
                     </span>
@@ -376,7 +376,7 @@ export default function About() {
                           dark:border-white/10
                           bg-slate-50/70
                           dark:bg-[#181614]
-                          hover:border-[#EA580C]
+                          hover:border-[#2563EB]
                           hover:shadow-md
                           hover:shadow-orange-500/20
                           transition-all
@@ -388,7 +388,7 @@ export default function About() {
                           justify-center
                           focus:outline-none
                           focus:ring-2
-                          focus:ring-[#EA580C]/40
+                          focus:ring-[#2563EB]/40
                         "
                       >
                         {certificate.image ? (
@@ -402,7 +402,7 @@ export default function About() {
                             />
                           </div>
                         ) : (
-                          <Award className="w-6 h-6 text-[#EA580C]" />
+                          <Award className="w-6 h-6 text-[#2563EB]" />
                         )}
 
                         {/* Direct clean hover overlay */}
@@ -449,7 +449,7 @@ export default function About() {
                 p-2.5 sm:p-3
                 bg-white
                 dark:bg-[#11100E]
-                shadow-[0_15px_45px_rgba(234,88,12,0.06)]
+                shadow-[0_15px_45px_rgba(37,99,235,0.06)]
                 dark:shadow-[0_15px_45px_rgba(0,0,0,0.35)]
                 flex flex-col justify-between
               "
@@ -517,7 +517,7 @@ export default function About() {
                   {/* Peek Bar: Always visible strip at the bottom */}
                   <div className="flex items-center justify-between gap-2 mb-2.5 cursor-pointer">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
                       <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white leading-tight">
                         {CURRENT_ROLE.role}
                       </h4>
@@ -620,7 +620,7 @@ export default function About() {
               border border-orange-200/60
               dark:border-white/10
               p-4 sm:p-5
-              shadow-[0_15px_45px_rgba(234,88,12,0.06)]
+              shadow-[0_15px_45px_rgba(37,99,235,0.06)]
               dark:shadow-[0_15px_45px_rgba(0,0,0,0.35)]
               flex flex-col justify-between
             ">
@@ -644,7 +644,7 @@ export default function About() {
                         p-2.5 sm:p-3
                         hover:border-orange-500/40
                         hover:bg-orange-50/20
-                        dark:hover:bg-[#EA580C]/[0.03]
+                        dark:hover:bg-[#2563EB]/[0.03]
                         transition-all
                         duration-200
                       "
@@ -658,7 +658,7 @@ export default function About() {
                             {exp.company}
                           </p>
                         </div>
-                        <span className="text-[9.5px] sm:text-[10px] shrink-0 font-semibold text-[#EA580C] dark:text-[#FB923C] bg-orange-100/70 dark:bg-orange-500/15 px-1.5 py-0.5 rounded-full border border-orange-200/60 dark:border-orange-500/20">
+                        <span className="text-[9.5px] sm:text-[10px] shrink-0 font-semibold text-[#2563EB] dark:text-[#FB923C] bg-orange-100/70 dark:bg-orange-500/15 px-1.5 py-0.5 rounded-full border border-orange-200/60 dark:border-orange-500/20">
                           {exp.period}
                         </span>
                       </div>
@@ -697,7 +697,7 @@ export default function About() {
               className="
                 relative
                 w-full max-w-xl sm:max-w-2xl
-                bg-white dark:bg-[#141210]
+                bg-white dark:bg-[#111B2E]
                 rounded-2xl sm:rounded-3xl
                 p-4 sm:p-6
                 border border-slate-200 dark:border-white/10
@@ -710,7 +710,7 @@ export default function About() {
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div className="min-w-0 pr-4">
                   <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/15 text-[#EA580C] border border-orange-500/30">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/15 text-[#2563EB] border border-orange-500/30">
                       Verified Credential
                     </span>
                     <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
@@ -821,7 +821,7 @@ export default function About() {
                       type="button"
                       onClick={() => setPreviewCertIndex(i)}
                       className={`h-2 rounded-full transition-all duration-200 ${previewCertIndex === i
-                        ? "w-6 bg-[#EA580C]"
+                        ? "w-6 bg-[#2563EB]"
                         : "w-2 bg-slate-300 dark:bg-stone-700 hover:bg-slate-400"
                         }`}
                       aria-label={`Go to certificate ${i + 1}`}

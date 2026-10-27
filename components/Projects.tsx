@@ -41,13 +41,13 @@ export default function Projects() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto-slide effect (every 4.5 seconds, pauses on hover)
+  // Auto-slide effect (every 6.5 seconds, pauses on hover and touch)
   useEffect(() => {
     if (isPaused) return;
 
     const timer = setInterval(() => {
       nextSlide();
-    }, 2500);
+    }, 6500);
 
     return () => clearInterval(timer);
   }, [isPaused, nextSlide]);
@@ -65,11 +65,11 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Background ambient decorative glow */}
-      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#EA580C]/[0.07] dark:bg-[#EA580C]/[0.10] blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] rounded-full bg-[#C2410C]/[0.06] dark:bg-[#C2410C]/[0.09] blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-[#2563EB]/[0.07] dark:bg-[#2563EB]/[0.10] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] rounded-full bg-[#1D4ED8]/[0.06] dark:bg-[#1D4ED8]/[0.09] blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -85,8 +85,8 @@ export default function Projects() {
           ================================================================== */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#EA580C] dark:text-[#F97316] mb-3">
-              <span className="w-6 h-px bg-[#EA580C] dark:bg-[#F97316]" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-[#14B8A6] mb-3">
+              <span className="w-6 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
               <span>FEATURED WORK</span>
             </div>
 
@@ -94,7 +94,7 @@ export default function Projects() {
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.08] mb-4">
               Real Projects.<br />
               Real Challenges.<br />
-              <span className="text-[#EA580C] ">
+              <span className="text-[#2563EB] ">
                 Data-Driven Growth.
               </span>
             </h2>
@@ -108,7 +108,7 @@ export default function Projects() {
             <div className="mb-6 sm:mb-8">
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#C2410C] hover:to-[#9A3412] text-white text-sm font-semibold shadow-lg shadow-orange-500/25 active:scale-95 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
               >
                 <span>See All Projects</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -122,7 +122,7 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={prevSlide}
-                  className="w-10 h-10 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-[#141210] flex items-center justify-center text-stone-700 dark:text-white hover:border-[#EA580C] hover:text-[#EA580C] transition-colors shadow-xs cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-[#111B2E] flex items-center justify-center text-stone-700 dark:text-white hover:border-[#2563EB] hover:text-[#2563EB] transition-colors shadow-xs cursor-pointer"
                   aria-label="Previous project"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -131,7 +131,7 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={nextSlide}
-                  className="w-10 h-10 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-[#141210] flex items-center justify-center text-stone-700 dark:text-white hover:border-[#EA580C] hover:text-[#EA580C] transition-colors shadow-xs cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-[#111B2E] flex items-center justify-center text-stone-700 dark:text-white hover:border-[#2563EB] hover:text-[#2563EB] transition-colors shadow-xs cursor-pointer"
                   aria-label="Next project"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -152,7 +152,7 @@ export default function Projects() {
                     type="button"
                     onClick={() => goToSlide(i)}
                     className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${activeIndex === i
-                      ? "w-8 bg-[#EA580C]"
+                      ? "w-8 bg-[#2563EB]"
                       : "w-2.5 bg-stone-300 dark:bg-stone-700 hover:bg-stone-400"
                       }`}
                     aria-label={`Go to slide ${i + 1}`}
@@ -173,9 +173,11 @@ export default function Projects() {
             className="lg:col-span-8 relative w-full pt-6 sm:pt-8 pb-4"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
-            {/* Stacked Cards Deck Viewport (Larger Height & Sizing) */}
-            <div className="relative w-full min-h-[700px] sm:min-h-[470px] md:min-h-[460px]">
+            {/* Stacked Cards Deck Viewport (Responsive Height & Sizing) */}
+            <div className="relative w-full min-h-[640px] min-[390px]:min-h-[580px] sm:min-h-[470px] md:min-h-[460px]">
               {PROJECTS_DATA_FULL.map((project, idx) => {
                 // Calculate position in the stack relative to activeIndex (0 = front, 1 = behind, 2 = further behind, etc.)
                 const relIndex = (idx - activeIndex + total) % total;
@@ -187,7 +189,7 @@ export default function Projects() {
                 // relIndex 0 = Front Active: x: 0, y: 0, scale: 1, zIndex: 30
                 // relIndex 1 = Middle: x: 44px, y: -10px, scale: 0.96, zIndex: 20
                 // relIndex 2 = Back: x: 88px, y: -20px, scale: 0.92, zIndex: 10
-                const stepX = isMobile ? 16 : 44;
+                const stepX = isMobile ? 14 : 44;
                 const xOffset = relIndex * stepX;
                 const yOffset = -relIndex * (isMobile ? 8 : 10);
                 const scale = 1 - relIndex * 0.04;
@@ -214,6 +216,13 @@ export default function Projects() {
                         ? { x: xOffset + 6, transition: { duration: 0.2 } }
                         : undefined
                     }
+                    drag={isFront ? "x" : false}
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.12}
+                    onDragEnd={(_, info) => {
+                      if (info.offset.x < -45) nextSlide();
+                      else if (info.offset.x > 45) prevSlide();
+                    }}
                     transition={{
                       type: "spring",
                       stiffness: 280,
@@ -224,24 +233,25 @@ export default function Projects() {
                     }}
                     className={`
                       absolute left-0 top-0
-                      w-[calc(100%-36px)] sm:w-[calc(100%-88px)]
-                      rounded-[32px] sm:rounded-[38px]
+                      w-[calc(100%-28px)] sm:w-[calc(100%-88px)]
+                      rounded-[28px] sm:rounded-[38px]
                       border-2
                       ${isFront
-                        ? "border-orange-500/40 dark:border-orange-500/30 shadow-[0_25px_60px_rgba(234,88,12,0.14)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.75)]"
+                        ? "border-orange-500/40 dark:border-orange-500/30 shadow-[0_25px_60px_rgba(37,99,235,0.14)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.75)]"
                         : "border-stone-300/80 dark:border-white/10 shadow-lg cursor-pointer hover:border-orange-500/60"
                       }
-                      bg-[#FFF8F3]
+                      bg-[#F8FAFC]
                       dark:bg-[#14110E]
-                      p-5 sm:p-7 md:p-8
+                      p-4.5 sm:p-7 md:p-8
                       overflow-hidden
                       transition-colors duration-300
+                      touch-pan-y
                     `}
                   >
                     {/* Exposed Right Tab Indicator for non-front cards */}
                     {!isFront && (
                       <div className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex flex-col items-center gap-1.5 z-20 pointer-events-none">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
                         <span className="text-[11px] font-mono font-bold text-stone-600 dark:text-stone-300 writing-vertical">
                           {cardNumber}
                         </span>
@@ -263,7 +273,7 @@ export default function Projects() {
                           <div className="text-[11px] sm:text-xs font-semibold text-stone-500 dark:text-stone-400 tracking-wide uppercase mb-1.5">
                             <span>{project.duration || "2024 - 2025"}</span>
                             <span className="mx-1">•</span>
-                            <span className="text-[#EA580C] dark:text-[#FB923C] font-bold">
+                            <span className="text-[#2563EB] dark:text-[#FB923C] font-bold">
                               {project.category}
                             </span>
                             <span className="mx-1">•</span>
@@ -282,7 +292,7 @@ export default function Projects() {
 
                           {/* Metric Highlight Tag */}
                           <div className="mt-3.5 flex flex-wrap items-center gap-2">
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#EA580C]/10 text-[#EA580C] dark:text-[#FB923C] border border-[#EA580C]/20">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#2563EB]/10 text-[#2563EB] dark:text-[#FB923C] border border-[#2563EB]/20">
                               <TrendingUp className="w-3.5 h-3.5" />
                               <span>{project.heroMetric} {project.heroMetricLabel}</span>
                             </span>
@@ -297,13 +307,14 @@ export default function Projects() {
                               inline-flex items-center gap-2
                               px-5 py-2.5
                               rounded-full
-                              border-2 border-stone-800 dark:border-white/80
-                              bg-stone-900 dark:bg-white
-                              hover:bg-stone-800 dark:hover:bg-stone-100
+                              bg-gradient-to-r from-[#2563EB] to-[#14B8A6]
+                              hover:from-[#1D4ED8] hover:to-[#2563EB]
+                              text-white
                               text-xs font-bold uppercase tracking-wider
-                              text-white dark:text-black
-                              transition-all duration-200
-                              shadow-xs
+                              shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45
+                              border border-blue-400/30
+                              hover:-translate-y-0.5 active:translate-y-0
+                              transition-all duration-300
                               group/btn
                             "
                           >
@@ -322,7 +333,7 @@ export default function Projects() {
                                 rounded-full
                                 text-xs font-bold uppercase tracking-wider
                                 text-stone-600 dark:text-stone-300
-                                hover:text-[#EA580C] dark:hover:text-[#F97316]
+                                hover:text-[#2563EB] dark:hover:text-[#14B8A6]
                                 transition-colors
                               "
                             >

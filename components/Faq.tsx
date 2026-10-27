@@ -16,7 +16,7 @@ const FAQ_LIST: FAQItem[] = [
     id: "specialization",
     question: "What does an SEO specialist actually do?",
     answer:
-      "I Make Sure the Right people can find your website.That means fixing technical problems,writing helpful content around  what customers search for, earning trustworthy links and tracking results so we know what is working.",
+      "I make sure the right people can find your website. That means fixing technical problems, writing helpful content around what customers search for, earning trustworthy links, and tracking results so we know what is working.",
   },
   {
     id: "early-stage",
@@ -40,7 +40,7 @@ const FAQ_LIST: FAQItem[] = [
     id: "getting-started",
     question: "Can you build and fix my website too?",
     answer:
-      "Yes. I build and maintain WordPress, Shopify and WooCommerce sites with responsive design, speed and SEO in mind from day one.",
+      "Yes. I build and maintain WordPress, Shopify, and WooCommerce sites with responsive design, speed, and SEO in mind from day one.",
   },
   {
     id: "quality-assurance",
@@ -61,10 +61,10 @@ export default function Faq() {
   return (
     <section
       id="faq"
-      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Subtle ambient background glow */}
-      <div className="absolute top-1/3 left-10 w-[350px] h-[350px] rounded-full bg-[#EA580C]/[0.06] dark:bg-[#EA580C]/[0.10] blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-[350px] h-[350px] rounded-full bg-[#2563EB]/[0.06] dark:bg-[#2563EB]/[0.10] blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
@@ -74,8 +74,8 @@ export default function Faq() {
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             {/* FAQs Tag with Dot */}
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-px bg-[#EA580C] dark:bg-[#F97316]" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#EA580C] dark:text-[#F97316]">
+              <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
                 FAQ
               </span>
             </div>
@@ -83,7 +83,7 @@ export default function Faq() {
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12] mb-8 sm:mb-10">
               Question People
               <br />
-              <span className="text-[#EA580C]">
+              <span className="text-[#2563EB]">
                 Ask Me
               </span>
             </h2>
@@ -115,7 +115,7 @@ export default function Faq() {
               return (
                 <div
                   key={faq.id}
-                  className="rounded-2xl sm:rounded-3xl bg-[#FFF8F3] dark:bg-[#120F0D] border border-orange-200/80 dark:border-white/10 p-5 sm:p-6 shadow-sm hover:border-orange-500/50 transition-all duration-200"
+                  className="rounded-2xl sm:rounded-3xl bg-[#F8FAFC] dark:bg-[#111B2E] border border-orange-200/80 dark:border-white/10 p-5 sm:p-6 shadow-sm hover:border-orange-500/50 transition-all duration-200"
                 >
                   {/* Question Header & Toggle Button */}
                   <button

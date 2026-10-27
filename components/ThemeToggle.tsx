@@ -10,7 +10,7 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-stone-200 dark:border-orange-500/25 bg-stone-100/80 dark:bg-[#EA580C]/10" />
+      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-stone-200 dark:border-orange-500/25 bg-stone-100/80 dark:bg-[#2563EB]/10" />
     );
   }
 
@@ -38,11 +38,11 @@ export default function ThemeToggle() {
         border-orange-200/90
         dark:border-orange-500/30
         bg-white/90
-        dark:bg-[#120F0D]/90
+        dark:bg-[#111B2E]/90
         text-stone-700
-        dark:text-[#F97316]
+        dark:text-[#14B8A6]
         shadow-sm
-        dark:shadow-[0_0_20px_rgba(234,88,12,0.18)]
+        dark:shadow-[0_0_20px_rgba(37,99,235,0.18)]
         hover:border-orange-400
         dark:hover:border-orange-500
         transition-all
@@ -52,7 +52,7 @@ export default function ThemeToggle() {
       "
     >
       {/* Glow highlight */}
-      <span className="absolute inset-0 bg-gradient-to-tr from-[#EA580C]/15 to-[#F97316]/15 opacity-0 dark:opacity-100 transition-opacity" />
+      <span className="absolute inset-0 bg-gradient-to-tr from-[#2563EB]/15 to-[#14B8A6]/15 opacity-0 dark:opacity-100 transition-opacity" />
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
@@ -64,9 +64,9 @@ export default function ThemeToggle() {
           className="relative z-10 flex items-center justify-center"
         >
           {isDark ? (
-            <Sun className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#F97316] drop-shadow-[0_0_8px_rgba(234,88,12,0.9)]" />
+            <Sun className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#14B8A6] drop-shadow-[0_0_8px_rgba(37,99,235,0.9)]" />
           ) : (
-            <Moon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#EA580C]" />
+            <Moon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#2563EB]" />
           )}
         </motion.div>
       </AnimatePresence>

@@ -72,7 +72,7 @@ export function renderInlineMarkdown(text: string): React.ReactNode {
           href={match[5]}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#EA580C] hover:underline font-semibold inline-flex items-center gap-0.5 break-words"
+          className="text-[#2563EB] hover:underline font-semibold inline-flex items-center gap-0.5 break-words"
         >
           <span>{match[4]}</span>
           <ExternalLink className="w-3 h-3 inline ml-0.5 opacity-70" />
@@ -114,7 +114,7 @@ export function renderInlineMarkdown(text: string): React.ReactNode {
       parts.push(
         <code
           key={key}
-          className="px-1.5 py-0.5 rounded-md bg-stone-100 dark:bg-stone-900 text-[#EA580C] font-mono text-[0.85em] border border-stone-200/80 dark:border-stone-800"
+          className="px-1.5 py-0.5 rounded-md bg-stone-100 dark:bg-stone-900 text-[#2563EB] font-mono text-[0.85em] border border-stone-200/80 dark:border-stone-800"
         >
           {match[11]}
         </code>
@@ -122,7 +122,7 @@ export function renderInlineMarkdown(text: string): React.ReactNode {
     } else if (fullMatch.startsWith("<u>") && match[12] !== undefined) {
       // Underline
       parts.push(
-        <u key={key} className="underline underline-offset-4 decoration-[#EA580C]">
+        <u key={key} className="underline underline-offset-4 decoration-[#2563EB]">
           {match[12]}
         </u>
       );
@@ -141,7 +141,7 @@ export function renderInlineMarkdown(text: string): React.ReactNode {
       parts.push(<sub key={key} className="text-[0.75em] align-sub">{match[14]}</sub>);
     } else if (fullMatch.startsWith("<sup>") && match[15] !== undefined) {
       // Superscript
-      parts.push(<sup key={key} className="text-[0.75em] align-super text-[#EA580C] font-bold">{match[15]}</sup>);
+      parts.push(<sup key={key} className="text-[0.75em] align-super text-[#2563EB] font-bold">{match[15]}</sup>);
     } else {
       parts.push(fullMatch);
     }
@@ -172,7 +172,7 @@ function CodeBlockComponent({ code, language }: { code: string; language?: strin
   return (
     <div className="my-6 rounded-2xl overflow-hidden border border-stone-800 bg-[#0d0c0b] text-stone-100 shadow-xl">
       <div className="flex items-center justify-between px-4 py-2 bg-stone-900/90 border-b border-stone-800 text-xs font-mono text-stone-400">
-        <span className="uppercase font-bold tracking-wider text-[#EA580C]">
+        <span className="uppercase font-bold tracking-wider text-[#2563EB]">
           {language || "code"}
         </span>
         <button
@@ -225,7 +225,7 @@ function MarkdownTable({ rawTable }: { rawTable: string }) {
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-stone-200 dark:divide-stone-800/60 bg-white dark:bg-[#120F0D]">
+        <tbody className="divide-y divide-stone-200 dark:divide-stone-800/60 bg-white dark:bg-[#111B2E]">
           {dataRows.map((row, rIdx) => (
             <tr
               key={rIdx}
@@ -285,7 +285,7 @@ export function ArticleMarkdownRenderer({
           return (
             <h3
               key={idx}
-              className="text-xl sm:text-2xl font-bold text-[#EA580C] mt-8 mb-3 tracking-tight"
+              className="text-xl sm:text-2xl font-bold text-[#2563EB] mt-8 mb-3 tracking-tight"
             >
               {renderInlineMarkdown(trimmed.replace(/^###\s+/, ""))}
             </h3>
@@ -298,7 +298,7 @@ export function ArticleMarkdownRenderer({
               key={idx}
               className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-stone-100 mt-10 mb-4 tracking-tight flex items-center gap-3"
             >
-              <span className="w-2 h-7 bg-[#EA580C] rounded-full inline-block shrink-0" />
+              <span className="w-2 h-7 bg-[#2563EB] rounded-full inline-block shrink-0" />
               <span>{renderInlineMarkdown(trimmed.replace(/^##\s+/, ""))}</span>
             </h2>
           );
@@ -407,9 +407,9 @@ export function ArticleMarkdownRenderer({
           return (
             <blockquote
               key={idx}
-              className="my-6 pl-5 py-3 border-l-4 border-[#EA580C] bg-orange-500/5 text-stone-800 dark:text-stone-200 italic rounded-r-2xl text-base sm:text-lg relative"
+              className="my-6 pl-5 py-3 border-l-4 border-[#2563EB] bg-orange-500/5 text-stone-800 dark:text-stone-200 italic rounded-r-2xl text-base sm:text-lg relative"
             >
-              <QuoteIcon className="w-5 h-5 text-[#EA580C]/40 mb-1" />
+              <QuoteIcon className="w-5 h-5 text-[#2563EB]/40 mb-1" />
               <div>{renderInlineMarkdown(quoteText)}</div>
             </blockquote>
           );
@@ -428,7 +428,7 @@ export function ArticleMarkdownRenderer({
                     <div
                       className={`w-5 h-5 mt-0.5 rounded-lg flex items-center justify-center shrink-0 border transition ${
                         isChecked
-                          ? "bg-[#EA580C] border-[#EA580C] text-white"
+                          ? "bg-[#2563EB] border-[#2563EB] text-white"
                           : "border-stone-400 dark:border-stone-600 bg-transparent"
                       }`}
                     >
@@ -457,7 +457,7 @@ export function ArticleMarkdownRenderer({
             <ul key={idx} className="my-5 space-y-2.5 pl-2">
               {items.map((item, itemIdx) => (
                 <li key={itemIdx} className="flex items-start gap-3 text-sm sm:text-base">
-                  <span className="w-2 h-2 rounded-full bg-[#EA580C] mt-2.5 shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-[#2563EB] mt-2.5 shrink-0" />
                   <span className="text-stone-800 dark:text-stone-200 leading-relaxed">
                     {renderInlineMarkdown(item.replace(/^[-*]\s*/, ""))}
                   </span>

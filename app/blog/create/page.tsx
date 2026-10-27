@@ -684,7 +684,7 @@ function CreateBlogContent() {
     return (
       <div className="min-h-screen bg-[var(--background)] flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-4 border-[#EA580C] border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-[#2563EB] border-t-transparent rounded-full animate-spin" />
           <p className="text-sm font-semibold text-stone-600 dark:text-stone-300">
             Loading editorial workspace...
           </p>
@@ -695,36 +695,36 @@ function CreateBlogContent() {
 
   return (
     <div
-      className={`min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#EA580C]/25 selection:text-[#EA580C] transition-colors duration-300 ${isFullscreen ? "fixed inset-0 z-50 overflow-y-auto" : ""
+      className={`min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#2563EB]/25 selection:text-[#2563EB] transition-colors duration-300 ${isFullscreen ? "fixed inset-0 z-50 overflow-y-auto" : ""
         }`}
     >
       {/* Background Ambience */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute top-0 right-1/4 h-[500px] w-[500px] rounded-full bg-[#EA580C]/[0.05] blur-[150px]" />
+        <div className="absolute top-0 right-1/4 h-[500px] w-[500px] rounded-full bg-[#2563EB]/[0.05] blur-[150px]" />
         <div className="absolute bottom-10 left-10 h-[400px] w-[400px] rounded-full bg-[#FB923C]/[0.04] blur-[140px]" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: "radial-gradient(rgba(234, 88, 12, 0.4) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(rgba(37, 99, 235, 0.4) 1px, transparent 1px)",
             backgroundSize: "28px 28px"
           }}
         />
       </div>
 
       {/* EDITORIAL ACTION SUB-BAR */}
-      <div className="pt-20 sm:pt-24 w-full border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-[#080706]/85 backdrop-blur-xl">
+      <div className="pt-20 sm:pt-24 w-full border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-[#0B1220]/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
               href="/admin"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#EA580C] text-xs font-bold transition"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#2563EB] text-xs font-bold transition"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Admin Dashboard</span>
             </Link>
             <Link
               href="/blog"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#EA580C] text-xs font-bold transition"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#2563EB] text-xs font-bold transition"
             >
               <span>View Live</span>
             </Link>
@@ -735,7 +735,7 @@ function CreateBlogContent() {
               <span className="font-bold text-sm tracking-tight text-stone-900 dark:text-stone-100">
                 Editorial Studio
               </span>
-              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full font-bold bg-orange-500/15 text-[#EA580C] border border-orange-500/30">
+              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full font-bold bg-orange-500/15 text-[#2563EB] border border-orange-500/30">
                 {isEditing ? "Editing Mode" : "New Article"}
               </span>
             </div>
@@ -744,7 +744,7 @@ function CreateBlogContent() {
           <div className="flex items-center gap-3">
             {adminToken ? (
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-600/15 border border-orange-500/30 text-orange-600 dark:text-orange-400 text-xs font-semibold">
-                <Unlock className="w-3.5 h-3.5 text-[#EA580C]" />
+                <Unlock className="w-3.5 h-3.5 text-[#2563EB]" />
                 <span className="hidden sm:inline">Admin Active</span>
               </div>
             ) : (
@@ -770,8 +770,8 @@ function CreateBlogContent() {
         {/* HERO TITLE BANNER */}
         <div className="mb-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-3.5 py-1 mb-3">
-            <Sparkles className="h-3.5 w-3.5 text-[#EA580C] animate-pulse" />
-            <span className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#EA580C]">
+            <Sparkles className="h-3.5 w-3.5 text-[#2563EB] animate-pulse" />
+            <span className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#2563EB]">
               {isEditing ? "Article Revision" : "Create & Publish"}
             </span>
           </div>
@@ -780,14 +780,14 @@ function CreateBlogContent() {
             {isEditing ? (
               <>
                 Update{" "}
-                <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#FB923C] bg-clip-text text-transparent">
                   Blog Article
                 </span>
               </>
             ) : (
               <>
                 Create{" "}
-                <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#FB923C] bg-clip-text text-transparent">
                   New Blog Article
                 </span>
               </>
@@ -819,7 +819,7 @@ function CreateBlogContent() {
         {!adminToken && (
           <div className="mb-6 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-amber-800 dark:text-amber-300">
             <div className="flex items-center gap-2.5">
-              <Lock className="w-4 h-4 text-[#EA580C] shrink-0" />
+              <Lock className="w-4 h-4 text-[#2563EB] shrink-0" />
               <span>
                 <strong>Admin Authentication Required:</strong> You can draft content in the Microsoft Word editor, but an active Admin Key is needed to publish or edit articles.
               </span>
@@ -827,7 +827,7 @@ function CreateBlogContent() {
             <button
               type="button"
               onClick={() => setIsAdminLoginOpen(true)}
-              className="px-3.5 py-1.5 rounded-xl bg-[#EA580C] text-white font-bold hover:bg-orange-600 transition shrink-0 cursor-pointer text-center"
+              className="px-3.5 py-1.5 rounded-xl bg-[#2563EB] text-white font-bold hover:bg-orange-600 transition shrink-0 cursor-pointer text-center"
             >
               Enter Admin Key
             </button>
@@ -841,7 +841,7 @@ function CreateBlogContent() {
               type="button"
               onClick={() => setActiveTab("editor")}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${activeTab === "editor"
-                  ? "bg-[#EA580C] text-white shadow-md shadow-orange-600/30"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-600/30"
                   : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200"
                 }`}
             >
@@ -853,7 +853,7 @@ function CreateBlogContent() {
               type="button"
               onClick={() => setActiveTab("preview")}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${activeTab === "preview"
-                  ? "bg-[#EA580C] text-white shadow-md shadow-orange-600/30"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-600/30"
                   : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200"
                 }`}
             >
@@ -864,7 +864,7 @@ function CreateBlogContent() {
 
           <div className="flex items-center gap-3 text-xs text-stone-500 font-mono">
             <span>Slug:</span>
-            <code className="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-900 text-[#EA580C] font-mono border border-stone-200 dark:border-stone-800">
+            <code className="px-2.5 py-1 rounded-lg bg-stone-100 dark:bg-stone-900 text-[#2563EB] font-mono border border-stone-200 dark:border-stone-800">
               /viewblog/{slugPreview || "article-slug"}
             </code>
           </div>
@@ -874,10 +874,10 @@ function CreateBlogContent() {
         {activeTab === "editor" ? (
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* 1. BLOG TITLE */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg space-y-3">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                  <Type className="w-4 h-4 text-[#EA580C]" />
+                  <Type className="w-4 h-4 text-[#2563EB]" />
                   <span>Blog Title *</span>
                 </label>
                 <span className="text-xs font-mono text-stone-500">
@@ -891,7 +891,7 @@ function CreateBlogContent() {
                 placeholder="e.g. The 2026 Technical SEO Blueprint: Dominating AI Overviews & Search Generative Experience"
                 required
                 maxLength={150}
-                className="w-full px-4 sm:px-5 py-3.5 rounded-2xl text-base sm:text-lg font-bold bg-stone-50 dark:bg-stone-900/90 border border-stone-300 dark:border-stone-800 focus:outline-none focus:border-[#EA580C] focus:ring-2 focus:ring-orange-500/20 text-stone-900 dark:text-stone-100 transition placeholder:text-stone-400"
+                className="w-full px-4 sm:px-5 py-3.5 rounded-2xl text-base sm:text-lg font-bold bg-stone-50 dark:bg-stone-900/90 border border-stone-300 dark:border-stone-800 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-orange-500/20 text-stone-900 dark:text-stone-100 transition placeholder:text-stone-400"
               />
               <p className="text-xs text-stone-500">
                 A captivating, high-impact headline optimized for reader engagement and search queries.
@@ -899,10 +899,10 @@ function CreateBlogContent() {
             </div>
 
             {/* 2. DESCRIPTION */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg space-y-3">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#EA580C]" />
+                  <FileText className="w-4 h-4 text-[#2563EB]" />
                   <span>Description *</span>
                 </label>
                 <span className="text-xs font-mono text-stone-500">
@@ -922,7 +922,7 @@ function CreateBlogContent() {
                 required
                 rows={3}
                 maxLength={400}
-                className="w-full px-4 sm:px-5 py-3.5 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C] focus:ring-2 focus:ring-orange-500/20 transition resize-none leading-relaxed placeholder:text-stone-400"
+                className="w-full px-4 sm:px-5 py-3.5 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-orange-500/20 transition resize-none leading-relaxed placeholder:text-stone-400"
               />
               <p className="text-xs text-stone-500">
                 Concise 2–3 sentence overview for search result snippets and social shares.
@@ -930,10 +930,10 @@ function CreateBlogContent() {
             </div>
 
             {/* 2.1 SEO METADATA: META TITLE & META DESCRIPTION */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-orange-500/20 dark:border-orange-500/25 bg-gradient-to-b from-orange-500/[0.03] to-transparent bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg space-y-6">
+            <div className="p-6 sm:p-8 rounded-3xl border border-orange-500/20 dark:border-orange-500/25 bg-gradient-to-b from-orange-500/[0.03] to-transparent bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-stone-200/80 dark:border-stone-800">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#EA580C] flex items-center justify-center font-bold">
+                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#2563EB] flex items-center justify-center font-bold">
                     <Globe className="w-4 h-4" />
                   </div>
                   <div>
@@ -945,7 +945,7 @@ function CreateBlogContent() {
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full font-bold bg-orange-500/15 text-[#EA580C] border border-orange-500/30">
+                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full font-bold bg-orange-500/15 text-[#2563EB] border border-orange-500/30">
                   SEO Tags
                 </span>
               </div>
@@ -954,7 +954,7 @@ function CreateBlogContent() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                    <Type className="w-3.5 h-3.5 text-[#EA580C]" />
+                    <Type className="w-3.5 h-3.5 text-[#2563EB]" />
                     <span>Meta Title</span>
                     <span className="text-[10px] font-normal text-stone-400 lowercase">(recommended 50–60 chars)</span>
                   </label>
@@ -962,7 +962,7 @@ function CreateBlogContent() {
                     <button
                       type="button"
                       onClick={() => setFormData((prev) => ({ ...prev, metaTitle: prev.title }))}
-                      className="text-[11px] font-semibold text-[#EA580C] hover:underline cursor-pointer"
+                      className="text-[11px] font-semibold text-[#2563EB] hover:underline cursor-pointer"
                     >
                       Use Blog Title
                     </button>
@@ -977,10 +977,10 @@ function CreateBlogContent() {
                   onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
                   placeholder={formData.title || "e.g. 2026 Technical SEO Blueprint & Growth Framework | Brand"}
                   maxLength={100}
-                  className="w-full px-4 sm:px-5 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C] focus:ring-2 focus:ring-orange-500/20 transition placeholder:text-stone-400"
+                  className="w-full px-4 sm:px-5 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-orange-500/20 transition placeholder:text-stone-400"
                 />
                 <p className="text-[11px] text-stone-500">
-                  The HTML <code className="text-[#EA580C]">&lt;title&gt;</code> displayed in search engine rankings and browser tabs. If left blank, defaults to Blog Title.
+                  The HTML <code className="text-[#2563EB]">&lt;title&gt;</code> displayed in search engine rankings and browser tabs. If left blank, defaults to Blog Title.
                 </p>
               </div>
 
@@ -988,7 +988,7 @@ function CreateBlogContent() {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                    <FileText className="w-3.5 h-3.5 text-[#EA580C]" />
+                    <FileText className="w-3.5 h-3.5 text-[#2563EB]" />
                     <span>Meta Description</span>
                     <span className="text-[10px] font-normal text-stone-400 lowercase">(recommended 140–160 chars)</span>
                   </label>
@@ -1001,7 +1001,7 @@ function CreateBlogContent() {
                           metaDescription: prev.description || prev.excerpt || ""
                         }))
                       }
-                      className="text-[11px] font-semibold text-[#EA580C] hover:underline cursor-pointer"
+                      className="text-[11px] font-semibold text-[#2563EB] hover:underline cursor-pointer"
                     >
                       Use Description
                     </button>
@@ -1020,10 +1020,10 @@ function CreateBlogContent() {
                   }
                   rows={2}
                   maxLength={250}
-                  className="w-full px-4 sm:px-5 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C] focus:ring-2 focus:ring-orange-500/20 transition resize-none leading-relaxed placeholder:text-stone-400"
+                  className="w-full px-4 sm:px-5 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-orange-500/20 transition resize-none leading-relaxed placeholder:text-stone-400"
                 />
                 <p className="text-[11px] text-stone-500">
-                  The <code className="text-[#EA580C]">&lt;meta name=&quot;description&quot;&gt;</code> summary displayed beneath the headline in Google search snippets.
+                  The <code className="text-[#2563EB]">&lt;meta name=&quot;description&quot;&gt;</code> summary displayed beneath the headline in Google search snippets.
                 </p>
               </div>
 
@@ -1049,10 +1049,10 @@ function CreateBlogContent() {
             </div>
 
             {/* 3. IMAGE URL (REPLACED COVER IMAGE PICKER) */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg space-y-4">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-4">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                  <ImageIcon className="w-4 h-4 text-[#EA580C]" />
+                  <ImageIcon className="w-4 h-4 text-[#2563EB]" />
                   <span>Image URL</span>
                 </label>
                 <span className="text-xs text-stone-500 font-mono">
@@ -1074,7 +1074,7 @@ function CreateBlogContent() {
                       setImageError(false);
                     }}
                     placeholder="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
-                    className="w-full px-4 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C] pr-10 transition placeholder:text-stone-400 font-mono"
+                    className="w-full px-4 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB] pr-10 transition placeholder:text-stone-400 font-mono"
                   />
                   {(formData.imageUrl || formData.coverImage) && (
                     <button
@@ -1131,16 +1131,16 @@ function CreateBlogContent() {
             </div>
 
             {/* 4. CANONICAL URL */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg space-y-3">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-[#EA580C]" />
+                  <Globe className="w-4 h-4 text-[#2563EB]" />
                   <span>Canonical URL</span>
                 </label>
                 <button
                   type="button"
                   onClick={handleAutoCanonical}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#EA580C] hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2563EB] hover:underline cursor-pointer"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Auto-Generate from Title</span>
@@ -1152,11 +1152,11 @@ function CreateBlogContent() {
                 value={formData.canonicalUrl || ""}
                 onChange={(e) => setFormData({ ...formData, canonicalUrl: e.target.value })}
                 placeholder="https://yourdomain.com/viewblog/your-article-slug"
-                className="w-full px-4 sm:px-5 py-3 rounded-2xl text-sm font-mono bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C] focus:ring-2 focus:ring-orange-500/20 transition placeholder:text-stone-400"
+                className="w-full px-4 sm:px-5 py-3 rounded-2xl text-sm font-mono bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-orange-500/20 transition placeholder:text-stone-400"
               />
 
               <div className="p-3.5 rounded-xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-[11px] text-stone-600 dark:text-stone-400 flex items-start gap-2">
-                <Info className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                <Info className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
                 <span>
                   The canonical URL tells search engine crawlers (Google, Bing) which URL is the definitive master source of this article, avoiding duplicate content penalties and consolidating SEO authority.
                 </span>
@@ -1164,7 +1164,7 @@ function CreateBlogContent() {
             </div>
 
             {/* 5. MICROSOFT WORD STYLE DOCUMENT STUDIO */}
-            <div className="rounded-3xl border border-stone-300 dark:border-stone-800 bg-stone-100/90 dark:bg-[#120F0D] shadow-2xl overflow-hidden space-y-0">
+            <div className="rounded-3xl border border-stone-300 dark:border-stone-800 bg-stone-100/90 dark:bg-[#111B2E] shadow-2xl overflow-hidden space-y-0">
 
               {/* --- WORD TITLE & APP BAR --- */}
               <div className="bg-[#185ABD] dark:bg-[#0F3B7A] text-white px-4 py-2.5 flex items-center justify-between shadow-sm">
@@ -1228,7 +1228,7 @@ function CreateBlogContent() {
                     type="button"
                     onClick={() => setWordRibbonTab(tab.id as typeof wordRibbonTab)}
                     className={`px-4 py-2 text-xs font-bold transition cursor-pointer border-b-2 ${wordRibbonTab === tab.id
-                        ? "border-[#185ABD] text-[#185ABD] dark:border-orange-500 dark:text-[#EA580C] bg-white dark:bg-[#141210]"
+                        ? "border-[#185ABD] text-[#185ABD] dark:border-orange-500 dark:text-[#2563EB] bg-white dark:bg-[#111B2E]"
                         : "border-transparent hover:text-stone-900 dark:hover:text-white hover:bg-stone-100/60 dark:hover:bg-white/5"
                       }`}
                   >
@@ -1238,7 +1238,7 @@ function CreateBlogContent() {
               </div>
 
               {/* --- WORD RIBBON TOOLBAR PANEL --- */}
-              <div className="bg-stone-100 dark:bg-[#141210] border-b border-stone-300 dark:border-stone-800 p-2 sm:p-2.5 overflow-x-auto">
+              <div className="bg-stone-100 dark:bg-[#111B2E] border-b border-stone-300 dark:border-stone-800 p-2 sm:p-2.5 overflow-x-auto">
                 {wordRibbonTab === "home" && (
                   <div className="flex flex-wrap items-center gap-2">
                     {/* Clipboard Group */}
@@ -1363,14 +1363,14 @@ function CreateBlogContent() {
                           className="px-2 py-1 rounded hover:bg-stone-200 dark:hover:bg-stone-800 text-xs font-bold flex items-center gap-1 transition cursor-pointer"
                           title="Font Text Color"
                         >
-                          <span className="text-[#EA580C] font-black underline">A</span>
+                          <span className="text-[#2563EB] font-black underline">A</span>
                           <ChevronDown className="w-2.5 h-2.5" />
                         </button>
                         {isColorPickerOpen && (
                           <div className="absolute top-8 left-0 z-50 p-2 rounded-xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-xl flex items-center gap-1.5">
                             {[
                               { label: "Dark", color: "#1E293B" },
-                              { label: "Orange", color: "#EA580C" },
+                              { label: "Orange", color: "#2563EB" },
                               { label: "Blue", color: "#2563EB" },
                               { label: "Green", color: "#059669" },
                               { label: "Red", color: "#DC2626" },
@@ -1483,7 +1483,7 @@ function CreateBlogContent() {
                       <button
                         type="button"
                         onClick={() => handleToolbarAction("link-dialog")}
-                        className="p-1.5 rounded hover:bg-stone-200 dark:hover:bg-stone-800 text-[#EA580C] transition cursor-pointer"
+                        className="p-1.5 rounded hover:bg-stone-200 dark:hover:bg-stone-800 text-[#2563EB] transition cursor-pointer"
                         title="Insert Link"
                       >
                         <Link2 className="w-3.5 h-3.5" />
@@ -1491,7 +1491,7 @@ function CreateBlogContent() {
                       <button
                         type="button"
                         onClick={() => handleToolbarAction("image-dialog")}
-                        className="p-1.5 rounded hover:bg-stone-200 dark:hover:bg-stone-800 text-[#EA580C] transition cursor-pointer"
+                        className="p-1.5 rounded hover:bg-stone-200 dark:hover:bg-stone-800 text-[#2563EB] transition cursor-pointer"
                         title="Insert Image"
                       >
                         <ImageIcon className="w-3.5 h-3.5" />
@@ -1517,7 +1517,7 @@ function CreateBlogContent() {
                         onClick={() => handleToolbarAction("table-dialog")}
                         className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-xs font-semibold hover:border-orange-500/50 flex items-center gap-1.5 cursor-pointer"
                       >
-                        <TableIcon className="w-3.5 h-3.5 text-[#185ABD] dark:text-[#EA580C]" />
+                        <TableIcon className="w-3.5 h-3.5 text-[#185ABD] dark:text-[#2563EB]" />
                         <span>Insert Table</span>
                       </button>
                       <button
@@ -1571,7 +1571,7 @@ function CreateBlogContent() {
                       <button
                         type="button"
                         onClick={() => handleToolbarAction("code-js")}
-                        className="px-2 py-1 rounded bg-stone-200 dark:bg-stone-800 text-xs font-mono font-bold text-[#EA580C] cursor-pointer"
+                        className="px-2 py-1 rounded bg-stone-200 dark:bg-stone-800 text-xs font-mono font-bold text-[#2563EB] cursor-pointer"
                         title="JavaScript Code Block"
                       >
                         JS/TS
@@ -1598,7 +1598,7 @@ function CreateBlogContent() {
                     <button
                       type="button"
                       onClick={() => setIsTemplateModalOpen(true)}
-                      className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#EA580C] to-[#F97316] text-white text-xs font-bold shadow-xs flex items-center gap-1.5 cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-xs font-bold shadow-xs flex items-center gap-1.5 cursor-pointer"
                     >
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>Article Templates...</span>
@@ -1614,7 +1614,7 @@ function CreateBlogContent() {
                         type="button"
                         onClick={() => setWordPageWidth("standard")}
                         className={`px-3 py-1 rounded-md text-xs font-bold transition cursor-pointer ${wordPageWidth === "standard"
-                            ? "bg-[#185ABD] text-white dark:bg-[#EA580C]"
+                            ? "bg-[#185ABD] text-white dark:bg-[#2563EB]"
                             : "bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800"
                           }`}
                       >
@@ -1624,7 +1624,7 @@ function CreateBlogContent() {
                         type="button"
                         onClick={() => setWordPageWidth("wide")}
                         className={`px-3 py-1 rounded-md text-xs font-bold transition cursor-pointer ${wordPageWidth === "wide"
-                            ? "bg-[#185ABD] text-white dark:bg-[#EA580C]"
+                            ? "bg-[#185ABD] text-white dark:bg-[#2563EB]"
                             : "bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800"
                           }`}
                       >
@@ -1668,7 +1668,7 @@ function CreateBlogContent() {
                       type="button"
                       onClick={() => setSplitView(!splitView)}
                       className={`px-3 py-1.5 rounded-lg border text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${splitView
-                          ? "bg-[#185ABD] text-white border-blue-600 dark:bg-[#EA580C] dark:border-orange-600"
+                          ? "bg-[#185ABD] text-white border-blue-600 dark:bg-[#2563EB] dark:border-orange-600"
                           : "bg-white dark:bg-stone-900 border-stone-300 dark:border-stone-800"
                         }`}
                     >
@@ -1679,7 +1679,7 @@ function CreateBlogContent() {
                     <button
                       type="button"
                       onClick={() => setActiveTab("preview")}
-                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-xs font-bold hover:text-[#EA580C] transition flex items-center gap-1.5 cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-xs font-bold hover:text-[#2563EB] transition flex items-center gap-1.5 cursor-pointer"
                     >
                       <Eye className="w-3.5 h-3.5" />
                       <span>Full Reading View</span>
@@ -1688,7 +1688,7 @@ function CreateBlogContent() {
                     <button
                       type="button"
                       onClick={() => setIsFullscreen(!isFullscreen)}
-                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-xs font-bold hover:text-[#EA580C] transition flex items-center gap-1.5 cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-xs font-bold hover:text-[#2563EB] transition flex items-center gap-1.5 cursor-pointer"
                     >
                       {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
                       <span>{isFullscreen ? "Exit Fullscreen" : "Fullscreen Distraction-Free"}</span>
@@ -1697,7 +1697,7 @@ function CreateBlogContent() {
                     <button
                       type="button"
                       onClick={() => setIsCheatsheetOpen(true)}
-                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-500 hover:text-[#EA580C] transition flex items-center gap-1.5 cursor-pointer"
+                      className="px-3 py-1.5 rounded-lg bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-500 hover:text-[#2563EB] transition flex items-center gap-1.5 cursor-pointer"
                     >
                       <HelpCircle className="w-3.5 h-3.5" />
                       <span>Formatting Cheatsheet</span>
@@ -1753,7 +1753,7 @@ function CreateBlogContent() {
                   {splitView && (
                     <div className="rounded-xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#151311] p-6 sm:p-8 overflow-y-auto max-h-[700px] shadow-lg space-y-4">
                       <div className="flex items-center justify-between pb-3 border-b border-stone-200 dark:border-stone-800">
-                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#EA580C] font-bold flex items-center gap-1.5">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-[#2563EB] font-bold flex items-center gap-1.5">
                           <Eye className="w-3.5 h-3.5" />
                           <span>Real-Time Formatted Preview</span>
                         </span>
@@ -1766,10 +1766,10 @@ function CreateBlogContent() {
               </div>
 
               {/* --- WORD BOTTOM STATUS BAR --- */}
-              <div className="bg-stone-200 dark:bg-[#141210] border-t border-stone-300 dark:border-stone-800 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-stone-600 dark:text-stone-400">
+              <div className="bg-stone-200 dark:bg-[#111B2E] border-t border-stone-300 dark:border-stone-800 px-4 py-2 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-stone-600 dark:text-stone-400">
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1 font-semibold text-stone-800 dark:text-stone-200">
-                    <FileText className="w-3.5 h-3.5 text-[#185ABD] dark:text-[#EA580C]" />
+                    <FileText className="w-3.5 h-3.5 text-[#185ABD] dark:text-[#2563EB]" />
                     Page 1 of 1
                   </span>
                   <span>•</span>
@@ -1777,7 +1777,7 @@ function CreateBlogContent() {
                   <span>•</span>
                   <span>{contentStats.characters} characters</span>
                   <span>•</span>
-                  <span className="text-[#EA580C] font-bold">{estimatedReadTime} read</span>
+                  <span className="text-[#2563EB] font-bold">{estimatedReadTime} read</span>
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -1794,7 +1794,7 @@ function CreateBlogContent() {
             </div>
 
             {/* 6. CATEGORY & ESTIMATED READ TIME */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-2">
                   Category *
@@ -1802,7 +1802,7 @@ function CreateBlogContent() {
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-4 py-3 rounded-2xl text-sm font-semibold bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C]"
+                  className="w-full px-4 py-3 rounded-2xl text-sm font-semibold bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB]"
                 >
                   {CATEGORIES.map((cat) => (
                     <option key={cat} value={cat}>
@@ -1817,7 +1817,7 @@ function CreateBlogContent() {
                       key={cat}
                       onClick={() => setFormData({ ...formData, category: cat })}
                       className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition cursor-pointer ${formData.category === cat
-                          ? "bg-[#EA580C] text-white shadow-sm"
+                          ? "bg-[#2563EB] text-white shadow-sm"
                           : "bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-400 hover:border-orange-500/40"
                         }`}
                     >
@@ -1830,13 +1830,13 @@ function CreateBlogContent() {
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
+                    <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
                     <span>Estimated Read Time</span>
                   </label>
                   <button
                     type="button"
                     onClick={() => setFormData({ ...formData, readTime: estimatedReadTime })}
-                    className="text-xs font-semibold text-[#EA580C] hover:underline cursor-pointer"
+                    className="text-xs font-semibold text-[#2563EB] hover:underline cursor-pointer"
                   >
                     Auto ({estimatedReadTime})
                   </button>
@@ -1846,7 +1846,7 @@ function CreateBlogContent() {
                   value={formData.readTime}
                   onChange={(e) => setFormData({ ...formData, readTime: e.target.value })}
                   placeholder="e.g. 5 min read"
-                  className="w-full px-4 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C]"
+                  className="w-full px-4 py-3 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB]"
                 />
                 <p className="text-xs text-stone-500 mt-2">
                   Calculated automatically based on content word count.
@@ -1855,9 +1855,9 @@ function CreateBlogContent() {
             </div>
 
             {/* 7. TAGS & KEYWORDS */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg space-y-4">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-4">
               <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                <Tag className="w-4 h-4 text-[#EA580C]" />
+                <Tag className="w-4 h-4 text-[#2563EB]" />
                 <span>Tags & SEO Keywords</span>
               </label>
 
@@ -1868,12 +1868,12 @@ function CreateBlogContent() {
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={handleTagInputKeyDown}
                   placeholder="Type keyword and press Enter..."
-                  className="flex-1 px-4 py-2.5 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C]"
+                  className="flex-1 px-4 py-2.5 rounded-2xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB]"
                 />
                 <button
                   type="button"
                   onClick={() => handleAddTag(tagInput)}
-                  className="px-4 py-2.5 rounded-2xl bg-stone-100 dark:bg-stone-900 hover:bg-[#EA580C] hover:text-white text-xs font-bold border border-stone-200 dark:border-stone-800 transition cursor-pointer"
+                  className="px-4 py-2.5 rounded-2xl bg-stone-100 dark:bg-stone-900 hover:bg-[#2563EB] hover:text-white text-xs font-bold border border-stone-200 dark:border-stone-800 transition cursor-pointer"
                 >
                   Add Tag
                 </button>
@@ -1884,7 +1884,7 @@ function CreateBlogContent() {
                 {formData.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-mono font-semibold bg-orange-500/10 text-[#EA580C] border border-orange-500/30"
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-mono font-semibold bg-orange-500/10 text-[#2563EB] border border-orange-500/30"
                   >
                     #{tag}
                     <button
@@ -1921,10 +1921,10 @@ function CreateBlogContent() {
             </div>
 
             {/* 8. AUTHOR DETAILS & FEATURED HERO TOGGLE */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 sm:p-8 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                  <User className="w-4 h-4 text-[#EA580C]" />
+                  <User className="w-4 h-4 text-[#2563EB]" />
                   <span>Author Details</span>
                 </label>
                 <div className="flex items-center gap-3">
@@ -1959,7 +1959,7 @@ function CreateBlogContent() {
               {/* Featured Hero Toggle */}
               <div className="flex flex-col justify-center space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-2">
-                  <Star className="w-4 h-4 text-[#EA580C]" />
+                  <Star className="w-4 h-4 text-[#2563EB]" />
                   <span>Publication Prominence</span>
                 </label>
                 <label className="flex items-center gap-3 p-4 rounded-2xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 cursor-pointer hover:border-orange-500/40 transition">
@@ -1967,7 +1967,7 @@ function CreateBlogContent() {
                     type="checkbox"
                     checked={formData.featured}
                     onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                    className="w-4 h-4 accent-[#EA580C] rounded"
+                    className="w-4 h-4 accent-[#2563EB] rounded"
                   />
                   <div>
                     <p className="text-xs font-bold text-stone-900 dark:text-stone-100">
@@ -1993,7 +1993,7 @@ function CreateBlogContent() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] text-white text-sm font-black tracking-wide shadow-[0_8px_30px_rgba(234,88,12,0.45)] hover:shadow-[0_12px_40px_rgba(234,88,12,0.65)] hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer disabled:opacity-60"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-black tracking-wide shadow-lg shadow-[#2563EB]/30 hover:shadow-[#2563EB]/55 border border-blue-400/30 hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer disabled:opacity-60"
               >
                 {isSubmitting ? (
                   <>
@@ -2011,15 +2011,15 @@ function CreateBlogContent() {
           </form>
         ) : (
           /* TAB 2: FULL READER LIVE PREVIEW */
-          <div className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#120F0D] p-6 sm:p-10 shadow-2xl space-y-8">
+          <div className="rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#111B2E] p-6 sm:p-10 shadow-2xl space-y-8">
             <div className="flex items-center justify-between pb-4 border-b border-stone-200 dark:border-stone-800">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#EA580C]">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#2563EB]">
                 Reader View Live Preview
               </span>
               <button
                 type="button"
                 onClick={() => setActiveTab("editor")}
-                className="text-xs font-bold text-[#EA580C] hover:underline"
+                className="text-xs font-bold text-[#2563EB] hover:underline"
               >
                 ← Return to Editor
               </button>
@@ -2037,7 +2037,7 @@ function CreateBlogContent() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-[#EA580C] text-white text-xs font-bold">
+                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-xs font-bold">
                     {formData.category}
                   </span>
                 </div>
@@ -2062,7 +2062,7 @@ function CreateBlogContent() {
               <h1 className="text-2xl sm:text-4xl font-black text-stone-900 dark:text-white tracking-tight leading-tight mb-4">
                 {formData.title || "Untitled Article Title"}
               </h1>
-              <div className="p-4 sm:p-5 rounded-2xl bg-orange-500/10 border-l-4 border-[#EA580C] text-stone-800 dark:text-stone-200 italic text-base sm:text-lg">
+              <div className="p-4 sm:p-5 rounded-2xl bg-orange-500/10 border-l-4 border-[#2563EB] text-stone-800 dark:text-stone-200 italic text-base sm:text-lg">
                 &ldquo;{formData.description || formData.excerpt || "Article description preview..."}&rdquo;
               </div>
             </div>
@@ -2095,7 +2095,7 @@ function CreateBlogContent() {
                 {formData.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-xl bg-orange-500/10 text-[#EA580C] text-xs font-mono font-semibold"
+                    className="px-3 py-1 rounded-xl bg-orange-500/10 text-[#2563EB] text-xs font-mono font-semibold"
                   >
                     #{tag}
                   </span>
@@ -2118,7 +2118,7 @@ function CreateBlogContent() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-stone-900 dark:text-white flex items-center gap-2">
-                  <Link2 className="w-4 h-4 text-[#EA580C]" />
+                  <Link2 className="w-4 h-4 text-[#2563EB]" />
                   <span>Insert Hyperlink</span>
                 </h3>
                 <button
@@ -2168,7 +2168,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={handleInsertLink}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#EA580C] text-white hover:bg-orange-600"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600"
                 >
                   Insert Link
                 </button>
@@ -2190,7 +2190,7 @@ function CreateBlogContent() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-stone-900 dark:text-white flex items-center gap-2">
-                  <ImageIcon className="w-4 h-4 text-[#EA580C]" />
+                  <ImageIcon className="w-4 h-4 text-[#2563EB]" />
                   <span>Insert Inline Illustration</span>
                 </h3>
                 <button
@@ -2240,7 +2240,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={handleInsertImage}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#EA580C] text-white hover:bg-orange-600"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600"
                 >
                   Insert Image
                 </button>
@@ -2262,7 +2262,7 @@ function CreateBlogContent() {
             >
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-stone-900 dark:text-white flex items-center gap-2">
-                  <TableIcon className="w-4 h-4 text-[#EA580C]" />
+                  <TableIcon className="w-4 h-4 text-[#2563EB]" />
                   <span>Insert Structured Table</span>
                 </h3>
                 <button
@@ -2314,7 +2314,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={handleInsertTable}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#EA580C] text-white hover:bg-orange-600"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600"
                 >
                   Create Table
                 </button>
@@ -2336,7 +2336,7 @@ function CreateBlogContent() {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#EA580C] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#2563EB] flex items-center justify-center">
                     <Sparkles className="w-4 h-4" />
                   </div>
                   <div>
@@ -2364,10 +2364,10 @@ function CreateBlogContent() {
                   className="w-full text-left p-4 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-orange-500/50 hover:bg-orange-500/5 transition group cursor-pointer"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#EA580C] transition">
+                    <span className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] transition">
                       🚀 Technical SEO Case Study
                     </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-orange-500/10 text-[#EA580C] font-bold">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-orange-500/10 text-[#2563EB] font-bold">
                       Data & ROI
                     </span>
                   </div>
@@ -2382,7 +2382,7 @@ function CreateBlogContent() {
                   className="w-full text-left p-4 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-orange-500/50 hover:bg-orange-500/5 transition group cursor-pointer"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#EA580C] transition">
+                    <span className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] transition">
                       📈 Definitive 2026 Guide / Tutorial
                     </span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 font-bold">
@@ -2400,7 +2400,7 @@ function CreateBlogContent() {
                   className="w-full text-left p-4 rounded-2xl border border-stone-200 dark:border-stone-800 hover:border-orange-500/50 hover:bg-orange-500/5 transition group cursor-pointer"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#EA580C] transition">
+                    <span className="text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] transition">
                       📊 Search Performance & Website Audit
                     </span>
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold">
@@ -2446,7 +2446,7 @@ function CreateBlogContent() {
               </button>
 
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-orange-500/15 flex items-center justify-center text-[#EA580C]">
+                <div className="w-10 h-10 rounded-2xl bg-orange-500/15 flex items-center justify-center text-[#2563EB]">
                   <HelpCircle className="w-5 h-5" />
                 </div>
                 <div>
@@ -2503,7 +2503,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={() => setIsCheatsheetOpen(false)}
-                  className="px-5 py-2.5 rounded-xl bg-[#EA580C] text-white text-xs font-bold"
+                  className="px-5 py-2.5 rounded-xl bg-[#2563EB] text-white text-xs font-bold"
                 >
                   Close Reference
                 </button>
@@ -2532,7 +2532,7 @@ function CreateBlogContent() {
               </button>
 
               <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-2xl bg-orange-500/15 flex items-center justify-center text-[#EA580C]">
+                <div className="w-10 h-10 rounded-2xl bg-orange-500/15 flex items-center justify-center text-[#2563EB]">
                   <Lock className="w-5 h-5" />
                 </div>
                 <div>
@@ -2559,7 +2559,7 @@ function CreateBlogContent() {
                     onChange={(e) => setAdminPasswordInput(e.target.value)}
                     placeholder="Enter admin passcode (e.g. admin123)"
                     required
-                    className="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#EA580C]"
+                    className="w-full px-4 py-3 rounded-xl text-sm bg-stone-50 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-stone-100 focus:outline-none focus:border-[#2563EB]"
                   />
                 </div>
 
@@ -2574,7 +2574,7 @@ function CreateBlogContent() {
                   <button
                     type="submit"
                     disabled={adminLoginLoading}
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#EA580C] text-white hover:bg-orange-600 disabled:opacity-60"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600 disabled:opacity-60"
                   >
                     {adminLoginLoading ? "Verifying..." : "Authenticate Key"}
                   </button>
@@ -2608,7 +2608,7 @@ export default function CreateBlogPage() {
     <Suspense
       fallback={
         <div className="min-h-screen bg-[var(--background)] flex items-center justify-center">
-          <div className="w-8 h-8 border-3 border-[#EA580C] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-3 border-[#2563EB] border-t-transparent rounded-full animate-spin" />
         </div>
       }
     >

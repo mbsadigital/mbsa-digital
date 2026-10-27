@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Caveat } from "next/font/google";
+import { Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SITE_CONFIG, SITE_URL, getWebsiteJsonLd, getPersonJsonLd } from "@/lib/seo";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   display: "swap",
   preload: true,
@@ -24,20 +24,20 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FAF8F5" },
-    { media: "(prefers-color-scheme: dark)", color: "#080706" },
+    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1220" },
   ],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Muskan Shekh | Digital Marketing & Technical SEO Specialist",
-    template: "%s | Muskan Shekh",
+    default: "MBSA Digital Marketing & Technical SEO Specialist",
+    template: "%s | MBSA",
   },
   description: SITE_CONFIG.description,
   keywords: [
-    "Muskan Shekh",
+    "MBSA",
     "Digital Marketing Specialist",
     "Technical SEO Specialist",
     "Core Web Vitals",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Muskan Shekh | Digital Marketing & Technical SEO Specialist",
+    title: "MBSA Digital Marketing & Technical SEO Specialist",
     description: SITE_CONFIG.description,
     url: SITE_URL,
     siteName: SITE_CONFIG.siteName,
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
         url: `${SITE_URL}${SITE_CONFIG.defaultOgImage}`,
         width: 1200,
         height: 630,
-        alt: "Muskan Shekh - Digital Marketing & Technical SEO Specialist",
+        alt: "MBSA - Digital Marketing & Technical SEO Specialist",
       },
     ],
     locale: "en_GB",
@@ -101,10 +101,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${caveat.variable} light scroll-smooth`}
+      className={`${plusJakartaSans.variable} ${caveat.variable} light scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
+        {/* Preload Earth globe map for instant frame-0 rendering */}
+        <link rel="preload" as="image" href="/earth/earth_daymap.jpg" />
+
         {/* Global Structured Data: WebSite & Person Entity */}
         <script
           type="application/ld+json"

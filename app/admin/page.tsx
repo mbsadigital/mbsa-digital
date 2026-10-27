@@ -212,8 +212,8 @@ export default function AdminPage() {
       <div className="min-h-screen bg-[#070605] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
-            <div className="w-12 h-12 border-2 border-[#EA580C]/40 border-t-[#EA580C] rounded-full animate-spin" />
-            <div className="absolute inset-0 rounded-full bg-[#EA580C]/20 blur-md animate-pulse" />
+            <div className="w-12 h-12 border-2 border-[#2563EB]/40 border-t-[#2563EB] rounded-full animate-spin" />
+            <div className="absolute inset-0 rounded-full bg-[#2563EB]/20 blur-md animate-pulse" />
           </div>
           <p className="text-xs font-mono text-stone-400 uppercase tracking-widest">
             Initializing Secure Gateway...
@@ -228,7 +228,7 @@ export default function AdminPage() {
   ============================================================ */
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#080706] text-stone-900 dark:text-white flex flex-col justify-between relative overflow-hidden select-none font-sans transition-colors duration-500">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white flex flex-col justify-between relative overflow-hidden select-none font-sans transition-colors duration-500">
         {/* 3D HOLOGRAPHIC DIGITAL EARTH BACKGROUND CANVAS */}
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
           {/* Animated 3D Digital Earth Canvas */}
@@ -239,28 +239,28 @@ export default function AdminPage() {
             className="absolute inset-0 opacity-[0.05] dark:opacity-[0.08] transition-opacity duration-500"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(234, 88, 12, 0.3) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(234, 88, 12, 0.3) 1px, transparent 1px)
+                linear-gradient(to right, rgba(37, 99, 235, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(37, 99, 235, 0.3) 1px, transparent 1px)
               `,
               backgroundSize: "48px 48px"
             }}
           />
 
           {/* Subtle Atmospheric Vignette - Allows Colorful Digital Earth to Shine Brightly */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5]/40 via-transparent to-[#FAF8F5]/30 dark:from-[#080706]/50 dark:via-transparent dark:to-[#080706]/40 transition-colors duration-500 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5]/30 via-transparent to-[#FAF8F5]/30 dark:from-[#080706]/40 dark:via-transparent dark:to-[#080706]/40 transition-colors duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F8FAFC]/40 via-transparent to-[#F8FAFC]/30 dark:from-[#0B1220]/50 dark:via-transparent dark:to-[#0B1220]/40 transition-colors duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/30 via-transparent to-[#F8FAFC]/30 dark:from-[#0B1220]/40 dark:via-transparent dark:to-[#0B1220]/40 transition-colors duration-500 pointer-events-none" />
 
           {/* Radar Scanning Line */}
           <motion.div
             animate={{ y: ["0vh", "100vh"] }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#EA580C] to-transparent opacity-25 dark:opacity-30 shadow-[0_0_12px_#EA580C]"
+            className="absolute inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#2563EB] to-transparent opacity-25 dark:opacity-30 shadow-[0_0_12px_#2563EB]"
           />
 
           {/* Global Node Telemetry Ticker (Top & Bottom) */}
           <div className="absolute bottom-3 inset-x-0 flex items-center justify-between px-6 text-[10px] font-mono text-stone-500 dark:text-orange-400/40 pointer-events-none transition-colors duration-500">
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-ping" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-ping" />
               <span>DIGITAL EARTH GLOBAL NODES: SF • NY • LON • FRA • TYO • SIN • BOM • DXB</span>
             </span>
             <span className="hidden sm:inline">AES-256 ENCRYPTED SESSION GATEWAY</span>
@@ -271,15 +271,15 @@ export default function AdminPage() {
         <header className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 flex items-center justify-between">
           <Link
             href="/"
-            className="group flex items-center gap-2 text-xs sm:text-sm font-semibold text-stone-600 dark:text-stone-400 hover:text-[#EA580C] dark:hover:text-[#EA580C] transition-colors"
+            className="group flex items-center gap-2 text-xs sm:text-sm font-semibold text-stone-600 dark:text-stone-400 hover:text-[#2563EB] dark:hover:text-[#2563EB] transition-colors"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <span>Return to Portfolio</span>
           </Link>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 dark:bg-orange-950/40 border border-orange-500/25 text-[11px] font-mono text-[#EA580C] dark:text-orange-400 shadow-sm transition-colors duration-300">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#EA580C] animate-ping" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-500/10 dark:bg-orange-950/40 border border-orange-500/25 text-[11px] font-mono text-[#2563EB] dark:text-orange-400 shadow-sm transition-colors duration-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-ping" />
               <span>SECURE ACCESS GATEWAY</span>
             </div>
             <ThemeToggle />
@@ -292,27 +292,27 @@ export default function AdminPage() {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-md rounded-3xl border border-stone-200/80 dark:border-orange-500/35 bg-white/75 dark:bg-[#0c0a09]/75 backdrop-blur-xl p-7 sm:p-9 shadow-[0_20px_60px_rgba(234,88,12,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.95)] relative transition-all duration-500"
+            className="w-full max-w-md rounded-3xl border border-stone-200/80 dark:border-orange-500/35 bg-white/75 dark:bg-[#0c0a09]/75 backdrop-blur-xl p-7 sm:p-9 shadow-[0_20px_60px_rgba(37,99,235,0.15)] dark:shadow-[0_25px_80px_rgba(0,0,0,0.95)] relative transition-all duration-500"
           >
             {/* Glowing Corner Accents for Cyber Aesthetics */}
-            <div className="absolute -top-[1px] -left-[1px] w-6 h-6 border-t-2 border-l-2 border-[#EA580C] rounded-tl-2xl pointer-events-none" />
-            <div className="absolute -bottom-[1px] -right-[1px] w-6 h-6 border-b-2 border-r-2 border-[#EA580C] rounded-br-2xl pointer-events-none" />
+            <div className="absolute -top-[1px] -left-[1px] w-6 h-6 border-t-2 border-l-2 border-[#2563EB] rounded-tl-2xl pointer-events-none" />
+            <div className="absolute -bottom-[1px] -right-[1px] w-6 h-6 border-b-2 border-r-2 border-[#2563EB] rounded-br-2xl pointer-events-none" />
 
             {/* Header / Security Badge */}
             <div className="flex flex-col items-center text-center mb-7">
               <div className="relative mb-5">
-                <div className="absolute inset-0 rounded-2xl bg-[#EA580C] blur-xl opacity-40 dark:opacity-50 animate-pulse" />
-                <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#EA580C] via-[#C2410C] to-[#9A3412] text-white shadow-2xl shadow-orange-600/40 border border-orange-400/30">
+                <div className="absolute inset-0 rounded-2xl bg-[#2563EB] blur-xl opacity-40 dark:opacity-50 animate-pulse" />
+                <div className="relative p-4 rounded-2xl bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#9A3412] text-white shadow-2xl shadow-orange-600/40 border border-orange-400/30">
                   <ShieldCheck className="w-8 h-8" />
                 </div>
               </div>
 
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-8 h-px bg-[#EA580C]" />
-                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.28em] text-[#EA580C]">
+                <span className="w-8 h-px bg-[#2563EB]" />
+                <span className="text-[10px] font-mono font-bold uppercase tracking-[0.28em] text-[#2563EB]">
                   Administrative Terminal
                 </span>
-                <span className="w-8 h-px bg-[#EA580C]" />
+                <span className="w-8 h-px bg-[#2563EB]" />
               </div>
 
               <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-stone-900 dark:text-white transition-colors">
@@ -331,7 +331,7 @@ export default function AdminPage() {
                 </label>
                 <div className="relative">
                   <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500">
-                    <KeyRound className="w-4 h-4 text-[#EA580C]" />
+                    <KeyRound className="w-4 h-4 text-[#2563EB]" />
                   </div>
                   <input
                     type={showPasscode ? "text" : "password"}
@@ -340,7 +340,7 @@ export default function AdminPage() {
                     placeholder="Enter admin passcode"
                     required
                     autoFocus
-                    className="w-full pl-10 pr-14 py-3 rounded-2xl text-sm bg-stone-100/90 dark:bg-black/60 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 focus:outline-none focus:border-[#EA580C] focus:ring-2 focus:ring-orange-500/20 transition-all font-mono shadow-inner"
+                    className="w-full pl-10 pr-14 py-3 rounded-2xl text-sm bg-stone-100/90 dark:bg-black/60 border border-stone-300 dark:border-stone-800 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-orange-500/20 transition-all font-mono shadow-inner"
                   />
                   <button
                     type="button"
@@ -353,13 +353,13 @@ export default function AdminPage() {
 
                 <div className="flex items-center justify-between mt-2.5 text-[11px] text-stone-500 dark:text-stone-400 transition-colors">
                   <span className="flex items-center gap-1">
-                    <Terminal className="w-3 h-3 text-[#EA580C]" />
+                    <Terminal className="w-3 h-3 text-[#2563EB]" />
                     <span>Default key:</span>
                   </span>
                   <button
                     type="button"
                     onClick={() => setPasscodeInput("admin123")}
-                    className="px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 hover:border-orange-500/50 font-mono text-[#EA580C] hover:text-orange-600 dark:hover:text-orange-400 text-[11px] transition cursor-pointer shadow-sm"
+                    className="px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 hover:border-orange-500/50 font-mono text-[#2563EB] hover:text-orange-600 dark:hover:text-orange-400 text-[11px] transition cursor-pointer shadow-sm"
                     title="Click to auto-fill passcode"
                   >
                     admin123 (Auto-fill)
@@ -381,7 +381,7 @@ export default function AdminPage() {
               <button
                 type="submit"
                 disabled={loginLoading}
-                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#EA580C] bg-[length:200%_auto] hover:bg-right text-white text-sm font-bold shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 cursor-pointer flex items-center justify-center gap-2 mt-2"
+                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#2563EB] bg-[length:200%_auto] hover:bg-right text-white text-sm font-bold shadow-lg shadow-orange-600/30 hover:shadow-orange-600/50 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 cursor-pointer flex items-center justify-center gap-2 mt-2"
               >
                 {loginLoading ? (
                   <>
@@ -419,15 +419,15 @@ export default function AdminPage() {
      VIEW 2: ADMIN DASHBOARD WITH LEFT-SIDE PANEL (SIDEBAR)
   ============================================================ */
   return (
-    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 flex flex-col md:flex-row">
       {/* Background Ambience */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute top-0 right-1/4 h-[550px] w-[550px] rounded-full bg-[#EA580C]/[0.05] blur-[160px]" />
+        <div className="absolute top-0 right-1/4 h-[550px] w-[550px] rounded-full bg-[#2563EB]/[0.05] blur-[160px]" />
         <div className="absolute bottom-10 left-10 h-[450px] w-[450px] rounded-full bg-[#FB923C]/[0.03] blur-[150px]" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: "radial-gradient(rgba(234, 88, 12, 0.4) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(rgba(37, 99, 235, 0.4) 1px, transparent 1px)",
             backgroundSize: "28px 28px"
           }}
         />
@@ -452,7 +452,7 @@ export default function AdminPage() {
           {/* Sidebar Top: Brand & Close (mobile) */}
           <div className="flex items-center justify-between pb-5 mb-5 border-b border-stone-200/80 dark:border-stone-800/80">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-gradient-to-br from-[#EA580C] to-[#C2410C] text-white shadow-md shadow-orange-600/30">
+              <div className="p-2.5 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white shadow-md shadow-orange-600/30">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
@@ -485,7 +485,7 @@ export default function AdminPage() {
                 setMobileSidebarOpen(false);
               }}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all cursor-pointer ${activeTab === "overview"
-                  ? "bg-[#EA580C] text-white shadow-md shadow-orange-500/25"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/25"
                   : "text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-900 dark:hover:text-white"
                 }`}
             >
@@ -501,7 +501,7 @@ export default function AdminPage() {
                 setMobileSidebarOpen(false);
               }}
               className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all cursor-pointer ${activeTab === "blogs"
-                  ? "bg-[#EA580C] text-white shadow-md shadow-orange-500/25"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/25"
                   : "text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-stone-900 dark:hover:text-white"
                 }`}
             >
@@ -522,13 +522,13 @@ export default function AdminPage() {
             {/* 3. Create Blog Tab / Direct Editor Navigation */}
             <Link
               href="/blog/create"
-              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-all cursor-pointer"
+              className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <PlusCircle className="w-4 h-4 text-[#EA580C]" />
+                <PlusCircle className="w-4 h-4 text-[#2563EB]" />
                 <span>Create New Blog</span>
               </div>
-              <span className="text-[10px] font-mono uppercase bg-orange-500/10 text-[#EA580C] px-2 py-0.5 rounded-md">
+              <span className="text-[10px] font-mono uppercase bg-orange-500/10 text-[#2563EB] px-2 py-0.5 rounded-md">
                 Studio
               </span>
             </Link>
@@ -552,7 +552,7 @@ export default function AdminPage() {
         <div className="pt-4 border-t border-stone-200/80 dark:border-stone-800/80 space-y-3">
           {/* User Profile Info */}
           <div className="p-3 rounded-2xl bg-stone-100/70 dark:bg-stone-900/70 border border-stone-200/70 dark:border-stone-800/70 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#EA580C] text-white flex items-center justify-center font-bold text-xs shadow-sm">
+            <div className="w-8 h-8 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-bold text-xs shadow-sm">
               AD
             </div>
             <div className="min-w-0 flex-1">
@@ -583,7 +583,7 @@ export default function AdminPage() {
       ========================================================= */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* TOP SUB-HEADER BAR */}
-        <header className="sticky top-0 z-20 border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-[#080706]/85 backdrop-blur-xl">
+        <header className="sticky top-0 z-20 border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-[#0B1220]/85 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               {/* Mobile Sidebar Hamburger Toggle */}
@@ -613,7 +613,7 @@ export default function AdminPage() {
 
               <Link
                 href="/blog/create"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#EA580C] to-[#F97316] text-white text-xs font-bold shadow-md shadow-orange-500/20 hover:shadow-orange-500/35 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-xs font-bold shadow-md shadow-orange-500/20 hover:shadow-orange-500/35 hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5 stroke-[3]" />
                 <span>Write Article</span>
@@ -648,10 +648,10 @@ export default function AdminPage() {
               {/* Stat Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                 {/* Total Articles */}
-                <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-5 sm:p-6 shadow-sm">
+                <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-5 sm:p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-semibold text-stone-500">Total Publications</span>
-                    <div className="p-2.5 rounded-2xl bg-orange-500/10 text-[#EA580C]">
+                    <div className="p-2.5 rounded-2xl bg-orange-500/10 text-[#2563EB]">
                       <BookOpen className="w-5 h-5" />
                     </div>
                   </div>
@@ -662,7 +662,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Categories Count */}
-                <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-5 sm:p-6 shadow-sm">
+                <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-5 sm:p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-semibold text-stone-500">Categories</span>
                     <div className="p-2.5 rounded-2xl bg-blue-500/10 text-blue-500">
@@ -676,7 +676,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Featured Articles */}
-                <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-5 sm:p-6 shadow-sm">
+                <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-5 sm:p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-semibold text-stone-500">Featured Insights</span>
                     <div className="p-2.5 rounded-2xl bg-amber-500/10 text-amber-500">
@@ -693,7 +693,7 @@ export default function AdminPage() {
               {/* Quick Launchpad & Category Distribution */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* Left Column: Quick Launch Actions */}
-                <div className="lg:col-span-7 rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-6 shadow-sm">
+                <div className="lg:col-span-7 rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-6 shadow-sm">
                   <h3 className="text-sm font-bold text-stone-900 dark:text-white mb-2">
                     Quick Editorial Actions
                   </h3>
@@ -707,13 +707,13 @@ export default function AdminPage() {
                       className="p-4 rounded-2xl border border-orange-500/30 bg-orange-500/5 hover:bg-orange-500/10 transition-all flex flex-col justify-between group cursor-pointer"
                     >
                       <div className="flex items-center justify-between mb-3">
-                        <div className="p-2 rounded-xl bg-[#EA580C] text-white">
+                        <div className="p-2 rounded-xl bg-[#2563EB] text-white">
                           <Plus className="w-4 h-4 stroke-[3]" />
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-[#EA580C]">FULL STUDIO</span>
+                        <span className="text-[10px] font-mono font-bold text-[#2563EB]">FULL STUDIO</span>
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold text-stone-900 dark:text-white group-hover:text-[#EA580C] transition">
+                        <h4 className="text-xs font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] transition">
                           Write New Article
                         </h4>
                         <p className="text-[11px] text-stone-500 mt-1">
@@ -734,7 +734,7 @@ export default function AdminPage() {
                         <span className="text-[10px] font-mono text-stone-400">MANAGEMENT</span>
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold text-stone-900 dark:text-white group-hover:text-[#EA580C] transition">
+                        <h4 className="text-xs font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] transition">
                           Browse &amp; Edit Articles
                         </h4>
                         <p className="text-[11px] text-stone-500 mt-1">
@@ -746,7 +746,7 @@ export default function AdminPage() {
                 </div>
 
                 {/* Right Column: Category Distribution */}
-                <div className="lg:col-span-5 rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-6 shadow-sm flex flex-col justify-between">
+                <div className="lg:col-span-5 rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-6 shadow-sm flex flex-col justify-between">
                   <div>
                     <h3 className="text-sm font-bold text-stone-900 dark:text-white mb-2">
                       Topic Distribution
@@ -775,7 +775,7 @@ export default function AdminPage() {
                       setSelectedCategory("All");
                       setActiveTab("blogs");
                     }}
-                    className="mt-5 text-xs font-bold text-[#EA580C] hover:underline flex items-center gap-1 cursor-pointer"
+                    className="mt-5 text-xs font-bold text-[#2563EB] hover:underline flex items-center gap-1 cursor-pointer"
                   >
                     <span>View all filtered in catalog</span>
                     <ExternalLink className="w-3 h-3" />
@@ -784,7 +784,7 @@ export default function AdminPage() {
               </div>
 
               {/* Recent Articles Table Preview */}
-              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl overflow-hidden shadow-sm">
+              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl overflow-hidden shadow-sm">
                 <div className="p-5 sm:p-6 border-b border-stone-200/80 dark:border-stone-800 flex items-center justify-between">
                   <div>
                     <h3 className="text-sm sm:text-base font-bold text-stone-900 dark:text-white">
@@ -798,7 +798,7 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("blogs")}
-                    className="text-xs font-bold text-[#EA580C] hover:underline cursor-pointer"
+                    className="text-xs font-bold text-[#2563EB] hover:underline cursor-pointer"
                   >
                     View All ({blogs.length})
                   </button>
@@ -825,7 +825,7 @@ export default function AdminPage() {
                             {blog.title}
                           </h4>
                           <div className="flex items-center gap-2 text-[11px] text-stone-500 font-mono mt-0.5">
-                            <span className="text-[#EA580C]">{blog.category}</span>
+                            <span className="text-[#2563EB]">{blog.category}</span>
                             <span>•</span>
                             <span>
                               {new Date(blog.createdAt).toLocaleDateString("en-US", {
@@ -841,7 +841,7 @@ export default function AdminPage() {
                       <div className="flex items-center gap-2 shrink-0">
                         <Link
                           href={`/blog/create?id=${blog._id}`}
-                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-900 hover:bg-[#EA580C] hover:text-white text-stone-700 dark:text-stone-300 text-xs font-semibold transition"
+                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-900 hover:bg-[#2563EB] hover:text-white text-stone-700 dark:text-stone-300 text-xs font-semibold transition"
                           title="Edit article"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -873,7 +873,7 @@ export default function AdminPage() {
               className="space-y-6"
             >
               {/* Search, Category Filter & Refresh Controls */}
-              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-4 sm:p-5 shadow-sm">
+              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-4 sm:p-5 shadow-sm">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   {/* Search Input */}
                   <div className="relative flex-1">
@@ -883,7 +883,7 @@ export default function AdminPage() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search publications by title, excerpt, or tags..."
-                      className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs sm:text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:outline-none focus:border-[#EA580C]"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs sm:text-sm text-stone-900 dark:text-stone-100 placeholder:text-stone-400 focus:outline-none focus:border-[#2563EB]"
                     />
                     {searchQuery && (
                       <button
@@ -903,7 +903,7 @@ export default function AdminPage() {
                       <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="px-3 py-2 rounded-2xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs sm:text-sm font-medium text-stone-800 dark:text-stone-200 focus:outline-none focus:border-[#EA580C] cursor-pointer"
+                        className="px-3 py-2 rounded-2xl bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-xs sm:text-sm font-medium text-stone-800 dark:text-stone-200 focus:outline-none focus:border-[#2563EB] cursor-pointer"
                       >
                         <option value="All">All Categories ({blogs.length})</option>
                         {CATEGORIES.map((cat) => (
@@ -928,7 +928,7 @@ export default function AdminPage() {
               </div>
 
               {/* Articles Catalog Table */}
-              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl overflow-hidden shadow-sm">
+              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl overflow-hidden shadow-sm">
                 <div className="p-5 sm:p-6 border-b border-stone-200/80 dark:border-stone-800 flex items-center justify-between flex-wrap gap-4">
                   <div>
                     <h3 className="text-base font-bold text-stone-900 dark:text-white">
@@ -941,7 +941,7 @@ export default function AdminPage() {
 
                   <Link
                     href="/blog/create"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#EA580C] hover:bg-orange-600 text-white text-xs font-bold transition shadow-sm cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-orange-600 text-white text-xs font-bold transition shadow-sm cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5 stroke-[3]" />
                     <span>Create Blog</span>
@@ -950,7 +950,7 @@ export default function AdminPage() {
 
                 {loadingBlogs ? (
                   <div className="py-20 flex flex-col items-center justify-center gap-3">
-                    <div className="w-8 h-8 border-3 border-[#EA580C] border-t-transparent rounded-full animate-spin" />
+                    <div className="w-8 h-8 border-3 border-[#2563EB] border-t-transparent rounded-full animate-spin" />
                     <p className="text-xs font-mono text-stone-500">Retrieving articles...</p>
                   </div>
                 ) : filteredBlogs.length === 0 ? (
@@ -966,7 +966,7 @@ export default function AdminPage() {
                     </p>
                     <Link
                       href="/blog/create"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#EA580C] text-white text-xs font-bold hover:bg-orange-600 transition"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-orange-600 transition"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Write First Article</span>
@@ -993,7 +993,7 @@ export default function AdminPage() {
 
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/10 text-[#EA580C] border border-orange-500/20">
+                              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-500/10 text-[#2563EB] border border-orange-500/20">
                                 {blog.category}
                               </span>
                               {blog.featured && (
@@ -1034,7 +1034,7 @@ export default function AdminPage() {
                           <Link
                             href={`/blog/${blog.slug || blog._id}`}
                             target="_blank"
-                            className="p-2 sm:px-3 sm:py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 text-stone-700 dark:text-stone-300 hover:text-[#EA580C] text-xs font-semibold transition flex items-center gap-1.5"
+                            className="p-2 sm:px-3 sm:py-2 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 text-stone-700 dark:text-stone-300 hover:text-[#2563EB] text-xs font-semibold transition flex items-center gap-1.5"
                             title="Preview article"
                           >
                             <Eye className="w-3.5 h-3.5" />
@@ -1044,7 +1044,7 @@ export default function AdminPage() {
                           {/* Edit Article -> NAVIGATES TO /blog/create?id=... */}
                           <Link
                             href={`/blog/create?id=${blog._id}`}
-                            className="p-2 sm:px-3.5 sm:py-2 rounded-xl bg-stone-100 dark:bg-stone-900 hover:bg-[#EA580C] text-stone-800 dark:text-stone-200 hover:text-white border border-stone-200 dark:border-stone-800 hover:border-[#EA580C] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+                            className="p-2 sm:px-3.5 sm:py-2 rounded-xl bg-stone-100 dark:bg-stone-900 hover:bg-[#2563EB] text-stone-800 dark:text-stone-200 hover:text-white border border-stone-200 dark:border-stone-800 hover:border-[#2563EB] text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
                             title="Edit in full studio"
                           >
                             <Edit3 className="w-3.5 h-3.5" />
@@ -1080,8 +1080,8 @@ export default function AdminPage() {
               transition={{ duration: 0.3 }}
               className="max-w-2xl mx-auto space-y-6"
             >
-              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-6 sm:p-8 shadow-sm text-center">
-                <div className="w-14 h-14 rounded-2xl bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center mx-auto mb-4">
+              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-6 sm:p-8 shadow-sm text-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center mx-auto mb-4">
                   <PlusCircle className="w-7 h-7" />
                 </div>
                 <h3 className="text-xl font-black text-stone-900 dark:text-white mb-2">
@@ -1093,7 +1093,7 @@ export default function AdminPage() {
 
                 <Link
                   href="/blog/create"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#EA580C] to-[#F97316] text-white text-sm font-bold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-sm font-bold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 active:scale-95 transition-all cursor-pointer"
                 >
                   <Plus className="w-4 h-4 stroke-[3]" />
                   <span>Open Full Article Editor</span>
@@ -1101,21 +1101,21 @@ export default function AdminPage() {
               </div>
 
               {/* Quick Template Presets */}
-              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#120F0D]/80 backdrop-blur-xl p-6 shadow-sm">
+              <div className="rounded-3xl border border-stone-200/80 dark:border-stone-800 bg-white/70 dark:bg-[#111B2E]/80 backdrop-blur-xl p-6 shadow-sm">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-4">
                   Quick Publication Guidelines
                 </h4>
                 <ul className="space-y-3 text-xs text-stone-600 dark:text-stone-300">
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
                     <span><strong>High Intent SEO:</strong> Include target keywords in Title, First Paragraph, and H2 headers.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
                     <span><strong>Canonical URLs:</strong> Auto-generated from title slugs for optimal search engine indexing.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
                     <span><strong>Live Sync:</strong> Changes saved via the editor instantly update the MongoDB database.</span>
                   </li>
                 </ul>

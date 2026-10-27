@@ -2,7 +2,7 @@ const INITIAL_BLOGS = [
   {
     title: "The 2026 Technical SEO Blueprint: Dominating AI Overviews & Search Generative Experience",
     slug: "2026-technical-seo-blueprint-ai-overviews",
-    excerpt: "How to engineer structured semantic schemas, sub-second TTFB, and zero-loss crawl budget to secure prime citations in Google's AI-generated answers.",
+    excerpt: "How modern businesses optimize page speed, clean site structure, and search markup to earn high-ranking citations in Google AI Overviews and ChatGPT.",
     content: `## The Paradigm Shift in Organic Search
 
 The emergence of AI Overviews and multimodal search engines has fundamentally transformed SEO from keyword repetition to semantic entity validation. Crawlers no longer simply parse strings—they construct knowledge graphs and cross-reference structured data to verify authority before citing sources in generative snapshots.
@@ -95,7 +95,7 @@ Attributing 100% of revenue to the final brand search causes marketing teams to 
   {
     title: "Content Topic Clusters vs. Isolated Blog Posts: Scaling to 48,000 Monthly Organic Visits",
     slug: "topic-clusters-vs-isolated-posts-organic-growth",
-    excerpt: "Case-backed analysis of how structured semantic pillar architectures withstand search engine volatility and build unshakeable topical authority.",
+    excerpt: "A practical guide showing how topic-focused content clusters protect your search rankings against algorithm updates and drive consistent customer inquiries.",
     content: `## The Death of Random Editorial Calendars
 
 Publishing disconnected 800-word articles once a week is no longer viable in competitive niches. Search algorithms prioritize topical completeness. A website with comprehensive coverage of a specific subject cluster outranks high-DA competitors who only have disparate, surface-level articles.

@@ -109,7 +109,7 @@ export default function ServiceEcosystem({
     <div className="relative my-14 sm:my-20">
       {/* Background Ambient Glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-[#EA580C]/[0.08] dark:bg-[#EA580C]/[0.12] blur-[160px]" />
+        <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.12] blur-[160px]" />
         <div className="absolute bottom-0 right-10 w-[450px] h-[450px] rounded-full bg-[#FB923C]/[0.06] dark:bg-[#FB923C]/[0.09] blur-[140px]" />
       </div>
 
@@ -118,14 +118,14 @@ export default function ServiceEcosystem({
         {/* Section Header with Mode Switcher */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-stone-200/80 dark:border-white/10 pb-8 mb-8 sm:mb-12">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[#EA580C] dark:text-[#FB923C] text-xs font-bold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[#2563EB] dark:text-[#FB923C] text-xs font-bold uppercase tracking-wider mb-3">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Full-Funnel Agency Architecture</span>
             </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Digital Marketing Services &amp;
               <br />
-              <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(234,88,12,0.3)]">
+              <span className="bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(37,99,235,0.3)]">
                 Growth Flow Ecosystem.
               </span>
             </h2>
@@ -141,7 +141,7 @@ export default function ServiceEcosystem({
               onClick={() => setActiveTab("arc")}
               className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                 activeTab === "arc"
-                  ? "bg-[#EA580C] text-white shadow-md shadow-orange-500/30 scale-[1.02]"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/30 scale-[1.02]"
                   : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white"
               }`}
             >
@@ -154,7 +154,7 @@ export default function ServiceEcosystem({
               onClick={() => setActiveTab("flow")}
               className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 flex items-center gap-2 cursor-pointer ${
                 activeTab === "flow"
-                  ? "bg-[#EA580C] text-white shadow-md shadow-orange-500/30 scale-[1.02]"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/30 scale-[1.02]"
                   : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white"
               }`}
             >
@@ -221,7 +221,7 @@ function OrbitalArcView({
 
           {/* Semi-circular decorative background disc */}
           <div
-            className="absolute inset-0 rounded-full bg-gradient-to-br from-[#EA580C]/15 via-amber-500/10 to-transparent border border-orange-500/20 shadow-inner"
+            className="absolute inset-0 rounded-full bg-gradient-to-br from-[#2563EB]/15 via-amber-500/10 to-transparent border border-orange-500/20 shadow-inner"
             style={{
               clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
             }}
@@ -248,17 +248,17 @@ function OrbitalArcView({
             />
             <defs>
               <linearGradient id="arcGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#EA580C" />
+                <stop offset="0%" stopColor="#2563EB" />
                 <stop offset="50%" stopColor="#FB923C" />
-                <stop offset="100%" stopColor="#EA580C" />
+                <stop offset="100%" stopColor="#2563EB" />
               </linearGradient>
             </defs>
           </svg>
 
           {/* Center Hub Content */}
           <div className="relative z-10 text-center px-6">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-[#EA580C] to-[#FB923C] p-0.5 shadow-xl shadow-orange-500/30 flex items-center justify-center">
-              <div className="w-full h-full rounded-[14px] bg-white dark:bg-[#120F0D] flex items-center justify-center text-[#EA580C] dark:text-[#FB923C]">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-[#2563EB] to-[#FB923C] p-0.5 shadow-xl shadow-orange-500/30 flex items-center justify-center">
+              <div className="w-full h-full rounded-[14px] bg-white dark:bg-[#111B2E] flex items-center justify-center text-[#2563EB] dark:text-[#FB923C]">
                 <Layers className="w-7 h-7 animate-pulse" />
               </div>
             </div>
@@ -266,7 +266,7 @@ function OrbitalArcView({
             <h3 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-white leading-tight tracking-tight">
               Digital Marketing
               <br />
-              <span className="text-[#EA580C] dark:text-[#FB923C]">
+              <span className="text-[#2563EB] dark:text-[#FB923C]">
                 Services
               </span>
             </h3>
@@ -293,29 +293,29 @@ function OrbitalArcView({
               onClick={() => onSelectService(pillar.slug)}
               className={`group relative rounded-full p-2 pr-5 sm:pr-7 flex items-center justify-between gap-4 transition-all duration-300 cursor-pointer border ${
                 isSelected
-                  ? "bg-white dark:bg-[#161210] border-[#EA580C] ring-2 ring-orange-500/40 shadow-xl shadow-orange-500/20 translate-x-2"
+                  ? "bg-white dark:bg-[#161210] border-[#2563EB] ring-2 ring-orange-500/40 shadow-xl shadow-orange-500/20 translate-x-2"
                   : "bg-white/90 dark:bg-white/[0.03] border-stone-200/90 dark:border-white/10 hover:border-orange-500/60 hover:bg-white hover:dark:bg-white/[0.06] hover:translate-x-2 shadow-sm hover:shadow-lg hover:shadow-orange-500/10"
               }`}
             >
               {/* Left Circular Multi-Ring Gradient Icon Badge (Image 1 Style) */}
               <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                <div className="relative shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full p-1 bg-gradient-to-tr from-[#EA580C] via-[#F97316] to-[#FB923C] shadow-md shadow-orange-500/30 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                <div className="relative shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full p-1 bg-gradient-to-tr from-[#2563EB] via-[#14B8A6] to-[#FB923C] shadow-md shadow-orange-500/30 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
                   {/* Outer Pulsing Aura Ring */}
                   <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-75 blur-xs transition-opacity duration-300 pointer-events-none" />
 
                   {/* Inner Pure White / Obsidian Disk */}
-                  <div className="relative z-10 w-full h-full rounded-full bg-white dark:bg-[#120F0D] flex items-center justify-center text-stone-900 dark:text-white">
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#EA580C] group-hover:scale-110 transition-transform" />
+                  <div className="relative z-10 w-full h-full rounded-full bg-white dark:bg-[#111B2E] flex items-center justify-center text-stone-900 dark:text-white">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#2563EB] group-hover:scale-110 transition-transform" />
                   </div>
                 </div>
 
                 {/* Pill Title & Category */}
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#EA580C]">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#2563EB]">
                       PILLAR 0{idx + 1}
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-stone-300 dark:bg-white/20 group-hover:bg-[#EA580C] transition-colors" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-stone-300 dark:bg-white/20 group-hover:bg-[#2563EB] transition-colors" />
                     <span className="text-[10px] font-mono text-stone-400 dark:text-stone-500 hidden sm:inline">
                       {pillar.category}
                     </span>
@@ -324,8 +324,8 @@ function OrbitalArcView({
                   <h4
                     className={`text-sm sm:text-base font-black truncate transition-colors ${
                       isSelected
-                        ? "text-[#EA580C] dark:text-[#FB923C]"
-                        : "text-stone-900 dark:text-white group-hover:text-[#EA580C]"
+                        ? "text-[#2563EB] dark:text-[#FB923C]"
+                        : "text-stone-900 dark:text-white group-hover:text-[#2563EB]"
                     }`}
                   >
                     {pillar.title}
@@ -336,7 +336,7 @@ function OrbitalArcView({
               {/* Right Side: Benchmark Badge & Leaping Arrow */}
               <div className="flex items-center gap-3 shrink-0">
                 <div className="hidden sm:flex flex-col text-right">
-                  <span className="font-mono text-xs font-black text-[#EA580C]">
+                  <span className="font-mono text-xs font-black text-[#2563EB]">
                     {pillar.metric}
                   </span>
                   <span className="text-[10px] text-stone-500 dark:text-stone-400">
@@ -347,8 +347,8 @@ function OrbitalArcView({
                 <div
                   className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
                     isSelected
-                      ? "bg-[#EA580C] text-white"
-                      : "bg-stone-100 dark:bg-white/10 text-stone-700 dark:text-stone-300 group-hover:bg-[#EA580C] group-hover:text-white"
+                      ? "bg-[#2563EB] text-white"
+                      : "bg-stone-100 dark:bg-white/10 text-stone-700 dark:text-stone-300 group-hover:bg-[#2563EB] group-hover:text-white"
                   }`}
                 >
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -379,7 +379,7 @@ function GrowthFlowView({
         {/* COLUMN 1: Strategic Business Objectives */}
         <div className="lg:col-span-4 flex flex-col justify-between rounded-3xl p-6 sm:p-7 bg-stone-50/70 dark:bg-white/[0.025] border border-stone-200/80 dark:border-white/10 space-y-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#EA580C] text-xs font-bold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Input Stage</span>
             </div>
@@ -401,15 +401,15 @@ function GrowthFlowView({
             ].map((obj, oIdx) => (
               <div
                 key={oIdx}
-                className="p-3.5 rounded-2xl bg-white dark:bg-[#120F0D] border border-stone-200/60 dark:border-white/5 flex items-center justify-between gap-3 shadow-xs"
+                className="p-3.5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/60 dark:border-white/5 flex items-center justify-between gap-3 shadow-xs"
               >
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#EA580C] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0" />
                   <span className="text-xs font-bold text-stone-800 dark:text-stone-200">
                     {obj.label}
                   </span>
                 </div>
-                <span className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-full bg-orange-500/10 text-[#EA580C]">
+                <span className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-full bg-orange-500/10 text-[#2563EB]">
                   {obj.tag}
                 </span>
               </div>
@@ -418,17 +418,17 @@ function GrowthFlowView({
 
           <div className="pt-3 border-t border-stone-200/60 dark:border-white/10 flex items-center justify-between text-xs text-stone-500">
             <span>Primary Focus</span>
-            <span className="font-bold text-[#EA580C]">Compounding Growth</span>
+            <span className="font-bold text-[#2563EB]">Compounding Growth</span>
           </div>
         </div>
 
         {/* COLUMN 2: Flowing Multi-Channel Energy Stream & Core Services */}
-        <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl p-6 sm:p-7 bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 shadow-lg space-y-6 relative overflow-hidden">
+        <div className="lg:col-span-5 flex flex-col justify-between rounded-3xl p-6 sm:p-7 bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-lg space-y-6 relative overflow-hidden">
           {/* Ambient SVG Flow Ribbon Background */}
-          <div className="pointer-events-none absolute -right-10 -bottom-10 w-64 h-64 rounded-full bg-gradient-to-tr from-[#EA580C]/20 to-transparent blur-3xl" />
+          <div className="pointer-events-none absolute -right-10 -bottom-10 w-64 h-64 rounded-full bg-gradient-to-tr from-[#2563EB]/20 to-transparent blur-3xl" />
 
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#EA580C] text-xs font-bold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3">
               <Workflow className="w-3.5 h-3.5" />
               <span>Multi-Channel Connectivity</span>
             </div>
@@ -477,12 +477,12 @@ function GrowthFlowView({
                   className="p-4 rounded-2xl bg-stone-50/70 dark:bg-white/[0.03] border border-stone-200/60 dark:border-white/5 hover:border-orange-500/50 hover:bg-orange-500/[0.04] transition-all duration-300 cursor-pointer space-y-2 group"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#EA580C] flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#2563EB] flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#EA580C] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#2563EB] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
-                  <h4 className="text-xs font-black text-stone-900 dark:text-white group-hover:text-[#EA580C]">
+                  <h4 className="text-xs font-black text-stone-900 dark:text-white group-hover:text-[#2563EB]">
                     {chan.title}
                   </h4>
                   <p className="text-[11px] text-stone-500 dark:text-stone-400 line-clamp-2 leading-relaxed">
@@ -495,14 +495,14 @@ function GrowthFlowView({
 
           <div className="pt-3 border-t border-stone-200/60 dark:border-white/10 flex items-center justify-between text-xs text-stone-500">
             <span>Execution Model</span>
-            <span className="font-bold text-[#EA580C]">Direct Code &amp; Bidding</span>
+            <span className="font-bold text-[#2563EB]">Direct Code &amp; Bidding</span>
           </div>
         </div>
 
         {/* COLUMN 3: Data-Driven Analytics & Measurable ROI */}
         <div className="lg:col-span-3 flex flex-col justify-between rounded-3xl p-6 sm:p-7 bg-stone-50/70 dark:bg-white/[0.025] border border-stone-200/80 dark:border-white/10 space-y-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#EA580C] text-xs font-bold uppercase tracking-wider mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#2563EB] text-xs font-bold uppercase tracking-wider mb-3">
               <LineChart className="w-3.5 h-3.5" />
               <span>Output Stage</span>
             </div>
@@ -517,7 +517,7 @@ function GrowthFlowView({
 
           {/* Metric Telemetry Cards */}
           <div className="space-y-3">
-            <div className="p-4 rounded-2xl bg-white dark:bg-[#120F0D] border border-stone-200/60 dark:border-white/5 space-y-2">
+            <div className="p-4 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/60 dark:border-white/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono font-bold text-stone-500">
                   GA4 ATTRIBUTION
@@ -532,7 +532,7 @@ function GrowthFlowView({
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white dark:bg-[#120F0D] border border-stone-200/60 dark:border-white/5 space-y-2">
+            <div className="p-4 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/60 dark:border-white/5 space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono font-bold text-stone-500">
                   CONVERSION LIFT
@@ -545,7 +545,7 @@ function GrowthFlowView({
                 $1.2M+
               </p>
               <div className="h-1.5 w-full bg-stone-100 dark:bg-white/10 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-[#EA580C] to-[#FB923C] w-[92%]" />
+                <div className="h-full bg-gradient-to-r from-[#2563EB] to-[#FB923C] w-[92%]" />
               </div>
             </div>
           </div>

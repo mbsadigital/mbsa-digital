@@ -289,7 +289,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     title: "WordPress and E-Commerce",
     shortTitle: "WordPress & E-Commerce",
     badge: "High-Converting Custom Web Builds",
-    desc: "Fast responsive Wordpress,Shopify and WooCommerce sites built to rank and convert.",
+    desc: "Fast, responsive WordPress, Shopify, and WooCommerce sites built to rank and convert.",
     tagline: "Turn your website into a lightning-fast 24/7 sales engine designed for top SEO rankings and seamless checkouts.",
     longDescription:
       "A slow, cluttered website bleeds revenue and damages search engine rankings. We design and develop custom WordPress, WooCommerce, and Shopify stores with a mobile-first philosophy, blazing-fast Core Web Vitals performance, and frictionless conversion funnels. From bespoke product filtering to streamlined checkout flows, every pixel is engineered to maximize conversion rate and customer trust.",
@@ -439,7 +439,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
     title: "Analytics and Reporting",
     shortTitle: "Analytics & Looker Dashboards",
     badge: "GA4, GTM & Transparent Revenue Attribution",
-    desc: "Clear reports that show what worked, what didn't and wat to do next.",
+    desc: "Clear reports that show what worked, what didn't, and what to do next.",
     tagline: "Cut through vanity metrics with crystal-clear GA4 tracking and Looker Studio dashboards that reveal your true ROI.",
     longDescription:
       "You cannot grow what you do not accurately measure. We engineer custom Google Analytics 4 (GA4) and Google Tag Manager (GTM) setups that capture the entire customer journey—from first click to final purchase. We consolidate your data into executive Looker Studio dashboards that translate complex analytics into actionable insights: which channels drive revenue, where users drop off, and where to invest next.",

@@ -89,7 +89,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
       aria-label="Client Testimonials and Endorsements"
     >
       <style>{`
@@ -119,21 +119,21 @@ export default function Testimonials() {
       `}</style>
 
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] rounded-full bg-[#EA580C]/[0.06] dark:bg-[#EA580C]/[0.10] blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] rounded-full bg-[#2563EB]/[0.06] dark:bg-[#2563EB]/[0.10] blur-[150px] pointer-events-none" />
 
       {/* Proper Grid Container matching the site's max-w-7xl and left/right padding */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#EA580C] dark:text-[#F97316] mb-2">
-              <span className="w-5 h-px bg-[#EA580C] dark:bg-[#F97316]" />
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-[#14B8A6] mb-2">
+              <span className="w-5 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
               <span>CLIENT VALIDATION</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Trusted by Founders.<br />
-              <span className="text-[#EA580C]">
+              <span className="text-[#2563EB]">
                 Proven by Results.
               </span>
             </h2>
@@ -158,7 +158,7 @@ export default function Testimonials() {
                 onClick={() => setSlideDirection((prev) => (prev === "normal" ? "reverse" : "normal"))}
                 aria-label="Reverse slide direction"
                 title="Change slide direction"
-                className="w-8 h-8 rounded-xl bg-white dark:bg-white/10 hover:bg-[#EA580C] hover:text-white border border-stone-200 dark:border-white/15 text-stone-700 dark:text-stone-200 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
+                className="w-8 h-8 rounded-xl bg-white dark:bg-white/10 hover:bg-[#2563EB] hover:text-white border border-stone-200 dark:border-white/15 text-stone-700 dark:text-stone-200 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
               >
                 {slideDirection === "normal" ? (
                   <ChevronLeft className="w-4 h-4" />
@@ -172,7 +172,7 @@ export default function Testimonials() {
                 onClick={() => setIsPlaying((prev) => !prev)}
                 aria-label={isPlaying ? "Pause auto slide" : "Resume auto slide"}
                 title={isPlaying ? "Pause auto slide" : "Resume auto slide"}
-                className="w-8 h-8 rounded-xl bg-white dark:bg-white/10 hover:bg-[#EA580C] hover:text-white border border-stone-200 dark:border-white/15 text-stone-700 dark:text-stone-200 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
+                className="w-8 h-8 rounded-xl bg-white dark:bg-white/10 hover:bg-[#2563EB] hover:text-white border border-stone-200 dark:border-white/15 text-stone-700 dark:text-stone-200 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95"
               >
                 {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
               </button>
@@ -181,22 +181,24 @@ export default function Testimonials() {
         </div>
 
         {/* ========================================================
-            AUTO-PLAYING SLIDING MARQUEE TRACK
+            AUTO-PLAYING SLIDING MARQUEE TRACK (Pauses on touch/hover)
             Properly bounded within the container with elegant side fades
         ======================================================== */}
         <div
           className="relative overflow-hidden rounded-2xl sm:rounded-3xl py-2"
           onMouseEnter={() => setIsPlaying(false)}
           onMouseLeave={() => setIsPlaying(true)}
+          onTouchStart={() => setIsPlaying(false)}
+          onTouchEnd={() => setIsPlaying(true)}
         >
           <div
-            className={`testimonials-track gap-5 sm:gap-6 ${!isPlaying ? "testimonials-paused" : ""
+            className={`testimonials-track gap-4 sm:gap-6 ${!isPlaying ? "testimonials-paused" : ""
               } ${slideDirection === "reverse" ? "testimonials-reverse" : ""}`}
           >
             {[0, 1].map((setIdx) => (
               <div
                 key={setIdx}
-                className="flex items-center gap-5 sm:gap-6 shrink-0"
+                className="flex items-center gap-4 sm:gap-6 shrink-0"
                 aria-hidden={setIdx === 1}
               >
                 {TESTIMONIALS.map((item) => (
@@ -204,9 +206,9 @@ export default function Testimonials() {
                     key={`${setIdx}-${item.id}`}
                     className="
                       group
-                      shrink-0 w-[300px] sm:w-[360px] lg:w-[385px]
-                      rounded-2xl sm:rounded-3xl p-5 sm:p-6
-                      bg-[#FFF8F3] dark:bg-[#141210]
+                      shrink-0 w-[280px] min-[360px]:w-[310px] sm:w-[360px] lg:w-[385px]
+                      rounded-2xl sm:rounded-3xl p-4.5 sm:p-6
+                      bg-[#F8FAFC] dark:bg-[#111B2E]
                       border border-orange-200/80 dark:border-white/10
                       hover:border-orange-500/70 dark:hover:border-orange-500/70
                       hover:shadow-xl hover:shadow-orange-500/15
@@ -225,7 +227,7 @@ export default function Testimonials() {
                     <div>
                       <div className="flex items-center gap-3.5 mb-3.5">
                         {/* Real Client Headshot Photo */}
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-[#EA580C]/40 shadow-md group-hover:ring-[#EA580C] transition-all">
+                        <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-[#2563EB]/40 shadow-md group-hover:ring-[#2563EB] transition-all">
                           <Image
                             src={item.avatar}
                             alt={item.name}
@@ -265,7 +267,7 @@ export default function Testimonials() {
                     {/* Bottom Area: Measurable Outcome Pill + Case Study Link */}
                     <div className="pt-3 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-base sm:text-lg font-black text-[#EA580C] leading-none">
+                        <span className="text-base sm:text-lg font-black text-[#2563EB] leading-none">
                           {item.metric}
                         </span>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
@@ -275,7 +277,7 @@ export default function Testimonials() {
 
                       <Link
                         href={item.projectSlug}
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-[#EA580C] hover:text-[#C2410C] group/link shrink-0"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-[#2563EB] hover:text-[#1D4ED8] group/link shrink-0"
                       >
                         <span>Case Study</span>
                         <ArrowUpRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
@@ -288,8 +290,8 @@ export default function Testimonials() {
           </div>
 
           {/* Side Fade Gradient Overlays directly at container edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 bg-gradient-to-r from-[#FAF8F5] dark:from-[#080706] to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 bg-gradient-to-l from-[#FAF8F5] dark:from-[#080706] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 bg-gradient-to-r from-[#F8FAFC] dark:from-[#0B1220] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 bg-gradient-to-l from-[#F8FAFC] dark:from-[#0B1220] to-transparent z-10" />
         </div>
       </div>
     </section>

@@ -265,8 +265,8 @@ export default function Contact() {
           <div className="lg:col-span-5 lg:sticky lg:top-24 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-orange-400" />
-                <span className="text-xs font-bold uppercase tracking-[0.28em] text-orange-400">
+                <span className="w-8 h-px bg-[#14B8A6]" />
+                <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#14B8A6]">
                   CONTACT
                 </span>
               </div>
@@ -274,7 +274,7 @@ export default function Contact() {
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.04]">
                 Let&apos;s Talk
                 <br />
-                <span className="text-[#EA580C]">
+                <span className="text-[#2563EB]">
                   Growth
                 </span>
               </h2>
@@ -295,14 +295,14 @@ export default function Contact() {
                 <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base font-medium">
                   <a
                     href="tel:+919574696932"
-                    className="hover:text-orange-500 transition-colors"
+                    className="hover:text-[#2563EB] transition-colors"
                   >
                     +91 95746 96932
                   </a>
                   <span className="text-stone-400">/</span>
                   <a
                     href="tel:+447393107859"
-                    className="hover:text-orange-500 transition-colors"
+                    className="hover:text-[#2563EB] transition-colors"
                   >
                     +44 7393 107859
                   </a>
@@ -316,9 +316,9 @@ export default function Contact() {
                 </span>
                 <a
                   href="mailto:mbsadigitalsolutions@gmail.com"
-                  className="inline-flex items-center gap-2 text-sm sm:text-base hover:text-orange-500 font-medium transition-colors break-all"
+                  className="inline-flex items-center gap-2 text-sm sm:text-base hover:text-[#2563EB] font-medium transition-colors break-all"
                 >
-                  <Mail className="w-4 h-4 text-[#EA580C] shrink-0" />
+                  <Mail className="w-4 h-4 text-[#2563EB] shrink-0" />
                   mbsadigitalsolutions@gmail.com
                 </a>
               </div>
@@ -334,7 +334,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
-                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-orange-500 hover:bg-[#EA580C] text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
+                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-[#2563EB] hover:bg-[#2563EB] text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
                   >
                     <LinkedInIcon className="w-4 h-4" />
                   </a>
@@ -344,7 +344,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
-                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-orange-500 hover:bg-white text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
+                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-[#2563EB] hover:bg-[#2563EB] text-stone-600 dark:text-stone-300 hover:text-white flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
                   >
                     <InstagramIcon className="w-4 h-4" />
                   </a>
@@ -353,7 +353,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Google"
-                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-orange-500 hover:bg-white text-stone-600 dark:text-stone-300 hover:text-black flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
+                    className="w-9 h-9 rounded-xl bg-stone-100 dark:bg-white/5 border border-stone-200 dark:border-white/10 hover:border-[#2563EB] hover:bg-white text-stone-600 dark:text-stone-300 hover:text-black flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 shadow-sm"
                   >
                     <GoogleIcon className="w-4 h-4" />
                   </a>
@@ -365,14 +365,14 @@ export default function Contact() {
           </div>
 
           {/* ========================================================
-              RIGHT COLUMN: Dark Card with #EA580C Ambient Glow & Form
+              RIGHT COLUMN: Dark Card with #2563EB Ambient Glow & Form
           ======================================================== */}
           <div className="lg:col-span-7">
             {/* Form Card with interactive border hover effect and glow */}
-            <div className="relative rounded-[32px] sm:rounded-[40px] p-7 sm:p-10 lg:p-12 bg-white/95 dark:bg-[#120F0D]/95 backdrop-blur-xl border-2 border-stone-200/80 dark:border-white/10 hover:border-[#EA580C] dark:hover:border-[#EA580C] shadow-2xl hover:shadow-[0_20px_50px_rgba(234,88,12,0.18)] transition-all duration-500 overflow-hidden group">
-              {/* Vibrant #EA580C Ambient Light Mesh */}
-              <div className="absolute -top-16 -right-16 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#EA580C]/10 dark:bg-[#EA580C]/15 blur-[100px] pointer-events-none group-hover:scale-110 group-hover:bg-[#EA580C]/20 transition-all duration-700" />
-              <div className="absolute -bottom-16 -right-10 w-72 h-72 rounded-full bg-[#EA580C]/10 dark:bg-[#EA580C]/15 blur-[90px] pointer-events-none group-hover:scale-110 group-hover:bg-[#EA580C]/20 transition-all duration-700" />
+            <div className="relative rounded-[32px] sm:rounded-[40px] p-7 sm:p-10 lg:p-12 bg-white/95 dark:bg-[#111B2E]/95 backdrop-blur-xl border-2 border-stone-200/80 dark:border-white/10 hover:border-[#2563EB] dark:hover:border-[#2563EB] shadow-2xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.18)] transition-all duration-500 overflow-hidden group">
+              {/* Vibrant #2563EB Ambient Light Mesh */}
+              <div className="absolute -top-16 -right-16 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 blur-[100px] pointer-events-none group-hover:scale-110 group-hover:bg-[#2563EB]/20 transition-all duration-700" />
+              <div className="absolute -bottom-16 -right-10 w-72 h-72 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 blur-[90px] pointer-events-none group-hover:scale-110 group-hover:bg-[#2563EB]/20 transition-all duration-700" />
 
               <div className="relative z-10">
                 <AnimatePresence mode="wait">
@@ -385,8 +385,8 @@ export default function Contact() {
                       transition={{ duration: 0.3 }}
                       className="text-center py-10 sm:py-14 px-4"
                     >
-                      <div className="mx-auto mb-4 w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center border-2 border-[#EA580C] bg-[#EA580C]/10 text-[#EA580C] shadow-xl shadow-[#EA580C]/20">
-                        <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-[#EA580C]" />
+                      <div className="mx-auto mb-4 w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center border-2 border-[#2563EB] bg-[#2563EB]/10 text-[#2563EB] shadow-xl shadow-[#2563EB]/20">
+                        <CheckCircle2 className="w-8 h-8 sm:w-10 sm:h-10 text-[#2563EB]" />
                       </div>
 
                       <h4 className="text-xl sm:text-2xl font-extrabold text-stone-900 dark:text-white mb-2">
@@ -404,7 +404,7 @@ export default function Contact() {
                             initial={{ width: "100%" }}
                             animate={{ width: "0%" }}
                             transition={{ duration: 2.8, ease: "linear" }}
-                            className="bg-gradient-to-r from-[#EA580C] to-[#F97316] h-full rounded-full"
+                            className="bg-gradient-to-r from-[#2563EB] to-[#14B8A6] h-full rounded-full"
                           />
                         </div>
                         <span className="text-[11px] text-stone-400 mt-2 block font-medium">
@@ -419,7 +419,7 @@ export default function Contact() {
                             setSubmitted(false);
                             setErrorMessage(null);
                           }}
-                          className="px-6 py-2.5 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-white/[0.05] hover:border-[#EA580C] text-stone-700 dark:text-stone-200 hover:text-[#EA580C] text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95"
+                          className="px-6 py-2.5 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-white/[0.05] hover:border-[#2563EB] text-stone-700 dark:text-stone-200 hover:text-[#2563EB] text-xs font-bold transition-all shadow-xs cursor-pointer active:scale-95"
                         >
                           Back to Form Now
                         </button>
@@ -469,7 +469,7 @@ export default function Contact() {
                         {/* Name Input */}
                         <div className="space-y-1.5">
                           <label className="text-xs font-semibold text-stone-700 dark:text-stone-300 block">
-                            Your Name <span className="text-[#EA580C]">*</span>
+                            Your Name <span className="text-[#2563EB]">*</span>
                           </label>
                           <div className="relative">
                             <input
@@ -481,7 +481,7 @@ export default function Contact() {
                               onChange={(e) =>
                                 setFormState({ ...formState, name: e.target.value })
                               }
-                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#181412]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#EA580C] dark:hover:border-[#F97316] focus:border-[#EA580C] dark:focus:border-[#F97316] focus:ring-4 focus:ring-[#EA580C]/15 dark:focus:ring-[#EA580C]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.12)] focus:shadow-[0_0_25px_rgba(234,88,12,0.2)] disabled:opacity-60"
+                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#0B1220]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#2563EB] dark:hover:border-[#14B8A6] focus:border-[#2563EB] dark:focus:border-[#14B8A6] focus:ring-4 focus:ring-[#2563EB]/15 dark:focus:ring-[#2563EB]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.12)] focus:shadow-[0_0_25px_rgba(37,99,235,0.2)] disabled:opacity-60"
                             />
                           </div>
                         </div>
@@ -501,7 +501,7 @@ export default function Contact() {
                               onChange={(e) =>
                                 setFormState({ ...formState, phone: e.target.value })
                               }
-                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#181412]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#EA580C] dark:hover:border-[#F97316] focus:border-[#EA580C] dark:focus:border-[#F97316] focus:ring-4 focus:ring-[#EA580C]/15 dark:focus:ring-[#EA580C]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.12)] focus:shadow-[0_0_25px_rgba(234,88,12,0.2)] disabled:opacity-60"
+                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#0B1220]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#2563EB] dark:hover:border-[#14B8A6] focus:border-[#2563EB] dark:focus:border-[#14B8A6] focus:ring-4 focus:ring-[#2563EB]/15 dark:focus:ring-[#2563EB]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.12)] focus:shadow-[0_0_25px_rgba(37,99,235,0.2)] disabled:opacity-60"
                             />
                           </div>
                         </div>
@@ -509,7 +509,7 @@ export default function Contact() {
                         {/* Email Address Input */}
                         <div className="space-y-1.5">
                           <label className="text-xs font-semibold text-stone-700 dark:text-stone-300 block">
-                            Your Email Address <span className="text-[#EA580C]">*</span>
+                            Your Email Address <span className="text-[#2563EB]">*</span>
                           </label>
                           <div className="relative">
                             <input
@@ -521,7 +521,7 @@ export default function Contact() {
                               onChange={(e) =>
                                 setFormState({ ...formState, email: e.target.value })
                               }
-                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#181412]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#EA580C] dark:hover:border-[#F97316] focus:border-[#EA580C] dark:focus:border-[#F97316] focus:ring-4 focus:ring-[#EA580C]/15 dark:focus:ring-[#EA580C]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.12)] focus:shadow-[0_0_25px_rgba(234,88,12,0.2)] disabled:opacity-60"
+                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#0B1220]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#2563EB] dark:hover:border-[#14B8A6] focus:border-[#2563EB] dark:focus:border-[#14B8A6] focus:ring-4 focus:ring-[#2563EB]/15 dark:focus:ring-[#2563EB]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.12)] focus:shadow-[0_0_25px_rgba(37,99,235,0.2)] disabled:opacity-60"
                             />
                           </div>
                         </div>
@@ -550,7 +550,7 @@ export default function Contact() {
                                 setFormState((prev) => ({ ...prev, service: e.target.value }));
                                 if (!isServiceOpen) setIsServiceOpen(true);
                               }}
-                              className="w-full pl-4 sm:pl-5 pr-20 py-3.5 sm:py-4 rounded-2xl border-2 border-stone-200 dark:border-white/10 hover:border-[#EA580C] dark:hover:border-[#F97316] focus:border-[#EA580C] dark:focus:border-[#F97316] focus:ring-4 focus:ring-[#EA580C]/15 dark:focus:ring-[#EA580C]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.12)] focus:shadow-[0_0_25px_rgba(234,88,12,0.2)] disabled:opacity-60 cursor-pointer"
+                              className="w-full pl-4 sm:pl-5 pr-20 py-3.5 sm:py-4 rounded-2xl border-2 border-stone-200 dark:border-white/10 hover:border-[#2563EB] dark:hover:border-[#14B8A6] focus:border-[#2563EB] dark:focus:border-[#14B8A6] focus:ring-4 focus:ring-[#2563EB]/15 dark:focus:ring-[#2563EB]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.12)] focus:shadow-[0_0_25px_rgba(37,99,235,0.2)] disabled:opacity-60 cursor-pointer"
                             />
 
                             <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
@@ -583,7 +583,7 @@ export default function Contact() {
                                   animate={{ opacity: 1, y: 0, scale: 1 }}
                                   exit={{ opacity: 0, y: -8, scale: 0.98 }}
                                   transition={{ duration: 0.15, ease: "easeOut" }}
-                                  className="absolute left-0 right-0 top-full mt-2 z-50 rounded-2xl bg-white dark:bg-[#151210] border-2 border-stone-200 dark:border-white/10 shadow-2xl backdrop-blur-xl overflow-hidden"
+                                  className="absolute left-0 right-0 top-full mt-2 z-50 rounded-2xl bg-white dark:bg-[#111B2E] border-2 border-stone-200 dark:border-white/10 shadow-2xl backdrop-blur-xl overflow-hidden"
                                 >                                  {/* Filter status header */}
                                   <div className="px-3.5 py-2 border-b border-stone-100 dark:border-white/5 bg-stone-50/80 dark:bg-white/[0.02] flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-400">
                                     <span className="font-medium flex items-center gap-1.5">
@@ -607,12 +607,12 @@ export default function Contact() {
                                           type="button"
                                           onClick={() => handleSelectService(srv)}
                                           className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between group cursor-pointer ${isSelected
-                                            ? "bg-[#EA580C]/10 dark:bg-[#EA580C]/20 font-semibold "
+                                            ? "bg-[#2563EB]/10 dark:bg-[#2563EB]/20 font-semibold "
                                             : "hover:bg-stone-100 dark:hover:bg-white/[0.05] text-stone-800 dark:text-stone-200"
                                             }`}
                                         >
                                           <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-stone-200/60 dark:bg-white/10 text-stone-600 dark:text-stone-400 group-hover:bg-[#EA580C]/20 group-hover:text-[#EA580C] shrink-0">
+                                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-stone-200/60 dark:bg-white/10 text-stone-600 dark:text-stone-400 group-hover:bg-[#2563EB]/20 group-hover:text-[#2563EB] shrink-0">
                                               {srv.num}
                                             </span>
                                             <div className="min-w-0">
@@ -625,7 +625,7 @@ export default function Contact() {
                                             </div>
                                           </div>
                                           {isSelected ? (
-                                            <Check className="w-4 h-4 text-[#EA580C] shrink-0" />
+                                            <Check className="w-4 h-4 text-[#2563EB] shrink-0" />
                                           ) : null}
                                         </button>
                                       );
@@ -642,7 +642,7 @@ export default function Contact() {
                                             setFormState((prev) => ({ ...prev, service: serviceSearchQuery.trim() }));
                                             setIsServiceOpen(false);
                                           }}
-                                          className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#EA580C] text-white hover:bg-[#EA580C]/90 transition-colors cursor-pointer"
+                                          className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-[#2563EB] text-white hover:bg-[#2563EB]/90 transition-colors cursor-pointer"
                                         >
                                           Use &ldquo;{serviceSearchQuery}&rdquo; as custom inquiry
                                         </button>
@@ -658,7 +658,7 @@ export default function Contact() {
                         {/* Message Textarea - Full width on all screen sizes */}
                         <div className="space-y-1.5 sm:col-span-2">
                           <label className="text-xs font-semibold text-stone-700 dark:text-stone-300 block">
-                            Your Message <span className="text-[#EA580C]">*</span>
+                            Your Message <span className="text-[#2563EB]">*</span>
                           </label>
                           <div className="relative">
                             <textarea
@@ -670,19 +670,19 @@ export default function Contact() {
                               onChange={(e) =>
                                 setFormState({ ...formState, message: e.target.value })
                               }
-                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#181412]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#EA580C] dark:hover:border-[#F97316] focus:border-[#EA580C] dark:focus:border-[#F97316] focus:ring-4 focus:ring-[#EA580C]/15 dark:focus:ring-[#EA580C]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(234,88,12,0.12)] focus:shadow-[0_0_25px_rgba(234,88,12,0.2)] resize-none disabled:opacity-60"
+                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-stone-50/70 dark:bg-[#0B1220]/80 border-2 border-stone-200 dark:border-white/10 hover:border-[#2563EB] dark:hover:border-[#14B8A6] focus:border-[#2563EB] dark:focus:border-[#14B8A6] focus:ring-4 focus:ring-[#2563EB]/15 dark:focus:ring-[#2563EB]/25 text-stone-900 dark:text-white placeholder:text-stone-400 dark:placeholder:text-stone-500 text-sm outline-none transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.12)] focus:shadow-[0_0_25px_rgba(37,99,235,0.2)] resize-none disabled:opacity-60"
                             />
                           </div>
                         </div>
                       </div>
 
-                      {/* Submit Button in #EA580C with hover animations */}
+                      {/* Submit Button in #2563EB with hover animations */}
                       <motion.button
                         type="submit"
                         disabled={loading}
                         whileHover={loading ? {} : { scale: 1.01 }}
                         whileTap={loading ? {} : { scale: 0.99 }}
-                        className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#EA580C] to-[#F97316] hover:from-[#c2410c] hover:to-[#ea580c] text-white font-bold text-sm sm:text-base tracking-wide transition-all duration-300 cursor-pointer disabled:opacity-70 mt-2 shadow-lg shadow-[#EA580C]/25 hover:shadow-orange-500/40 flex items-center justify-center gap-2 border border-orange-400/30"
+                        className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white font-bold text-sm sm:text-base tracking-wide transition-all duration-300 cursor-pointer disabled:opacity-70 mt-2 shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 flex items-center justify-center gap-2 border border-blue-400/30"
                       >
                         {loading ? (
                           <>

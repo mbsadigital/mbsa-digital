@@ -849,10 +849,10 @@ export default function Gsc() {
   return (
     <section
       id="analytics"
-      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 overflow-hidden"
     >
       {/* Ambient background glow accents */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] rounded-full bg-[#EA580C]/[0.08] dark:bg-[#EA580C]/[0.15] blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.15] blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -862,17 +862,20 @@ export default function Gsc() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-px bg-[#EA580C]" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#EA580C] dark:text-orange-400">
-                Analytics Progress
+              <span className="w-8 h-px bg-[#2563EB]" />
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-orange-400">
+                Verified Search &amp; Revenue Analytics
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
-              Category and {" "}
-              <span className="text-[#EA580C]">
-                Search &amp; Analytics Proof
+              Measurable Results.{" "}
+              <span className="text-[#2563EB]">
+                Verified by Live Data.
               </span>
             </h2>
+            <p className="mt-2.5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
+              Real screenshots and performance data from Google Search Console, GA4, and Google Business Profiles across UK client campaigns. Each case reflects a 4 to 12-month optimization timeline benchmarked against starting baselines.
+            </p>
           </div>
         </div>
 
@@ -882,8 +885,8 @@ export default function Gsc() {
             - Right: Client Selector (Selected Option Dropdown Way)
         ==================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 mb-6 sm:mb-8 pb-3 border-b border-stone-200/90 dark:border-white/15">
-          {/* Left Side: Primary Category Tabs */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto no-scrollbar py-1">
+          {/* Left Side: Primary Category Tabs (Horizontally scrollable with shrink-0 buttons) */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 w-full lg:w-auto">
             {CATEGORIES.map((cat) => {
               const Icon = cat.icon;
               const isCatActive = selectedCategory === cat.id;
@@ -894,12 +897,12 @@ export default function Gsc() {
                   type="button"
                   onClick={() => handleSelectCategory(cat.id)}
                   whileTap={{ scale: 0.96 }}
-                  className={`whitespace-nowrap inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none ${isCatActive
-                    ? "bg-[#EA580C] text-white border-[#EA580C] shadow-lg shadow-orange-500/40"
+                  className={`shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none touch-manipulation ${isCatActive
+                    ? "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-orange-500/40"
                     : "bg-stone-100/90 dark:bg-white/10 text-stone-700 dark:text-stone-200 border-stone-200/90 dark:border-white/20 hover:bg-stone-200/80 dark:hover:bg-white/20 hover:border-orange-400 hover:text-stone-950 dark:hover:text-white"
                     }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isCatActive ? "text-white" : "text-[#EA580C] dark:text-orange-400"}`} />
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isCatActive ? "text-white" : "text-[#2563EB] dark:text-orange-400"}`} />
                   <span>{cat.shortName}</span>
                 </motion.button>
               );
@@ -907,29 +910,31 @@ export default function Gsc() {
           </div>
 
           {/* Right Side: Client Filter (Selected Option Way) */}
-          <div className="flex items-center gap-2.5 self-start lg:self-center shrink-0">
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-orange-200 flex items-center gap-1.5">
-              <Building2 className="w-3.5 h-3.5 text-[#EA580C] dark:text-orange-400" />
-              Client:
-            </span>
+          <div className="flex items-center justify-between sm:justify-start gap-2.5 w-full lg:w-auto shrink-0 flex-wrap">
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-orange-200 flex items-center gap-1.5">
+                <Building2 className="w-3.5 h-3.5 text-[#2563EB] dark:text-orange-400" />
+                Client:
+              </span>
 
-            <div className="relative">
-              <select
-                value={selectedClient}
-                onChange={(e) => handleSelectClient(e.target.value)}
-                className="appearance-none pl-3.5 pr-8 py-2 rounded-xl bg-white dark:bg-[#151413] border-2 border-stone-200 dark:border-white/20 hover:border-orange-400 focus:border-orange-400 text-stone-900 dark:text-white text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer outline-none"
-              >
-                {CLIENTS.map((client) => (
-                  <option
-                    key={client.id}
-                    value={client.id}
-                    className="bg-white dark:bg-[#1a1918] text-stone-900 dark:text-white py-1.5"
-                  >
-                    {client.name}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="w-4 h-4 text-stone-500 dark:text-orange-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <div className="relative">
+                <select
+                  value={selectedClient}
+                  onChange={(e) => handleSelectClient(e.target.value)}
+                  className="appearance-none pl-3 pr-8 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-[#151413] border-2 border-stone-200 dark:border-white/20 hover:border-orange-400 focus:border-orange-400 text-stone-900 dark:text-white text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer outline-none touch-manipulation"
+                >
+                  {CLIENTS.map((client) => (
+                    <option
+                      key={client.id}
+                      value={client.id}
+                      className="bg-white dark:bg-[#1a1918] text-stone-900 dark:text-white py-1.5"
+                    >
+                      {client.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-stone-500 dark:text-orange-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             </div>
 
             {/* Proofs Count Badge */}
@@ -981,7 +986,7 @@ export default function Gsc() {
                   damping: 26,
                 }}
                 className={`absolute w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer ${isCenter
-                  ? "border-2 border-[#EA580C] shadow-[0_12px_45px_rgba(234,88,12,0.30)] ring-1 ring-orange-500/40"
+                  ? "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-orange-500/40"
                   : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75"
                   } bg-stone-950`}
               >
@@ -1012,7 +1017,7 @@ export default function Gsc() {
                         e.stopPropagation();
                         setIsLightboxOpen(true);
                       }}
-                      className="p-1.5 rounded-xl bg-black/75 hover:bg-[#EA580C] border border-white/20 text-white transition-colors pointer-events-auto cursor-pointer"
+                      className="p-1.5 rounded-xl bg-black/75 hover:bg-[#2563EB] border border-white/20 text-white transition-colors pointer-events-auto cursor-pointer"
                       title="Zoom Image"
                     >
                       <Maximize2 className="w-3.5 h-3.5" />
@@ -1037,7 +1042,7 @@ export default function Gsc() {
                 aria-label="Previous Slide in Category"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#EA580C] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-orange-400 backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-orange-400 backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
               </motion.button>
@@ -1051,7 +1056,7 @@ export default function Gsc() {
                 aria-label="Next Slide in Category"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#EA580C] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-orange-400 backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-orange-400 backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
               </motion.button>
@@ -1062,12 +1067,12 @@ export default function Gsc() {
         {/* ====================================================
             ACTIVE PROOF SUMMARY DETAIL CARD
         ==================================================== */}
-        <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-white/90 dark:bg-[#120F0D]/90 border border-stone-200/80 dark:border-white/10 shadow-sm backdrop-blur-md">
+        <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-white/90 dark:bg-[#111B2E]/90 border border-stone-200/80 dark:border-white/10 shadow-sm backdrop-blur-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-bold text-[#EA580C] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
                   {currentSlide.clientName} • {activeCategoryMeta.name} • Verified Proof
                 </span>
               </div>
@@ -1079,17 +1084,17 @@ export default function Gsc() {
               </p>
             </div>
 
-            {/* 4 Quick Stat Highlights */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 lg:gap-3 shrink-0">
+            {/* 4 Quick Stat Highlights (Responsive 2-col on mobile, 4-col on tablet/desktop) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 w-full lg:w-auto shrink-0">
               {currentSlide.highlights.map((item, hIdx) => (
                 <div
                   key={hIdx}
-                  className="p-2.5 rounded-xl bg-stone-50 dark:bg-[#171310] border border-stone-200/60 dark:border-white/5"
+                  className="p-2 sm:p-2.5 rounded-xl bg-stone-50 dark:bg-[#171310] border border-stone-200/60 dark:border-white/5 flex flex-col justify-between"
                 >
-                  <div className="text-[10px] text-stone-500 dark:text-stone-400 font-medium">
+                  <div className="text-[10px] sm:text-[11px] text-stone-500 dark:text-stone-400 font-medium truncate">
                     {item.label}
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white mt-0.5">
+                  <div className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white mt-0.5 break-words">
                     {item.value}
                   </div>
                 </div>
@@ -1145,13 +1150,13 @@ export default function Gsc() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={prevSlide}
-                      className="p-2 rounded-xl bg-white/10 hover:bg-[#EA580C] transition-colors cursor-pointer"
+                      className="p-2 rounded-xl bg-white/10 hover:bg-[#2563EB] transition-colors cursor-pointer"
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button
                       onClick={nextSlide}
-                      className="p-2 rounded-xl bg-white/10 hover:bg-[#EA580C] transition-colors cursor-pointer"
+                      className="p-2 rounded-xl bg-white/10 hover:bg-[#2563EB] transition-colors cursor-pointer"
                     >
                       <ChevronRight className="w-4 h-4" />
                     </button>

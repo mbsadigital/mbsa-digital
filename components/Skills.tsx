@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { ArrowUpRight, CheckCircle, Zap, Cpu, Sparkles, Radio } from "lucide-react";
+import { ArrowUpRight, CheckCircle } from "lucide-react";
 
 /* =========================================================
    TYPES & CONTRACTS
@@ -40,7 +40,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     overview:
       "Algorithmic discoverability pipelines, Core Web Vitals profiling, semantic LD graph clustering, and crawl-budget preservation.",
     image: "/banner/semrush.png",
-    accentColor: "#F97316",
+    accentColor: "#14B8A6",
     frequency: "98.4 kHz",
     proficiency: 96,
     busOutputY: 70,
@@ -82,7 +82,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     overview:
       "Edge-computed Next.js pipelines, TypeScript modular components, concurrent state sync, and sub-50ms interaction latencies.",
     image: "/banner/webdevelopement.png",
-    accentColor: "#EA580C",
+    accentColor: "#2563EB",
     frequency: "144.0 kHz",
     proficiency: 98,
     busOutputY: 155,
@@ -103,7 +103,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     overview:
       "High-frequency audience targeting, automated multi-platform advertising scripts, viral distribution funnels, and retention models.",
     image: "/banner/googleads.png",
-    accentColor: "#F97316",
+    accentColor: "#14B8A6",
     frequency: "86.2 kHz",
     proficiency: 89,
     busOutputY: 240,
@@ -145,7 +145,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     overview:
       "Context-aware LLM prompt chaining, autonomous agent loops, deterministic webhook runners, and self-healing data pipelines.",
     image: "/banner/aitools.png",
-    accentColor: "#EA580C",
+    accentColor: "#2563EB",
     frequency: "128.8 kHz",
     proficiency: 95,
     busOutputY: 325,
@@ -234,7 +234,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-[#FFF8F3] dark:bg-[#080706] text-stone-900 dark:text-white transition-colors duration-500"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24 bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500"
     >
       {/* Precision Ambient Grids & Specular Rays */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -248,7 +248,7 @@ export default function Skills() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute left-1/4 top-1/3 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#EA580C]/[0.10] blur-[150px]"
+          className="absolute left-1/4 top-1/3 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2563EB]/[0.10] blur-[150px]"
         />
         <motion.div
           animate={{
@@ -278,7 +278,7 @@ export default function Skills() {
         variants={sectionContainerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.05 }}
         className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
       >
         {/* 3-Column Layout: Left Content | Center Honeycomb Hive | Right Animated Dossier Card */}
@@ -287,8 +287,8 @@ export default function Skills() {
           {/* 1. LEFT SIDE: Title & Status */}
           <div className="flex flex-col items-center text-center lg:col-span-4 lg:items-start lg:text-left">
             <motion.div variants={leftItemVariants} className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-px bg-[#EA580C] dark:bg-[#F97316]" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#EA580C] dark:text-[#F97316]">
+              <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
                 TechStack
               </span>
             </motion.div>
@@ -299,7 +299,7 @@ export default function Skills() {
             >
               Honeycomb Reactors.
               <br />
-              <span className="text-[#EA580C]">
+              <span className="text-[#2563EB]">
                 Hardware-Grade Execution.
               </span>
             </motion.h2>
@@ -318,10 +318,10 @@ export default function Skills() {
             <motion.div variants={leftItemVariants} className="mt-8">
               <a
                 href="#contact"
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-stone-300 dark:border-white/20 bg-white/80 dark:bg-white/[0.04] px-7 py-3.5 text-xs font-bold backdrop-blur-xl transition-all duration-300 hover:border-[#EA580C] hover:bg-[#EA580C] hover:text-white hover:shadow-[0_0_40px_rgba(234,88,12,0.4)]"
+                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-7 py-3.5 text-xs font-bold bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
               >
-                <span>Let's Start Your Project</span>
-                <ArrowUpRight className="h-4 w-4 text-[#EA580C] transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
+                <span>Let&apos;s Start Your Project</span>
+                <ArrowUpRight className="h-4 w-4 text-white transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             </motion.div>
           </div>
@@ -331,7 +331,7 @@ export default function Skills() {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: true, amount: 0.05 }}
               className="relative flex w-full max-w-[340px] flex-col items-center justify-center py-4 sm:max-w-[400px]"
             >
 
@@ -398,7 +398,7 @@ export default function Skills() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 300, damping: 26 }}
-                className="relative overflow-hidden rounded-3xl border border-orange-200/80 bg-white dark:bg-[#141210] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/10 sm:p-8"
+                className="relative overflow-hidden rounded-3xl border border-orange-200/80 bg-white dark:bg-[#111B2E] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/10 sm:p-8"
               >
                 {/* High-tech Scanning Sweep Wave */}
                 <motion.div
@@ -410,7 +410,7 @@ export default function Skills() {
                     repeatDelay: 3.5,
                     ease: "easeInOut",
                   }}
-                  className="pointer-events-none absolute top-0 left-0 h-[2px] w-1/2 bg-gradient-to-r from-transparent via-[#EA580C] to-transparent"
+                  className="pointer-events-none absolute top-0 left-0 h-[2px] w-1/2 bg-gradient-to-r from-transparent via-[#2563EB] to-transparent"
                 />
 
                 {/* Glow Accents */}
@@ -442,8 +442,8 @@ export default function Skills() {
 
                 {/* Domain Category */}
                 <div className="mt-4 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#EA580C] animate-pulse" />
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#EA580C] dark:text-[#FB923C]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#2563EB] animate-pulse" />
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#2563EB] dark:text-[#FB923C]">
                     {activeSkill.domain}
                   </span>
                 </div>
@@ -468,10 +468,10 @@ export default function Skills() {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.12 + idx * 0.06, duration: 0.35, ease: "easeOut" }}
-                        className="flex items-center justify-between rounded-xl border border-black/[0.06] bg-black/[0.02] px-4 py-2.5 transition-all hover:border-[#EA580C]/40 hover:bg-black/[0.035] dark:border-white/[0.04] dark:bg-white/[0.02] dark:hover:border-[#EA580C]/40 dark:hover:bg-white/[0.04]"
+                        className="flex items-center justify-between rounded-xl border border-black/[0.06] bg-black/[0.02] px-4 py-2.5 transition-all hover:border-[#2563EB]/40 hover:bg-black/[0.035] dark:border-white/[0.04] dark:bg-white/[0.02] dark:hover:border-[#2563EB]/40 dark:hover:bg-white/[0.04]"
                       >
                         <div className="flex items-center gap-2.5">
-                          <CheckCircle className="h-4 w-4 shrink-0 text-[#EA580C]" />
+                          <CheckCircle className="h-4 w-4 shrink-0 text-[#2563EB]" />
                           <span className="text-xs sm:text-sm font-bold text-stone-800 dark:text-white">
                             {item.tool}
                           </span>
@@ -506,6 +506,9 @@ function HexCell({
   isSelected: boolean;
   onSelect: () => void;
 }) {
+  const hexClip =
+    "polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)";
+
   return (
     <motion.button
       type="button"
@@ -513,74 +516,96 @@ function HexCell({
       variants={magneticCellVariants}
       onClick={onSelect}
       onMouseEnter={onSelect}
-      whileHover={{ scale: 1.08, zIndex: 30 }}
-      whileTap={{ scale: 0.94 }}
-      className={`group relative h-24 w-24 min-[380px]:h-28 min-[380px]:w-28 cursor-pointer select-none sm:h-36 sm:w-36 ${isSelected ? "z-20" : "z-10"
+      whileHover={{ scale: 1.045, zIndex: 30 }}
+      whileTap={{ scale: 0.97 }}
+      aria-label={`View ${skill.name} skills`}
+      aria-pressed={isSelected}
+      className={`group relative h-24 w-24 min-[380px]:h-28 min-[380px]:w-28 sm:h-36 sm:w-36 cursor-pointer select-none outline-none focus-visible:outline-none ${isSelected ? "z-20" : "z-10"
         }`}
     >
-      {/* Outer Breathing Pulsing Aura for Selected Cell */}
-      {isSelected && (
-        <motion.div
-          animate={{
-            scale: [1, 1.18, 1],
-            opacity: [0.7, 0.25, 0.7],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 2.4,
-            ease: "easeInOut",
-          }}
-          className="absolute -inset-2 rounded-full bg-[#EA580C]/30 blur-xl pointer-events-none"
-        />
-      )}
-
-      {/* Hex Outer Border Shell (Only shown on active selection) */}
-      {isSelected && (
-        <div
-          className="absolute inset-0 bg-gradient-to-tr from-[#EA580C] via-[#FB923C] to-amber-200 drop-shadow-[0_10px_25px_rgba(234,88,12,0.45)] dark:to-white dark:drop-shadow-[0_10px_25px_rgba(234,88,12,0.6)] transition-all duration-500"
-          style={{
-            clipPath:
-              "polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)",
-          }}
-        />
-      )}
-
-      {/* Hex Interior Chamber */}
+      {/* Hexagon chamber: background changes on selection, never a hover border */}
       <div
-        className={`absolute ${isSelected ? "inset-[2px]" : "inset-0"} flex flex-col items-center justify-center backdrop-blur-xl transition-colors duration-300 ${isSelected
-          ? "bg-white dark:bg-[#111322]"
-          : "bg-[#f5f3ef] group-hover:bg-[#ede9e3] dark:bg-[#090b14] dark:group-hover:bg-[#0e101c]"
+        className={`absolute inset-0 isolate overflow-hidden backdrop-blur-xl transition-all duration-500 ${isSelected
+            ? "bg-[#2563EB]/[0.13] dark:bg-[#2563EB]/[0.18] shadow-[0_0_32px_rgba(37,99,235,0.12)]"
+            : "bg-[#f5f3ef] dark:bg-[#0b0b0d]"
           }`}
-        style={{
-          clipPath:
-            "polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)",
-        }}
+        style={{ clipPath: hexClip }}
       >
-        {/* Floating Image Badge */}
+        {/* Fine technical line pattern contained inside the hexagon */}
         <div
-          className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 transition-all duration-300 sm:h-14 sm:w-14 sm:rounded-2xl ${isSelected
-            ? "ring-2 ring-[#EA580C]/60 shadow-[0_0_15px_rgba(234,88,12,0.35)]"
-            : "shadow-sm group-hover:scale-105 group-hover:shadow-md"
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${isSelected ? "opacity-100" : "opacity-45"
             }`}
-        >
-          <Image
-            src={skill.image}
-            alt={skill.name}
-            width={48}
-            height={48}
-            className="h-full w-full object-contain"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(37,99,235,0.14) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(37,99,235,0.14) 1px, transparent 1px),
+              radial-gradient(circle at 50% 42%, rgba(37,99,235,${isSelected ? "0.22" : "0.07"
+              }), transparent 62%)
+            `,
+            backgroundSize: "14px 14px, 14px 14px, 100% 100%",
+          }}
+        />
+
+        {/* Subtle animated scan line stays inside the shape */}
+        {isSelected && (
+          <motion.div
+            aria-hidden="true"
+            initial={{ y: "-100%", opacity: 0 }}
+            animate={{ y: ["-100%", "180%"], opacity: [0, 0.65, 0] }}
+            transition={{
+              duration: 2.8,
+              repeat: Infinity,
+              repeatDelay: 1.8,
+              ease: "easeInOut",
+            }}
+            className="pointer-events-none absolute left-[12%] right-[12%] h-8 bg-gradient-to-b from-transparent via-[#2563EB]/20 to-transparent"
+          />
+        )}
+
+        {/* Soft center illumination — no outline or border on hover */}
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-[18%] rounded-full blur-2xl transition-all duration-500 ${isSelected
+              ? "bg-[#2563EB]/25 opacity-100"
+              : "bg-[#2563EB]/[0.06] opacity-60 group-hover:bg-[#2563EB]/[0.10]"
+            }`}
+        />
+
+        <div className="relative z-10 flex h-full flex-col items-center justify-center">
+          <div
+            className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 transition-transform duration-300 sm:h-14 sm:w-14 sm:rounded-2xl ${isSelected
+                ? "scale-105 shadow-[0_6px_22px_rgba(37,99,235,0.18)]"
+                : "shadow-sm group-hover:scale-105"
+              }`}
+          >
+            <Image
+              src={skill.image}
+              alt={skill.name}
+              width={48}
+              height={48}
+              className="h-full w-full object-contain"
+            />
+          </div>
+
+          <span
+            className={`mt-1.5 font-mono text-[9px] font-black uppercase tracking-wider transition-colors duration-300 sm:text-[10px] ${isSelected
+                ? "text-[#2563EB] dark:text-[#FB923C]"
+                : "text-stone-500 dark:text-stone-400 group-hover:text-[#2563EB] dark:group-hover:text-[#FB923C]"
+              }`}
+          >
+            {skill.shortName}
+          </span>
+
+          {/* Small center indicator instead of an outer border */}
+          <span
+            aria-hidden="true"
+            className={`mt-1 h-1 rounded-full transition-all duration-300 ${isSelected
+                ? "w-5 bg-[#2563EB]"
+                : "w-1 bg-stone-300 dark:bg-white/20 group-hover:w-3 group-hover:bg-[#2563EB]/70"
+              }`}
           />
         </div>
-
-        {/* Short ID */}
-        <span
-          className={`mt-1.5 font-mono text-[9px] font-black uppercase tracking-wider transition-colors duration-300 sm:text-[10px] ${isSelected
-            ? "text-[#EA580C] dark:text-[#FB923C]"
-            : "text-stone-500 group-hover:text-stone-800 dark:text-stone-400 dark:group-hover:text-stone-200"
-            }`}
-        >
-          {skill.shortName}
-        </span>
       </div>
     </motion.button>
   );

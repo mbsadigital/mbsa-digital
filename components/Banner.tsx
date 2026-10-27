@@ -110,7 +110,7 @@ export const Banner: React.FC<BannerProps> = ({
       style={{ "--marquee-speed": `${speed}s` } as React.CSSProperties}
     >
       {/* Subtle dotted grid aura behind the ribbon matching the reference design */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(#EA580C_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.06] bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:22px_22px] pointer-events-none" />
 
       {/* Infinite Marquee Track Container with Left and Right Side Cover */}
       <div
@@ -207,10 +207,10 @@ export const Banner: React.FC<BannerProps> = ({
         </div>
 
         {/* Left Side Cover Overlay (Deep multi-stop gradient) */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 sm:w-48 md:w-64 lg:w-80 bg-gradient-to-r from-white via-white/85 dark:from-[#080706] dark:via-[#080706]/85 to-transparent z-20" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 sm:w-48 md:w-64 lg:w-80 bg-gradient-to-r from-white via-white/85 dark:from-[#0B1220] dark:via-[#0B1220]/85 to-transparent z-20" />
 
         {/* Right Side Cover Overlay (Deep multi-stop gradient) */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 sm:w-48 md:w-64 lg:w-80 bg-gradient-to-l from-white via-white/85 dark:from-[#080706] dark:via-[#080706]/85 to-transparent z-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 sm:w-48 md:w-64 lg:w-80 bg-gradient-to-l from-white via-white/85 dark:from-[#0B1220] dark:via-[#0B1220]/85 to-transparent z-20" />
       </div>
     </div>
   );

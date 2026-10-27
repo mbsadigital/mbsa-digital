@@ -23,7 +23,7 @@ const GLOBAL_NODES: CityNode[] = [
   { name: "Frankfurt", lat: 50.1109, lon: 8.6821, region: "Europe", colorDark: "#818CF8", colorLight: "#4F46E5", glow: "#6366F1" },
   { name: "Tokyo", lat: 35.6762, lon: 139.6503, region: "Asia", colorDark: "#F43F5E", colorLight: "#E11D48", glow: "#FB7185" },
   { name: "Singapore", lat: 1.3521, lon: 103.8198, region: "Asia", colorDark: "#34D399", colorLight: "#059669", glow: "#10B981" },
-  { name: "Mumbai", lat: 19.076, lon: 72.8777, region: "Asia", colorDark: "#FB923C", colorLight: "#EA580C", glow: "#F97316" },
+  { name: "Mumbai", lat: 19.076, lon: 72.8777, region: "Asia", colorDark: "#FB923C", colorLight: "#2563EB", glow: "#14B8A6" },
   { name: "Dubai", lat: 25.2048, lon: 55.2708, region: "Mideast", colorDark: "#FBBF24", colorLight: "#D97706", glow: "#F59E0B" },
   { name: "Sydney", lat: -33.8688, lon: 151.2093, region: "Oceania", colorDark: "#2DD4BF", colorLight: "#0D9488", glow: "#14B8A6" },
   { name: "São Paulo", lat: -23.5505, lon: -46.6333, region: "Americas", colorDark: "#C084FC", colorLight: "#9333EA", glow: "#A855F7" },
@@ -44,7 +44,7 @@ const CONNECTIONS: Connection[] = [
   { from: 1, to: 2, colorDark: "#818CF8", colorLight: "#4F46E5", glow: "#6366F1" }, // NY - London (Indigo)
   { from: 2, to: 3, colorDark: "#A78BFA", colorLight: "#7C3AED", glow: "#8B5CF6" }, // London - Frankfurt (Purple)
   { from: 3, to: 7, colorDark: "#FBBF24", colorLight: "#D97706", glow: "#F59E0B" }, // Frankfurt - Dubai (Gold)
-  { from: 7, to: 6, colorDark: "#FB923C", colorLight: "#EA580C", glow: "#F97316" }, // Dubai - Mumbai (Orange)
+  { from: 7, to: 6, colorDark: "#FB923C", colorLight: "#2563EB", glow: "#14B8A6" }, // Dubai - Mumbai (Orange)
   { from: 6, to: 5, colorDark: "#34D399", colorLight: "#059669", glow: "#10B981" }, // Mumbai - Singapore (Emerald)
   { from: 5, to: 4, colorDark: "#F43F5E", colorLight: "#E11D48", glow: "#FB7185" }, // Singapore - Tokyo (Coral)
   { from: 4, to: 11, colorDark: "#60A5FA", colorLight: "#2563EB", glow: "#3B82F6" }, // Tokyo - Seoul (Ice Blue)
@@ -125,7 +125,7 @@ function getRegionColors(lat: number, lon: number): { dark: string; light: strin
   }
   // Asia: Cyber Amber / Solar Orange
   if (l > 45 && l <= 145 && lat >= 5) {
-    return { dark: "#FB923C", light: "#EA580C", glow: "#F97316" };
+    return { dark: "#FB923C", light: "#2563EB", glow: "#14B8A6" };
   }
   // Australia / Oceania: Neon Emerald / Mint
   return { dark: "#34D399", light: "#059669", glow: "#10B981" };
@@ -258,7 +258,7 @@ export default function DigitalEarth() {
     // Floating Stardust / Cosmic Particles
     const NUM_STARS = 140;
     const stars: { x: number; y: number; s: number; a: number; speed: number; hue: string }[] = [];
-    const starHues = ["#38BDF8", "#F97316", "#818CF8", "#FBBF24", "#34D399"];
+    const starHues = ["#38BDF8", "#14B8A6", "#818CF8", "#FBBF24", "#34D399"];
 
     for (let i = 0; i < NUM_STARS; i++) {
       stars.push({
@@ -337,12 +337,12 @@ export default function DigitalEarth() {
         globeRadius * 1.5
       );
       if (isDark) {
-        rightGlow.addColorStop(0, "rgba(249, 115, 22, 0.20)");
-        rightGlow.addColorStop(0.5, "rgba(234, 88, 12, 0.06)");
+        rightGlow.addColorStop(0, "rgba(20, 184, 166, 0.20)");
+        rightGlow.addColorStop(0.5, "rgba(37, 99, 235, 0.06)");
         rightGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
       } else {
-        rightGlow.addColorStop(0, "rgba(234, 88, 12, 0.16)");
-        rightGlow.addColorStop(0.5, "rgba(249, 115, 22, 0.04)");
+        rightGlow.addColorStop(0, "rgba(37, 99, 235, 0.16)");
+        rightGlow.addColorStop(0.5, "rgba(20, 184, 166, 0.04)");
         rightGlow.addColorStop(1, "rgba(250, 248, 245, 0)");
       }
       ctx.fillStyle = rightGlow;
@@ -425,7 +425,7 @@ export default function DigitalEarth() {
       ctx.rotate(0.55 - mouseX * 0.2);
       ctx.beginPath();
       ctx.ellipse(0, 0, globeRadius * 1.36, globeRadius * 0.38, 0, 0, Math.PI * 2);
-      ctx.strokeStyle = isDark ? "rgba(249, 115, 22, 0.40)" : "rgba(217, 119, 6, 0.50)";
+      ctx.strokeStyle = isDark ? "rgba(20, 184, 166, 0.40)" : "rgba(217, 119, 6, 0.50)";
       ctx.lineWidth = 1.2;
       ctx.setLineDash([8, 12]);
       ctx.lineDashOffset = pulseTime * 18;
@@ -435,7 +435,7 @@ export default function DigitalEarth() {
       const satAngle2 = -pulseTime * 0.9;
       const sat2X = Math.cos(satAngle2) * globeRadius * 1.36;
       const sat2Y = Math.sin(satAngle2) * globeRadius * 0.38;
-      ctx.fillStyle = isDark ? "#FB923C" : "#EA580C";
+      ctx.fillStyle = isDark ? "#FB923C" : "#2563EB";
       ctx.shadowColor = "#FB923C";
       ctx.shadowBlur = 12;
       ctx.beginPath();

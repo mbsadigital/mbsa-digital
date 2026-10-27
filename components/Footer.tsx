@@ -135,15 +135,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#FFF8F3] dark:bg-[#14100D] text-stone-900 dark:text-white transition-colors duration-500 border-t-2 border-orange-500/30 overflow-hidden">
+    <footer className="relative bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 border-t-2 border-orange-500/30 overflow-hidden">
       {/* Top illuminated orange beam line */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#EA580C] to-transparent shadow-[0_0_20px_rgba(234,88,12,0.9)]" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#2563EB] to-transparent shadow-[0_0_20px_rgba(37,99,235,0.9)]" />
 
       {/* Atmospheric ambient backdrop lights */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 -translate-x-1/2 w-[520px] h-[220px] bg-orange-600/[0.06] dark:bg-orange-600/[0.10] blur-[140px]" />
         <div className="absolute top-1/2 right-1/4 translate-x-1/2 w-[480px] h-[240px] bg-cyan-500/[0.04] dark:bg-cyan-500/[0.07] blur-[150px]" />
-        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.035] bg-[linear-gradient(rgba(234,88,12,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(234,88,12,0.4)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.035] bg-[linear-gradient(rgba(37,99,235,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.4)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
@@ -157,12 +157,12 @@ export default function Footer() {
           <div className="lg:col-span-4 flex flex-col justify-between">
             <div>
               <Link href="/" className="group inline-flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#EA580C]/10 dark:bg-[#EA580C]/20 border border-orange-500/40 shadow-[0_0_20px_rgba(234,88,12,0.30)] group-hover:scale-105 transition-transform duration-300">
-                  <span className="text-sm font-black text-[#EA580C] dark:text-[#F97316]">DM</span>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#2563EB]/10 dark:bg-[#2563EB]/20 border border-orange-500/40 shadow-[0_0_20px_rgba(37,99,235,0.30)] group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-sm font-black text-[#2563EB] dark:text-[#14B8A6]">MBSA</span>
                 </div>
                 <div>
                   <span className="text-base font-extrabold tracking-tight text-stone-900 dark:text-white">
-                    DM<span className="text-[#EA580C]">.</span>
+                    MBSA<span className="text-[#2563EB]">.</span>
                   </span>
                   <p className="text-[8.5px] font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400">
                     DIGITAL MARKETING & SEO SPECIALIST
@@ -223,15 +223,15 @@ export default function Footer() {
 
           {/* COLUMN 2: Quick Navigation & All Pages (Col 5 to 7) */}
           <div className="lg:col-span-3">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#EA580C] dark:text-[#F97316] mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB] dark:text-[#14B8A6] mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
               Navigation &amp; Pages
             </h3>
             <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5 sm:gap-2 text-xs font-medium text-stone-600 dark:text-stone-300">
               <li>
                 <Link
                   href="/"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Home</span>
@@ -240,7 +240,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Services Directory</span>
@@ -249,7 +249,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/projects"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Case Studies &amp; Work</span>
@@ -258,7 +258,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Articles &amp; Blog</span>
@@ -267,7 +267,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/blog/create"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Write New Article</span>
@@ -275,8 +275,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#about"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  href="/about"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>About Profile</span>
@@ -284,8 +284,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#analytics"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  href="/analytics"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Live GSC Analytics</span>
@@ -293,8 +293,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#tools"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  href="/skills"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Skills &amp; Tools</span>
@@ -303,7 +303,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#faq"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>FAQ</span>
@@ -311,8 +311,8 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/#contact"
-                  className="group inline-flex items-center gap-1.5 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors"
+                  href="/contact"
+                  className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
                   <span>Contact &amp; Discuss</span>
@@ -323,43 +323,43 @@ export default function Footer() {
 
           {/* COLUMN 3: Core Capabilities & Specializations (Col 8 to 9) */}
           <div className="lg:col-span-2">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#EA580C] dark:text-[#F97316] mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB] dark:text-[#14B8A6] mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
               Expertise
             </h3>
             <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5 sm:gap-2 text-xs font-medium text-stone-600 dark:text-stone-300">
               <li>
-                <Link href="/services?id=technical-seo" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=technical-seo" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   Technical SEO Audits
                 </Link>
               </li>
               <li>
-                <Link href="/services?id=gsc-analytics" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=gsc-analytics" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   Search Console (GSC)
                 </Link>
               </li>
               <li>
-                <Link href="/services?id=competitor-intel" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=competitor-intel" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   SEMrush &amp; Ahrefs Intel
                 </Link>
               </li>
               <li>
-                <Link href="/services?id=cro-vitals" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=cro-vitals" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   Core Web Vitals &amp; CRO
                 </Link>
               </li>
               <li>
-                <Link href="/services?id=nextjs-dev" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=nextjs-dev" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   Next.js Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/services?id=paid-ads" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=paid-ads" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   Google &amp; Meta PPC Ads
                 </Link>
               </li>
               <li>
-                <Link href="/services?id=ai-workflows" className="hover:text-[#EA580C] dark:hover:text-white transition-colors block">
+                <Link href="/services?id=ai-workflows" className="hover:text-[#2563EB] dark:hover:text-white transition-colors block">
                   AI &amp; Workflow Automations
                 </Link>
               </li>
@@ -368,8 +368,8 @@ export default function Footer() {
 
           {/* COLUMN 4: Contact & Live Availability Card (Col 10 to 12) */}
           <div className="lg:col-span-3">
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#EA580C] dark:text-[#F97316] mb-4 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
+            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-[#2563EB] dark:text-[#14B8A6] mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
               Contact
             </h3>
 
@@ -378,34 +378,42 @@ export default function Footer() {
                 href="mailto:mbsadigitalsolutions@gmail.com"
                 className="flex items-start gap-2.5 p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 hover:border-orange-500/50 transition-colors group"
               >
-                <Mail className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
-                <div className="overflow-hidden">
+                <Mail className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                <div className="overflow-hidden min-w-0">
                   <span className="block text-[10px] font-bold uppercase text-stone-400 dark:text-stone-500">
                     Direct Email
                   </span>
-                  <span className="font-semibold text-stone-800 dark:text-stone-200 group-hover:text-[#EA580C] transition-colors truncate block">
+                  <span className="font-semibold text-stone-800 dark:text-stone-200 group-hover:text-[#2563EB] transition-colors break-all block">
                     mbsadigitalsolutions@gmail.com
                   </span>
                 </div>
               </a>
 
-              <a
-                href="+919574696932/+447393107859"
-                className="flex items-start gap-2.5 p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 hover:border-orange-500/50 transition-colors group"
-              >
-                <Phone className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
-                <div>
-                  <span className="block text-[10px] font-bold uppercase text-stone-400 dark:text-stone-500">
+              <div className="p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Phone className="w-4 h-4 text-[#2563EB] shrink-0" />
+                  <span className="text-[10px] font-bold uppercase text-stone-400 dark:text-stone-500">
                     Phone / WhatsApp
                   </span>
-                  <span className="font-semibold text-stone-800 dark:text-stone-200 group-hover:text-[#EA580C] transition-colors">
-                    +919574696932/+447393107859
-                  </span>
                 </div>
-              </a>
+                <div className="flex flex-col gap-1 pl-6">
+                  <a
+                    href="tel:+919574696932"
+                    className="font-semibold text-stone-800 dark:text-stone-200 hover:text-[#2563EB] transition-colors text-xs"
+                  >
+                    +91 95746 96932 (IN)
+                  </a>
+                  <a
+                    href="tel:+447393107859"
+                    className="font-semibold text-stone-800 dark:text-stone-200 hover:text-[#2563EB] transition-colors text-xs"
+                  >
+                    +44 7393 107859 (UK)
+                  </a>
+                </div>
+              </div>
 
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-stone-100/80 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10">
-                <Clock className="w-4 h-4 text-[#EA580C] shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
                 <div>
                   <span className="block text-[10px] font-bold uppercase text-stone-400 dark:text-stone-500">
                     Turnaround Time
@@ -447,7 +455,7 @@ export default function Footer() {
                 rounded-full
                 bg-stone-200/60
                 dark:bg-white/10
-                hover:bg-[#EA580C]
+                hover:bg-[#2563EB]
                 text-stone-700
                 dark:text-stone-300
                 hover:text-white
@@ -457,7 +465,7 @@ export default function Footer() {
                 duration-300
                 cursor-pointer
                 shadow-sm
-                hover:shadow-[0_4px_20px_rgba(234,88,12,0.4)]
+                hover:shadow-[0_4px_20px_rgba(37,99,235,0.4)]
                 hover:-translate-y-0.5
               "
               aria-label="Back to top"

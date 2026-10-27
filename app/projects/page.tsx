@@ -42,11 +42,11 @@ export default function AllProjectsPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#080706] text-stone-900 dark:text-white selection:bg-[#EA580C]/25 selection:text-[#EA580C] transition-colors duration-500">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white selection:bg-[#2563EB]/25 selection:text-[#2563EB] transition-colors duration-500">
       {/* Background ambient glows */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute top-10 right-1/4 w-[500px] h-[500px] rounded-full bg-[#EA580C]/[0.07] dark:bg-[#EA580C]/[0.10] blur-[150px]" />
-        <div className="absolute bottom-1/3 left-10 w-[450px] h-[450px] rounded-full bg-[#C2410C]/[0.06] dark:bg-[#C2410C]/[0.08] blur-[150px]" />
+        <div className="absolute top-10 right-1/4 w-[500px] h-[500px] rounded-full bg-[#2563EB]/[0.07] dark:bg-[#2563EB]/[0.10] blur-[150px]" />
+        <div className="absolute bottom-1/3 left-10 w-[450px] h-[450px] rounded-full bg-[#1D4ED8]/[0.06] dark:bg-[#1D4ED8]/[0.08] blur-[150px]" />
       </div>
 
       {/* MAIN CONTAINER */}
@@ -55,20 +55,20 @@ export default function AllProjectsPage() {
         <div className="flex items-center gap-2 text-xs font-mono text-stone-500 mb-6">
           <Link
             href="/"
-            className="hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors flex items-center gap-1"
+            className="hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors flex items-center gap-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Home</span>
           </Link>
           <ChevronRight className="w-3 h-3 text-stone-400" />
-          <span className="text-[#EA580C] font-semibold">Projects Portfolio</span>
+          <span className="text-[#2563EB] font-semibold">Projects Portfolio</span>
         </div>
 
         {/* SECTION HEADER */}
         <div className="mb-12">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#EA580C] dark:text-[#F97316] mb-4">
-            <span className="w-6 h-px bg-[#EA580C] dark:bg-[#F97316]" />
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-[#14B8A6] mb-4">
+            <span className="w-6 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
             <span>PORTFOLIO & CASE STUDIES</span>
           </div>
 
@@ -76,7 +76,7 @@ export default function AllProjectsPage() {
             <div className="max-w-3xl">
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] text-stone-900 dark:text-white mb-4">
                 All Projects &amp;<br />
-                <span className="bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(234,88,12,0.35)]">
+                <span className="bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(37,99,235,0.35)]">
                   Growth Case Studies.
                 </span>
               </h1>
@@ -107,7 +107,7 @@ export default function AllProjectsPage() {
                 border-orange-500/15
                 dark:border-white/10
                 bg-white/90
-                dark:bg-[#120F0D]/90
+                dark:bg-[#111B2E]/90
                 hover:border-orange-500/60
                 shadow-md
                 dark:shadow-[0_12px_35px_rgba(0,0,0,0.5)]
@@ -135,7 +135,7 @@ export default function AllProjectsPage() {
 
                   {/* Floating Metric Pill on hover */}
                   <div className="absolute bottom-3 right-3 opacity-90 group-hover:opacity-100 transition-opacity">
-                    <span className="px-2 py-1 rounded-md text-[9px] font-mono font-bold bg-black/70 backdrop-blur-md text-[#F97316] border border-orange-500/30">
+                    <span className="px-2 py-1 rounded-md text-[9px] font-mono font-bold bg-black/70 backdrop-blur-md text-[#14B8A6] border border-orange-500/30">
                       {project.heroMetric}
                     </span>
                   </div>
@@ -148,7 +148,7 @@ export default function AllProjectsPage() {
                     {project.tools.slice(0, 3).map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-2 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-[#EA580C]/15 text-[#EA580C] dark:text-[#F97316] border border-orange-200/60 dark:border-[#EA580C]/30"
+                        className="px-2 py-0.5 rounded-md text-[8px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-[#2563EB]/15 text-[#2563EB] dark:text-[#14B8A6] border border-orange-200/60 dark:border-[#2563EB]/30"
                       >
                         {tag}
                       </span>
@@ -157,11 +157,11 @@ export default function AllProjectsPage() {
 
                   {/* Title & Category */}
                   <Link href={`/projects/${project.id}`}>
-                    <h3 className="text-base font-bold text-stone-900 dark:text-white group-hover:text-[#EA580C] dark:group-hover:text-[#F97316] transition-colors">
+                    <h3 className="text-base font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors">
                       {project.title}
                     </h3>
                   </Link>
-                  <div className="text-[10px] font-bold text-[#EA580C] dark:text-[#F97316] uppercase tracking-wider mb-2">
+                  <div className="text-[10px] font-bold text-[#2563EB] dark:text-[#14B8A6] uppercase tracking-wider mb-2">
                     {project.category}
                   </div>
 
@@ -181,7 +181,7 @@ export default function AllProjectsPage() {
                       href={project.siteUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-stone-600 dark:text-stone-300 hover:text-[#EA580C] dark:hover:text-[#F97316] transition-colors py-1 cursor-pointer"
+                      className="inline-flex items-center gap-1 text-stone-600 dark:text-stone-300 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors py-1 cursor-pointer"
                       title={`Visit live website for ${project.title}`}
                     >
                       <span>Visit Site</span>
@@ -194,7 +194,7 @@ export default function AllProjectsPage() {
                   {/* Bottom Right: View Case Study */}
                   <Link
                     href={`/projects/${project.id}`}
-                    className="inline-flex items-center gap-1 text-[#EA580C] dark:text-[#F97316] hover:text-[#C2410C] dark:hover:text-[#FB923C] transition-colors py-1 group/btn"
+                    className="inline-flex items-center gap-1 text-[#2563EB] dark:text-[#14B8A6] hover:text-[#1D4ED8] dark:hover:text-[#FB923C] transition-colors py-1 group/btn"
                   >
                     <span>View Case Study</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
@@ -207,7 +207,7 @@ export default function AllProjectsPage() {
 
         {/* Empty Search Fallback */}
         {filteredProjects.length === 0 && (
-          <div className="text-center py-20 bg-white dark:bg-[#120F0D] rounded-3xl border border-stone-200 dark:border-white/10 p-8">
+          <div className="text-center py-20 bg-white dark:bg-[#111B2E] rounded-3xl border border-stone-200 dark:border-white/10 p-8">
             <p className="text-base font-bold text-stone-900 dark:text-white mb-2">
               No projects found matching &ldquo;{searchQuery}&rdquo;
             </p>
@@ -220,7 +220,7 @@ export default function AllProjectsPage() {
                 setSearchQuery("");
                 setSelectedCategory("ALL");
               }}
-              className="px-5 py-2 rounded-full bg-[#EA580C] text-white text-xs font-bold cursor-pointer"
+              className="px-5 py-2 rounded-full bg-[#2563EB] text-white text-xs font-bold cursor-pointer"
             >
               Reset Filters
             </button>
@@ -230,7 +230,7 @@ export default function AllProjectsPage() {
       </main>
 
       {/* CTA SECTION */}
-      <section className="relative z-10 py-16 bg-[#FAF8F5] dark:bg-[#080706] border-t border-stone-200/80 dark:border-white/5">
+      <section className="relative z-10 py-16 bg-[#F8FAFC] dark:bg-[#0B1220] border-t border-stone-200/80 dark:border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white mb-4">
             Need High-Impact Growth For Your Brand?
@@ -241,7 +241,7 @@ export default function AllProjectsPage() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/#contact"
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#C2410C] hover:to-[#9A3412] text-white text-sm font-bold shadow-lg shadow-orange-600/30 transition"
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
             >
               Get In Touch
             </Link>

@@ -1377,7 +1377,7 @@ function ServicesContent() {
               {/* Big Main Headline */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] text-stone-900 dark:text-white">
                 Services We Provide &amp;<br />
-                <span className="relative inline-block text-[#EA580C]">
+                <span className="relative inline-block text-[#2563EB]">
                   Growth Frameworks.
                 </span>
               </h1>
@@ -1397,7 +1397,7 @@ function ServicesContent() {
               <motion.div
                 whileHover={{ y: -6, rotateX: 2, rotateY: -3 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-full max-w-md rounded-3xl bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 p-5 sm:p-6 shadow-xl relative overflow-hidden backdrop-blur-xl"
+                className="w-full max-w-md rounded-3xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 p-5 sm:p-6 shadow-xl relative overflow-hidden backdrop-blur-xl"
               >
                 {/* Browser top controls */}
                 <div className="flex items-center justify-between border-b border-stone-200/60 dark:border-white/10 pb-4 mb-4">
@@ -1616,12 +1616,12 @@ function ServicesContent() {
                       justify-between
                       min-h-[530px] sm:min-h-[580px] lg:min-h-[610px]
                       w-full
-                      bg-white dark:bg-[#120F0D]
+                      bg-white dark:bg-[#111B2E]
                       cursor-pointer
                       overflow-hidden
                       ${isSelected
-                        ? "border-[#EA580C] dark:border-[#EA580C] ring-2 ring-orange-500/25 shadow-2xl bg-orange-500/[0.03] dark:bg-orange-500/[0.05] -translate-y-1.5"
-                        : "border-stone-200/80 dark:border-white/10 hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:bg-orange-500/[0.02] dark:hover:bg-white/[0.03] hover:shadow-[0_20px_50px_rgba(234,88,12,0.12),0_0_30px_rgba(234,88,12,0.06)] dark:hover:shadow-[0_22px_50px_rgba(0,0,0,0.6),0_0_30px_rgba(234,88,12,0.15)]"
+                        ? "border-[#2563EB] dark:border-[#2563EB] ring-2 ring-orange-500/25 shadow-2xl bg-orange-500/[0.03] dark:bg-orange-500/[0.05] -translate-y-1.5"
+                        : "border-stone-200/80 dark:border-white/10 hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:bg-orange-500/[0.02] dark:hover:bg-white/[0.03] hover:shadow-[0_20px_50px_rgba(37,99,235,0.12),0_0_30px_rgba(37,99,235,0.06)] dark:hover:shadow-[0_22px_50px_rgba(0,0,0,0.6),0_0_30px_rgba(37,99,235,0.15)]"
                       }
                     `}
                   >
@@ -1630,11 +1630,11 @@ function ServicesContent() {
 
                     {/* Subtle top accent bar if selected */}
                     {isSelected && (
-                      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#EA580C] to-[#C2410C]" />
+                      <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#2563EB] to-[#1D4ED8]" />
                     )}
 
                     {/* Top: Spacious Visual Illustration Box (Large Size) */}
-                    <div className="services-d-card-img relative w-full h-52 sm:h-58 lg:h-64 rounded-3xl bg-stone-50/90 dark:bg-black/50 border border-stone-200/80 dark:border-white/10 overflow-hidden flex items-center justify-center p-4 sm:p-5 mb-5 group-hover:border-orange-400/80 dark:group-hover:border-orange-500/50 group-hover:shadow-[0_10px_32px_rgba(234,88,12,0.18)] transition-all duration-500">
+                    <div className="services-d-card-img relative w-full h-52 sm:h-58 lg:h-64 rounded-3xl bg-stone-50/90 dark:bg-black/50 border border-stone-200/80 dark:border-white/10 overflow-hidden flex items-center justify-center p-4 sm:p-5 mb-5 group-hover:border-orange-400/80 dark:group-hover:border-orange-500/50 group-hover:shadow-[0_10px_32px_rgba(37,99,235,0.18)] transition-all duration-500">
                       {/* Live light scan beam on hover */}
                       <div className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/50 dark:via-white/15 to-transparent transition-transform duration-1000 ease-in-out" />
 
@@ -1692,8 +1692,8 @@ function ServicesContent() {
                       </div>
 
                       <h3
-                        className={`text-xl sm:text-2xl font-black tracking-tight leading-snug transition-colors group-hover:text-[#EA580C] dark:group-hover:text-[#F97316] ${isSelected
-                          ? "text-[#EA580C] dark:text-[#F97316]"
+                        className={`text-xl sm:text-2xl font-black tracking-tight leading-snug transition-colors group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] ${isSelected
+                          ? "text-[#2563EB] dark:text-[#14B8A6]"
                           : "text-stone-900 dark:text-white"
                           }`}
                       >
@@ -1712,7 +1712,7 @@ function ServicesContent() {
                               key={idx}
                               className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-stone-100/80 dark:bg-white/5 text-[11px] font-medium text-stone-700 dark:text-stone-300 border border-stone-200/60 dark:border-white/5 truncate max-w-full"
                             >
-                              <CheckCircle2 className="w-3 h-3 text-[#EA580C] shrink-0" />
+                              <CheckCircle2 className="w-3 h-3 text-[#2563EB] shrink-0" />
                               <span className="truncate">{deliv.split(":")[0] || deliv}</span>
                             </span>
                           ))}
@@ -1722,7 +1722,7 @@ function ServicesContent() {
 
                     {/* Bottom Row: Direct Link Action Button */}
                     <div className="flex items-center justify-between pt-4 border-t border-stone-200/70 dark:border-white/10 mt-auto">
-                      <span className="text-xs sm:text-sm font-bold text-stone-800 dark:text-stone-200 group-hover:text-[#EA580C] dark:group-hover:text-[#F97316] transition-colors flex items-center gap-2">
+                      <span className="text-xs sm:text-sm font-bold text-stone-800 dark:text-stone-200 group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors flex items-center gap-2">
                         <span>Explore full service</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
                       </span>
@@ -1731,7 +1731,7 @@ function ServicesContent() {
                         className={`
                           w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
                           bg-stone-100 dark:bg-white/10 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-white/10
-                          group-hover:bg-[#EA580C] group-hover:text-white group-hover:border-[#EA580C] group-hover:scale-110 shadow-sm
+                          group-hover:bg-[#2563EB] group-hover:text-white group-hover:border-[#2563EB] group-hover:scale-110 shadow-sm
                         `}
                       >
                         <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
@@ -1749,7 +1749,7 @@ function ServicesContent() {
         ======================================================== */}
         <section
           id="featured-service-showcase"
-          className="relative rounded-[32px] p-6 sm:p-8 lg:p-10 bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 shadow-xl overflow-hidden"
+          className="relative rounded-[32px] p-6 sm:p-8 lg:p-10 bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-xl overflow-hidden"
         >
           {/* Subtle decorative glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-stone-300/20 dark:bg-white/[0.03] rounded-full blur-3xl pointer-events-none" />
@@ -1834,7 +1834,7 @@ function ServicesContent() {
 
             {/* Right Column: Google Search Telemetry Live UI Mockup */}
             <div className="lg:col-span-5 relative flex items-center justify-center">
-              <div className="w-full max-w-md rounded-2xl bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 p-5 shadow-xl relative space-y-4">
+              <div className="w-full max-w-md rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 p-5 shadow-xl relative space-y-4">
                 {/* Search Bar Widget */}
                 <div className="flex items-center gap-2.5 p-2.5 rounded-full bg-stone-50 dark:bg-white/5 border border-stone-200/80 dark:border-white/10 text-xs">
                   <span className="font-bold text-stone-900 dark:text-white px-1.5">Google</span>
@@ -1901,7 +1901,7 @@ function ServicesContent() {
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 dark:text-white">
                 Real Results{" "
-                }<span className="text-[#EA580C]">Real Growth.</span>
+                }<span className="text-[#2563EB]">Real Growth.</span>
               </h2>
               <p className="text-sm sm:text-base text-stone-600 dark:text-stone-400 mt-2 max-w-xl">
                 See how we've helped businesses improve their search rankings, traffic and conversions with our proven strategies.
@@ -1917,7 +1917,7 @@ function ServicesContent() {
                   type="button"
                   onClick={() => setProofViewMode("slider")}
                   className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${proofViewMode === "slider"
-                    ? "bg-white dark:bg-[#120F0D] text-stone-950 dark:text-white shadow-sm"
+                    ? "bg-white dark:bg-[#111B2E] text-stone-950 dark:text-white shadow-sm"
                     : "text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-white"
                     }`}
                 >
@@ -1927,7 +1927,7 @@ function ServicesContent() {
                   type="button"
                   onClick={() => setProofViewMode("analytics")}
                   className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${proofViewMode === "analytics"
-                    ? "bg-white dark:bg-[#120F0D] text-stone-950 dark:text-white shadow-sm"
+                    ? "bg-white dark:bg-[#111B2E] text-stone-950 dark:text-white shadow-sm"
                     : "text-stone-600 dark:text-stone-400 hover:text-stone-950 dark:hover:text-white"
                     }`}
                 >
@@ -1964,7 +1964,7 @@ function ServicesContent() {
           {proofViewMode === "slider" ? (
             /* 3D Perspective Image Proof Slider (Exact GSC & GA4 live proofs) */
             <div
-              className="rounded-3xl border border-stone-200/80 dark:border-white/10 bg-white dark:bg-[#120F0D] p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden relative"
+              className="rounded-3xl border border-stone-200/80 dark:border-white/10 bg-white dark:bg-[#111B2E] p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden relative"
               onMouseEnter={() => setIsSliderHovered(true)}
               onMouseLeave={() => setIsSliderHovered(false)}
             >
@@ -2110,7 +2110,7 @@ function ServicesContent() {
             </div>
           ) : (
             /* Dashboard Analytics View (Matching screenshot diagram) */
-            <div className="rounded-3xl border border-stone-200/80 dark:border-white/10 bg-white dark:bg-[#120F0D] p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden">
+            <div className="rounded-3xl border border-stone-200/80 dark:border-white/10 bg-white dark:bg-[#111B2E] p-6 sm:p-8 lg:p-10 shadow-xl overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Left 3 Stat Badges */}
                 <div className="lg:col-span-3 space-y-4">
@@ -2217,13 +2217,13 @@ function ServicesContent() {
         ======================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Left Card: Is this service right for you? */}
-          <div className="rounded-[30px] p-7 sm:p-9 bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 shadow-lg flex flex-col justify-between relative overflow-hidden">
+          <div className="rounded-[30px] p-7 sm:p-9 bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-lg flex flex-col justify-between relative overflow-hidden">
             <div className="space-y-6">
               <div>
 
                 <h3 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1 leading-snug">
                   Perfect for Businesses That Want to{" "}
-                  <span className="text-[#EA580C]">Grow Online.</span>
+                  <span className="text-[#2563EB]">Grow Online.</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
                   If you're looking to rank higher, get more organic traffic, and turn visitors into customers — this service is for you.
@@ -2256,12 +2256,12 @@ function ServicesContent() {
           </div>
 
           {/* Right Card: What You Can Expect */}
-          <div className="rounded-[30px] p-7 sm:p-9 bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 shadow-lg flex flex-col justify-between space-y-6">
+          <div className="rounded-[30px] p-7 sm:p-9 bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-lg flex flex-col justify-between space-y-6">
             <div>
 
               <h3 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1 leading-snug">
                 Clear Strategy.
-                <span className="text-[#EA580C]">
+                <span className="text-[#2563EB]">
                   Measurable Results.</span>
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-2 leading-relaxed">
@@ -2325,7 +2325,7 @@ function ServicesContent() {
             <div>
 
               <h3 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-white mt-0.5">
-                What's Included In<span className="text-[#EA580C]">This Service?</span>
+                What's Included In<span className="text-[#2563EB]">This Service?</span>
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1">
                 Everything you need for better rankings, more traffic and real business growth.
@@ -2399,7 +2399,7 @@ function ServicesContent() {
             <div>
 
               <h3 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
-                Simple 4-Step<span className="text-[#EA580C]"> Process</span>
+                Simple 4-Step<span className="text-[#2563EB]"> Process</span>
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 mt-1">
                 A clear and transparent process to get you the best results.
@@ -2436,7 +2436,7 @@ function ServicesContent() {
             ].map((p, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 shadow-sm space-y-3 hover:border-stone-400 dark:hover:border-white/30 hover:bg-stone-50/50 dark:hover:bg-white/[0.02] transition-all"
+                className="p-6 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-sm space-y-3 hover:border-stone-400 dark:hover:border-white/30 hover:bg-stone-50/50 dark:hover:bg-white/[0.02] transition-all"
               >
                 <div className="flex items-center justify-between">
                   <span className="w-8 h-8 rounded-xl bg-stone-100 dark:bg-white/10 text-stone-900 dark:text-white border border-stone-200/80 dark:border-white/15 flex items-center justify-center font-bold text-xs">
@@ -2461,7 +2461,7 @@ function ServicesContent() {
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-bold text-[#EA580C] uppercase tracking-wider">
+              <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
                 ✦ Technologies &amp; Tools
               </span>
               <h3 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-white mt-1">
@@ -2487,7 +2487,7 @@ function ServicesContent() {
               return (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-2xl bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 flex flex-col items-center justify-center gap-2 text-center shadow-sm hover:border-stone-400 dark:hover:border-white/30 hover:bg-stone-50/50 dark:hover:bg-white/[0.02] transition-all"
+                  className="p-3.5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 flex flex-col items-center justify-center gap-2 text-center shadow-sm hover:border-stone-400 dark:hover:border-white/30 hover:bg-stone-50/50 dark:hover:bg-white/[0.02] transition-all"
                 >
                   <div className="relative w-8 h-8 rounded-lg overflow-hidden">
                     <Image
@@ -2560,7 +2560,7 @@ function ServicesContent() {
                 return (
                   <div
                     key={idx}
-                    className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#120F0D] border border-stone-200/80 dark:border-white/10 p-5 sm:p-6 shadow-sm hover:border-stone-400 dark:hover:border-white/30 transition-all duration-200"
+                    className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 p-5 sm:p-6 shadow-sm hover:border-stone-400 dark:hover:border-white/30 transition-all duration-200"
                   >
                     <button
                       type="button"
@@ -2609,11 +2609,11 @@ function ServicesContent() {
         <section className="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-orange-100/90 via-orange-50/60 to-white dark:from-orange-500/15 dark:via-orange-500/10 dark:to-orange-500/5 border border-orange-300/80 dark:border-orange-500/30 shadow-xl overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 backdrop-blur-xl">
           {/* Left: Rocket badge */}
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#EA580C] to-[#FB923C] text-white flex items-center justify-center shadow-lg shadow-orange-500/30 text-2xl shrink-0">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#FB923C] text-white flex items-center justify-center shadow-lg shadow-orange-500/30 text-2xl shrink-0">
               🚀
             </div>
             <div>
-              <span className="text-[11px] font-bold text-[#EA580C] uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider">
                 Ready to Get Started?
               </span>
               <h3 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-0.5">
@@ -2629,7 +2629,7 @@ function ServicesContent() {
           <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#EA580C] hover:bg-[#C2410C] text-white text-xs sm:text-sm font-bold shadow-lg shadow-orange-500/30 active:scale-95 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-bold shadow-lg shadow-orange-500/30 active:scale-95 transition-all"
             >
               <span>Get Free Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -2683,14 +2683,14 @@ function ServicesContent() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={prevSlide}
-                    className="p-2 rounded-xl bg-white/10 hover:bg-[#EA580C] transition-colors cursor-pointer"
+                    className="p-2 rounded-xl bg-white/10 hover:bg-[#2563EB] transition-colors cursor-pointer"
                     aria-label="Previous image"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="p-2 rounded-xl bg-white/10 hover:bg-[#EA580C] transition-colors cursor-pointer"
+                    className="p-2 rounded-xl bg-white/10 hover:bg-[#2563EB] transition-colors cursor-pointer"
                     aria-label="Next image"
                   >
                     <ChevronRight className="w-4 h-4" />

@@ -1,19 +1,22 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Projects from "@/components/Projects";
-import Gsc from "@/components/Gsc";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Testimonials from "@/components/Testimonials";
-import Blog from "@/components/Blog";
-import Faq from "@/components/Faq";
-import Contact from "@/components/Contact";
-import Banner from "@/components/Banner";
+
+// Code-split below-the-fold sections to maximize LCP and minimize initial JS execution
+const Banner = dynamic(() => import("@/components/Banner"));
+const Services = dynamic(() => import("@/components/Services"));
+const Projects = dynamic(() => import("@/components/Projects"));
+const Gsc = dynamic(() => import("@/components/Gsc"));
+const About = dynamic(() => import("@/components/About"));
+const Skills = dynamic(() => import("@/components/Skills"));
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const Blog = dynamic(() => import("@/components/Blog"));
+const Faq = dynamic(() => import("@/components/Faq"));
+const Contact = dynamic(() => import("@/components/Contact"));
 
 // Reusable smooth scroll reveal section component
 function RevealSection({
@@ -77,10 +80,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#080706] text-stone-900 dark:text-stone-100 flex flex-col transition-colors duration-500 relative">
+    <div className="min-h-screen bg-white dark:bg-[#0B1220] text-stone-900 dark:text-stone-100 flex flex-col transition-colors duration-500 relative">
       {/* Top Global Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#EA580C] via-[#F97316] to-[#EA580C] origin-left z-[9999] shadow-[0_0_12px_rgba(234,88,12,0.85)] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#2563EB] origin-left z-[9999] shadow-[0_0_12px_rgba(37,99,235,0.85)] pointer-events-none"
         style={{ scaleX }}
       />
 
@@ -153,9 +156,9 @@ export default function Home() {
             whileTap={{ scale: 0.95 }}
             onClick={scrollToTop}
             aria-label="Scroll to top"
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-2.5 sm:p-3 rounded-2xl bg-white/90 dark:bg-[#120F0D]/90 text-[#EA580C] border border-orange-600/35 backdrop-blur-xl shadow-[0_4px_25px_rgba(234,88,12,0.25)] hover:border-orange-600 hover:shadow-[0_8px_35px_rgba(234,88,12,0.50)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 group cursor-pointer"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-2.5 sm:p-3 rounded-2xl bg-white/90 dark:bg-[#111B2E]/90 text-[#2563EB] border border-orange-600/35 backdrop-blur-xl shadow-[0_4px_25px_rgba(37,99,235,0.25)] hover:border-orange-600 hover:shadow-[0_8px_35px_rgba(37,99,235,0.50)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 group cursor-pointer"
           >
-            <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#EA580C] transition-transform duration-300 group-hover:-translate-y-0.5" />
+            <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2563EB] transition-transform duration-300 group-hover:-translate-y-0.5" />
             <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-stone-700 dark:text-stone-300">
               {scrollPercent}%
             </span>

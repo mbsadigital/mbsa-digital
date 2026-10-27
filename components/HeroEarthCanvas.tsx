@@ -134,33 +134,26 @@ function checkWebGL(): boolean {
 function EarthStaticFallback() {
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
-      <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(234,88,12,0.45)]">
-        {/* Photorealistic Spherical Earth Background with 3D Shader Depth */}
+      <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.45)] border-2 border-cyan-400/40">
+        {/* Photorealistic NASA Earth Map */}
         <div
-          className="absolute inset-0 rounded-full"
+          className="absolute inset-0 rounded-full bg-cover bg-center"
+          style={{ backgroundImage: "url('/earth/earth_daymap.jpg')" }}
+        />
+
+        {/* 3D Sphere volumetric lighting & shading */}
+        <div
+          className="absolute inset-0 rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at 32% 30%, #FDBA74 0%, #FB923C 18%, #EA580C 45%, #9A3412 70%, #431407 90%, #1c0a02 100%)",
+              "radial-gradient(circle at 35% 32%, rgba(255,255,255,0.35) 0%, rgba(37,99,235,0.12) 35%, rgba(0,0,0,0.85) 85%, #000000 100%)",
             boxShadow:
-              "inset -20px -20px 50px rgba(0, 0, 0, 0.85), inset 10px 10px 30px rgba(255, 255, 255, 0.35)",
+              "inset -25px -25px 50px rgba(0, 0, 0, 0.95), inset 12px 12px 30px rgba(255, 255, 255, 0.35)",
           }}
         />
 
-        {/* Ambient Orbiting Latitude & Longitude Grid */}
-        <svg
-          viewBox="0 0 200 200"
-          className="absolute inset-0 w-full h-full opacity-40 mix-blend-screen"
-        >
-          <ellipse cx="100" cy="100" rx="92" ry="32" fill="none" stroke="#FED7AA" strokeWidth="1.2" strokeDasharray="3 3" />
-          <ellipse cx="100" cy="70" rx="82" ry="24" fill="none" stroke="#FED7AA" strokeWidth="0.9" strokeDasharray="2 3" />
-          <ellipse cx="100" cy="130" rx="82" ry="24" fill="none" stroke="#FED7AA" strokeWidth="0.9" strokeDasharray="2 3" />
-          <ellipse cx="100" cy="100" rx="40" ry="92" fill="none" stroke="#FED7AA" strokeWidth="1.2" />
-          <ellipse cx="100" cy="100" rx="72" ry="92" fill="none" stroke="#FED7AA" strokeWidth="0.9" />
-          <line x1="100" y1="8" x2="100" y2="192" stroke="#FED7AA" strokeWidth="1.2" />
-        </svg>
-
         {/* Cyan Atmospheric Rim Fresnel */}
-        <div className="absolute inset-0 rounded-full border-2 border-cyan-400/40 shadow-[inset_0_0_25px_rgba(34,211,238,0.5)]" />
+        <div className="absolute inset-0 rounded-full shadow-[inset_0_0_30px_rgba(34,211,238,0.6)]" />
       </div>
     </div>
   );

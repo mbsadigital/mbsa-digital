@@ -189,7 +189,7 @@ export default function BlogDetailPage() {
     return (
       <div className="min-h-screen bg-[var(--background)] flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 border-4 border-[#EA580C] border-t-transparent rounded-full animate-spin" />
+          <div className="w-10 h-10 border-4 border-[#2563EB] border-t-transparent rounded-full animate-spin" />
           <p className="text-sm font-semibold text-stone-600 dark:text-stone-300">
             Loading strategic article...
           </p>
@@ -201,14 +201,14 @@ export default function BlogDetailPage() {
   if (!blog) {
     return (
       <div className="min-h-screen bg-[var(--background)] flex flex-col items-center justify-center p-6 text-center">
-        <BookOpen className="w-16 h-16 text-[#EA580C] mb-4 opacity-50" />
+        <BookOpen className="w-16 h-16 text-[#2563EB] mb-4 opacity-50" />
         <h2 className="text-2xl font-bold mb-2">Article Not Found</h2>
         <p className="text-stone-500 mb-6 max-w-md">
           The requested article could not be located in our directory. It may have been updated or removed.
         </p>
         <Link
           href="/blog"
-          className="px-6 py-3 rounded-2xl bg-[#EA580C] text-white font-bold text-sm shadow-lg shadow-orange-600/30"
+          className="px-6 py-3 rounded-2xl bg-[#2563EB] text-white font-bold text-sm shadow-lg shadow-orange-600/30"
         >
           Return to All Articles
         </Link>
@@ -223,26 +223,26 @@ export default function BlogDetailPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#EA580C]/25 selection:text-[#EA580C] transition-colors duration-300">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#2563EB]/25 selection:text-[#2563EB] transition-colors duration-300">
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#9A3412] via-[#C2410C] to-[#EA580C] origin-left z-[9999] shadow-[0_0_12px_rgba(234,88,12,0.85)] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#9A3412] via-[#1D4ED8] to-[#2563EB] origin-left z-[9999] shadow-[0_0_12px_rgba(37,99,235,0.85)] pointer-events-none"
         style={{ scaleX }}
       />
 
       {/* Ambient background glow */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute top-10 right-1/4 h-[550px] w-[550px] rounded-full bg-[#EA580C]/[0.06] blur-[160px]" />
+        <div className="absolute top-10 right-1/4 h-[550px] w-[550px] rounded-full bg-[#2563EB]/[0.06] blur-[160px]" />
         <div className="absolute top-1/2 left-10 h-[450px] w-[450px] rounded-full bg-[#FB923C]/[0.04] blur-[150px]" />
       </div>
 
       {/* ARTICLE ACTION SUB-BAR */}
-      <div className="pt-20 sm:pt-24 w-full border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-[#080706]/85 backdrop-blur-xl">
+      <div className="pt-20 sm:pt-24 w-full border-b border-stone-200/80 dark:border-stone-800/80 bg-white/80 dark:bg-[#0B1220]/85 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#EA580C] text-xs font-bold transition"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-900/70 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#2563EB] text-xs font-bold transition"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Articles</span>
@@ -256,7 +256,7 @@ export default function BlogDetailPage() {
               <span>/</span>
               <Link href="/blog" className="hover:text-stone-900 dark:hover:text-stone-100">Articles</Link>
               <span>/</span>
-              <span className="text-[#EA580C] font-semibold">{blog.category}</span>
+              <span className="text-[#2563EB] font-semibold">{blog.category}</span>
             </div>
           </div>
 
@@ -264,7 +264,7 @@ export default function BlogDetailPage() {
             {/* Admin status / Login modal trigger */}
             {adminToken ? (
               <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-orange-600/15 border border-orange-500/30 text-orange-600 dark:text-orange-400 text-xs font-semibold">
-                <Unlock className="w-3.5 h-3.5 text-[#EA580C]" />
+                <Unlock className="w-3.5 h-3.5 text-[#2563EB]" />
                 <span>Admin</span>
               </div>
             ) : (
@@ -283,7 +283,7 @@ export default function BlogDetailPage() {
             {adminToken && (
               <Link
                 href="/blog/create"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#EA580C] hover:bg-orange-600 text-white text-xs font-bold transition shadow-sm"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#2563EB] hover:bg-orange-600 text-white text-xs font-bold transition shadow-sm"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Write</span>
@@ -298,7 +298,7 @@ export default function BlogDetailPage() {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-stone-300 dark:border-stone-800 hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 text-xs font-semibold transition"
                   title="Edit this article"
                 >
-                  <Edit3 className="w-3.5 h-3.5 text-[#EA580C]" />
+                  <Edit3 className="w-3.5 h-3.5 text-[#2563EB]" />
                   <span className="hidden sm:inline">Edit</span>
                 </Link>
 
@@ -321,8 +321,8 @@ export default function BlogDetailPage() {
       <article className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
         {/* CATEGORY KICKER */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="w-8 h-px bg-[#EA580C] dark:bg-[#F97316]" />
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#EA580C] dark:text-[#F97316]">
+          <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
             {blog.category}
           </span>
           <span className="text-xs font-mono text-stone-500 dark:text-stone-400">
@@ -359,7 +359,7 @@ export default function BlogDetailPage() {
 
             {/* Small Date */}
             <span className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400">
-              <Calendar className="w-3.5 h-3.5 text-[#EA580C]" />
+              <Calendar className="w-3.5 h-3.5 text-[#2563EB]" />
               <span>{formattedDate}</span>
             </span>
 
@@ -367,7 +367,7 @@ export default function BlogDetailPage() {
 
             {/* Small Read Time */}
             <span className="flex items-center gap-1.5 text-xs text-stone-500 dark:text-stone-400">
-              <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
+              <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
               <span>{blog.readTime || "5 min read"}</span>
             </span>
           </div>
@@ -387,7 +387,7 @@ export default function BlogDetailPage() {
                 </>
               ) : (
                 <>
-                  <Share2 className="w-3.5 h-3.5 text-[#EA580C]" />
+                  <Share2 className="w-3.5 h-3.5 text-[#2563EB]" />
                   <span>Share</span>
                 </>
               )}
@@ -426,10 +426,10 @@ export default function BlogDetailPage() {
         </div>
 
         {/* 4. AFTER LARGE IMAGE: HIGHLIGHTED DESCRIPTION */}
-        <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-orange-500/15 via-amber-500/10 to-orange-500/5 dark:from-orange-500/15 dark:via-amber-500/5 dark:to-transparent border-l-4 border-[#EA580C] shadow-sm mb-10">
+        <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-orange-500/15 via-amber-500/10 to-orange-500/5 dark:from-orange-500/15 dark:via-amber-500/5 dark:to-transparent border-l-4 border-[#2563EB] shadow-sm mb-10">
           <div className="flex items-start gap-3.5 sm:gap-4">
-            <div className="p-2.5 rounded-2xl bg-[#EA580C]/15 text-[#EA580C] shrink-0 mt-0.5">
-              <ArrowRight className="w-5 h-5 text-[#EA580C]" />
+            <div className="p-2.5 rounded-2xl bg-[#2563EB]/15 text-[#2563EB] shrink-0 mt-0.5">
+              <ArrowRight className="w-5 h-5 text-[#2563EB]" />
             </div>
             <div className="space-y-1.5 flex-1">
               <p className="text-lg sm:text-xl font-medium italic leading-relaxed">
@@ -448,7 +448,7 @@ export default function BlogDetailPage() {
         {blog.tags && blog.tags.length > 0 && (
           <div className="pt-8 pb-4 border-t border-stone-200 dark:border-stone-800">
             <div className="flex items-center gap-2 mb-3.5">
-              <Tag className="w-4 h-4 text-[#EA580C]" />
+              <Tag className="w-4 h-4 text-[#2563EB]" />
               <p className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 font-mono">
                 Tags & SEO Keywords
               </p>
@@ -457,7 +457,7 @@ export default function BlogDetailPage() {
               {blog.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-800 hover:border-orange-500/40 hover:text-[#EA580C] transition cursor-default shadow-sm"
+                  className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-stone-100 dark:bg-stone-900 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-800 hover:border-orange-500/40 hover:text-[#2563EB] transition cursor-default shadow-sm"
                 >
                   #{tag}
                 </span>
@@ -467,8 +467,8 @@ export default function BlogDetailPage() {
         )}
 
         {/* AUTHOR BIO CARD */}
-        <div className="mt-12 p-8 rounded-3xl border border-orange-500/25 bg-white/70 dark:bg-[#120F0D]/90 backdrop-blur-xl shadow-xl flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
-          <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#EA580C] shrink-0 shadow-lg">
+        <div className="mt-12 p-8 rounded-3xl border border-orange-500/25 bg-white/70 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-xl flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+          <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#2563EB] shrink-0 shadow-lg">
             <Image
               src={blog.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
               alt={blog.author?.name || "Muskan Shekh"}
@@ -483,13 +483,13 @@ export default function BlogDetailPage() {
                 <h3 className="text-lg font-bold text-stone-900 dark:text-stone-100">
                   {blog.author?.name || "Muskan Shekh"}
                 </h3>
-                <p className="text-xs font-semibold text-[#EA580C]">
+                <p className="text-xs font-semibold text-[#2563EB]">
                   {blog.author?.role || "Digital Marketing & Technical SEO Specialist"}
                 </p>
               </div>
               <Link
                 href="/#contact"
-                className="px-4 py-1.5 rounded-xl border border-[#EA580C] text-[#EA580C] hover:bg-[#EA580C] hover:text-white text-xs font-bold transition inline-block mx-auto sm:mx-0 w-fit"
+                className="px-4.5 py-2 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-bold shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all inline-block mx-auto sm:mx-0 w-fit"
               >
                 Get In Touch
               </Link>
@@ -506,7 +506,7 @@ export default function BlogDetailPage() {
           <div className="mt-16 pt-12 border-t border-stone-200 dark:border-stone-800">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-[#EA580C] font-mono">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#2563EB] font-mono">
                   Recommended Reading
                 </p>
                 <h3 className="text-2xl font-black tracking-tight text-stone-900 dark:text-white mt-1">
@@ -515,7 +515,7 @@ export default function BlogDetailPage() {
               </div>
               <Link
                 href="/blog"
-                className="text-xs font-bold text-[#EA580C] hover:underline flex items-center gap-1"
+                className="text-xs font-bold text-[#2563EB] hover:underline flex items-center gap-1"
               >
                 <span>View All Articles</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -526,7 +526,7 @@ export default function BlogDetailPage() {
               {relatedArticles.map((rel) => (
                 <div
                   key={rel._id}
-                  className="group rounded-3xl overflow-hidden border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#120F0D] flex flex-col justify-between hover:border-orange-500/50 hover:shadow-xl transition-all duration-300"
+                  className="group rounded-3xl overflow-hidden border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#111B2E] flex flex-col justify-between hover:border-orange-500/50 hover:shadow-xl transition-all duration-300"
                 >
                   <div>
                     <Link
@@ -553,7 +553,7 @@ export default function BlogDetailPage() {
                       </div>
                       <Link
                         href={`/blog/${rel.slug || rel._id}`}
-                        className="font-bold text-sm text-stone-900 dark:text-stone-100 group-hover:text-[#EA580C] transition line-clamp-2 leading-snug"
+                        className="font-bold text-sm text-stone-900 dark:text-stone-100 group-hover:text-[#2563EB] transition line-clamp-2 leading-snug"
                       >
                         {rel.title}
                       </Link>
@@ -566,7 +566,7 @@ export default function BlogDetailPage() {
                   <div className="p-5 pt-0">
                     <Link
                       href={`/blog/${rel.slug || rel._id}`}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#EA580C] hover:underline"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-[#2563EB] hover:underline"
                     >
                       <span>Read Insight</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -582,7 +582,7 @@ export default function BlogDetailPage() {
         <div className="mt-12 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-xs font-bold text-stone-500 hover:text-[#EA580C] transition"
+            className="inline-flex items-center gap-2 text-xs font-bold text-stone-500 hover:text-[#2563EB] transition"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Return to All Knowledge Base Articles</span>
@@ -611,7 +611,7 @@ export default function BlogDetailPage() {
               </button>
 
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 rounded-2xl bg-[#EA580C]/10 text-[#EA580C]">
+                <div className="p-2.5 rounded-2xl bg-[#2563EB]/10 text-[#2563EB]">
                   <Lock className="w-5 h-5" />
                 </div>
                 <div>
@@ -631,7 +631,7 @@ export default function BlogDetailPage() {
                     value={adminPasswordInput}
                     onChange={(e) => setAdminPasswordInput(e.target.value)}
                     placeholder="Enter admin passcode"
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 text-sm focus:outline-none focus:border-[#EA580C]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 text-sm focus:outline-none focus:border-[#2563EB]"
                     autoFocus
                   />
                   <p className="text-[11px] text-stone-500 mt-1">Default development passcode: <code>admin123</code></p>
@@ -655,7 +655,7 @@ export default function BlogDetailPage() {
                   <button
                     type="submit"
                     disabled={adminLoginLoading}
-                    className="flex-1 py-2 rounded-xl bg-[#EA580C] text-white text-xs font-bold hover:bg-orange-600 transition disabled:opacity-50 cursor-pointer"
+                    className="flex-1 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-orange-600 transition disabled:opacity-50 cursor-pointer"
                   >
                     {adminLoginLoading ? "Verifying..." : "Unlock Admin"}
                   </button>
