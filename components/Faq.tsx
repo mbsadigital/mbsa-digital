@@ -22,7 +22,7 @@ const FAQ_LIST: FAQItem[] = [
     id: "early-stage",
     question: "What is AEO and GEO, and do I need them?",
     answer:
-      "AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) help your content get chosen as the answer in featured snippets, voice search and AI tools like ChatGPT, Gemini and Perplexity. If your customers ask questions before they buy, you need them.",
+      "AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) help your content get chosen as the answer in featured snippets, voice search, and AI tools like ChatGPT, Gemini, and Perplexity. If your customers ask questions before they buy, you need them.",
   },
   {
     id: "project-timeline",
@@ -34,7 +34,7 @@ const FAQ_LIST: FAQItem[] = [
     id: "ai-integration",
     question: "Have you worked with UK businesses?",
     answer:
-      "Yes. I lived in London from September 2023 to November 2025 and handled UK health, pharmacy and beauty brands, so I understand UK search habits, spelling and customer expectations.",
+      "Yes. I lived in London from September 2023 to November 2025 and handled UK health, pharmacy, and beauty brands, so I understand UK search habits, spelling, and customer expectations.",
   },
   {
     id: "getting-started",
@@ -81,7 +81,7 @@ export default function Faq() {
             </div>
             {/* Main Section Heading with Enhanced Size */}
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12] mb-8 sm:mb-10">
-              Question People
+              Questions People
               <br />
               <span className="text-[#2563EB]">
                 Ask Me

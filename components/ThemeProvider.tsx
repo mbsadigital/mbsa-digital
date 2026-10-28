@@ -43,8 +43,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setThemeState(newTheme);
     try {
       localStorage.setItem("portfolio-theme", newTheme);
-    } catch (e) {
-      console.error(e);
+    } catch {
+      // ignore storage access errors in restricted contexts
     }
   }, []);
 
@@ -53,8 +53,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const nextTheme = prev === "dark" ? "light" : "dark";
       try {
         localStorage.setItem("portfolio-theme", nextTheme);
-      } catch (e) {
-        console.error(e);
+      } catch {
+        // ignore storage access errors in restricted contexts
       }
       return nextTheme;
     });

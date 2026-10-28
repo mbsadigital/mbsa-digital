@@ -93,7 +93,7 @@ export default function Navbar() {
     } else {
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
-        const navbarHeight = 76;
+        const navbarHeight = 68;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = Math.max(
           0,
@@ -141,6 +141,27 @@ export default function Navbar() {
       }
     };
   }, []);
+
+  /* Close mobile menu on Escape key */
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  /* Close mobile menu when expanding to desktop viewport */
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
 
   /* Handle incoming URL hash (e.g. /#contact) on mount or hash change */
   useEffect(() => {
@@ -350,8 +371,8 @@ export default function Navbar() {
       ====================================================== */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isSubpage
-          ? "bg-[#F8FAFC]/90 dark:bg-[#0B1220]/90 backdrop-blur-2xl border-b border-orange-500/15 dark:border-orange-500/20 shadow-[0_8px_30px_rgba(37,99,235,0.06)] dark:shadow-[0_8px_35px_rgba(0,0,0,0.6)] py-2.5 sm:py-3"
-          : "bg-transparent py-4 sm:py-5"
+          ? "bg-[#F8FAFC]/90 dark:bg-[#0B1220]/90 backdrop-blur-2xl border-b border-stone-200/60 dark:border-white/10 shadow-[0_8px_30px_rgba(37,99,235,0.06)] dark:shadow-[0_8px_35px_rgba(0,0,0,0.6)] py-2 sm:py-2.5"
+          : "bg-transparent py-3 sm:py-3.5"
           }`}
       >
         {/* Subtle Top Gradient Accent Hairline */}
@@ -401,7 +422,7 @@ export default function Navbar() {
                   key={item.id}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item)}
-                  className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold transition-all duration-200 select-none ${isActive
+                  className={`relative px-2.5 xl:px-3.5 py-1.5 rounded-full text-[11px] xl:text-xs font-bold transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${isActive
                     ? "text-white"
                     : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-blue-500/10"
                     }`}
@@ -410,7 +431,7 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="activeNavPill"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] shadow-md shadow-[#2563EB]/25"
+                      className="absolute inset-0 rounded-full bg-[#2563EB]"
                       transition={{
                         type: "spring",
                         stiffness: 380,
@@ -438,7 +459,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={handleContactClick}
-              className="hidden md:inline-flex group relative items-center gap-2 px-3.5 xl:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-extrabold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 overflow-hidden"
+              className="hidden md:inline-flex group relative items-center gap-2 px-3.5 xl:px-5 py-2 sm:py-2.5 rounded-full bg-[#2563EB] text-white text-xs font-extrabold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10">Start a Project</span>
               <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -454,7 +475,7 @@ export default function Navbar() {
                   : "Open navigation menu"
               }
               aria-expanded={mobileMenuOpen}
-              className="lg:hidden relative w-10 h-10 rounded-xl flex items-center justify-center border border-orange-500/25 dark:border-white/15 bg-white/85 dark:bg-[#111B2E]/85 backdrop-blur-xl text-stone-800 dark:text-stone-200 hover:text-[#2563EB] hover:border-[#2563EB] transition-all shadow-sm cursor-pointer touch-manipulation active:scale-95"
+              className="lg:hidden relative w-10 h-10 rounded-xl flex items-center justify-center border border-orange-500/25 dark:border-white/15 bg-white/85 dark:bg-[#111B2E]/85 backdrop-blur-xl text-stone-800 dark:text-stone-200 hover:text-[#2563EB] hover:border-[#2563EB] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] transition-all shadow-sm cursor-pointer touch-manipulation active:scale-95"
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -488,7 +509,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="fixed top-[66px] sm:top-[74px] left-3 sm:left-4 right-3 sm:right-4 z-50 p-3 sm:p-4.5 rounded-2xl bg-white/95 dark:bg-[#0B1220]/95 backdrop-blur-2xl border border-orange-500/25 dark:border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.85)] lg:hidden max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain"
+              className="fixed top-[58px] sm:top-[64px] left-3 sm:left-4 right-3 sm:right-4 z-50 p-3 sm:p-4.5 rounded-2xl bg-white/95 dark:bg-[#0B1220]/95 backdrop-blur-2xl border border-stone-200/80 dark:border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)] dark:shadow-[0_25px_70px_rgba(0,0,0,0.85)] lg:hidden max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
             >
               {/* Clean Nav Links List with generous touch targets (44px min) */}
               <nav className="flex flex-col gap-1">
@@ -500,7 +521,7 @@ export default function Navbar() {
                       key={item.id}
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item)}
-                      className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 min-h-[44px] touch-manipulation active:scale-[0.99] ${isActive
+                      className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 min-h-[44px] touch-manipulation active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${isActive
                         ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/25"
                         : "text-stone-700 dark:text-stone-200 hover:text-[#2563EB] dark:hover:text-[#14B8A6] hover:bg-orange-500/10 active:bg-orange-500/15"
                         }`}
@@ -527,7 +548,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={handleContactClick}
-                  className="flex items-center justify-center gap-2 w-full min-h-[44px] py-3 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 active:scale-98 transition-all touch-manipulation"
+                  className="flex items-center justify-center gap-2 w-full min-h-[44px] py-3 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-bold uppercase tracking-wider shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 active:scale-98 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] transition-all touch-manipulation"
                 >
                   <span>Start a Project</span>
                   <ArrowRight className="w-4 h-4" />

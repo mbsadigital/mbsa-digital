@@ -448,7 +448,7 @@ export default function Blog() {
         <div className="mt-14 sm:mt-16 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs sm:text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 rounded-2xl bg-[#2563EB] text-white text-xs sm:text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>View All Articles & Publications</span>
             <ArrowRight className="w-4 h-4" />

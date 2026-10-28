@@ -318,7 +318,7 @@ export default function Skills() {
             <motion.div variants={leftItemVariants} className="mt-8">
               <a
                 href="#contact"
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-7 py-3.5 text-xs font-bold bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-7 py-3.5 text-xs font-bold bg-[#2563EB] text-white  hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
               >
                 <span>Let&apos;s Start Your Project</span>
                 <ArrowUpRight className="h-4 w-4 text-white transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -520,14 +520,14 @@ function HexCell({
       whileTap={{ scale: 0.97 }}
       aria-label={`View ${skill.name} skills`}
       aria-pressed={isSelected}
-      className={`group relative h-24 w-24 min-[380px]:h-28 min-[380px]:w-28 sm:h-36 sm:w-36 cursor-pointer select-none outline-none focus-visible:outline-none ${isSelected ? "z-20" : "z-10"
+      className={`group relative h-24 w-24 min-[380px]:h-28 min-[380px]:w-28 sm:h-36 sm:w-36 cursor-pointer select-none outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 rounded-2xl ${isSelected ? "z-20" : "z-10"
         }`}
     >
       {/* Hexagon chamber: background changes on selection, never a hover border */}
       <div
         className={`absolute inset-0 isolate overflow-hidden backdrop-blur-xl transition-all duration-500 ${isSelected
-            ? "bg-[#2563EB]/[0.13] dark:bg-[#2563EB]/[0.18] shadow-[0_0_32px_rgba(37,99,235,0.12)]"
-            : "bg-[#f5f3ef] dark:bg-[#0b0b0d]"
+          ? "bg-[#2563EB]/[0.13] dark:bg-[#2563EB]/[0.18] shadow-[0_0_32px_rgba(37,99,235,0.12)]"
+          : "bg-[#f5f3ef] dark:bg-[#0b0b0d]"
           }`}
         style={{ clipPath: hexClip }}
       >
@@ -567,16 +567,16 @@ function HexCell({
         <div
           aria-hidden="true"
           className={`pointer-events-none absolute inset-[18%] rounded-full blur-2xl transition-all duration-500 ${isSelected
-              ? "bg-[#2563EB]/25 opacity-100"
-              : "bg-[#2563EB]/[0.06] opacity-60 group-hover:bg-[#2563EB]/[0.10]"
+            ? "bg-[#2563EB]/25 opacity-100"
+            : "bg-[#2563EB]/[0.06] opacity-60 group-hover:bg-[#2563EB]/[0.10]"
             }`}
         />
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center">
           <div
             className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 transition-transform duration-300 sm:h-14 sm:w-14 sm:rounded-2xl ${isSelected
-                ? "scale-105 shadow-[0_6px_22px_rgba(37,99,235,0.18)]"
-                : "shadow-sm group-hover:scale-105"
+              ? "scale-105 shadow-[0_6px_22px_rgba(37,99,235,0.18)]"
+              : "shadow-sm group-hover:scale-105"
               }`}
           >
             <Image
@@ -590,8 +590,8 @@ function HexCell({
 
           <span
             className={`mt-1.5 font-mono text-[9px] font-black uppercase tracking-wider transition-colors duration-300 sm:text-[10px] ${isSelected
-                ? "text-[#2563EB] dark:text-[#FB923C]"
-                : "text-stone-500 dark:text-stone-400 group-hover:text-[#2563EB] dark:group-hover:text-[#FB923C]"
+              ? "text-[#2563EB] dark:text-[#FB923C]"
+              : "text-stone-500 dark:text-stone-400 group-hover:text-[#2563EB] dark:group-hover:text-[#FB923C]"
               }`}
           >
             {skill.shortName}
@@ -601,8 +601,8 @@ function HexCell({
           <span
             aria-hidden="true"
             className={`mt-1 h-1 rounded-full transition-all duration-300 ${isSelected
-                ? "w-5 bg-[#2563EB]"
-                : "w-1 bg-stone-300 dark:bg-white/20 group-hover:w-3 group-hover:bg-[#2563EB]/70"
+              ? "w-5 bg-[#2563EB]"
+              : "w-1 bg-stone-300 dark:bg-white/20 group-hover:w-3 group-hover:bg-[#2563EB]/70"
               }`}
           />
         </div>

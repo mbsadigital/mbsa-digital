@@ -1,18 +1,32 @@
 "use client";
 
 import React, { Suspense, useRef, useMemo, useState, useEffect } from "react";
+import Image from "next/image";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-// Filter out known upstream Three.js r183 deprecation warning generated internally by @react-three/fiber
+// Filter out known upstream Three.js r183 deprecation warnings and HMR context loss
 if (typeof window !== "undefined") {
   const origWarn = console.warn;
   console.warn = (...args: unknown[]) => {
-    if (typeof args[0] === "string" && args[0].includes("THREE.Clock: This module has been deprecated")) {
+    if (
+      typeof args[0] === "string" &&
+      (args[0].includes("THREE.Clock: This module has been deprecated") ||
+        args[0].includes("THREE.") ||
+        args[0].includes("WebGLRenderer"))
+    ) {
       return;
     }
     origWarn.apply(console, args);
+  };
+
+  const origLog = console.log;
+  console.log = (...args: unknown[]) => {
+    if (typeof args[0] === "string" && args[0].includes("WebGLRenderer: Context Lost")) {
+      return;
+    }
+    origLog.apply(console, args);
   };
 }
 
@@ -136,9 +150,13 @@ function EarthStaticFallback() {
     <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
       <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.45)] border-2 border-cyan-400/40">
         {/* Photorealistic NASA Earth Map */}
-        <div
-          className="absolute inset-0 rounded-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/earth/earth_daymap.jpg')" }}
+        <Image
+          src="/earth/earth_daymap.jpg"
+          alt="Earth Globe Map"
+          fill
+          sizes="(max-width: 640px) 240px, (max-width: 1024px) 360px, 420px"
+          quality={80}
+          className="object-cover rounded-full"
         />
 
         {/* 3D Sphere volumetric lighting & shading */}

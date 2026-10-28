@@ -131,6 +131,7 @@ export function ServiceCardIllustration({
               strokeWidth="3"
               strokeLinecap="round"
               strokeDasharray="9 7"
+              initial={{ strokeDashoffset: 0 }}
               animate={isHovered ? { strokeDashoffset: [0, -32] } : { strokeDashoffset: 0 }}
               transition={{ duration: 1.2, repeat: isHovered ? Infinity : 0, ease: "linear" }}
             />
@@ -214,8 +215,10 @@ export function ServiceCardIllustration({
               <motion.circle
                 cx="275"
                 cy="44"
+                r="25"
                 stroke="#3B82F6"
                 strokeWidth="1.5"
+                initial={{ r: 25, opacity: 0 }}
                 animate={isHovered ? { r: [25, 36, 46], opacity: [0.8, 0.3, 0] } : { r: 25, opacity: 0 }}
                 transition={{ duration: 1.6, repeat: isHovered ? Infinity : 0, ease: "easeOut" }}
               />
@@ -598,6 +601,7 @@ export function ServiceCardIllustration({
               strokeWidth="1.5"
               strokeDasharray="4 4"
               className="text-stone-300 dark:text-white/20"
+              initial={{ strokeDashoffset: 0 }}
               animate={isHovered ? { strokeDashoffset: [0, -24] } : { strokeDashoffset: 0 }}
               transition={{ duration: 1.2, repeat: isHovered ? Infinity : 0, ease: "linear" }}
             />
@@ -677,6 +681,7 @@ export function ServiceCardIllustration({
               strokeWidth="1.5"
               strokeDasharray="5 5"
               className="text-stone-400/60 dark:text-stone-500/60"
+              initial={{ strokeDashoffset: 0 }}
               animate={isHovered ? { strokeDashoffset: [0, -30] } : { strokeDashoffset: 0 }}
               transition={{ duration: 1.4, repeat: isHovered ? Infinity : 0, ease: "linear" }}
             />
@@ -761,9 +766,11 @@ export function ServiceCardIllustration({
             <motion.circle
               cx="50"
               cy="36"
+              r="18"
               stroke="currentColor"
               strokeWidth="1.5"
               className="text-stone-300 dark:text-white/20"
+              initial={{ r: 18, opacity: 0.25 }}
               animate={isHovered ? { r: [16, 28, 42], opacity: [0.9, 0.4, 0] } : { r: 18, opacity: 0.25 }}
               transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0, ease: "easeOut" }}
             />
@@ -830,6 +837,7 @@ export function ServiceCardIllustration({
               strokeWidth="2"
               strokeDasharray="4 4"
               className="text-emerald-500/60"
+              initial={{ strokeDashoffset: 0 }}
               animate={isHovered ? { strokeDashoffset: [0, -24] } : { strokeDashoffset: 0 }}
               transition={{ duration: 1, repeat: isHovered ? Infinity : 0, ease: "linear" }}
             />
@@ -870,6 +878,7 @@ export function ServiceCardIllustration({
               strokeWidth="2"
               strokeDasharray="4 4"
               className="text-stone-300 dark:text-white/20"
+              initial={{ strokeDashoffset: 0 }}
               animate={isHovered ? { strokeDashoffset: [0, -32] } : { strokeDashoffset: 0 }}
               transition={{ duration: 1.2, repeat: isHovered ? Infinity : 0, ease: "linear" }}
             />
@@ -950,6 +959,7 @@ export function ServiceCardIllustration({
               strokeLinecap="round"
               strokeDasharray="113"
               transform="rotate(-90 25 25)"
+              initial={{ strokeDashoffset: 25 }}
               animate={isHovered ? { strokeDashoffset: [45, 8] } : { strokeDashoffset: 25 }}
               transition={{ duration: 0.8 }}
             />

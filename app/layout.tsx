@@ -81,13 +81,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Muskan Shekh | Digital Marketing & Technical SEO Specialist",
-    description: SITE_CONFIG.description,
-    images: [`${SITE_URL}${SITE_CONFIG.defaultOgImage}`],
-    creator: "@muskanshekh",
-  },
+
 };
 
 export default function RootLayout({
@@ -101,12 +95,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${plusJakartaSans.variable} ${caveat.variable} light scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
-        {/* Preload Earth globe map for instant frame-0 rendering */}
-        <link rel="preload" as="image" href="/earth/earth_daymap.jpg" />
 
         {/* Global Structured Data: WebSite & Person Entity */}
         <script

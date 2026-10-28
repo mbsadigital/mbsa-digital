@@ -108,7 +108,7 @@ export default function Projects() {
             <div className="mb-6 sm:mb-8">
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
+                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
               >
                 <span>See All Projects</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -189,9 +189,9 @@ export default function Projects() {
                 // relIndex 0 = Front Active: x: 0, y: 0, scale: 1, zIndex: 30
                 // relIndex 1 = Middle: x: 44px, y: -10px, scale: 0.96, zIndex: 20
                 // relIndex 2 = Back: x: 88px, y: -20px, scale: 0.92, zIndex: 10
-                const stepX = isMobile ? 14 : 44;
+                const stepX = isMobile ? 10 : 36;
                 const xOffset = relIndex * stepX;
-                const yOffset = -relIndex * (isMobile ? 8 : 10);
+                const yOffset = -relIndex * (isMobile ? 6 : 10);
                 const scale = 1 - relIndex * 0.04;
                 const zIndex = 30 - relIndex * 10;
                 const opacity = relIndex === 0 ? 1 : relIndex === 1 ? 0.94 : 0.80;
@@ -213,7 +213,7 @@ export default function Projects() {
                     }}
                     whileHover={
                       !isFront
-                        ? { x: xOffset + 6, transition: { duration: 0.2 } }
+                        ? { x: xOffset + 4, transition: { duration: 0.2 } }
                         : undefined
                     }
                     drag={isFront ? "x" : false}
@@ -233,16 +233,17 @@ export default function Projects() {
                     }}
                     className={`
                       absolute left-0 top-0
-                      w-[calc(100%-28px)] sm:w-[calc(100%-88px)]
-                      rounded-[28px] sm:rounded-[38px]
+                      w-[calc(100%-24px)] sm:w-[calc(100%-80px)]
+                      max-w-full
+                      rounded-[24px] sm:rounded-[36px]
                       border-2
                       ${isFront
-                        ? "border-orange-500/40 dark:border-orange-500/30 shadow-[0_25px_60px_rgba(37,99,235,0.14)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.75)]"
+                        ? "border-orange-500/40 dark:border-orange-500/30 shadow-[0_20px_50px_rgba(37,99,235,0.14)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.75)]"
                         : "border-stone-300/80 dark:border-white/10 shadow-lg cursor-pointer hover:border-orange-500/60"
                       }
                       bg-[#F8FAFC]
                       dark:bg-[#14110E]
-                      p-4.5 sm:p-7 md:p-8
+                      p-4 sm:p-7 md:p-8
                       overflow-hidden
                       transition-colors duration-300
                       touch-pan-y
@@ -307,8 +308,7 @@ export default function Projects() {
                               inline-flex items-center gap-2
                               px-5 py-2.5
                               rounded-full
-                              bg-gradient-to-r from-[#2563EB] to-[#14B8A6]
-                              hover:from-[#1D4ED8] hover:to-[#2563EB]
+                              bg-[#2563EB]
                               text-white
                               text-xs font-bold uppercase tracking-wider
                               shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45

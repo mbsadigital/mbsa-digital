@@ -290,8 +290,8 @@ export default function Testimonials() {
           </div>
 
           {/* Side Fade Gradient Overlays directly at container edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 bg-gradient-to-r from-[#F8FAFC] dark:from-[#0B1220] to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 bg-gradient-to-l from-[#F8FAFC] dark:from-[#0B1220] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-8 sm:w-16 bg-gradient-to-r from-white dark:from-[#0B1220] to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-8 sm:w-16 bg-gradient-to-l from-white dark:from-[#0B1220] to-transparent z-10" />
         </div>
       </div>
     </section>

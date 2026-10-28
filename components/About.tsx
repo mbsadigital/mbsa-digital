@@ -1,22 +1,17 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  Briefcase,
-  GraduationCap,
-  Award,
-  CheckCircle2,
   Sparkles,
-  Eye,
-  X,
-  ExternalLink,
-  PenLine,
+  TrendingUp,
+  Globe2,
+  ArrowUpRight,
+  Zap,
+  Search,
+  CheckCircle2,
   Plane,
-  Megaphone,
-  BarChart3,
-  ChevronLeft,
   ChevronRight,
 } from "lucide-react";
 
@@ -39,12 +34,12 @@ function UKFlag({ className = "w-4 h-3" }: { className?: string }) {
   return (
     <span className={`inline-block rounded-xs overflow-hidden shadow-xs ring-1 ring-black/10 shrink-0 ${className}`}>
       <svg viewBox="0 0 60 30" className="w-full h-full block">
-        <clipPath id="uk-flag-clip">
+        <clipPath id="uk-flag-clip-hero">
           <path d="M0 0v30h60V0z" />
         </clipPath>
         <path d="M0 0v30h60V0z" fill="#012169" />
         <path d="M0 0l60 30m0-30L0 30" stroke="#FFFFFF" strokeWidth="6" />
-        <path d="M0 0l60 30m0-30L0 30" clipPath="url(#uk-flag-clip)" stroke="#C8102E" strokeWidth="4" />
+        <path d="M0 0l60 30m0-30L0 30" clipPath="url(#uk-flag-clip-hero)" stroke="#C8102E" strokeWidth="4" />
         <path d="M30 0v30M0 15h60" stroke="#FFFFFF" strokeWidth="10" />
         <path d="M30 0v30M0 15h60" stroke="#C8102E" strokeWidth="6" />
       </svg>
@@ -52,171 +47,8 @@ function UKFlag({ className = "w-4 h-3" }: { className?: string }) {
   );
 }
 
-export interface CertificateItem {
-  title: string;
-  issuer: string;
-  image?: string; // Add your certificate image path here (e.g. "/banner/googleads.png" or "/my-cert.png")
-  credentialUrl?: string; // Optional URL to verify online
-}
-
-const CURRENT_ROLE = {
-  role: "Digital Marketing Specialist",
-  badge: "ACTIVE ROLE",
-  description:
-    "I Started in SEO over five years ago and I Still enjoy the detective work: finding why a page isn't ranking, fixing it and watching it climb. I lived and worked in London from Sep 2023 to Nov 2025, handing UK health and beauty brands, which taught me how British customers search and what they trust. I now lead a small team and handle International Clients from India.",
-};
-
-export interface ExperienceItem {
-  role: string;
-  company: string;
-  period: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description?: string;
-  points?: string[];
-  skills?: string[];
-}
-
-const EXPERIENCE: ExperienceItem[] = [
-  {
-    role: "Digital Marketing Specialist",
-    company: "Mamo Technolabs",
-    period: "Sep 2023 – Nov 2025",
-    icon: Briefcase,
-    description:
-      "Lead SEO and campaigns across several client accounts, tracking budgets and ROI.Build and maintain WordPress, Shopify and WooCommerce websites.Mentor the in house team and run international client meetings.",
-    points: [
-      "Technical SEO & architecture optimizations increasing organic traffic",
-      "GA4 custom event telemetry, user journey attribution & CRO testing",
-      "Managed international multi-market campaigns and cross-functional teams",
-    ],
-    skills: ["Technical SEO", "GA4 & CRO", "International Search", "Campaign ROI"],
-  },
-  {
-    role: "UK Health and Beauty Brands",
-    company: "Maia Health and Beauty",
-    period: "2021 – 2023",
-    icon: Megaphone,
-    description:
-      "Handled SEO, websites and social while based in London. Grew social engagement by 30% across Instagram, Facebook, LinkedIn, TikTok and Pinterest.Built landing pages, lead magnets, newsletters and content calendars.",
-    points: [
-      "On-page content optimization & search intent clustering",
-      "High-authority white-hat backlink acquisition campaigns",
-      "Comprehensive monthly ranking and performance reporting",
-    ],
-    skills: ["Keyword Research", "On-Page SEO", "Link Building", "Competitor Analysis"],
-  },
-  {
-    role: "Earlier SEO roles",
-    company: "Explode Solution, Maskoid, Eliteware, QuickNish",
-    period: "2020 – 2021",
-    icon: BarChart3,
-    description:
-      "Senior SEO Executive for international clients, from audits to backlink campaigns.Started as a Junior SEO Executive and grew through each role.Freelance WordPress and SEO for e-commerce stores.",
-    points: [
-      "Local directory citations and Google Business Profile management",
-      "Assisted in customer review generation & weekly traffic audits",
-    ],
-    skills: ["Local SEO", "GMB", "Citation Building", "Traffic Reporting"],
-  },
-];
-
-const JOURNEY = [
-  {
-    title: "Diploma in Computer Engineering",
-    institution: "Parul University, Gujarat",
-  },
-  {
-    title: "B.E Computer Engineering",
-    institution: "Neotech Institute of Technology, Gujarat",
-  },
-  {
-    title: "SEO Career Begins",
-    institution: "Junior SEO Executive, then Senior SEO roles",
-  },
-  {
-    title: "MSc Advanced Computer Science",
-    institution: "University of Essex, UK",
-  },
-  {
-    title: "UK Health & Beauty Brands",
-    institution: "September 2023 to November 2025, London",
-  },
-  {
-    title: "Team Lead and Strategist",
-    institution: "Mamo Technolabs Today",
-  },
-];
-
-// Add or edit certificates here — just set `image` to any image path in your /public folder
-const CERTIFICATES: CertificateItem[] = [
-  {
-    title: "Google Ads Search & PPC Certified",
-    issuer: "Google Skillshop",
-    image: "/banner/googleads.png",
-  },
-  {
-    title: "Google Analytics 4 (GA4) Certification",
-    issuer: "Google Analytics Academy",
-    image: "/banner/googleanalytics.png",
-  },
-  {
-    title: "Google Search Console Specialist",
-    issuer: "Google Search Central",
-    image: "/banner/googlesearchconsole.jpeg",
-  },
-
-];
-
-function SectionTitle({
-  icon: Icon,
-  children,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-center gap-2.5 mb-3">
-      <div className="w-7 h-7 rounded-lg bg-[#2563EB]/10 dark:bg-[#2563EB]/15 flex items-center justify-center shrink-0">
-        <Icon className="w-3.5 h-3.5 text-[#2563EB]" />
-      </div>
-
-      <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 dark:text-white">
-        {children}
-      </h3>
-    </div>
-  );
-}
-
 export default function About() {
-  const [previewCertIndex, setPreviewCertIndex] = React.useState<number | null>(null);
-  const [showRoleDetails, setShowRoleDetails] = React.useState<boolean>(false);
-
-  const previewCert = previewCertIndex !== null ? CERTIFICATES[previewCertIndex] : null;
-
-  const handlePrevCert = React.useCallback((e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setPreviewCertIndex((prev) =>
-      prev !== null ? (prev - 1 + CERTIFICATES.length) % CERTIFICATES.length : 0
-    );
-  }, []);
-
-  const handleNextCert = React.useCallback((e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setPreviewCertIndex((prev) =>
-      prev !== null ? (prev + 1) % CERTIFICATES.length : 0
-    );
-  }, []);
-
-  React.useEffect(() => {
-    if (previewCertIndex === null) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setPreviewCertIndex(null);
-      if (e.key === "ArrowLeft") handlePrevCert();
-      if (e.key === "ArrowRight") handleNextCert();
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [previewCertIndex, handlePrevCert, handleNextCert]);
+  const [heroActiveTab, setHeroActiveTab] = React.useState<"growth" | "vitals" | "market">("growth");
 
   return (
     <section
@@ -226,27 +58,25 @@ export default function About() {
         py-16 sm:py-20 lg:py-24
         bg-white dark:bg-[#090807]
         text-slate-900 dark:text-white
+        font-[family-name:var(--font-plus-jakarta-sans)]
         transition-colors duration-500
       "
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-orange-500/[0.06] dark:bg-orange-500/[0.08] blur-[120px]" />
-
         <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-orange-500/[0.05] dark:bg-orange-500/[0.07] blur-[130px]" />
-
         <div
           className="absolute inset-0 opacity-[0.025] dark:opacity-[0.035]"
           style={{
-            backgroundImage:
-              "radial-gradient(#2563EB 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(#2563EB 1px, transparent 1px)",
             backgroundSize: "30px 30px",
           }}
         />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+        {/* Section Pill */}
         <div className="flex items-center gap-3 mb-4 sm:mb-5">
           <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
@@ -254,593 +84,313 @@ export default function About() {
           </span>
         </div>
 
-        {/* 3-COLUMN HERO ROW:
-            LEFT: Journey + Certifications (in space below)
-            CENTER: Image with Hover to reveal Active Role Details
-            RIGHT: Experience
-        */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 lg:gap-5 xl:gap-6 items-stretch">
+        {/* BUSINESS-FIRST ABOUT HERO - ELEVATED EXECUTIVE ARCHITECTURE */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+        >
+          {/* Left Column: Strategic Positioning */}
+          <div className="lg:col-span-6 xl:col-span-6 max-w-2xl">
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <motion.span
+                initial={{ opacity: 0, x: -12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.45 }}
+                className="inline-flex items-center gap-2 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/[0.06] dark:bg-[#14B8A6]/[0.08] px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#2563EB] dark:text-[#14B8A6]"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563EB] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563EB]"></span>
+                </span>
+                Strategy · Search · Growth
+              </motion.span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2563EB]/10 text-[#2563EB] dark:text-[#60A5FA] border border-[#2563EB]/20">
+                UK &amp; India Practice
+              </span>
+            </div>
 
-          {/* =====================================================
-              LEFT SIDE: JOURNEY & CERTIFICATIONS (BELOW JOURNEY)
-          ===================================================== */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="order-2 lg:order-1 lg:col-span-4 min-w-0"
-          >
-            <div className="
-              h-full
-              rounded-[24px] sm:rounded-[28px]
-              bg-[#FFF9F5]
-              dark:bg-[#11100E]
-              border border-orange-200/60
-              dark:border-white/10
-              p-4 sm:p-5
-              shadow-[0_15px_45px_rgba(37,99,235,0.06)]
-              dark:shadow-[0_15px_45px_rgba(0,0,0,0.35)]
-              flex flex-col justify-between
-            ">
-              <div>
-                {/* 1. JOURNEY */}
-                <SectionTitle icon={GraduationCap}>
-                  JOURNEY
-                </SectionTitle>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08] text-slate-950 dark:text-white">
+              Smart business
+              <span className="block mt-1 sm:mt-2 text-[#2563EB] dark:text-[#3B82F6]">
+                Smart people
+              </span>
+            </h2>
 
-                <div className="relative ml-1 pl-4 sm:pl-5 border-l-2 border-[#2563EB]/40 space-y-2.5 sm:space-y-3 pt-1">
-                  {JOURNEY.map((item, index) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, y: 6 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.25,
-                        delay: index * 0.03,
-                      }}
-                      className="relative"
-                    >
-                      {/* Orange Timeline Dot */}
-                      <span className="
-                        absolute
-                        -left-[21px] sm:-left-[25px]
-                        top-1.5
-                        w-2.5
-                        h-2.5
-                        rounded-full
-                        bg-[#2563EB]
-                        ring-4
-                        ring-orange-500/20
-                      " />
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+              I combine rigorous technical SEO, GA4 revenue attribution, and clean engineering architecture to help ambitious brands transform organic search into high-margin commercial velocity.
+            </p>
 
-                      <h4 className="
-                        text-xs
-                        sm:text-[13px]
-                        font-bold
-                        text-slate-900
-                        dark:text-white
-                        leading-snug
-                      ">
-                        {item.title}
-                      </h4>
-
-                      <p className="
-                        text-[10.5px]
-                        sm:text-[11px]
-                        text-slate-500
-                        dark:text-slate-400
-                        font-medium
-                        mt-0.5
-                        leading-tight
-                      ">
-                        {item.institution}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Divider between Journey and Certifications */}
-                <div className="my-3.5 sm:my-4 h-px bg-slate-200/80 dark:bg-white/10" />
-
-                {/* 2. CERTIFICATIONS (DIRECT IMAGES IN PLACE) */}
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <SectionTitle icon={Award}>
-                      CERTIFICATIONS
-                    </SectionTitle>
-                    <span className="text-[10px] font-semibold text-[#2563EB] dark:text-orange-400 flex items-center gap-1">
-                      <Eye className="w-3 h-3" />
-                      <span>Click to view</span>
-                    </span>
-                  </div>
-
-                  {/* Direct Image Show in Place - Cleanly sized without row option text */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-2.5">
-                    {CERTIFICATES.map((certificate, idx) => (
-                      <button
-                        key={certificate.title}
-                        type="button"
-                        onClick={() => setPreviewCertIndex(idx)}
-                        title={`View ${certificate.title}`}
-                        className="
-                          group
-                          relative
-                          w-full
-                          aspect-[16/11]
-                          rounded-xl
-                          overflow-hidden
-                          border
-                          border-slate-200/90
-                          dark:border-white/10
-                          bg-slate-50/70
-                          dark:bg-[#181614]
-                          hover:border-[#2563EB]
-                          hover:shadow-md
-                          hover:shadow-orange-500/20
-                          transition-all
-                          duration-300
-                          cursor-pointer
-                          p-2
-                          flex
-                          items-center
-                          justify-center
-                          focus:outline-none
-                          focus:ring-2
-                          focus:ring-[#2563EB]/40
-                        "
-                      >
-                        {certificate.image ? (
-                          <div className="relative w-full h-full flex items-center justify-center">
-                            <Image
-                              src={certificate.image}
-                              alt={certificate.title}
-                              fill
-                              sizes="(max-width: 768px) 33vw, 120px"
-                              className="object-contain p-1 group-hover:scale-110 transition-transform duration-300"
-                            />
-                          </div>
-                        ) : (
-                          <Award className="w-6 h-6 text-[#2563EB]" />
-                        )}
-
-                        {/* Direct clean hover overlay */}
-                        <div className="
-                          absolute inset-0
-                          bg-black/50
-                          opacity-0 group-hover:opacity-100
-                          transition-opacity duration-200
-                          flex items-center justify-center
-                          backdrop-blur-[1px]
-                        ">
-                          <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-xs">
-                            <Eye className="w-3.5 h-3.5" />
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+            {/* Strategic Value Pillars Strip */}
+            <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3 py-3 border-y border-slate-200/80 dark:border-white/10">
+              <div className="flex flex-col">
+                <span className="text-xs sm:text-sm font-extrabold text-[#2563EB] dark:text-[#3B82F6] flex items-center gap-1">
+                  <TrendingUp className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>+340%</span>
+                </span>
+                <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">Organic Surge</span>
+              </div>
+              <div className="flex flex-col border-x border-slate-200/80 dark:border-white/10 px-2 sm:px-3">
+                <span className="text-xs sm:text-sm font-extrabold text-[#2563EB] dark:text-[#3B82F6] flex items-center gap-1">
+                  <Zap className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>100/100</span>
+                </span>
+                <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">Core Web Vitals</span>
+              </div>
+              <div className="flex flex-col pl-1">
+                <span className="text-xs sm:text-sm font-extrabold text-[#2563EB] dark:text-[#3B82F6] flex items-center gap-1">
+                  <Globe2 className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>Transatlantic</span>
+                </span>
+                <span className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium">UK ↔ India Reach</span>
               </div>
             </div>
-          </motion.div>
 
-          {/* =====================================================
-              CENTER: PROFILE IMAGE (HOVER TO REVEAL ACTIVE ROLE DETAILS)
-          ===================================================== */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="order-1 lg:order-2 lg:col-span-4 min-w-0"
-          >
-            <div
-              className="
-                group
-                relative
-                h-full
-                min-h-[460px] sm:min-h-[500px]
-                rounded-[24px] sm:rounded-[28px]
-                overflow-hidden
-                border border-orange-200/60
-                dark:border-white/10
-                p-2.5 sm:p-3
-                bg-white
-                dark:bg-[#11100E]
-                shadow-[0_15px_45px_rgba(37,99,235,0.06)]
-                dark:shadow-[0_15px_45px_rgba(0,0,0,0.35)]
-                flex flex-col justify-between
-              "
-              onMouseEnter={() => setShowRoleDetails(true)}
-              onMouseLeave={() => setShowRoleDetails(false)}
-              onClick={() => setShowRoleDetails((prev) => !prev)}
-            >
-              {/* Profile Image Container */}
-              <div className="
-                relative
-                w-full
-                h-full
-                min-h-[440px] sm:min-h-[480px]
-                rounded-[20px] sm:rounded-[22px]
-                overflow-hidden
-                bg-stone-100
-                dark:bg-stone-900
-                border
-                border-black/5
-                dark:border-white/10
-              ">
-                <Image
-                  src="/about_india_to_uk_flight.jpg"
-                  alt="Digital Marketing Specialist"
-                  fill
-                  loading="lazy"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="
-                    object-cover
-                    object-[center_15%]
-                    transition-transform
-                    duration-700
-                    ease-out
-                    group-hover:scale-[1.04]
-                  "
-                />
+            <div className="mt-6 flex flex-wrap items-center gap-3.5">
+              <Link
+                href="/about"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-[#2563EB] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 transition-all duration-300 hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/50 focus:ring-offset-2 dark:focus:ring-offset-[#090807]"
+              >
+                <span>Explore About</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
 
-
-
-
-
-
-                {/* ==============================================
-                    SLIDE-UP HOVER OVERLAY: ACTIVE ROLE DETAILS
-                ============================================== */}
-                <div className={`
-                  absolute inset-x-0 bottom-0
-                  p-4 sm:p-5
-                  rounded-t-[22px]
-                  bg-gradient-to-t
-                  from-white/95 via-white/90 to-white/80
-                  dark:from-[#11100E]/95 dark:via-[#11100E]/90 dark:to-[#11100E]/80
-                  backdrop-blur-xl
-                  border-t
-                  border-orange-500/30
-                  transition-all
-                  duration-500
-                  ease-out
-                  z-20
-                  ${showRoleDetails
-                    ? "translate-y-0 opacity-100 pointer-events-auto"
-                    : "translate-y-full opacity-0 pointer-events-none group-hover:translate-y-0 group-hover:opacity-100 group-hover:pointer-events-auto"
-                  }
-                `}>
-                  {/* Peek Bar: Always visible strip at the bottom */}
-                  <div className="flex items-center justify-between gap-2 mb-2.5 cursor-pointer">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
-                      <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white leading-tight">
-                        {CURRENT_ROLE.role}
-                      </h4>
-                    </div>
-
-                    <span className="
-                      px-2
-                      py-0.5
-                      rounded-full
-                      bg-orange-700/10
-                      text-[#FB923C]
-                      text-[9px]
-                      font-bold
-                      tracking-wider
-                      uppercase
-                      border
-                      border-orange-700/70
-                      shrink-0
-                    ">
-                      {CURRENT_ROLE.badge}
-                    </span>
-                  </div>
-
-                  {/* Expandable Body: Shown on hover */}
-                  <div className="space-y-3 pt-1">
-                    <p className="text-[11.5px] sm:text-xs leading-relaxed text-stone-700 dark:text-stone-300">
-                      {CURRENT_ROLE.description}
-                    </p>
-
-                    {/* INDIA TO UK FLIGHT ROUTE WITH AIRPLANE */}
-                    <div className="
-                      p-2
-                      rounded-xl
-                      bg-white/10 dark:bg-white/5
-                      border
-                      border-stone-200/40 dark:border-white/15
-                      backdrop-blur-md
-                      flex
-                      items-center
-                      justify-between
-                      gap-2
-                    ">
-                      {/* India Flag & Label */}
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        <IndiaFlag className="w-3.5 h-2.5" />
-                        <span className="text-[10px] font-bold text-stone-900 dark:text-white">
-                          India
-                        </span>
-                      </div>
-
-                      {/* Flight Path with Animated Airplane */}
-                      <div className="flex-1 flex items-center justify-center relative px-1">
-                        <div className="w-full h-px border-t border-dashed border-orange-500/70 relative" />
-                        <div className="
-                          absolute
-                          px-1.5 py-0.5
-                          rounded-full
-                          bg-orange-500/20
-                          border
-                          border-orange-500/50
-                          flex
-                          items-center
-                          justify-center
-                          text-orange-500
-                          shadow-xs
-                        ">
-                          <Plane className="w-3.5 h-3.5 rotate-45 animate-pulse" />
-                        </div>
-                      </div>
-
-                      {/* UK Flag & Label */}
-                      <div className="flex items-center gap-1.5 shrink-0">
-                        <span className="text-[10px] font-bold text-stone-900 dark:text-white">
-                          UK
-                        </span>
-                        <UKFlag className="w-3.5 h-2.5" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* =====================================================
-              RIGHT SIDE: EXPERIENCE
-          ===================================================== */}
+          {/* Right Column: Interactive Multi-View SEO Intelligence Cockpit */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="order-3 lg:order-3 lg:col-span-4 min-w-0"
+            initial={{ opacity: 0, scale: 0.95, y: 14 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="lg:col-span-6 xl:col-span-6 relative mx-auto w-full max-w-[560px]"
           >
-            <div className="
-              h-full
-              rounded-[24px] sm:rounded-[28px]
-              bg-[#FFF9F5]
-              dark:bg-[#11100E]
-              border border-orange-200/60
-              dark:border-white/10
-              p-4 sm:p-5
-              shadow-[0_15px_45px_rgba(37,99,235,0.06)]
-              dark:shadow-[0_15px_45px_rgba(0,0,0,0.35)]
-              flex flex-col justify-between
-            ">
-              <div>
-                <SectionTitle icon={Briefcase}>
-                  EXPERIENCE
-                </SectionTitle>
+            {/* Background Ambient Aura - Colors unchanged */}
+            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#2563EB]/15 via-[#6366F1]/10 to-[#F97316]/15 blur-2xl" />
 
-                <div className="space-y-2.5 pt-0.5">
-                  {EXPERIENCE.map((exp, idx) => (
-                    <div
-                      key={idx}
-                      className="
-                        group
-                        rounded-xl
-                        border
-                        border-slate-200/80
-                        dark:border-white/10
-                        bg-slate-50/60
-                        dark:bg-white/[0.02]
-                        p-2.5 sm:p-3
-                        hover:border-orange-500/40
-                        hover:bg-orange-50/20
-                        dark:hover:bg-[#2563EB]/[0.03]
-                        transition-all
-                        duration-200
-                      "
-                    >
-                      <div className="flex items-start justify-between gap-1.5">
-                        <div className="min-w-0">
-                          <h5 className="text-xs sm:text-[13px] font-bold text-slate-900 dark:text-white leading-tight">
-                            {exp.role}
-                          </h5>
-                          <p className="text-[10.5px] sm:text-[11px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">
-                            {exp.company}
-                          </p>
-                        </div>
-                        <span className="text-[9.5px] sm:text-[10px] shrink-0 font-semibold text-[#2563EB] dark:text-[#FB923C] bg-orange-100/70 dark:bg-orange-500/15 px-1.5 py-0.5 rounded-full border border-orange-200/60 dark:border-orange-500/20">
-                          {exp.period}
-                        </span>
-                      </div>
+            {/* Glass Cockpit Console */}
+            <div className="relative overflow-hidden rounded-[26px] sm:rounded-[30px] border border-white/80 dark:border-white/10 bg-gradient-to-br from-white/95 via-[#F8FAFF]/90 to-orange-50/70 dark:from-[#131722]/95 dark:via-[#11141F]/90 dark:to-[#1C1613]/90 p-4 sm:p-6 shadow-[0_25px_80px_rgba(37,99,235,0.12)] backdrop-blur-2xl">
 
-                      {exp.description && (
-                        <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
-                          {exp.description}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-        </div>
-      </div>
-
-      {/* Certificate Image Lightbox / Preview Modal (PROPER HIGH-RES VIEW) */}
-      <AnimatePresence>
-        {previewCert && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setPreviewCertIndex(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 md:p-6 bg-black/80 backdrop-blur-md cursor-zoom-out"
-          >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0, y: 12 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.92, opacity: 0, y: 12 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              onClick={(e) => e.stopPropagation()}
-              className="
-                relative
-                w-full max-w-xl sm:max-w-2xl
-                bg-white dark:bg-[#111B2E]
-                rounded-2xl sm:rounded-3xl
-                p-4 sm:p-6
-                border border-slate-200 dark:border-white/10
-                shadow-2xl
-                cursor-default
-                flex flex-col
-              "
-            >
-              {/* Top Bar with Title and Close Button */}
-              <div className="flex items-start justify-between gap-3 mb-4">
-                <div className="min-w-0 pr-4">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-500/15 text-[#2563EB] border border-orange-500/30">
-                      Verified Credential
-                    </span>
-                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                      {previewCert.issuer}
-                    </span>
+              {/* Top Console Bar */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-slate-200/80 dark:border-white/10">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80 inline-block" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80 inline-block" />
                   </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-1.5 leading-snug">
-                    {previewCert.title}
-                  </h3>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setPreviewCertIndex(null)}
-                  className="
-                    shrink-0
-                    p-2
-                    rounded-full
-                    text-slate-400
-                    hover:text-slate-700
-                    dark:hover:text-white
-                    hover:bg-slate-100
-                    dark:hover:bg-white/10
-                    transition-colors
-                  "
-                  aria-label="Close modal"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Certificate Image Frame - Proper Large Showcase */}
-              <div className="
-                relative
-                w-full
-                h-[260px] sm:h-[340px] md:h-[380px]
-                rounded-xl sm:rounded-2xl
-                bg-slate-50 dark:bg-stone-950/80
-                border border-slate-200/80 dark:border-white/10
-                p-4 sm:p-6
-                flex items-center justify-center
-                shadow-inner
-                overflow-hidden
-              ">
-                {previewCert.image && (
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={previewCert.image}
-                      alt={previewCert.title}
-                      fill
-                      priority
-                      sizes="(max-width: 768px) 90vw, 650px"
-                      className="object-contain drop-shadow-md"
-                    />
-                  </div>
-                )}
-
-                {/* Previous & Next Navigation Buttons */}
-                {CERTIFICATES.length > 1 && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={handlePrevCert}
-                      className="
-                        absolute left-3 top-1/2 -translate-y-1/2
-                        p-2.5 rounded-full
-                        bg-black/60 hover:bg-black/85
-                        text-white
-                        border border-white/20
-                        backdrop-blur-md
-                        transition-all duration-200
-                        shadow-md
-                      "
-                      aria-label="Previous certificate"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={handleNextCert}
-                      className="
-                        absolute right-3 top-1/2 -translate-y-1/2
-                        p-2.5 rounded-full
-                        bg-black/60 hover:bg-black/85
-                        text-white
-                        border border-white/20
-                        backdrop-blur-md
-                        transition-all duration-200
-                        shadow-md
-                      "
-                      aria-label="Next certificate"
-                    >
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </>
-                )}
-              </div>
-
-              {/* Modal Footer */}
-              <div className="mt-4 pt-3 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between gap-3 text-xs">
-                {/* Dots indicator */}
-                <div className="flex items-center gap-1.5">
-                  {CERTIFICATES.map((_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      onClick={() => setPreviewCertIndex(i)}
-                      className={`h-2 rounded-full transition-all duration-200 ${previewCertIndex === i
-                        ? "w-6 bg-[#2563EB]"
-                        : "w-2 bg-slate-300 dark:bg-stone-700 hover:bg-slate-400"
-                        }`}
-                      aria-label={`Go to certificate ${i + 1}`}
-                    />
-                  ))}
-                  <span className="text-[11px] text-slate-400 ml-1.5 font-medium">
-                    {(previewCertIndex ?? 0) + 1} of {CERTIFICATES.length}
+                  <span className="ml-1 text-[10px] font-mono font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400">
+                    mbsa.growth.telemetry
                   </span>
                 </div>
-
-                <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold text-[11px]">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>Google Certified Credential</span>
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[9.5px] font-bold text-emerald-600 dark:text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>LIVE ENGINE</span>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Interactive View Switcher Tabs */}
+              <div className="grid grid-cols-3 gap-1.5 my-3 p-1 rounded-xl bg-slate-200/60 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
+                {[
+                  { id: "growth", label: "Organic Reach", icon: TrendingUp },
+                  { id: "vitals", label: "Core Vitals", icon: Zap },
+                  { id: "market", label: "Global Route", icon: Globe2 },
+                ].map((tab) => {
+                  const Icon = tab.icon;
+                  const isActive = heroActiveTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => setHeroActiveTab(tab.id as "growth" | "vitals" | "market")}
+                      className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all duration-200 cursor-pointer ${isActive
+                        ? "bg-white dark:bg-[#1E2538] text-[#2563EB] dark:text-[#60A5FA] shadow-xs"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                        }`}
+                    >
+                      <Icon className="w-3 h-3" />
+                      <span className="truncate">{tab.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Dynamic View Content */}
+              {heroActiveTab === "growth" && (
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-baseline justify-between">
+                    <div>
+                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                        Organic Search Footprint
+                      </p>
+                      <div className="flex items-baseline gap-2 mt-0.5">
+                        <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">+340%</span>
+                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Qualified Inbound</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 block">Top 3 Rankings</span>
+                      <span className="text-xs font-black text-orange-500">42+ High-Intent KWs</span>
+                    </div>
+                  </div>
+
+                  {/* SVG Wave Visualizer */}
+                  <div className="relative h-20 w-full overflow-hidden rounded-xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/50 dark:border-white/5 p-2 flex items-end">
+                    <svg viewBox="0 0 400 90" className="w-full h-full overflow-visible" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#2563EB" stopOpacity="0.45" />
+                          <stop offset="85%" stopColor="#F97316" stopOpacity="0.05" />
+                          <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M0,75 Q40,65 80,68 T160,50 T240,42 T320,18 T400,6 L400,90 L0,90 Z"
+                        fill="url(#heroGradient)"
+                      />
+                      <path
+                        d="M0,75 Q40,65 80,68 T160,50 T240,42 T320,18 T400,6"
+                        fill="none"
+                        stroke="#2563EB"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                      />
+                      <circle cx="400" cy="6" r="4" fill="#F97316" stroke="#FFFFFF" strokeWidth="2" />
+                    </svg>
+                  </div>
+
+                  {/* Live Search Query Simulation Bar */}
+                  <div className="flex items-center gap-2 p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-xs">
+                    <Search className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
+                    <span className="font-mono text-[11px] text-slate-700 dark:text-slate-300 truncate">
+                      google.co.uk: &ldquo;uk healthcare seo strategy&rdquo;
+                    </span>
+                    <span className="ml-auto text-[9.5px] font-bold px-1.5 py-0.5 rounded-sm bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0">
+                      #1 RANK
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {heroActiveTab === "vitals" && (
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-baseline justify-between">
+                    <div>
+                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                        Technical Architecture Health
+                      </p>
+                      <div className="flex items-baseline gap-2 mt-0.5">
+                        <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">99/100</span>
+                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Zero Technical Debt</span>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-[#2563EB]/10 text-[#2563EB]">
+                      TURBOPACK SPEED
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-center">
+                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block">LCP</span>
+                      <span className="text-base font-black text-emerald-600 dark:text-emerald-400">0.8s</span>
+                      <span className="text-[9px] text-slate-400 block">Good (&lt;2.5s)</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-center">
+                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block">CLS</span>
+                      <span className="text-base font-black text-emerald-600 dark:text-emerald-400">0.00</span>
+                      <span className="text-[9px] text-slate-400 block">Zero Shift</span>
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-center">
+                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block">INP</span>
+                      <span className="text-base font-black text-emerald-600 dark:text-emerald-400">24ms</span>
+                      <span className="text-[9px] text-slate-400 block">Instant</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between p-2 rounded-xl bg-orange-500/[0.06] border border-orange-500/20 text-[11px] text-orange-700 dark:text-orange-300 font-semibold">
+                    <span className="flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" />
+                      100% Crawl Efficiency &amp; Indexation
+                    </span>
+                    <span className="text-[10px] font-mono text-slate-500">200 OK</span>
+                  </div>
+                </div>
+              )}
+
+              {heroActiveTab === "market" && (
+                <div className="space-y-3 pt-1">
+                  <div className="flex items-baseline justify-between">
+                    <div>
+                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                        Transatlantic Practice
+                      </p>
+                      <div className="flex items-baseline gap-2 mt-0.5">
+                        <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">UK ↔ India</span>
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Cross-Border</span>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-orange-500/10 text-orange-500">
+                      LONDON EXPERIENCE
+                    </span>
+                  </div>
+
+                  {/* Flight Route Simulator */}
+                  <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-1.5">
+                        <IndiaFlag className="w-4 h-3" />
+                        <div>
+                          <span className="text-xs font-black text-slate-900 dark:text-white block">India</span>
+                          <span className="text-[9px] text-slate-500">Execution &amp; Leadership</span>
+                        </div>
+                      </div>
+
+                      <div className="flex-1 flex items-center justify-center relative px-2">
+                        <div className="w-full h-px border-t border-dashed border-[#2563EB]/60 relative" />
+                        <div className="absolute px-1.5 py-0.5 rounded-full bg-[#2563EB]/15 text-[#2563EB] border border-[#2563EB]/30">
+                          <Plane className="w-3 h-3 rotate-45" />
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 text-right">
+                        <div>
+                          <span className="text-xs font-black text-slate-900 dark:text-white block">London, UK</span>
+                          <span className="text-[9px] text-slate-500">Market Psychology</span>
+                        </div>
+                        <UKFlag className="w-4 h-3" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-[11px] leading-relaxed text-slate-600 dark:text-slate-300">
+                    2+ years on-the-ground in London managing health, beauty &amp; e-commerce brands, combined with 5+ years full-stack SEO execution in India.
+                  </p>
+                </div>
+              )}
+
+              {/* Bottom Quick Feature Pill */}
+              <div className="mt-3.5 pt-3 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-[11px]">
+                <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 font-medium">
+                  <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+                  <span>High-performance digital engineering</span>
+                </div>
+                <Link
+                  href="/about"
+                  className="font-bold text-[#2563EB] hover:text-[#1D4ED8] dark:text-[#60A5FA] flex items-center gap-0.5"
+                >
+                  <span>Full story</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </motion.div>
+      </div>
     </section>
   );
 }

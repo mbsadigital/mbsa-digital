@@ -54,7 +54,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     description: "Industry-leading backlink analysis, domain rating intelligence, and comprehensive content gap exploration.",
     bullets: ["Backlink Profiles", "Keyword Explorer", "Domain Rating DR"],
     techStack: ["Ahrefs", "Site Explorer", "Content Explorer"],
-    overlayPos: "top-[24%] left-[-2%] sm:left-[-6%] lg:left-[-6%] xl:left-[-10%] 2xl:left-[-12%]",
+    overlayPos: "top-[24%] left-0 sm:left-[-4%] lg:left-[-6%] xl:left-[-10%] 2xl:left-[-12%]",
     image: "/banner/ahref.jpeg",
   },
   {
@@ -66,7 +66,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     description: "Technical SEO site audits, large-scale broken link identification, redirect chains, and structured data validation.",
     bullets: ["Site Crawls", "Redirect Audits", "Data Extraction"],
     techStack: ["Screaming Frog", "Log File Analyser", "SEO Spider"],
-    overlayPos: "top-[47%] left-[-4%] sm:left-[-8%] lg:left-[-8%] xl:left-[-12%] 2xl:left-[-15%]",
+    overlayPos: "top-[47%] left-0 sm:left-[-5%] lg:left-[-8%] xl:left-[-12%] 2xl:left-[-15%]",
     image: "/banner/scramingfrog.png",
   },
   {
@@ -78,7 +78,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     description: "Track user journeys, conversion events, and attribution modeling with enterprise real-time GA4 tracking.",
     bullets: ["Real-Time Tracking", "Conversion Funnels", "Custom Dashboards"],
     techStack: ["Google Analytics 4", "Google Tag Manager", "Looker Studio"],
-    overlayPos: "top-[70%] left-[-2%] sm:left-[-6%] lg:left-[-6%] xl:left-[-10%] 2xl:left-[-12%]",
+    overlayPos: "top-[70%] left-0 sm:left-[-4%] lg:left-[-6%] xl:left-[-10%] 2xl:left-[-12%]",
     image: "/banner/googleanalytics.png",
   },
   {
@@ -116,7 +116,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     description: "Social media reach, omnichannel audience acquisition, high-converting digital presence and web architecture.",
     bullets: ["Social Strategy", "Brand Reach", "Conversion Funnels"],
     techStack: ["Meta Business", "LinkedIn", "Next.js", "Analytics"],
-    overlayPos: "top-[24%] right-[-2%] sm:right-[-6%] lg:right-[-6%] xl:right-[-10%] 2xl:right-[-12%]",
+    overlayPos: "top-[24%] right-0 sm:right-[-4%] lg:right-[-6%] xl:right-[-10%] 2xl:right-[-12%]",
     image: "/banner/webdevelopement.png",
   },
   {
@@ -128,7 +128,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     description: "Drive high-intent traffic and maximum ROI conversions with tailored Google Ads & PPC advertising campaigns.",
     bullets: ["Search & Display", "Performance Max", "Targeted Retargeting"],
     techStack: ["Google Ads", "Meta Ads Manager", "Microsoft Ads"],
-    overlayPos: "top-[47%] right-[-4%] sm:right-[-8%] lg:right-[-8%] xl:right-[-12%] 2xl:right-[-15%]",
+    overlayPos: "top-[47%] right-0 sm:right-[-5%] lg:right-[-8%] xl:right-[-12%] 2xl:right-[-15%]",
     image: "/banner/googleads.png",
   },
   {
@@ -140,7 +140,7 @@ const MARKETING_NODES: MarketingNodeData[] = [
     description: "Scale high-converting Shopify & WooCommerce storefronts with optimized checkout funnels and retention marketing.",
     bullets: ["Store Audits", "Checkout Optimization", "Conversion Rate CRO"],
     techStack: ["Shopify Plus", "WooCommerce", "Klaviyo", "Stripe"],
-    overlayPos: "top-[70%] right-[-2%] sm:right-[-6%] lg:right-[-6%] xl:right-[-10%] 2xl:right-[-12%]",
+    overlayPos: "top-[70%] right-0 sm:right-[-4%] lg:right-[-6%] xl:right-[-10%] 2xl:right-[-12%]",
     image: "/banner/woocommerce.png",
   },
   {
@@ -165,10 +165,15 @@ export function HeroEarthStaticGlobe() {
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
       <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.45)] border-2 border-cyan-400/40">
-        {/* Photorealistic NASA Earth Map */}
-        <div
-          className="absolute inset-0 rounded-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/earth/earth_daymap.jpg')" }}
+        {/* Photorealistic NASA Earth Map - High-Priority Next.js Image for Instant LCP < 1.0s */}
+        <Image
+          src="/earth/earth_daymap.jpg"
+          alt="Photorealistic Earth Map"
+          fill
+          priority
+          sizes="(max-width: 640px) 240px, (max-width: 1024px) 360px, 420px"
+          quality={80}
+          className="object-cover rounded-full"
         />
 
         {/* 3D Sphere volumetric lighting & shading */}
@@ -195,6 +200,29 @@ export function HeroEarthStaticGlobe() {
 
 function Hero3DEarthDashboard() {
   const [activeNode, setActiveNode] = useState<MarketingNodeData | null>(null);
+  const [load3D, setLoad3D] = useState(false);
+
+  useEffect(() => {
+    // Defer 3D WebGL Three.js canvas mount until after initial frame paint to guarantee LCP < 1.0s
+    if (typeof window === "undefined") return;
+    if ("requestIdleCallback" in window) {
+      const handle = (
+        window as unknown as {
+          requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number;
+        }
+      ).requestIdleCallback(() => setLoad3D(true), { timeout: 1500 });
+      return () => {
+        if ("cancelIdleCallback" in window) {
+          (
+            window as unknown as { cancelIdleCallback: (id: number) => void }
+          ).cancelIdleCallback(handle);
+        }
+      };
+    } else {
+      const timer = setTimeout(() => setLoad3D(true), 1200);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -204,15 +232,15 @@ function Hero3DEarthDashboard() {
           relative
           w-full
           aspect-square
-          max-w-[300px]
-          min-[360px]:max-w-[330px]
-          min-[400px]:max-w-[380px]
-          min-[480px]:max-w-[440px]
-          sm:max-w-[500px]
-          md:max-w-[540px]
-          lg:max-w-[480px]
-          xl:max-w-[550px]
-          2xl:max-w-[620px]
+          max-w-[280px]
+          min-[360px]:max-w-[320px]
+          min-[400px]:max-w-[360px]
+          min-[480px]:max-w-[400px]
+          sm:max-w-[520px]
+          md:max-w-[520px]
+          lg:max-w-[390px]
+          xl:max-w-[480px]
+          2xl:max-w-[520px]
           mx-auto
           flex
           items-center
@@ -226,7 +254,7 @@ function Hero3DEarthDashboard() {
 
         {/* Dynamic Three.js 3D WebGL Canvas with instant static globe fallback */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <HeroEarthCanvas />
+          {load3D ? <HeroEarthCanvas /> : <HeroEarthStaticGlobe />}
         </div>
 
 
@@ -238,7 +266,11 @@ function Hero3DEarthDashboard() {
             return (
               <motion.div
                 key={node.id}
-                className={`absolute pointer-events-auto cursor-pointer select-none ${node.overlayPos}`}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${node.name} metrics`}
+                aria-pressed={isActive}
+                className={`absolute pointer-events-auto cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 rounded-xl sm:rounded-2xl ${node.overlayPos}`}
                 onMouseEnter={() => {
                   if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
                     setActiveNode(node);
@@ -250,6 +282,12 @@ function Hero3DEarthDashboard() {
                   }
                 }}
                 onClick={() => setActiveNode((prev) => (prev?.id === node.id ? null : node))}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveNode((prev) => (prev?.id === node.id ? null : node));
+                  }
+                }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.96 }}
               >
@@ -269,7 +307,7 @@ function Hero3DEarthDashboard() {
                       alt={node.name}
                       width={32}
                       height={32}
-                      loading="eager"
+                      sizes="32px"
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -476,21 +514,21 @@ export default function Hero() {
       id="hero"
       className="
         relative
-        min-h-[92vh]
-        lg:min-h-[calc(100vh-64px)]
+        min-h-[85vh]
+        lg:min-h-[calc(100dvh-68px)]
         overflow-hidden
         text-stone-900
         dark:text-white
         transition-colors
         duration-500
-        pt-24
-        sm:pt-28
-        md:pt-32
-        lg:pt-28
-        xl:pt-32
-        pb-12
-        sm:pb-16
-        lg:pb-20
+        pt-20
+        sm:pt-24
+        lg:pt-24
+        xl:pt-28
+        pb-10
+        sm:pb-14
+        lg:pb-10
+        xl:pb-14
         flex
         items-center
       "
@@ -509,53 +547,53 @@ export default function Hero() {
 
       {/* Main Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-6 xl:gap-10 items-center">
 
           {/* =================================================
               LEFT COLUMN: HERO COPY & PROPOSITION
           ================================================= */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Top Label Badge */}
-            <div className="mb-4 flex flex-wrap items-center gap-3">
+            <div className="mb-2 sm:mb-2.5 flex flex-wrap items-center gap-3">
               <span
                 className="
                   inline-flex
                   items-center
-                  gap-2
-                  px-3.5
-                  py-1.5
+                  gap-1.5
+                  px-3
+                  py-1
                   bg-[#2563EB]
                   text-white
-                  text-[10px]
-                  sm:text-xs
+                  text-[9.5px]
+                  sm:text-[11px]
                   font-black
                   uppercase
                   tracking-[0.16em]
                   -rotate-1
-                  shadow-[4px_4px_0_rgba(194,65,12,0.30)]
+                  shadow-[3px_3px_0_rgba(194,65,12,0.30)]
                   rounded-sm
                 "
               >
-                <Search className="w-3.5 h-3.5" />
+                <Search className="w-3 h-3" />
                 We Deliver Growth
               </span>
             </div>
 
             {/* Main Headline - Semantic H1 for SEO and Instant LCP */}
-            <div className="relative mb-5">
+            <div className="relative mb-2.5 sm:mb-3">
               <h1 className="relative select-none uppercase font-black leading-[0.92] tracking-[-0.035em]">
                 {/* DIGITAL */}
                 <span
                   className="
                     block
-                    text-[2.2rem]
-                    min-[360px]:text-[2.6rem]
-                    min-[400px]:text-[3.2rem]
-                    sm:text-[4.2rem]
-                    md:text-[5rem]
+                    text-[2.7rem]
+                    min-[360px]:text-[3.2rem]
+                    min-[400px]:text-[3.7rem]
+                    sm:text-[4.8rem]
+                    md:text-[5.5rem]
                     lg:text-[3.8rem]
-                    xl:text-[4.6rem]
-                    2xl:text-[5.4rem]
+                    xl:text-[4.8rem]
+                    2xl:text-[5.6rem]
                     text-[#1C1917]
                     dark:text-[#FFF7ED]
                     break-words
@@ -568,19 +606,19 @@ export default function Hero() {
                 <span
                   className="
                     block
-                    text-[1.8rem]
-                    min-[360px]:text-[2.2rem]
-                    min-[400px]:text-[2.8rem]
-                    sm:text-[3.8rem]
-                    md:text-[4.5rem]
+                    text-[2.2rem]
+                    min-[360px]:text-[2.6rem]
+                    min-[400px]:text-[3.1rem]
+                    sm:text-[4.2rem]
+                    md:text-[4.8rem]
                     lg:text-[3.3rem]
-                    xl:text-[4.0rem]
-                    2xl:text-[4.8rem]
+                    xl:text-[4.2rem]
+                    2xl:text-[4.9rem]
                     text-transparent
-                    [-webkit-text-stroke:1.3px_#2563EB]
-                    sm:[-webkit-text-stroke:2px_#2563EB]
+                    [-webkit-text-stroke:1.5px_#2563EB]
+                    sm:[-webkit-text-stroke:2.5px_#2563EB]
                     dark:[-webkit-text-stroke:1.5px_#14B8A6]
-                    sm:dark:[-webkit-text-stroke:2px_#14B8A6]
+                    sm:dark:[-webkit-text-stroke:2.5px_#14B8A6]
                     break-words
                   "
                 >
@@ -591,14 +629,14 @@ export default function Hero() {
                 <span
                   className="
                     block
-                    text-[2.2rem]
-                    min-[360px]:text-[2.6rem]
-                    min-[400px]:text-[3.2rem]
-                    sm:text-[4.2rem]
-                    md:text-[5rem]
+                    text-[2.7rem]
+                    min-[360px]:text-[3.2rem]
+                    min-[400px]:text-[3.7rem]
+                    sm:text-[4.8rem]
+                    md:text-[5.5rem]
                     lg:text-[3.8rem]
-                    xl:text-[4.6rem]
-                    2xl:text-[5.4rem]
+                    xl:text-[4.8rem]
+                    2xl:text-[5.6rem]
                     text-[#1C1917]
                     dark:text-[#FFF7ED]
                     break-words
@@ -609,21 +647,21 @@ export default function Hero() {
               </h1>
 
               {/* Bottom Tagline */}
-              <div className="mt-4 flex items-center gap-3">
+              <div className="mt-2 sm:mt-2.5 flex items-center gap-3">
                 <span
                   className="
                     inline-flex
-                    px-3
-                    py-1.5
+                    px-2.5
+                    py-1
                     bg-[#2563EB]
                     text-white
-                    text-[10px]
-                    sm:text-xs
+                    text-[9px]
+                    sm:text-[10.5px]
                     font-black
                     uppercase
                     tracking-[0.14em]
                     -rotate-1
-                    shadow-[4px_4px_0_rgba(194,65,12,0.25)]
+                    shadow-[3px_3px_0_rgba(194,65,12,0.25)]
                   "
                 >
                   Explore Our Business Solution
@@ -632,35 +670,33 @@ export default function Hero() {
             </div>
 
             {/* Description */}
-            <p className="text-sm sm:text-base md:text-lg text-stone-700 dark:text-stone-300 leading-relaxed mb-6 sm:mb-8 max-w-lg lg:max-w-none">
-              Hi, I&apos;m Muskan. I help Brands Show up When Real People Search,
-              whether that is a Google results page or an answer from ChatGPT,
-              Gemini or Perplexity. I mix Technical SEO, honest content and clean
-              websites so the traffic you earn turns into customers.
+            <p className="text-xs sm:text-sm md:text-[14.5px] lg:text-[14px] xl:text-[15px] text-stone-700 dark:text-stone-300 leading-relaxed mb-3 sm:mb-4 lg:mb-3 max-w-lg lg:max-w-none">
+              Hi, I&apos;m Muskan. I help brands show up when real people search—whether that is a Google results page or an answer from ChatGPT, Gemini, or Perplexity. I combine technical SEO, compelling content, and clean, high-performance websites so the organic traffic you earn converts into loyal customers.
             </p>
+
             {/* Stats Bar Under the Earth */}
-            <div className="mt-6 sm:mt-8 w-full max-w-[460px] grid grid-cols-3 gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-2xl border border-stone-200/90 dark:border-white/10 shadow-sm text-center">
-              <div className="px-1 sm:px-2">
-                <div className="text-lg sm:text-2xl font-black text-stone-900 dark:text-white">
+            <div className="mt-3 sm:mt-3.5 lg:mt-3 w-full max-w-[420px] grid grid-cols-3 gap-1.5 sm:gap-2.5 p-2 sm:p-2.5 rounded-2xl border border-stone-200/90 dark:border-white/10 shadow-sm text-center">
+              <div className="px-1 sm:px-1.5">
+                <div className="text-base sm:text-xl font-black text-stone-900 dark:text-white">
                   5<span className="text-[#2563EB]">+</span>
                 </div>
-                <div className="text-[10px] sm:text-xs font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
+                <div className="text-[9.5px] sm:text-[11px] font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
                   Years Experience
                 </div>
               </div>
-              <div className="px-1 sm:px-2 border-x border-stone-200 dark:border-white/10">
-                <div className="text-lg sm:text-2xl font-black text-stone-900 dark:text-white">
+              <div className="px-1 sm:px-1.5 border-x border-stone-200 dark:border-white/10">
+                <div className="text-base sm:text-xl font-black text-stone-900 dark:text-white">
                   5<span className="text-[#2563EB]">+</span>
                 </div>
-                <div className="text-[10px] sm:text-xs font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
+                <div className="text-[9.5px] sm:text-[11px] font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
                   Happy Clients
                 </div>
               </div>
-              <div className="px-1 sm:px-2">
-                <div className="text-lg sm:text-2xl font-black text-stone-900 dark:text-white">
+              <div className="px-1 sm:px-1.5">
+                <div className="text-base sm:text-xl font-black text-stone-900 dark:text-white">
                   15<span className="text-[#2563EB]">+</span>
                 </div>
-                <div className="text-[10px] sm:text-xs font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
+                <div className="text-[9.5px] sm:text-[11px] font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
                   Projects Done
                 </div>
               </div>
@@ -668,7 +704,7 @@ export default function Hero() {
 
             {/* Action Buttons with clear priority - Stacks vertically on mobile */}
             <div
-              className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full"
+              className="mt-3.5 sm:mt-4 lg:mt-3.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full"
             >
               {/* Primary Action: Book a Consultation */}
               <Link
@@ -678,36 +714,34 @@ export default function Hero() {
                   inline-flex
                   items-center
                   justify-center
-                  gap-2.5
+                  gap-2
                   w-full
                   sm:w-auto
-                  px-6
-                  sm:px-7
-                  py-3.5
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
                   rounded-full
-                  bg-gradient-to-r
-                  from-[#2563EB]
-                  to-[#14B8A6]
-                  hover:from-[#1D4ED8]
-                  hover:to-[#2563EB]
+                  bg-[#2563EB]
                   text-white
-                  text-sm
-                  md:text-[15px]
+                  text-xs
+                  sm:text-[13.5px]
                   font-bold
                   border
                   border-blue-400/30
-                  shadow-lg
+                  shadow-md
                   shadow-[#2563EB]/25
                   hover:shadow-[#2563EB]/45
                   hover:-translate-y-0.5
                   transition-all
                   duration-300
-                  min-h-[48px]
+                  min-h-[42px]
+                  sm:min-h-[44px]
                   touch-manipulation
                 "
               >
                 <span>Book a Free Consultation</span>
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               {/* Secondary Action: View Case Studies */}
@@ -718,12 +752,13 @@ export default function Hero() {
                   inline-flex
                   items-center
                   justify-center
-                  gap-2.5
+                  gap-2
                   w-full
                   sm:w-auto
-                  px-6
-                  sm:px-7
-                  py-3.5
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
                   rounded-full
                   border
                   border-stone-300
@@ -733,19 +768,20 @@ export default function Hero() {
                   backdrop-blur-xl
                   text-stone-800
                   dark:text-white
-                  text-sm
-                  md:text-[15px]
+                  text-xs
+                  sm:text-[13.5px]
                   font-semibold
                   hover:bg-orange-600/[0.10]
                   hover:border-orange-500/60
                   transition-all
                   duration-300
-                  min-h-[48px]
+                  min-h-[42px]
+                  sm:min-h-[44px]
                   touch-manipulation
                 "
               >
                 <span>View Case Studies</span>
-                <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-orange-500 transition-colors" />
+                <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-orange-500 transition-colors" />
               </Link>
             </div>
           </div>
@@ -754,7 +790,7 @@ export default function Hero() {
               RIGHT COLUMN: REAL PHOTOREALISTIC 3D EARTH
           ================================================= */}
           <div
-            className="lg:col-span-6 flex flex-col items-center justify-center w-full mt-6 sm:mt-8 lg:mt-0 lg:translate-x-0 xl:translate-x-2 2xl:translate-x-6"
+            className="lg:col-span-6 flex flex-col items-center justify-center w-full mt-4 sm:mt-6 lg:mt-0 lg:translate-x-0 xl:translate-x-2 2xl:translate-x-4"
           >
             <Hero3DEarthDashboard />
           </div>

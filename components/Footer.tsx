@@ -434,7 +434,7 @@ export default function Footer() {
         <div className="pt-8 sm:pt-10 flex flex-col md:flex-row items-center justify-between gap-5 text-xs text-stone-500 dark:text-[#A8A29E]">
 
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <p>© {currentYear} DM. All rights reserved.</p>
+            <p>© {currentYear} MBSA Digital Marketing Solutions. All rights reserved.</p>
             <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-stone-400" />
             <p className="text-stone-400 dark:text-stone-500">
               Aadil Pathan
