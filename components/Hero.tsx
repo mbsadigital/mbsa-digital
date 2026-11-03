@@ -575,8 +575,9 @@ export default function Hero() {
                 "
               >
                 <Search className="w-3 h-3" />
-                We Deliver Growth
+                SEO & DIGITAL MARKETING AGENCY
               </span>
+
             </div>
 
             {/* Main Headline - Semantic H1 for SEO and Instant LCP */}
@@ -671,7 +672,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-xs sm:text-sm md:text-[14.5px] lg:text-[14px] xl:text-[15px] text-stone-700 dark:text-stone-300 leading-relaxed mb-3 sm:mb-4 lg:mb-3 max-w-lg lg:max-w-none">
-              Hi, I&apos;m Muskan. I help brands show up when real people search—whether that is a Google results page or an answer from ChatGPT, Gemini, or Perplexity. I combine technical SEO, compelling content, and clean, high-performance websites so the organic traffic you earn converts into loyal customers.
+              MBSA Digital is a search-led digital marketing agency. We fix what is holding your website back, make your expertise easy for search engines and AI assistants to understand, and build the pages, campaigns and reporting that turn visits into customers.
             </p>
 
             {/* Stats Bar Under the Earth */}
@@ -728,10 +729,11 @@ export default function Hero() {
                   sm:text-[13.5px]
                   font-bold
                   border
-                  border-blue-400/30
+
+                  hover:border-blue-800
                   shadow-md
-                  shadow-[#2563EB]/25
-                  hover:shadow-[#2563EB]/45
+                  shadow-[#2563EB]
+                  hover:shadow-[#2563EB]
                   hover:-translate-y-0.5
                   transition-all
                   duration-300
@@ -740,48 +742,86 @@ export default function Hero() {
                   touch-manipulation
                 "
               >
-                <span>Book a Free Consultation</span>
+                <span>Request a Free Search Audit</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               {/* Secondary Action: View Case Studies */}
               <Link
-                href="/projects"
+                href="/services"
                 className="
-                  group
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  w-full
-                  sm:w-auto
-                  px-5
-                  sm:px-6
-                  py-2.5
-                  sm:py-3
-                  rounded-full
-                  border
-                  border-stone-300
-                  dark:border-white/15
-                  bg-white/80
-                  dark:bg-white/[0.04]
-                  backdrop-blur-xl
-                  text-stone-800
-                  dark:text-white
-                  text-xs
-                  sm:text-[13.5px]
-                  font-semibold
-                  hover:bg-orange-600/[0.10]
-                  hover:border-orange-500/60
-                  transition-all
-                  duration-300
-                  min-h-[42px]
-                  sm:min-h-[44px]
-                  touch-manipulation
-                "
+    relative
+    group/link
+    inline-flex
+    items-center
+    justify-center
+    gap-2
+    w-full
+    sm:w-auto
+    px-5
+    sm:px-6
+    py-2.5
+    sm:py-3
+    rounded-full
+    bg-white/90
+    dark:bg-[#0f0f11]
+    backdrop-blur-xl
+    text-stone-800
+    dark:text-white
+    text-xs
+    sm:text-[13.5px]
+    font-semibold
+    shadow-sm
+    hover:bg-orange-600/[0.10]
+    transition-all
+    duration-300
+    min-h-[42px]
+    sm:min-h-[44px]
+    touch-manipulation
+
+    before:content-['']
+    before:absolute
+    before:inset-0
+    before:rounded-full
+    before:p-[1px]
+    before:bg-gradient-to-r
+    before:from-orange-500
+    before:via-amber-400
+    before:to-orange-600
+    before:opacity-0
+    before:transition-opacity
+    before:duration-300
+    before:pointer-events-none
+    hover:before:opacity-100
+
+    after:content-['']
+    after:absolute
+    after:inset-[1px]
+    after:rounded-full
+    after:bg-white/90
+    dark:after:bg-[#0f0f11]
+    after:opacity-0
+    after:transition-opacity
+    after:duration-300
+    after:pointer-events-none
+    hover:after:opacity-100
+  "
               >
-                <span>View Case Studies</span>
-                <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-orange-500 transition-colors" />
+                <span className="relative z-10">Explore Our Sevices</span>
+
+                <ArrowRight
+                  className="
+      relative
+      z-10
+      w-3.5
+      h-3.5
+      text-stone-400
+      group-hover/link:text-orange-500
+      group-hover/link:translate-x-1
+      transition-all
+      duration-300
+    "
+                />
               </Link>
             </div>
           </div>

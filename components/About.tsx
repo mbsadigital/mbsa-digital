@@ -152,7 +152,35 @@ export default function About() {
             <div className="mt-6 flex flex-wrap items-center gap-3.5">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2.5 rounded-full bg-[#2563EB] px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 transition-all duration-300 hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/50 focus:ring-offset-2 dark:focus:ring-offset-[#090807]"
+                className=" group
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  w-full
+                  sm:w-auto
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
+                  rounded-full
+                  bg-[#2563EB]
+                  text-white
+                  text-xs
+                  sm:text-[13.5px]
+                  font-bold
+                  border
+
+                  hover:border-blue-800
+                  shadow-md
+                  shadow-[#2563EB]
+                  hover:shadow-[#2563EB]
+                  hover:-translate-y-0.5
+                  transition-all
+                  duration-300
+                  min-h-[42px]
+                  sm:min-h-[44px]
+                  touch-manipulation"
               >
                 <span>Explore About</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

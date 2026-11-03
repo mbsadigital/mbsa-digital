@@ -87,28 +87,57 @@ export default function Projects() {
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-[#14B8A6] mb-3">
               <span className="w-6 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
-              <span>FEATURED WORK</span>
+              <span>SELECTED RESULTS</span>
             </div>
 
             {/* Section Headline with Enhanced Size */}
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.08] mb-4">
-              Real Projects.<br />
-              Real Challenges.<br />
+              Results we
+              Can Show You <br />
               <span className="text-[#2563EB] ">
-                Data-Driven Growth.
+                With The Data Behind Them.
+
               </span>
             </h2>
 
             {/* Section Intro Description - Clear & comfortable text size */}
             <p className="text-base sm:text-lg text-stone-700 dark:text-[#A8A29E] leading-relaxed mb-6">
-              I work with businesses across different industries to solve digital challenges and create measurable impact through SEO, websites, analytics and social media.
+              We publish client results only with permission, and always with the time period and data source. Ask us for detailed walkthroughs on a call.
             </p>
 
             {/* Prominent "See All Projects" Button */}
             <div className="mb-6 sm:mb-8">
               <Link
                 href="/projects"
-                className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 group"
+                className=" group
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  w-full
+                  sm:w-auto
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
+                  rounded-full
+                  bg-[#2563EB]
+                  text-white
+                  text-xs
+                  sm:text-[13.5px]
+                  font-bold
+                  border
+
+                  hover:border-blue-800
+                  shadow-md
+                  shadow-[#2563EB]
+                  hover:shadow-[#2563EB]
+                  hover:-translate-y-0.5
+                  transition-all
+                  duration-300
+                  min-h-[42px]
+                  sm:min-h-[44px]
+                  touch-manipulation"
               >
                 <span>See All Projects</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

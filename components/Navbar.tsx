@@ -25,7 +25,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "projects", label: "Portfolio", href: "/projects", number: "03", subtitle: "Case Studies" },
   { id: "analytics", label: "Analytics", href: "/analytics", number: "04", subtitle: "Live GSC Proof" },
   { id: "about", label: "About", href: "/about", number: "05", subtitle: "Profile & Dossier" },
-  { id: "skills", label: "Skills", href: "/skills", number: "06", subtitle: "Tools & Skills" },
+  { id: "industries", label: "Industries", href: "/industries", number: "06", subtitle: "Industries We Serve" },
   { id: "blog", label: "Blogs", href: "/blog", number: "07", subtitle: "Articles & Guides" },
   { id: "contact", label: "Contact", href: "/contact", number: "08", subtitle: "Start a Discussion" },
 ];
@@ -223,7 +223,7 @@ export default function Navbar() {
       "projects",
       "analytics",
       "about",
-      "skills",
+      "industries",
       "blog",
       "contact",
     ];
@@ -290,7 +290,7 @@ export default function Navbar() {
     if (pathname === "/projects" || pathname.startsWith("/projects/")) return "projects";
     if (pathname === "/analytics" || pathname.startsWith("/analytics/")) return "analytics";
     if (pathname === "/about" || pathname.startsWith("/about/")) return "about";
-    if (pathname === "/skills" || pathname.startsWith("/skills/")) return "skills";
+    if (pathname === "/industries" || pathname.startsWith("/industries/") || pathname === "/skills" || pathname.startsWith("/skills/")) return "industries";
     if (
       pathname.startsWith("/blog") ||
       pathname.startsWith("/showblog") ||
@@ -459,7 +459,35 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={handleContactClick}
-              className="hidden md:inline-flex group relative items-center gap-2 px-3.5 xl:px-5 py-2 sm:py-2.5 rounded-full bg-[#2563EB] text-white text-xs font-extrabold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 transition-all duration-300 overflow-hidden"
+              className="  group
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  w-full
+                  sm:w-auto
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
+                  rounded-full
+                  bg-[#2563EB]
+                  text-white
+                  text-xs
+                  sm:text-[13.5px]
+                  font-bold
+                  border
+
+                  hover:border-blue-800
+                  shadow-md
+                  shadow-[#2563EB]
+                  hover:shadow-[#2563EB]
+                  hover:-translate-y-0.5
+                  transition-all
+                  duration-300
+                  min-h-[42px]
+                  sm:min-h-[44px]
+                  touch-manipulation"
             >
               <span className="relative z-10">Start a Project</span>
               <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />

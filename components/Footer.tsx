@@ -293,11 +293,11 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/skills"
+                  href="/industries"
                   className="group inline-flex items-center gap-1.5 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-stone-400 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Skills &amp; Tools</span>
+                  <span>Industries We Serve</span>
                 </Link>
               </li>
               <li>

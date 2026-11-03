@@ -682,7 +682,30 @@ export default function Contact() {
                         disabled={loading}
                         whileHover={loading ? {} : { scale: 1.01 }}
                         whileTap={loading ? {} : { scale: 0.99 }}
-                        className="w-full py-4 px-6 rounded-2xl bg-[#2563EB] text-white font-bold text-sm sm:text-base tracking-wide transition-all duration-300 cursor-pointer disabled:opacity-70 mt-2 shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 flex items-center justify-center gap-2 border border-blue-400/30"
+                        className="w-full py-4 px-6 
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                 
+                  rounded-full
+                  bg-[#2563EB]
+                  text-white
+                  text-xs
+                  sm:text-[13.5px]
+                  font-bold
+                  border
+
+                  hover:border-blue-800
+                  shadow-md
+                  shadow-[#2563EB]
+                  hover:shadow-[#2563EB]
+                  hover:-translate-y-0.5
+                  transition-all
+                  duration-300
+                  min-h-[42px]
+                  sm:min-h-[44px]
+                  touch-manipulation"
                       >
                         {loading ? (
                           <>

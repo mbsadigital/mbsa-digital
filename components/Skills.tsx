@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { ArrowUpRight, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 /* =========================================================
    TYPES & CONTRACTS
@@ -316,13 +317,82 @@ export default function Skills() {
 
 
             <motion.div variants={leftItemVariants} className="mt-8">
-              <a
-                href="#contact"
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-7 py-3.5 text-xs font-bold bg-[#2563EB] text-white  hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+              <Link
+                href="/#contact"
+                className="
+    relative
+    group/link
+    inline-flex
+    items-center
+    justify-center
+    gap-2
+    w-full
+    sm:w-auto
+    px-5
+    sm:px-6
+    py-2.5
+    sm:py-3
+    rounded-full
+    bg-white/90
+    dark:bg-[#0f0f11]
+    backdrop-blur-xl
+    text-stone-800
+    dark:text-white
+    text-xs
+    sm:text-[13.5px]
+    font-semibold
+    shadow-sm
+    hover:bg-orange-600/[0.10]
+    transition-all
+    duration-300
+    min-h-[42px]
+    sm:min-h-[44px]
+    touch-manipulation
+
+    before:content-['']
+    before:absolute
+    before:inset-0
+    before:rounded-full
+    before:p-[1px]
+    before:bg-gradient-to-r
+    before:from-orange-500
+    before:via-amber-400
+    before:to-orange-600
+    before:opacity-0
+    before:transition-opacity
+    before:duration-300
+    before:pointer-events-none
+    hover:before:opacity-100
+
+    after:content-['']
+    after:absolute
+    after:inset-[1px]
+    after:rounded-full
+    after:bg-white/90
+    dark:after:bg-[#0f0f11]
+    after:opacity-0
+    after:transition-opacity
+    after:duration-300
+    after:pointer-events-none
+    hover:after:opacity-100
+  "
               >
-                <span>Let&apos;s Start Your Project</span>
-                <ArrowUpRight className="h-4 w-4 text-white transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
+                <span className="relative z-10">Let's Start Your Project</span>
+
+                <ArrowRight
+                  className="
+      relative
+      z-10
+      w-3.5
+      h-3.5
+      text-stone-400
+      group-hover/link:text-orange-500
+      group-hover/link:translate-x-1
+      transition-all
+      duration-300
+    "
+                />
+              </Link>
             </motion.div>
           </div>
 

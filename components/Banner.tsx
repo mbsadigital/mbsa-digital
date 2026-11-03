@@ -190,14 +190,14 @@ export const Banner: React.FC<BannerProps> = ({
                     <Image
                       src={item.logo}
                       alt={item.name}
-                      width={28}
-                      height={28}
+                      width={58}
+                      height={58}
                       className="w-full h-full object-contain"
                     />
                   </div>
 
                   {/* Tool Label - clean & neutral, text does NOT turn orange */}
-                  <span className="font-bold text-xs sm:text-sm md:text-[14.5px] text-stone-800 dark:text-stone-100 tracking-tight whitespace-nowrap">
+                  <span className="font-bold text-xs sm:text-sm md:text-[16.5px] text-stone-800 dark:text-stone-100 tracking-tight whitespace-nowrap">
                     {item.name}
                   </span>
                 </div>
