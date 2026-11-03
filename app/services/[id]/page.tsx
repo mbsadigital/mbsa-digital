@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   Zap,
   ChevronRight,
+  ChevronLeft,
   ChevronDown,
   Layers,
   Search,
@@ -36,9 +37,14 @@ import {
   Check,
   Flame,
   FileCheck,
+  ShoppingCart,
+  Mail,
+  Smartphone,
+  Code2,
 } from "lucide-react";
 import { SERVICES_DATA, type ServiceDetail } from "@/lib/servicesData";
 import { getServiceFitDetails } from "@/lib/serviceFitData";
+import { ServiceCardIllustration } from "../page";
 
 // Icon mapping helper
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -54,6 +60,15 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Link2,
   DollarSign,
   Gauge,
+  FileCheck,
+  ShoppingCart,
+  Sparkles,
+  Award,
+  Mail,
+  Smartphone,
+  ShieldCheck,
+  Code2,
+  Rocket,
 };
 
 export default function ServiceDetailPage() {
@@ -61,14 +76,15 @@ export default function ServiceDetailPage() {
   const router = useRouter();
   const id = (params?.id as string) || "";
 
-  // Lookup active service by id or slug
+  // Lookup active service by id or slug or alias
   const service = useMemo<ServiceDetail>(() => {
     return (
       SERVICES_DATA.find(
         (s) =>
           s.id.toLowerCase() === id.toLowerCase() ||
           s.slug.toLowerCase() === id.toLowerCase() ||
-          s.num === id
+          s.num === id ||
+          s.aliases?.some((a) => a.toLowerCase() === id.toLowerCase())
       ) || SERVICES_DATA[0]
     );
   }, [id]);
@@ -89,14 +105,79 @@ export default function ServiceDetailPage() {
   // Inclusion Category Tab State
   const [activeInclusionTab, setActiveInclusionTab] = useState<number>(0);
 
+  // Proof slides state
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+
   const ServiceIcon = ICON_MAP[service.iconName] || Search;
 
+  // Rich verified telemetry proofs for this service
+  const proofSlides = useMemo(() => {
+    return [
+      {
+        url: service.image || "/images/gsc-console-live.jpg",
+        title: `${service.shortTitle} Primary Deliverable`,
+        tag: "Live Execution Proof",
+        metric: service.stats.highlight,
+        metricLabel: service.stats.label,
+        description: `Production-ready architectural deployment for ${service.title}, ensuring top search visibility, robust technical stability, and sustained growth.`,
+        highlights: [
+          { label: "Core Impact", value: service.stats.highlight },
+          { label: "Benchmark", value: service.stats.label },
+          { label: "Client Validation", value: service.caseStudy.client },
+          { label: "Deployment", value: "Verified Active" },
+        ],
+      },
+      {
+        url: "/images/gsc-console-live.jpg",
+        title: "Google Search Console Organic Clicks & Impressions",
+        tag: "GSC Telemetry",
+        metric: "+185%",
+        metricLabel: "Organic Impressions",
+        description: "Direct Search Console live telemetry showing sustained indexation growth, top-3 keyword rankings, and high-intent organic clicks.",
+        highlights: [
+          { label: "Organic Lift", value: "+185% Impressions" },
+          { label: "Avg Position", value: "Top 3 SERP" },
+          { label: "Crawl Health", value: "100% Indexed" },
+          { label: "Source", value: "Google Search Console" },
+        ],
+      },
+      {
+        url: "/images/ga4-analytics-live.jpg",
+        title: "GA4 E-commerce & Conversion Flow Attribution",
+        tag: "Analytics Tracking",
+        metric: "5.1x",
+        metricLabel: "Attributed ROAS",
+        description: "Full-funnel Google Analytics 4 tracking measuring user journeys, purchase conversion rates, and revenue impact across organic channels.",
+        highlights: [
+          { label: "Return on Spend", value: "5.1x ROAS" },
+          { label: "Funnel Conversion", value: "+42% Lift" },
+          { label: "Attribution", value: "Data-Driven" },
+          { label: "Platform", value: "Google Analytics 4" },
+        ],
+      },
+      {
+        url: "/Analytics/Aristbrush/gsc-5-ga4-revenue.jpg",
+        title: `${service.caseStudy.client} Revenue Impact`,
+        tag: "Case Study Milestone",
+        metric: service.caseStudy.metric,
+        metricLabel: service.caseStudy.impact.slice(0, 48) + "...",
+        description: `Audited performance case study on ${service.caseStudy.client} demonstrating compounding growth and revenue milestone delivery.`,
+        highlights: [
+          { label: "Key Outcome", value: service.caseStudy.metric },
+          { label: "Partner Brand", value: service.caseStudy.client },
+          { label: "Deliverables", value: `${service.deliverables.length} Assets` },
+          { label: "Status", value: "Completed & Verified" },
+        ],
+      },
+    ];
+  }, [service]);
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A0908] text-stone-900 dark:text-stone-100 selection:bg-orange-500/20 selection:text-[#2563EB] transition-colors duration-500">
+    <div className="min-h-screen bg-white dark:bg-[#0A0908] text-stone-900 dark:text-stone-100 selection:bg-blue-500/20 selection:text-[#2563EB] transition-colors duration-500">
       {/* Background ambient lighting */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute top-16 right-1/4 w-[600px] h-[600px] rounded-full bg-orange-500/[0.05] dark:bg-orange-500/[0.08] blur-[160px]" />
-        <div className="absolute bottom-1/3 left-10 w-[550px] h-[550px] rounded-full bg-amber-500/[0.04] dark:bg-amber-500/[0.06] blur-[160px]" />
+        <div className="absolute top-16 right-1/4 w-[600px] h-[600px] rounded-full bg-blue-500/[0.05] dark:bg-blue-500/[0.08] blur-[160px]" />
+        <div className="absolute bottom-1/3 left-10 w-[550px] h-[550px] rounded-full bg-cyan-500/[0.04] dark:bg-cyan-500/[0.06] blur-[160px]" />
       </div>
 
       <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-24 sm:pt-28 pb-20 space-y-16 sm:space-y-24">
@@ -106,10 +187,10 @@ export default function ServiceDetailPage() {
         <section className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-200/70 dark:border-white/10 pb-6">
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full border border-stone-200/90 dark:border-white/15 bg-white/90 dark:bg-white/[0.04] backdrop-blur-xl text-stone-700 dark:text-stone-300 text-xs sm:text-sm font-bold shadow-sm hover:border-[#2563EB] hover:text-[#2563EB] dark:hover:border-[#2563EB] dark:hover:text-[#14B8A6] transition-all duration-200 active:scale-95"
+            className="group inline-flex items-center gap-2.5 px-4.5 py-2 rounded-full border border-stone-200/90 dark:border-white/15 bg-white/90 dark:bg-white/[0.04] backdrop-blur-xl text-stone-700 dark:text-stone-300 text-xs sm:text-sm font-bold shadow-sm hover:border-[#2563EB] hover:text-[#2563EB] dark:hover:border-[#2563EB] dark:hover:text-[#60A5FA] transition-all duration-200 active:scale-95"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>Back to All Services</span>
+            <span>Back to All 25 Services</span>
           </Link>
 
           <div className="flex items-center gap-2 text-xs font-mono text-stone-500">
@@ -127,25 +208,25 @@ export default function ServiceDetailPage() {
               Services
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
-            <span className="text-[#2563EB] dark:text-[#14B8A6] font-bold truncate max-w-[220px]">
+            <span className="text-[#2563EB] dark:text-[#60A5FA] font-bold truncate max-w-[220px]">
               {service.shortTitle}
             </span>
           </div>
         </section>
 
         {/* ========================================================
-            2. HERO SECTION
+            2. HERO SECTION WITH EMBEDDED ANIMATED SVG
         ======================================================== */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Headline, Proposition & CTAs */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-orange-500/15 to-amber-500/15 border border-orange-500/30 text-[#2563EB] dark:text-[#14B8A6] text-xs font-mono font-bold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-[#2563EB] dark:text-[#60A5FA] text-xs font-mono font-bold uppercase tracking-wider">
                 <Sparkles className="w-3.5 h-3.5" />
                 SERVICE {service.num}
               </span>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 dark:bg-white/10 text-stone-600 dark:text-stone-300 text-xs font-medium border border-stone-200/80 dark:border-white/10">
-                {service.badge}
+                {service.category}
               </span>
             </div>
 
@@ -164,7 +245,7 @@ export default function ServiceDetailPage() {
             {/* Quick Metrics Bar */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-3">
               <div className="p-4 rounded-2xl bg-stone-50 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 shadow-sm flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/20 text-[#2563EB] dark:text-[#14B8A6] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-blue-500/10 dark:bg-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] flex items-center justify-center font-bold">
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
@@ -207,104 +288,67 @@ export default function ServiceDetailPage() {
             </div>
 
             {/* Direct Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-4">
               <Link
-                href={`/#contact`}
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
               >
                 <span>Book This Service Consultation</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               <a
                 href="#deliverables"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-stone-300 dark:border-stone-700 bg-white dark:bg-white/5 hover:border-[#2563EB] hover:text-[#2563EB] text-stone-800 dark:text-stone-200 text-sm font-bold transition-all"
+                className="relative group/link inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 dark:bg-[#0f0f11] backdrop-blur-xl text-stone-800 dark:text-white text-xs sm:text-[13.5px] font-semibold shadow-sm hover:bg-orange-600/[0.10] transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-r before:from-orange-500 before:via-amber-400 before:to-orange-600 before:opacity-0 before:transition-opacity before:duration-300 before:pointer-events-none hover:before:opacity-100 after:content-[''] after:absolute after:inset-[1px] after:rounded-full after:bg-white/90 dark:after:bg-[#0f0f11] after:opacity-0 after:transition-opacity after:duration-300 after:pointer-events-none hover:after:opacity-100"
               >
-                <span>View Deliverables</span>
-                <ChevronDown className="w-4 h-4" />
+                <span className="relative z-10">View Deliverables</span>
+                <ChevronDown className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-y-0.5" />
               </a>
             </div>
           </div>
 
-          {/* Right Column: Tailored Vector Illustration Showcase Card */}
+          {/* Right Column: Tailored Animated Vector Illustration */}
           <div className="lg:col-span-5 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full rounded-[36px] bg-white dark:bg-[#111B2E] border border-orange-500/25 shadow-2xl p-6 sm:p-8 overflow-hidden"
+              className="relative w-full rounded-[36px] bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-2xl p-6 sm:p-7 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 dark:bg-orange-500/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
 
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-stone-200/70 dark:border-white/10">
                 <span className="text-xs font-mono font-bold text-stone-500 dark:text-stone-400">
-                  ILLUSTRATION PREVIEW
+                  INTERACTIVE VECTOR VISUAL
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  INTERACTIVE
+                  SERVICE {service.num}/25
                 </span>
               </div>
 
-              {/* High-Impact Interactive Architecture Stage */}
-              <div className="relative w-full h-72 sm:h-80 rounded-2xl bg-stone-50 dark:bg-black/60 border border-stone-200/80 dark:border-white/10 flex flex-col justify-between p-5 overflow-hidden shadow-inner">
-                {/* Ambient dynamic wave */}
-                <div className="absolute inset-0 opacity-15 dark:opacity-20 pointer-events-none bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:16px_16px]" />
+              {/* Dedicated Animated SVG Canvas */}
+              <div className="relative w-full h-72 sm:h-80 rounded-2xl bg-stone-50/90 dark:bg-black/60 border border-stone-200/80 dark:border-white/10 flex items-center justify-center p-4 overflow-hidden shadow-inner">
+                <ServiceCardIllustration
+                  slug={service.slug}
+                  isSelected={true}
+                  isHovered={true}
+                />
+              </div>
 
-                <div className="flex items-center justify-between relative z-10">
-                  <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white flex items-center justify-center shadow-lg shadow-orange-500/30">
-                      <ServiceIcon className="w-6 h-6 stroke-[2.2]" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-extrabold text-stone-900 dark:text-white">
-                        {service.shortTitle}
-                      </h4>
-                      <p className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
-                        Status: Active Telemetry
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-orange-500/10 text-[#2563EB] dark:text-[#14B8A6] border border-orange-500/20">
-                    {service.num}/12
+              {/* Under-illustration metadata bar */}
+              <div className="mt-4 pt-3 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-stone-400 tracking-wider">
+                    Core Outcome
                   </span>
+                  <p className="text-sm font-black text-stone-900 dark:text-white">
+                    {service.stats.highlight}
+                  </p>
                 </div>
-
-                {/* Center Animated Metric Flow Diagram */}
-                <div className="relative z-10 my-auto py-2">
-                  <div className="p-4 rounded-xl bg-white/90 dark:bg-white/[0.05] border border-stone-200/80 dark:border-white/10 shadow-sm flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] uppercase font-mono tracking-wider text-stone-500">
-                        Key Growth Deliverable
-                      </p>
-                      <p className="text-base font-black text-stone-900 dark:text-white">
-                        {service.stats.highlight}
-                      </p>
-                    </div>
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold">
-                      <TrendingUp className="w-3.5 h-3.5" />
-                      {service.stats.label}
-                    </span>
-                  </div>
-
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {service.tools.slice(0, 4).map((tool, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2 py-0.5 rounded-md bg-stone-100 dark:bg-white/10 text-[10px] font-mono text-stone-700 dark:text-stone-300 border border-stone-200/70 dark:border-white/10"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-stone-200/60 dark:border-white/10 flex items-center justify-between text-[11px] text-stone-500 relative z-10">
-                  <span>Architecture: Modular &amp; Scalable</span>
-                  <span className="font-mono text-orange-600 dark:text-orange-400 font-bold">
-                    100% Verified
-                  </span>
-                </div>
+                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold">
+                  {service.stats.label}
+                </span>
               </div>
             </motion.div>
           </div>
@@ -316,12 +360,12 @@ export default function ServiceDetailPage() {
         <section id="deliverables" className="space-y-8 scroll-mt-24">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-200/70 dark:border-white/10 pb-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#2563EB] dark:text-[#14B8A6] text-xs font-mono font-bold uppercase tracking-wider mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-[#2563EB] dark:text-[#60A5FA] text-xs font-mono font-bold uppercase tracking-wider mb-2">
                 <FileCheck className="w-3.5 h-3.5" />
                 <span>Scope of Work</span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-stone-900 dark:text-white">
-                Everything Included in This Service
+                Everything Included in {service.shortTitle}
               </h2>
             </div>
             <p className="text-sm text-stone-500 dark:text-stone-400 max-w-md">
@@ -340,7 +384,7 @@ export default function ServiceDetailPage() {
                     onClick={() => setActiveInclusionTab(idx)}
                     className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                       activeInclusionTab === idx
-                        ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/25"
+                        ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/25"
                         : "bg-stone-100 dark:bg-white/5 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-white/10"
                     }`}
                   >
@@ -356,7 +400,7 @@ export default function ServiceDetailPage() {
                       key={idx}
                       className="p-5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 flex items-start gap-3.5 shadow-sm hover:border-[#2563EB]/40 transition-colors"
                     >
-                      <div className="w-7 h-7 rounded-lg bg-orange-500/10 text-[#2563EB] dark:text-[#14B8A6] flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-7 h-7 rounded-lg bg-blue-500/10 text-[#2563EB] dark:text-[#60A5FA] flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-4 h-4 stroke-[2.5]" />
                       </div>
                       <p className="text-sm sm:text-[15px] font-medium text-stone-800 dark:text-stone-200 leading-relaxed">
@@ -373,10 +417,10 @@ export default function ServiceDetailPage() {
               {service.deliverables.map((deliv, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-3xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all flex flex-col justify-between"
+                  className="p-6 rounded-3xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-sm hover:shadow-md hover:border-[#2563EB]/40 transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-3">
-                    <div className="w-9 h-9 rounded-xl bg-orange-500/10 text-[#2563EB] dark:text-[#14B8A6] flex items-center justify-center font-bold text-sm">
+                    <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-[#2563EB] dark:text-[#60A5FA] flex items-center justify-center font-bold text-sm">
                       {(idx + 1).toString().padStart(2, "0")}
                     </div>
                     <p className="text-sm sm:text-base font-semibold text-stone-800 dark:text-stone-200 leading-relaxed">
@@ -394,12 +438,135 @@ export default function ServiceDetailPage() {
         </section>
 
         {/* ========================================================
-            4. IS THIS A GOOD FIT FOR YOU?
+            4. AUDITED LIVE PROOF & TELEMETRY GALLERY
+        ======================================================== */}
+        <section className="relative rounded-[36px] p-6 sm:p-10 bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-xl overflow-hidden space-y-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-stone-200/70 dark:border-white/10 pb-6">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider mb-2">
+                <TrendingUp className="w-3.5 h-3.5" />
+                <span>Audited Proof Telemetry</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-stone-900 dark:text-white">
+                Live Performance &amp; Execution Proof
+              </h2>
+            </div>
+            <p className="text-sm text-stone-500 dark:text-stone-400 max-w-md">
+              Direct telemetry from live Google Search Console, GA4 conversion funnels, and verified client campaigns.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Proof Viewer Preview */}
+            <div className="lg:col-span-7 relative">
+              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-black shadow-2xl">
+                <Image
+                  src={proofSlides[currentSlide]?.url || "/images/gsc-console-live.jpg"}
+                  alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[11px] font-mono font-bold border border-white/20">
+                  {proofSlides[currentSlide]?.tag}
+                </div>
+              </div>
+
+              {/* Slider Navigation Dots and Controls */}
+              <div className="flex items-center justify-between mt-4">
+                <div className="flex items-center gap-2">
+                  {proofSlides.map((_, pIdx) => (
+                    <button
+                      key={pIdx}
+                      type="button"
+                      onClick={() => setCurrentSlide(pIdx)}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        currentSlide === pIdx
+                          ? "w-8 bg-[#2563EB]"
+                          : "w-2 bg-stone-300 dark:bg-white/20 hover:bg-stone-400"
+                      }`}
+                      aria-label={`Go to proof slide ${pIdx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setCurrentSlide((prev) => (prev <= 0 ? proofSlides.length - 1 : prev - 1))
+                    }
+                    className="p-2 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
+                    aria-label="Previous proof"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setCurrentSlide((prev) => (prev + 1) % proofSlides.length)
+                    }
+                    className="p-2 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
+                    aria-label="Next proof"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Slide Telemetry Details */}
+            <div className="lg:col-span-5 space-y-5">
+              <div className="space-y-2">
+                <span className="text-xs font-mono font-bold text-[#2563EB] dark:text-[#60A5FA]">
+                  PROOF 0{currentSlide + 1} OF 0{proofSlides.length}
+                </span>
+                <h3 className="text-2xl font-black text-stone-900 dark:text-white">
+                  {proofSlides[currentSlide]?.title}
+                </h3>
+                <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
+                  {proofSlides[currentSlide]?.description}
+                </p>
+              </div>
+
+              {/* Metric Card */}
+              <div className="p-4 rounded-2xl bg-stone-50 dark:bg-white/[0.04] border border-stone-200/80 dark:border-white/10 flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] font-mono uppercase text-stone-500">
+                    Verified Trajectory
+                  </span>
+                  <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400 font-mono">
+                    {proofSlides[currentSlide]?.metric}
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-stone-600 dark:text-stone-300">
+                  {proofSlides[currentSlide]?.metricLabel}
+                </span>
+              </div>
+
+              {/* Highlights 2x2 Grid */}
+              <div className="grid grid-cols-2 gap-3">
+                {proofSlides[currentSlide]?.highlights.map((hl, hIdx) => (
+                  <div
+                    key={hIdx}
+                    className="p-3 rounded-xl bg-stone-50 dark:bg-white/[0.03] border border-stone-200/60 dark:border-white/5 space-y-0.5"
+                  >
+                    <p className="text-[10px] font-mono text-stone-400 uppercase">{hl.label}</p>
+                    <p className="text-xs font-bold text-stone-900 dark:text-white">{hl.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            5. IS THIS A GOOD FIT FOR YOU?
         ======================================================== */}
         {fitDetails?.goodFitPoints && fitDetails.goodFitPoints.length > 0 && (
           <section className="rounded-3xl p-8 sm:p-12 bg-stone-50 dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 space-y-6">
             <div className="max-w-2xl">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6]">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA]">
                 Target Audience Alignment
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
@@ -426,11 +593,11 @@ export default function ServiceDetailPage() {
         )}
 
         {/* ========================================================
-            5. HOW WE DELIVER RESULTS (4-STEP PROCESS)
+            6. HOW WE DELIVER RESULTS (4-STEP PROCESS)
         ======================================================== */}
         <section className="space-y-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-[#2563EB] dark:text-[#14B8A6] text-xs font-mono font-bold uppercase tracking-wider mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-[#2563EB] dark:text-[#60A5FA] text-xs font-mono font-bold uppercase tracking-wider mb-2">
               <Layers className="w-3.5 h-3.5" />
               <span>Execution Blueprint</span>
             </div>
@@ -447,10 +614,10 @@ export default function ServiceDetailPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-black font-mono text-[#2563EB] dark:text-[#14B8A6]">
+                    <span className="text-2xl font-black font-mono text-[#2563EB] dark:text-[#60A5FA]">
                       {step.step}
                     </span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-orange-500" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#2563EB]" />
                   </div>
                   <h3 className="text-lg font-black text-stone-900 dark:text-white mb-2">
                     {step.title}
@@ -469,11 +636,11 @@ export default function ServiceDetailPage() {
         </section>
 
         {/* ========================================================
-            6. TOOLS & TECHNOLOGIES STACK
+            7. TOOLS & TECHNOLOGIES STACK
         ======================================================== */}
         <section className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-sm space-y-6">
           <div>
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6]">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA]">
               Verified Tech Stack
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-1">
@@ -487,7 +654,7 @@ export default function ServiceDetailPage() {
                 key={idx}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-50 dark:bg-white/5 border border-stone-200/80 dark:border-white/10 text-xs sm:text-sm font-bold text-stone-800 dark:text-stone-200"
               >
-                <span className="w-2 h-2 rounded-full bg-orange-500" />
+                <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
                 <span>{tool}</span>
               </div>
             ))}
@@ -495,14 +662,14 @@ export default function ServiceDetailPage() {
         </section>
 
         {/* ========================================================
-            7. PROVEN CLIENT IMPACT CASE STUDY SPOTLIGHT
+            8. PROVEN CLIENT IMPACT CASE STUDY SPOTLIGHT
         ======================================================== */}
         <section className="p-8 sm:p-12 rounded-[36px] bg-gradient-to-br from-stone-900 to-black text-white relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/20 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-wider">
                 Case Study Proof
               </span>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
@@ -514,7 +681,7 @@ export default function ServiceDetailPage() {
             </div>
 
             <div className="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-white/10 border border-white/15 backdrop-blur-xl text-center space-y-2">
-              <span className="text-4xl sm:text-5xl font-black text-[#14B8A6] font-mono">
+              <span className="text-4xl sm:text-5xl font-black text-[#60A5FA] font-mono">
                 {service.caseStudy.metric}
               </span>
               <p className="text-xs uppercase tracking-wider text-stone-300 font-bold">
@@ -523,7 +690,7 @@ export default function ServiceDetailPage() {
               {service.caseStudy.link && (
                 <Link
                   href={service.caseStudy.link}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-orange-400 hover:text-white pt-2 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-white pt-2 transition-colors"
                 >
                   <span>View Case Study Details</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -534,12 +701,12 @@ export default function ServiceDetailPage() {
         </section>
 
         {/* ========================================================
-            8. FREQUENTLY ASKED QUESTIONS (FAQ)
+            9. FREQUENTLY ASKED QUESTIONS (FAQ)
         ======================================================== */}
         {service.faqs && service.faqs.length > 0 && (
           <section className="space-y-6">
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6]">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA]">
                 Clear Answers
               </span>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-stone-900 dark:text-white mt-1">
@@ -592,37 +759,47 @@ export default function ServiceDetailPage() {
         )}
 
         {/* ========================================================
-            9. BOTTOM CTA BANNER
+            10. BOTTOM CTA BANNER
         ======================================================== */}
-        <section className="relative rounded-[36px] p-8 sm:p-12 bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-transparent border border-orange-500/30 shadow-xl overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 backdrop-blur-xl">
+        <section className="relative rounded-[36px] p-8 sm:p-12 bg-gradient-to-r from-blue-500/10 via-blue-500/5 to-transparent border border-blue-500/25 shadow-xl overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 backdrop-blur-xl">
           <div className="flex items-center gap-5">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#FB923C] text-white flex items-center justify-center shadow-xl shadow-orange-500/30 text-3xl shrink-0">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white flex items-center justify-center shadow-xl shadow-blue-500/30 text-3xl shrink-0">
               🚀
             </div>
             <div>
-              <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider font-mono">
+              <span className="text-xs font-bold text-[#2563EB] dark:text-[#60A5FA] uppercase tracking-wider font-mono">
                 Get Started Today
               </span>
               <h3 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mt-0.5">
                 Ready to Deploy {service.shortTitle}?
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1 max-w-xl">
-                Let's discuss how this strategy fits into your business growth roadmap.
+                Let&apos;s discuss how this strategy fits into your business growth roadmap.
               </p>
             </div>
           </div>
 
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-bold shadow-lg shadow-orange-500/30 active:scale-95 transition-all shrink-0"
-          >
-            <span>Start a Discussion</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
+            >
+              <span>Start a Discussion</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+
+            <Link
+              href="/services"
+              className="relative group/link inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 dark:bg-[#0f0f11] backdrop-blur-xl text-stone-800 dark:text-white text-xs sm:text-[13.5px] font-semibold shadow-sm hover:bg-orange-600/[0.10] transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-r before:from-orange-500 before:via-amber-400 before:to-orange-600 before:opacity-0 before:transition-opacity before:duration-300 before:pointer-events-none hover:before:opacity-100 after:content-[''] after:absolute after:inset-[1px] after:rounded-full after:bg-white/90 dark:after:bg-[#0f0f11] after:opacity-0 after:transition-opacity after:duration-300 after:pointer-events-none hover:after:opacity-100"
+            >
+              <span className="relative z-10">All 25 Services</span>
+              <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+            </Link>
+          </div>
         </section>
 
         {/* ========================================================
-            10. BROWSE OTHER SERVICES
+            11. BROWSE OTHER SERVICES OUT OF 25
         ======================================================== */}
         <section className="space-y-6 pt-6 border-t border-stone-200/70 dark:border-white/10">
           <div className="flex items-center justify-between">
@@ -631,9 +808,9 @@ export default function ServiceDetailPage() {
             </h3>
             <Link
               href="/services"
-              className="text-xs sm:text-sm font-bold text-[#2563EB] dark:text-[#14B8A6] hover:underline flex items-center gap-1"
+              className="text-xs sm:text-sm font-bold text-[#2563EB] dark:text-[#60A5FA] hover:underline flex items-center gap-1"
             >
-              <span>View All 12 Services</span>
+              <span>View All 25 Services</span>
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
@@ -649,10 +826,10 @@ export default function ServiceDetailPage() {
                   <span className="text-[11px] font-mono font-bold text-stone-400">
                     SERVICE {item.num}
                   </span>
-                  <h4 className="text-base font-black text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors">
+                  <h4 className="text-base font-black text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA] transition-colors">
                     {item.shortTitle}
                   </h4>
-                  <p className="text-xs text-stone-500 line-clamp-1">{item.badge}</p>
+                  <p className="text-xs text-stone-500 line-clamp-1">{item.category}</p>
                 </div>
                 <div className="w-9 h-9 rounded-full bg-stone-100 dark:bg-white/10 group-hover:bg-[#2563EB] group-hover:text-white flex items-center justify-center transition-all shrink-0">
                   <ArrowRight className="w-4 h-4" />

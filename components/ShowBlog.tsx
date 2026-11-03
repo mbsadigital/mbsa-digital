@@ -263,11 +263,11 @@ export default function ShowBlog() {
             {/* Right Controls: Consultation CTA and Admin Session (Admin Key and MongoDB removed) */}
             <div className="flex flex-wrap items-center gap-3">
               <Link
-                href="/#contact"
-                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#14100E] hover:bg-[#2563EB] dark:hover:bg-[#2563EB] text-stone-800 dark:text-stone-200 hover:text-white dark:hover:text-white text-xs font-bold border border-stone-200/80 dark:border-white/10 hover:border-[#2563EB] shadow-sm hover:shadow-orange-500/20 transition-all duration-300 cursor-pointer"
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
               >
                 <span>Schedule Consultation</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
 
               {adminToken && (
@@ -796,9 +796,10 @@ export default function ShowBlog() {
               />
               <button
                 type="submit"
-                className="px-6 py-3 rounded-2xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-xs sm:text-sm font-bold shadow-lg shadow-orange-500/30 hover:brightness-110 transition cursor-pointer whitespace-nowrap"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation cursor-pointer shrink-0"
               >
-                {subscribed ? "Subscribed!" : "Subscribe Now"}
+                <span>{subscribed ? "Subscribed!" : "Subscribe Now"}</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </form>
           </div>

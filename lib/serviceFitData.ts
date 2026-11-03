@@ -787,11 +787,227 @@ export const SERVICE_FIT_DATA: Record<string, ServiceFitDetails> = {
       "Next-gen image compression and edge caching active permanently",
     ],
   },
+
+  // 13: SEO Audit
+  "seo-audit": {
+    goodFitTitle: "This is a good fit if:",
+    goodFitPoints: [
+      "You have experienced sudden drops in organic search traffic or ranking visibility",
+      "You are planning a website redesign or platform migration and need to protect current traffic",
+      "You want an independent, comprehensive 150-point technical and semantic diagnostic",
+      "Your developers need clear, prioritized tickets rather than vague marketing theories",
+    ],
+    inclusionCategories: [
+      {
+        title: "Crawl & Indexation",
+        items: [
+          "Full Screaming Frog desktop and mobile crawl analysis",
+          "Detection of 404s, redirect loops, and crawl budget waste",
+          "Verification of XML sitemaps, robots.txt, and canonical tags",
+        ],
+      },
+      {
+        title: "Performance & Schema",
+        items: [
+          "Core Web Vitals field and lab data diagnostic",
+          "Comprehensive Schema.org structured data audit",
+          "AI Search (ChatGPT, Perplexity, Gemini) readiness assessment",
+        ],
+      },
+    ],
+    howItWorksSteps: [
+      { step: "01", name: "Crawl", description: "Deep server and client-side crawls to extract full site architecture." },
+      { step: "02", name: "Diagnose", description: "Isolating algorithmic barriers, cannibalization, and code bottlenecks." },
+      { step: "03", name: "Prioritize", description: "Scoring issues by business impact versus implementation effort." },
+      { step: "04", name: "Deliver", description: "Presenting a clear executive action roadmap and developer tickets." },
+    ],
+    expectationsText:
+      "You will receive a prioritized, jargon-free diagnostic report detailing every technical, content, and architectural issue holding your website back, with clear instructions on how to resolve them.",
+    trustPoints: [
+      "150+ Technical checkpoints audited manually by senior engineers",
+      "Direct developer-ready issue cards with exact line items",
+      "Before-and-after tracking benchmarks established in Search Console",
+    ],
+  },
+
+  // 14: Meta Ads
+  "meta-ads": {
+    goodFitTitle: "This is a good fit if:",
+    goodFitPoints: [
+      "You want to generate direct consumer demand on Instagram and Facebook",
+      "Your current social ad costs are high due to iOS signal loss or creative fatigue",
+      "You need high-converting UGC and carousel creatives that stop the scroll",
+      "You want full-funnel retargeting to convert interested store visitors",
+    ],
+    inclusionCategories: [
+      {
+        title: "Creative & Copy",
+        items: [
+          "Direct-response UGC video scripts and high-contrast static ads",
+          "Compelling ad copywriting addressing customer objections",
+          "Dynamic Product Ads (DPA) catalog setup for e-commerce",
+        ],
+      },
+      {
+        title: "Targeting & CAPI",
+        items: [
+          "Meta Conversions API (CAPI) server-side tracking setup",
+          "Advantage+ audience segmentation and high-intent lookalikes",
+          "Multi-stage retargeting funnels for high conversion rates",
+        ],
+      },
+    ],
+    howItWorksSteps: [
+      { step: "01", name: "Tracking", description: "Configuring server-side CAPI for 100% event attribution." },
+      { step: "02", name: "Creative", description: "Designing high-hook video scripts and visual carousels." },
+      { step: "03", name: "Launch", description: "Testing creative variants across Advantage+ shopping campaigns." },
+      { step: "04", name: "Scale", description: "Iterating on winning hooks and scaling profitable ad sets." },
+    ],
+    expectationsText:
+      "Predictable customer acquisition funnels that convert cold social audiences into paying buyers, supported by server-side tracking and high-tempo creative testing.",
+  },
+
+  // 15: LinkedIn Marketing & Ads
+  "linkedin-marketing-ads": {
+    goodFitTitle: "This is a good fit if:",
+    goodFitPoints: [
+      "You sell high-ticket B2B software, corporate services, or consulting",
+      "You need to reach verified C-level executives and enterprise decision-makers",
+      "You want qualified sales meetings rather than unqualified spam inquiries",
+      "You want to establish company founders as recognized thought leaders",
+    ],
+    inclusionCategories: [
+      {
+        title: "ABM & Targeting",
+        items: [
+          "Account-Based Marketing (ABM) company list matching",
+          "Job title, seniority, and industry segmentation",
+          "LinkedIn Insight Tag and offline conversion tracking",
+        ],
+      },
+      {
+        title: "Ad Formats",
+        items: [
+          "Native LinkedIn Lead Gen Forms with instant CRM sync",
+          "Document & Carousel Ads distributing industry whitepapers",
+          "Thought Leader Ads promoting founder insights",
+        ],
+      },
+    ],
+    howItWorksSteps: [
+      { step: "01", name: "Target", description: "Isolating your exact target account list (ABM) and job titles." },
+      { step: "02", name: "Asset", description: "Crafting valuable whitepapers and executive case studies." },
+      { step: "03", name: "Campaign", description: "Launching native Lead Gen Forms and Sponsored Content." },
+      { step: "04", name: "Sync", description: "Connecting leads directly to your sales CRM for instant follow-up." },
+    ],
+    expectationsText:
+      "A steady pipeline of high-intent B2B sales conversations and qualified demo bookings with senior decision-makers.",
+  },
+
+  // 16: WhatsApp Marketing
+  "whatsapp-marketing": {
+    goodFitTitle: "This is a good fit if:",
+    goodFitPoints: [
+      "You want 98% open rates and immediate engagement from customers",
+      "You need automated abandoned cart recovery and order update notifications",
+      "You want to deploy an intelligent 24/7 customer support and sales chatbot",
+      "You want compliant broadcast marketing via the official WhatsApp Cloud API",
+    ],
+    inclusionCategories: [
+      {
+        title: "API & Setup",
+        items: [
+          "Official Meta WhatsApp Business Cloud API verification",
+          "Green checkmark verification application support",
+          "Compliant opt-in collection widget integrations",
+        ],
+      },
+      {
+        title: "Automation & Chatbots",
+        items: [
+          "Abandoned cart recovery flows with direct purchase links",
+          "Automated FAQ and lead qualification chatbot logic",
+          "Multi-agent shared team inbox for sales and support reps",
+        ],
+      },
+    ],
+    howItWorksSteps: [
+      { step: "01", name: "Verify", description: "Securing Meta Cloud API account and phone number verification." },
+      { step: "02", name: "Template", description: "Drafting pre-approved notification and broadcast templates." },
+      { step: "03", name: "Connect", description: "Integrating webhooks to Shopify, WooCommerce, or your CRM." },
+      { step: "04", name: "Automate", description: "Launching automated messaging flows and live agent triage." },
+    ],
+    expectationsText:
+      "Instant, reliable customer communication directly in WhatsApp with 98% read rates and automated abandoned cart recovery.",
+  },
+
+  // 17: Lead Generation
+  "lead-generation": {
+    goodFitTitle: "This is a good fit if:",
+    goodFitPoints: [
+      "You want a joined-up growth program rather than disconnected marketing tactics",
+      "You need a consistent, predictable flow of qualified sales pipeline leads",
+      "Your current cost per lead is volatile or unpredictable across ad platforms",
+      "You want full alignment between marketing spend and actual closed revenue",
+    ],
+    inclusionCategories: [
+      {
+        title: "Acquisition Funnels",
+        items: [
+          "High-converting dedicated landing page design and development",
+          "Multi-channel paid acquisition (Google Search + Meta Social)",
+          "Intent-driven organic SEO keyword integration",
+        ],
+      },
+      {
+        title: "Nurturing & CRM",
+        items: [
+          "Automated lead scoring, routing, and instant SDR alert triggers",
+          "Multi-touch email and SMS follow-up nurture sequences",
+          "Closed-loop Looker Studio dashboard tracking revenue ROI",
+        ],
+      },
+    ],
+    howItWorksSteps: [
+      { step: "01", name: "Blueprint", description: "Mapping your end-to-end customer journey from click to close." },
+      { step: "02", name: "Build", description: "Developing dedicated landing pages, offers, and tracking pixels." },
+      { step: "03", name: "Launch", description: "Deploying multi-channel campaigns to drive qualified traffic." },
+      { step: "04", name: "Optimize", description: "Iteratively improving CPA and scaling winning lead sources." },
+    ],
+    expectationsText:
+      "A comprehensive, high-velocity lead acquisition engine that reliably fills your pipeline with sales-ready buyers.",
+  },
+};
+
+const SLUG_ALIASES: Record<string, string> = {
+  "seo-services": "technical-seo",
+  "local-seo": "local-seo-gmb",
+  "link-building-digital-pr": "link-building-authority",
+  "aeo-geo-ai-search": "aeo-geo",
+  "google-ads-management": "paid-search-ppc",
+  "content-keyword-strategy": "content-strategy",
+  "social-media-marketing": "social-email",
+  "website-design-development": "wordpress-ecommerce",
+  "ecommerce-website-development": "wordpress-ecommerce",
+  "ecommerce-seo": "wordpress-ecommerce",
+  "international-seo": "technical-seo",
+  "influencer-marketing": "social-email",
+  "email-marketing": "social-email",
+  "online-reputation-management": "local-seo-gmb",
+  "branding-design": "wordpress-ecommerce",
+  "copywriting-messaging": "content-strategy",
+  "conversion-rate-optimisation": "conversion-rate-optimization",
+  "marketing-automation-ai": "analytics-reporting",
+  "youtube-video-marketing": "paid-search-ppc",
 };
 
 export function getServiceFitDetails(slugOrId: string): ServiceFitDetails {
   if (SERVICE_FIT_DATA[slugOrId]) {
     return SERVICE_FIT_DATA[slugOrId];
+  }
+  const resolvedKey = SLUG_ALIASES[slugOrId];
+  if (resolvedKey && SERVICE_FIT_DATA[resolvedKey]) {
+    return SERVICE_FIT_DATA[resolvedKey];
   }
   // Fallback to technical-seo if key is unmatched
   return SERVICE_FIT_DATA["technical-seo"];

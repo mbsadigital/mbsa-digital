@@ -373,27 +373,26 @@ export default function Projects() {
                         </div>
                       </div>
 
-                      {/* CARD IMAGE (RIGHT HALF OF CARD - LARGER SIZING) */}
-                      <div className="md:col-span-5 h-[200px] sm:h-[250px] md:h-[300px] order-1 md:order-2">
+                      {/* CARD IMAGE (RIGHT HALF OF CARD - FULL 3D SCENE UNPROPORTIONED CUTS ELIMINATED) */}
+                      <div className="md:col-span-5 h-[220px] sm:h-[260px] md:h-[300px] order-1 md:order-2">
                         <Link
                           href={`/projects/${project.id}`}
-                          className="block relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 shadow-inner group/img cursor-pointer bg-stone-900"
+                          className="block relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden border border-stone-200/80 dark:border-white/10 shadow-xs group/img cursor-pointer bg-stone-100/80 dark:bg-black/50 p-2 sm:p-2.5"
                         >
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 450px"
-                            priority={isFront}
-                            className="object-cover object-center transition-transform duration-700 group-hover/img:scale-105"
-                          />
-
-                          {/* Subtle vignette overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 450px"
+                              priority={isFront}
+                              className="object-contain transition-transform duration-700 group-hover/img:scale-105"
+                            />
+                          </div>
 
                           {/* Floating metric tag on image */}
                           <div className="absolute bottom-3 right-3 z-10">
-                            <span className="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-black/70 backdrop-blur-md text-[#FB923C] border border-orange-500/30 shadow-xs">
+                            <span className="px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold bg-white/95 dark:bg-black/85 backdrop-blur-md text-stone-900 dark:text-white border border-stone-200/80 dark:border-white/20 shadow-xs">
                               {project.heroMetric}
                             </span>
                           </div>

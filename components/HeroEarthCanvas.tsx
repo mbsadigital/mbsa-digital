@@ -49,13 +49,21 @@ function NormalEarth({ isVisible, onReady }: { isVisible: boolean; onReady?: () 
     return Math.min((minDim * 0.72) / (GLOBE_RADIUS * 2), 1.0);
   }, [viewport.width, viewport.height]);
 
-  // Load NASA photorealistic Earth textures from public/earth
+  // Load NASA photorealistic Earth textures from public/earth (.png format)
   const [dayMap, cloudsMap, specularMap, normalMap] = useTexture([
-    "/earth/earth_daymap.jpg",
+    "/earth/earth_daymap.png",
     "/earth/earth_clouds.png",
-    "/earth/earth_specular.jpg",
-    "/earth/earth_normal.jpg",
+    "/earth/earth_specular.png",
+    "/earth/earth_normal.png",
   ]);
+
+  // Ensure sRGB color space so dayMap colors are rich and vibrant
+  useEffect(() => {
+    if (dayMap) {
+      dayMap.colorSpace = THREE.SRGBColorSpace;
+      dayMap.needsUpdate = true;
+    }
+  }, [dayMap]);
 
   // Atmospheric Fresnel Rim Shader
   const atmosphereShader = useMemo(() => {
@@ -90,28 +98,28 @@ function NormalEarth({ isVisible, onReady }: { isVisible: boolean; onReady?: () 
 
   return (
     <group scale={responsiveScale}>
-      {/* 1. Earth Core Globe */}
-      <group ref={earthRef} rotation={[0.22, -1.25, 0]}>
+      {/* 1. Earth Core Globe - Displays earth_daymap.png prominently in front */}
+      <group ref={earthRef} rotation={[0.18, -0.6, 0]}>
         <mesh>
-          <sphereGeometry args={[GLOBE_RADIUS, 48, 48]} />
+          <sphereGeometry args={[GLOBE_RADIUS, 64, 64]} />
           <meshStandardMaterial
             map={dayMap}
             normalMap={normalMap}
             normalScale={NORMAL_SCALE}
             roughnessMap={specularMap}
-            roughness={0.42}
-            metalness={0.12}
+            roughness={0.45}
+            metalness={0.08}
           />
         </mesh>
 
-        {/* 2. Soft Dynamic Cloud Layer */}
+        {/* 2. Soft Dynamic Cloud Layer - Additive blending allows earth_daymap.png underneath to shine through clearly */}
         <mesh ref={cloudsRef}>
-          <sphereGeometry args={[GLOBE_RADIUS + 0.024, 48, 48]} />
+          <sphereGeometry args={[GLOBE_RADIUS + 0.02, 64, 64]} />
           <meshStandardMaterial
             map={cloudsMap}
             transparent={true}
-            opacity={0.88}
-            blending={THREE.NormalBlending}
+            opacity={0.32}
+            blending={THREE.AdditiveBlending}
             depthWrite={false}
           />
         </mesh>
@@ -149,13 +157,15 @@ function EarthStaticFallback() {
   return (
     <div className="relative w-full h-full flex items-center justify-center select-none pointer-events-none">
       <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.45)] border-2 border-cyan-400/40">
-        {/* Photorealistic NASA Earth Map */}
+        {/* Photorealistic NASA Earth Map - High-Priority LCP Image */}
         <Image
-          src="/earth/earth_daymap.jpg"
+          src="/earth/earth_daymap.png"
           alt="Earth Globe Map"
           fill
+          priority
+          loading="eager"
           sizes="(max-width: 640px) 240px, (max-width: 1024px) 360px, 420px"
-          quality={80}
+          quality={85}
           className="object-cover rounded-full"
         />
 
@@ -188,7 +198,7 @@ class CanvasErrorBoundary extends React.Component<
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-  componentDidCatch() {}
+  componentDidCatch() { }
   render() {
     if (this.state.hasError) return this.props.fallback;
     return this.props.children;
@@ -225,9 +235,8 @@ export default function HeroEarthCanvas() {
     <div ref={containerRef} className="relative w-full h-full">
       {/* Instant Photorealistic Underlay - Eliminates any blank buffering flash while 3D WebGL textures stream in */}
       <div
-        className={`absolute inset-0 transition-opacity duration-700 ease-out pointer-events-none z-0 ${
-          isEarthReady ? "opacity-0" : "opacity-100"
-        }`}
+        className={`absolute inset-0 transition-opacity duration-700 ease-out pointer-events-none z-0 ${isEarthReady ? "opacity-0" : "opacity-100"
+          }`}
       >
         <EarthStaticFallback />
       </div>
@@ -247,10 +256,11 @@ export default function HeroEarthCanvas() {
           }}
         >
           <Suspense fallback={null}>
-            <ambientLight intensity={0.7} />
-            <directionalLight position={[-6, 4, 6]} intensity={3.8} color="#ffffff" />
-            <directionalLight position={[6, -2, -3]} intensity={1.2} color="#00d4ff" />
-            <pointLight position={[-4, 2, 4]} intensity={1.8} color="#e0f7fa" />
+            <ambientLight intensity={0.9} />
+            <directionalLight position={[0, 1, 7]} intensity={2.2} color="#ffffff" />
+            <directionalLight position={[-6, 4, 5]} intensity={2.6} color="#ffffff" />
+            <directionalLight position={[6, -2, -3]} intensity={1.0} color="#00d4ff" />
+            <pointLight position={[-3, 2, 5]} intensity={1.4} color="#e0f7fa" />
 
             <NormalEarth isVisible={isVisible} onReady={() => setIsEarthReady(true)} />
 

@@ -2,7 +2,17 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message, phone, service } = await req.json();
+    const {
+      name,
+      email,
+      message,
+      phone,
+      company,
+      website,
+      helpWith,
+      service,
+      budget,
+    } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -11,7 +21,10 @@ export async function POST(req: Request) {
       );
     }
 
-    const origin = req.headers.get("origin") || req.headers.get("referer") || "http://localhost:3000";
+    const rawOrigin = req.headers.get("origin") || req.headers.get("referer") || "";
+    const origin = rawOrigin.startsWith("http") && !rawOrigin.includes("localhost")
+      ? rawOrigin
+      : "https://mbsadigital.com";
 
     // Forward to FormSubmit to deliver the email to mbsadigitalsolutions@gmail.com
     const response = await fetch("https://formsubmit.co/ajax/mbsadigitalsolutions@gmail.com", {
@@ -26,9 +39,13 @@ export async function POST(req: Request) {
         name,
         email,
         phone: phone || "Not provided",
-        service: service || "General Inquiry",
+        company: company || "Not provided",
+        website: website || "Not provided",
+        helpWith: helpWith || "Free search & website audit",
+        service: service || "Not specified",
+        budget: budget || "Prefer not to say",
         message,
-        _subject: `New Lead: ${name} - ${service || "Growth Inquiry"} (${email})`,
+        _subject: `New Lead: ${name} (${company ? company + " - " : ""}${helpWith || service || "Growth Inquiry"}) [${email}]`,
         _replyto: email,
         _captcha: "false",
         _template: "table",

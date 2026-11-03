@@ -36,7 +36,7 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
     client: "Harris Healthcare UK",
     duration: "4 Months",
     siteUrl: "https://harrispharmacy.co.uk",
-    image: "/harris_pharmacy_1789726798694.jpg",
+    image: "/harrispharmacy.jpeg",
     heroMetric: "5.1x",
     heroMetricLabel: "Average Campaign ROAS",
     overview:
@@ -114,8 +114,8 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
     category: "HEALTH & BEAUTY",
     client: "Maia Health Care UK",
     duration: "6 Months",
-    siteUrl: "https://maiahealth.co.uk",
-    image: "/maia_health_mockup_1789726816504.jpg",
+    siteUrl: "https://maiahb.com",
+    image: "/maiahb.jpg",
     heroMetric: "+320%",
     heroMetricLabel: "Organic Search Growth",
     overview:
@@ -188,7 +188,7 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
     client: "drTung's Natural Oral Care UK",
     duration: "5 Months",
     siteUrl: "https://drtungs.co.uk",
-    image: "/darkdigital.png",
+    image: "/drtungs.jpg",
     heroMetric: "+240%",
     heroMetricLabel: "eCommerce Revenue Lift",
     overview:
@@ -255,7 +255,68 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
     client: "Studio Brush Collective",
     duration: "3 Months",
     siteUrl: "https://studiobrush.co.uk",
-    image: "/lightdigital.png",
+    image: "/aristhbrush.jpg",
+    heroMetric: "4.2x",
+    heroMetricLabel: "Booking Inquiries",
+    overview:
+      "Website redesign, UX conversion rate optimization, and localized search positioning for commercial commissions.",
+    challenge:
+      "Outdated portfolio website with slow load times and no clear lead capture mechanism for commercial clients.",
+    solution: [
+      "Designed and developed a responsive, ultra-fast Next.js portfolio website.",
+      "Optimized service landing pages for commercial art commissions and workshop bookings.",
+      "Integrated automated inquiry calendar scheduling and CRM tracking.",
+      "Optimized Google My Business profile for regional studio discovery.",
+    ],
+    results: [
+      { label: "Inquiry Volume", value: "4.2x", detail: "Qualified commercial bookings" },
+      { label: "Page Load Speed", value: "0.8s", detail: "LCP speed on mobile" },
+      { label: "Bounce Rate", value: "-35%", detail: "Engagement significantly improved" },
+      { label: "Portfolio Session Time", value: "+95%", detail: "Deeper collector immersion" },
+    ],
+    tools: ["Next.js", "UX & CRO", "Google My Business", "Local SEO", "GA4", "Vercel"],
+    deliverables: [
+      "Custom Modern Portfolio Design & Build",
+      "Interactive Artwork Showcase & Filtering",
+      "Google My Business Profile Domination",
+      "Image Compression & Next-Gen CDN Setup",
+      "Commission Inquiry Lead Capture Funnel",
+    ],
+    seoProofImages: [
+      {
+        title: "GA4 • Live Real-Time Dashboard & User Activity",
+        category: "Google Analytics (GA4)",
+        caption: "Active user sessions and artwork portfolio engagement tracking.",
+        image: "/Analytics/Aristbrush/ga4-analytics-live.jpg",
+      },
+      {
+        title: "Google My Business • Profile Discovery & Calls",
+        category: "Local SEO / GMB",
+        caption: "Direct telephone inquiries and studio direction requests via Google Maps.",
+        image: "/Analytics/Aristbrush/gmb-profile-live.jpg",
+      },
+      {
+        title: "Google Search Console • Authority & Search Clicks",
+        category: "Google Search Console",
+        caption: "Steady organic growth for high-value commercial art search queries.",
+        image: "/Analytics/Aristbrush/gsc-3-authority.jpg",
+      },
+      {
+        title: "GA4 • Inquiries Value & Attribution",
+        category: "Google Analytics (GA4)",
+        caption: "Tracked commercial project commissions originating from organic search.",
+        image: "/Analytics/Aristbrush/gsc-5-ga4-revenue.jpg",
+      },
+    ],
+  },
+  {
+    id: "whispersinthewind",
+    title: "Whisper Sinth",
+    category: "ART & DESIGN PORTFOLIO",
+    client: "Studio Brush Collective",
+    duration: "3 Months",
+    siteUrl: "https://whispersinthewind.uk/",
+    image: "/whispersinth.jpg",
     heroMetric: "4.2x",
     heroMetricLabel: "Booking Inquiries",
     overview:

@@ -167,7 +167,8 @@ export function HeroEarthStaticGlobe() {
       <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.45)] border-2 border-cyan-400/40">
         {/* Photorealistic NASA Earth Map - High-Priority Next.js Image for Instant LCP < 1.0s */}
         <Image
-          src="/earth/earth_daymap.jpg"
+          src="/earth/earth_daymap.png"
+          loading="eager"
           alt="Photorealistic Earth Map"
           fill
           priority
@@ -307,7 +308,7 @@ function Hero3DEarthDashboard() {
                       alt={node.name}
                       width={32}
                       height={32}
-                      sizes="32px"
+                      sizes="52px"
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -335,171 +336,11 @@ function Hero3DEarthDashboard() {
           })}
         </div>
 
-        {/* Desktop Active Node Detail Overlay Card (Inside Earth at bottom on desktop sm: and above) */}
-        <AnimatePresence>
-          {activeNode && (
-            <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 8, scale: 0.95 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="
-                hidden
-                sm:block
-                absolute
-                sm:bottom-5
-                left-1/2
-                -translate-x-1/2
-                z-40
-                w-[90%]
-                max-w-[315px]
-                rounded-xl
-                border
-                border-orange-500/60
-                bg-white/95
-                dark:bg-[#060D1E]/95
-                text-stone-900
-                dark:text-white
-                p-3.5
-                sm:p-5
-                text-left
-                shadow-[0_8px_25px_rgba(37,99,235,0.25)]
-                backdrop-blur-xl
-                pointer-events-auto
-              "
-            >
-              <div className="flex items-center justify-between gap-1 mb-1">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-5 h-5 rounded-md bg-stone-100 dark:bg-white/10 border border-orange-500/40 flex items-center justify-center overflow-hidden p-0.5 shrink-0">
-                    <Image
-                      src={activeNode.image}
-                      alt={activeNode.name}
-                      width={26}
-                      height={26}
-                      className="w-full h-full object-contain rounded-xs"
-                    />
-                  </div>
-                  <span className="text-[11.5px] sm:text-[12.5px] font-bold uppercase tracking-wide truncate max-w-[190px]">
-                    {activeNode.name}
-                  </span>
-                </div>
 
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveNode(null);
-                  }}
-                  className="p-1 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-white/10 transition-colors"
-                  aria-label="Close details"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-
-              <p className="text-[9.5px] sm:text-[10px] text-stone-600 dark:text-stone-300 leading-snug mb-1.5">
-                {activeNode.description}
-              </p>
-
-              <div className="flex flex-wrap gap-1 mb-1.5">
-                {activeNode.bullets.map((b, idx) => (
-                  <span
-                    key={idx}
-                    className="text-[8px] sm:text-[8.5px] font-medium px-1.5 py-0.5 rounded bg-orange-50 dark:bg-white/10 text-orange-700 dark:text-cyan-300 border border-orange-200 dark:border-cyan-500/20"
-                  >
-                    ✓ {b}
-                  </span>
-                ))}
-              </div>
-
-              <div className="text-[8px] sm:text-[8.5px] text-stone-500 dark:text-stone-400 flex items-center gap-1 flex-wrap">
-                <span className="font-semibold text-stone-700 dark:text-stone-300">Stack:</span>
-                <span>{activeNode.techStack.join(" • ")}</span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
 
-      {/* Mobile Active Node Detail Card (Rendered BELOW the Earth so Earth is NEVER hidden!) */}
-      <div className="sm:hidden w-full flex flex-col items-center px-2">
-        <AnimatePresence>
-          {activeNode && (
-            <motion.div
-              initial={{ opacity: 0, y: -8, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -6, scale: 0.96 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              className="
-                mt-1
-                w-full
-                max-w-[280px]
-                rounded-2xl
-                border
-                border-orange-500/70
-                bg-white/95
-                dark:bg-[#060D1E]/95
-                text-stone-900
-                dark:text-white
-                p-2.5
-                text-left
-                shadow-[0_12px_35px_rgba(37,99,235,0.30)]
-                backdrop-blur-2xl
-              "
-            >
-              <div className="flex items-center justify-between gap-1 mb-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="w-5.5 h-5.5 rounded-md bg-stone-100 dark:bg-white/10 border border-orange-500/40 flex items-center justify-center overflow-hidden p-0.5 shrink-0">
-                    <Image
-                      src={activeNode.image}
-                      alt={activeNode.name}
-                      width={28}
-                      height={28}
-                      className="w-full h-full object-contain rounded-xs"
-                    />
-                  </div>
-                  <span className="text-[13px] font-black uppercase tracking-wide truncate max-w-[210px]">
-                    {activeNode.name}
-                  </span>
-                </div>
 
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveNode(null);
-                  }}
-                  className="p-1 rounded-full text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-white/10 transition-colors"
-                  aria-label="Close details"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-
-              <p className="text-[10.5px] text-stone-600 dark:text-stone-300 leading-snug mb-2">
-                {activeNode.description}
-              </p>
-
-              <div className="flex flex-wrap gap-1 mb-2">
-                {activeNode.bullets.map((b, idx) => (
-                  <span
-                    key={idx}
-                    className="text-[8.5px] font-medium px-2 py-0.5 rounded bg-orange-50 dark:bg-white/10 text-orange-700 dark:text-cyan-300 border border-orange-200 dark:border-cyan-500/20"
-                  >
-                    ✓ {b}
-                  </span>
-                ))}
-              </div>
-
-              <div className="text-[8.5px] text-stone-500 dark:text-stone-400 flex items-center gap-1 flex-wrap">
-                <span className="font-semibold text-stone-700 dark:text-stone-300">Stack:</span>
-                <span>{activeNode.techStack.join(" • ")}</span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
     </div>
   );
 }

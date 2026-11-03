@@ -94,24 +94,7 @@ export default function About() {
         >
           {/* Left Column: Strategic Positioning */}
           <div className="lg:col-span-6 xl:col-span-6 max-w-2xl">
-            <div className="flex flex-wrap items-center gap-2 mb-4">
-              <motion.span
-                initial={{ opacity: 0, x: -12 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1, duration: 0.45 }}
-                className="inline-flex items-center gap-2 rounded-full border border-[#2563EB]/20 bg-[#2563EB]/[0.06] dark:bg-[#14B8A6]/[0.08] px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#2563EB] dark:text-[#14B8A6]"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563EB] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563EB]"></span>
-                </span>
-                Strategy · Search · Growth
-              </motion.span>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2563EB]/10 text-[#2563EB] dark:text-[#60A5FA] border border-[#2563EB]/20">
-                UK &amp; India Practice
-              </span>
-            </div>
+
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08] text-slate-950 dark:text-white">
               Smart business

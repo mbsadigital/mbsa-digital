@@ -2,312 +2,629 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowLeft,
   ArrowRight,
-  ShieldCheck,
   CheckCircle2,
-  TrendingUp,
-  MapPin,
+  X,
+  Clock,
   Sparkles,
-  Zap,
-  Layers,
-  Heart,
-  ShoppingCart,
-  Store,
-  HelpCircle,
-  ExternalLink,
+  BookOpen,
 } from "lucide-react";
-import Industries, { INDUSTRIES_DATA } from "@/components/Industries";
+
+/* ============================================================
+   LATEST FEATURED ARTICLE DATA (EXACT MATCH TO WIREFRAME)
+============================================================ */
+
+const FEATURED_ARTICLE = {
+  id: "geo-guide",
+  tag: "AEO & GEO",
+  title: "What is generative engine optimisation (GEO)? A plain-English guide",
+  description:
+    "What GEO is, how it relates to SEO, what you can and can't control, and a practical checklist.",
+  author: "Muskan Shekh",
+  authorBracket: "[AUTHOR]",
+  date: "2026 Edition",
+  dateBracket: "[DATE]",
+  readTime: "7 min read",
+  highlights: [
+    "Difference between traditional SERP ranking and LLM consensus retrieval",
+    "How search bots like GPTBot, PerplexityBot, and Google-Extended crawl your content",
+    "Key signals: factual citations, schema integrity, and authoritative third-party coverage",
+    "The 5-point practical checklist to make your business visible in AI responses",
+  ],
+  deepDive: [
+    {
+      heading: "1. What is Generative Engine Optimisation?",
+      body: "Generative Engine Optimisation (GEO) is the discipline of structuring brand facts, technical data, and industry authority so that Large Language Models (LLMs) like OpenAI ChatGPT, Google AI Overviews, Perplexity, and Anthropic Claude cite your business as a primary source when users ask commercial and diagnostic questions.",
+    },
+    {
+      heading: "2. How GEO Differs from Traditional SEO",
+      body: "Traditional SEO focuses on earning blue links on search engine results pages through keywords, crawlability, and backlink authority. GEO builds on SEO foundation but focuses on entity synthesis — ensuring AI models understand your exact value proposition, pricing parameters, customer reviews, and comparative differentiators without ambiguity.",
+    },
+    {
+      heading: "3. The Practical GEO Checklist",
+      body: "1) Deploy valid JSON-LD schemas (Organization, Service, FAQPage, Review). 2) Publish transparent pricing and definitive service breakdowns. 3) Earn third-party citations on trusted trade portals, directories, and Wikipedia/Wikidata entities. 4) Monitor LLM prompt completions monthly using tracked brand queries.",
+    },
+  ],
+};
+
+/* ============================================================
+   EDITORIAL PLAN: 6 TOPIC CLUSTERS (EXACT WIREFRAME MATCH)
+============================================================ */
+
+interface GuideTopic {
+  id: string;
+  title: string;
+  summary: string;
+}
+
+interface EditorialCluster {
+  id: string;
+  title: string;
+  guides: GuideTopic[];
+  serviceLink: {
+    label: string;
+    href: string;
+  };
+}
+
+const EDITORIAL_CLUSTERS: EditorialCluster[] = [
+  {
+    id: "seo",
+    title: "SEO",
+    guides: [
+      {
+        id: "seo-timeline",
+        title: "How long does SEO take? An honest timeline",
+        summary:
+          "Realistic benchmarks for technical fixes (2-4 weeks), indexing velocity (4-8 weeks), and commercial conversion compound growth (3-6 months) based on domain history.",
+      },
+      {
+        id: "seo-checklist",
+        title: "Technical SEO checklist for small business websites",
+        summary:
+          "The critical crawlability factors: indexability directives, canonical chains, robots.txt hygiene, Core Web Vitals (LCP, INP, CLS), and semantic HTML hierarchy.",
+      },
+      {
+        id: "seo-migration",
+        title: "Website migration without losing rankings",
+        summary:
+          "A step-by-step migration blueprint: 1:1 redirect maps, staging site audits, XML sitemap re-indexing, and post-launch 404 monitoring to protect organic traffic.",
+      },
+    ],
+    serviceLink: {
+      label: "SEO services",
+      href: "/services?cat=seo-ai-search",
+    },
+  },
+  {
+    id: "local-seo",
+    title: "Local SEO",
+    guides: [
+      {
+        id: "local-gbp",
+        title: "How to optimise a Google Business Profile",
+        summary:
+          "Primary and secondary category selection, geo-tagged photo hygiene, weekly Google posts, service catalog architecture, and response protocols for local 3-pack dominance.",
+      },
+      {
+        id: "local-location-pages",
+        title: "Location pages that aren't thin or duplicated",
+        summary:
+          "How to craft genuine regional landing pages featuring localized case studies, team bios, local landmarks, client testimonials, and unique regional schema markup.",
+      },
+      {
+        id: "local-reviews",
+        title: "How to ask for reviews within Google's rules",
+        summary:
+          "Compliant review generation workflows: automated post-delivery SMS triggers, QR codes for counter desks, and review response strategies that respect Google's anti-gating policies.",
+      },
+    ],
+    serviceLink: {
+      label: "Local SEO",
+      href: "/services?cat=seo-ai-search",
+    },
+  },
+  {
+    id: "aeo-geo",
+    title: "AEO & GEO",
+    guides: [
+      {
+        id: "aeo-difference",
+        title: "AEO vs GEO vs SEO: what's the difference?",
+        summary:
+          "Comparing traditional search (SEO), direct answer engine response generation (AEO), and LLM citation synthesis (GEO) across modern search habits.",
+      },
+      {
+        id: "aeo-ai-check",
+        title: "How to check what AI assistants say about your business",
+        summary:
+          "Audit prompts and methodologies to test how ChatGPT Search, Google Gemini, and Perplexity evaluate your services, brand reputation, and pricing.",
+      },
+      {
+        id: "aeo-service-pages",
+        title: "Writing service pages that answer real questions",
+        summary:
+          "Structuring content around user questions: answering commercial pain points directly, embedding concise definitions, and avoiding corporate fluff.",
+      },
+    ],
+    serviceLink: {
+      label: "AEO & GEO",
+      href: "/services?cat=seo-ai-search",
+    },
+  },
+  {
+    id: "websites",
+    title: "Websites",
+    guides: [
+      {
+        id: "web-platform-choice",
+        title: "WordPress or Shopify for a growing brand?",
+        summary:
+          "An objective total-cost-of-ownership comparison covering flexibility, hosting management, app bloat, checkout customisation, and speed optimization.",
+      },
+      {
+        id: "web-cwv-guide",
+        title: "Core Web Vitals explained for non-developers",
+        summary:
+          "Breaking down LCP (loading), INP (responsiveness), and CLS (visual stability) into plain-English business implications that impact conversion rates.",
+      },
+      {
+        id: "web-converting-page",
+        title: "What makes a service page convert",
+        summary:
+          "The essential conversion anatomy: clear value proposition above the fold, social proof, diagnostic pricing transparency, frictionless inquiry forms, and fast mobile UX.",
+      },
+    ],
+    serviceLink: {
+      label: "Web design",
+      href: "/services?cat=websites-creative",
+    },
+  },
+  {
+    id: "paid-media",
+    title: "Paid media",
+    guides: [
+      {
+        id: "paid-budget-mistakes",
+        title: "Google Ads for local businesses: where budgets go wrong",
+        summary:
+          "Identifying budget leaks: loose broad match keywords, uncontrolled automated location targeting, neglect of negative keyword lists, and weak landing page message match.",
+      },
+      {
+        id: "paid-negative-keywords",
+        title: "Negative keywords: the simplest way to cut waste",
+        summary:
+          "Building universal and campaign-level negative keyword libraries to prevent paying for irrelevant queries (e.g. jobs, free, login, DIY).",
+      },
+      {
+        id: "paid-rank-vs-ads",
+        title: "Should you run ads if you already rank?",
+        summary:
+          "Data-backed analysis of SERP real estate dominance, protecting brand searches from aggressive competitors, and incremental conversion lift tests.",
+      },
+    ],
+    serviceLink: {
+      label: "Paid media",
+      href: "/services?cat=paid-media-ppc",
+    },
+  },
+  {
+    id: "analytics",
+    title: "Analytics",
+    guides: [
+      {
+        id: "analytics-ga4-checklist",
+        title: "A GA4 setup checklist for lead-generation sites",
+        summary:
+          "Key GA4 configuration steps: custom event tracking, enhanced measurement, conversion marking, internal IP filtering, Google Signals, and BigQuery link activation.",
+      },
+      {
+        id: "analytics-seo-roi",
+        title: "How to measure what your SEO is worth",
+        summary:
+          "Calculating pipeline value, assisted conversions, cost-per-acquisition savings vs PPC equivalent, and long-term customer lifetime value from organic traffic.",
+      },
+      {
+        id: "analytics-ga4-vs-ads",
+        title: "Why your GA4 and ad platform numbers don't match",
+        summary:
+          "Explaining attribution model differences, iOS privacy restrictions, consent mode adjustments, time-of-conversion vs time-of-click discrepancies.",
+      },
+    ],
+    serviceLink: {
+      label: "Analytics",
+      href: "/analytics",
+    },
+  },
+];
+
+/* ============================================================
+   PAGE COMPONENT
+============================================================ */
 
 export default function IndustriesPage() {
-  const [activeTab, setActiveTab] = useState<string>("healthcare");
+  const [activeGuideModal, setActiveGuideModal] = useState<string | null>(null);
 
-  const currentSector =
-    INDUSTRIES_DATA.find((item) => item.id === activeTab) || INDUSTRIES_DATA[0];
+  // Find modal content if active
+  const selectedClusterGuide = EDITORIAL_CLUSTERS.flatMap((c) => c.guides).find(
+    (g) => g.id === activeGuideModal
+  );
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white selection:bg-[#2563EB]/25 selection:text-[#2563EB] transition-colors duration-500">
-      {/* Background ambient glows matching site design system */}
+    <div className="min-h-screen bg-white dark:bg-[#0B1220] text-slate-900 dark:text-slate-100 font-[family-name:var(--font-plus-jakarta-sans)] transition-colors duration-500 overflow-hidden">
+      {/* Subtle site background ambient glow */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute top-16 right-1/4 w-[520px] h-[520px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.10] blur-[150px]" />
-        <div className="absolute bottom-1/3 left-10 w-[480px] h-[480px] rounded-full bg-[#14B8A6]/[0.07] dark:bg-[#14B8A6]/[0.09] blur-[150px]" />
+        <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] rounded-full bg-[#2563EB]/[0.05] dark:bg-[#2563EB]/[0.08] blur-[160px]" />
+        <div className="absolute top-1/2 -right-24 w-[500px] h-[500px] rounded-full bg-[#14B8A6]/[0.04] dark:bg-[#14B8A6]/[0.06] blur-[170px]" />
       </div>
 
-      <main className="relative z-10 pt-28 sm:pt-36 pb-20">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
         {/* =========================================================
-            1. PAGE HEADER CONTAINER WITH BREADCRUMB
+            1. BREADCRUMBS: Home / Insights
         ========================================================= */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
-          {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 text-xs font-mono text-stone-500 mb-6">
-            <Link
-              href="/"
-              className="hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors flex items-center gap-1.5"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>Back to Home</span>
-            </Link>
-            <span>/</span>
-            <span className="text-stone-800 dark:text-stone-300 font-semibold">
-              Industries
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-stone-200/80 dark:border-white/10">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#2563EB] dark:text-[#38BDF8] text-[11px] font-bold uppercase tracking-wider mb-3">
-                <Layers className="w-3.5 h-3.5" />
-                <span>Sector Specialisation &amp; Vertical Frameworks</span>
-              </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 dark:text-white">
-                Industries We Serve
-              </h1>
-              <p className="mt-2 text-sm sm:text-base text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
-                Vertical-specific search engine optimization, verified compliance protocols, and hyper-local visibility engineered for industries where search intent and customer trust decide revenue.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <div className="px-4 py-2.5 rounded-2xl bg-white/70 dark:bg-stone-900/60 border border-stone-200 dark:border-white/10 backdrop-blur-md text-right">
-                <span className="block text-[10px] font-mono text-stone-400 uppercase tracking-widest">
-                  Strategic Scope
-                </span>
-                <span className="text-sm font-extrabold text-[#2563EB] dark:text-[#38BDF8] flex items-center justify-end gap-1">
-                  <Zap className="w-3.5 h-3.5" />
-                  <span>4 Core Verticals</span>
-                </span>
-              </div>
-            </div>
-          </div>
+        <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-8 sm:mb-10">
+          <Link
+            href="/"
+            className="hover:text-slate-900 dark:hover:text-white transition-colors"
+          >
+            Home
+          </Link>
+          <span className="text-slate-300 dark:text-slate-600">/</span>
+          <span className="text-slate-800 dark:text-slate-200">Insights</span>
         </div>
 
         {/* =========================================================
-            2. THE USER'S REQUESTED SCREENSHOT SECTION (Exact Content)
+            2. PAGE HERO (EXACT TEXT & STYLING FROM WIREFRAME)
         ========================================================= */}
-        <Industries />
+        <div className="mb-12 sm:mb-16">
+          {/* Tag: Orange indicator bar + INSIGHTS */}
+          <div className="flex items-center gap-2 mb-3.5">
+            <span className="w-1 h-3.5 bg-orange-600 dark:bg-orange-500 rounded-xs" />
+            <span className="text-[11px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 font-mono">
+              INSIGHTS
+            </span>
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-black text-slate-950 dark:text-white tracking-tight leading-[1.12] max-w-4xl">
+            Insights on search, websites and measurement
+          </h1>
+
+          {/* Subheading */}
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+            Practical guides for business owners and marketing managers. Every article is written or reviewed by a named specialist and updated when things change.
+          </p>
+        </div>
+
+        {/* Divider line matching wireframe */}
+        <div className="w-full h-px bg-slate-200/90 dark:border-white/10 my-10 sm:my-14" />
 
         {/* =========================================================
-            3. DEEP DIVE SECTOR PLAYBOOK & TECHNICAL ROADMAP
+            3. SECTION 1: LATEST ARTICLES (EXACT WIREFRAME CARD)
         ========================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-          <div className="p-6 sm:p-10 rounded-3xl bg-white/80 dark:bg-[#111B2E]/90 border border-stone-200/80 dark:border-white/10 shadow-lg backdrop-blur-xl">
-            {/* Section Tag */}
-            <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
+        <section className="mb-14 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-950 dark:text-white tracking-tight mb-8">
+            Latest articles
+          </h2>
+
+          {/* 3-column grid container with single featured card in slot 1 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start">
+            {/* The Featured GEO Article Card */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#111B2E] border border-slate-200/90 dark:border-white/10 shadow-xs hover:border-slate-300 dark:hover:border-white/20 transition-all flex flex-col justify-between group">
               <div>
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#14B8A6] block mb-1">
-                  Specialized Strategic Playbook
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-stone-900 dark:text-white">
-                  How We Engineer Dominance by Vertical
+                {/* Category tag pill */}
+                <div className="mb-4">
+                  <span className="inline-block px-2.5 py-1 rounded text-[11px] font-mono font-medium text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/15">
+                    {FEATURED_ARTICLE.tag}
+                  </span>
+                </div>
+
+                {/* Article Title */}
+                <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white leading-snug mb-3 group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA] transition-colors">
+                  {FEATURED_ARTICLE.title}
                 </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                  {FEATURED_ARTICLE.description}
+                </p>
+
+                {/* Meta row: [AUTHOR] · [DATE] · 7 min read */}
+                <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-6">
+                  <span className="font-semibold text-orange-600 dark:text-orange-400">
+                    [{FEATURED_ARTICLE.author}]
+                  </span>
+                  <span>·</span>
+                  <span className="text-orange-600 dark:text-orange-400">
+                    [{FEATURED_ARTICLE.date}]
+                  </span>
+                  <span>·</span>
+                  <span>{FEATURED_ARTICLE.readTime}</span>
+                </div>
               </div>
 
-              {/* Selector Tabs */}
-              <div className="flex flex-wrap gap-1.5 p-1 rounded-2xl bg-stone-100 dark:bg-white/5 border border-stone-200/80 dark:border-white/10">
-                {INDUSTRIES_DATA.map((ind) => (
-                  <button
-                    key={ind.id}
-                    onClick={() => setActiveTab(ind.id)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      activeTab === ind.id
-                        ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/20"
-                        : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white"
-                    }`}
-                  >
-                    {ind.title.split("&")[0].trim()}
-                  </button>
-                ))}
+              {/* Action Link: Read article -> */}
+              <div className="pt-1">
+                <button
+                  type="button"
+                  onClick={() => setActiveGuideModal("geo-guide")}
+                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-950 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA] transition-colors cursor-pointer"
+                >
+                  <span>Read article</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </button>
               </div>
             </div>
+          </div>
+        </section>
 
-            {/* Active Sector Deep Dive Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column: Challenges & Strategy */}
-              <div className="lg:col-span-7 space-y-6">
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center ${currentSector.bgLight} ${currentSector.bgDark} border ${currentSector.borderLight}`}
-                  >
-                    {(() => {
-                      const SectorIcon = currentSector.icon;
-                      return <SectorIcon className="w-6 h-6" />;
-                    })()}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-stone-900 dark:text-white">
-                      {currentSector.title}
-                    </h4>
-                    <span className="text-xs font-mono text-stone-500">
-                      Standard KPI: {currentSector.stats.label} ({currentSector.stats.value})
-                    </span>
-                  </div>
-                </div>
+        {/* Divider line matching wireframe */}
+        <div className="w-full h-px bg-slate-200/90 dark:border-white/10 my-12 sm:my-16" />
 
-                <div className="p-5 rounded-2xl bg-stone-50 dark:bg-[#0B1220]/70 border border-stone-200/80 dark:border-white/5 space-y-2">
-                  <span className="text-xs font-mono font-bold uppercase text-stone-400 block">
-                    Core Industry Search Bottleneck
-                  </span>
-                  <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
-                    {currentSector.challenges}
-                  </p>
-                </div>
+        {/* =========================================================
+            4. SECTION 2: EDITORIAL PLAN (EXACT WIREFRAME MATCH)
+        ========================================================= */}
+        <section className="mb-20 sm:mb-28">
+          {/* Header */}
+          <div className="mb-8 sm:mb-12">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-1 h-3.5 bg-orange-600 dark:bg-orange-500 rounded-xs" />
+              <span className="text-[11px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-300 font-mono">
+                EDITORIAL PLAN
+              </span>
+            </div>
 
-                <div className="p-5 rounded-2xl bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200/60 dark:border-blue-900/40 space-y-2">
-                  <span className="text-xs font-mono font-bold uppercase text-[#2563EB] dark:text-[#38BDF8] block">
-                    Custom Technical Framework
-                  </span>
-                  <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
-                    {currentSector.solution}
-                  </p>
-                </div>
-              </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-950 dark:text-white tracking-tight">
+              Topics we’re writing about
+            </h2>
 
-              {/* Right Column: Execution Deliverables */}
-              <div className="lg:col-span-5 p-6 rounded-2xl bg-stone-50 dark:bg-[#0B1220]/70 border border-stone-200/80 dark:border-white/5 space-y-5">
-                <h5 className="text-xs font-mono font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                  Deliverables &amp; Schema Stack
-                </h5>
+            <p className="mt-2.5 text-xs sm:text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              Upcoming guides, grouped by the services they support.
+            </p>
+          </div>
 
-                <div className="space-y-3">
-                  {currentSector.deliverables.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 font-medium">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+          {/* 6 Dashed border cards arranged in a 3-column grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
+            {EDITORIAL_CLUSTERS.map((cluster) => (
+              <div
+                key={cluster.id}
+                className="p-6 sm:p-7 rounded-2xl border border-dashed border-slate-300 dark:border-white/20 bg-white/40 dark:bg-[#111B2E]/40 hover:bg-white dark:hover:bg-[#111B2E] hover:border-slate-400 dark:hover:border-white/40 transition-all duration-200 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Category Title */}
+                  <h3 className="text-base sm:text-lg font-bold text-slate-950 dark:text-white mb-4">
+                    {cluster.title}
+                  </h3>
 
-                <div className="pt-4 border-t border-stone-200/80 dark:border-white/10">
-                  <span className="text-[11px] font-mono text-stone-400 block mb-2 uppercase tracking-wide">
-                    Target JSON-LD Entities:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {currentSector.schemaTypes.map((schema, sIdx) => (
-                      <span
-                        key={sIdx}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white dark:bg-white/10 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-white/10"
+                  {/* Bullet list of topics */}
+                  <ul className="space-y-3 mb-8">
+                    {cluster.guides.map((guide) => (
+                      <li
+                        key={guide.id}
+                        onClick={() => setActiveGuideModal(guide.id)}
+                        className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-snug cursor-pointer group/item hover:text-slate-950 dark:hover:text-white transition-colors"
                       >
-                        @{schema}
-                      </span>
+                        <span className="w-1.5 h-1.5 rounded-xs bg-slate-800 dark:bg-slate-300 mt-1.5 shrink-0 group-hover/item:bg-[#2563EB] transition-colors" />
+                        <span className="group-hover/item:underline underline-offset-2">
+                          {guide.title}
+                        </span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
 
-                <div className="pt-2">
+                {/* Bottom link to service */}
+                <div className="pt-4 border-t border-slate-100 dark:border-white/5">
                   <Link
-                    href={`/contact?industry=${encodeURIComponent(currentSector.title)}`}
-                    className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20"
+                    href={cluster.serviceLink.href}
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-950 dark:text-white underline decoration-slate-300 dark:decoration-white/30 hover:text-[#2563EB] hover:decoration-[#2563EB] dark:hover:text-[#60A5FA] dark:hover:decoration-[#60A5FA] transition-colors"
                   >
-                    <span>Get {currentSector.title} Strategy</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>{cluster.serviceLink.label}</span>
                   </Link>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </section>
 
         {/* =========================================================
-            4. IMPACT PROOF & TRUST METRICS
+            5. BOTTOM CTA BANNER (CONVERTING VISITOR ENGAGEMENT)
         ========================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            <div className="p-6 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 text-center">
-              <span className="block text-3xl sm:text-4xl font-black text-[#2563EB] dark:text-[#38BDF8] mb-1">
-                +240%
-              </span>
-              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-300 block">
-                Local Map Pack Impressions
-              </span>
-              <span className="text-[11px] text-stone-400 mt-1 block">
-                Across clinics &amp; professional firms
+        <section className="p-8 sm:p-12 rounded-[28px] bg-slate-50 dark:bg-[#111B2E] border border-slate-200/90 dark:border-white/10 shadow-lg flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+              <span className="text-[11px] font-bold text-[#2563EB] dark:text-[#60A5FA] uppercase tracking-wider font-mono">
+                DIAGNOSTIC FIRST · TRANSPARENT METHODOLOGY
               </span>
             </div>
-
-            <div className="p-6 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 text-center">
-              <span className="block text-3xl sm:text-4xl font-black text-emerald-600 dark:text-emerald-400 mb-1">
-                3.4x
-              </span>
-              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-300 block">
-                Booking Inquiries Generated
-              </span>
-              <span className="text-[11px] text-stone-400 mt-1 block">
-                Average client year-on-year lift
-              </span>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 text-center">
-              <span className="block text-3xl sm:text-4xl font-black text-teal-600 dark:text-teal-400 mb-1">
-                99.8%
-              </span>
-              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-300 block">
-                Compliance &amp; Accuracy Score
-              </span>
-              <span className="text-[11px] text-stone-400 mt-1 block">
-                Zero penalty or YMYL de-indexing
-              </span>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 text-center">
-              <span className="block text-3xl sm:text-4xl font-black text-amber-500 mb-1">
-                &lt; 1.2s
-              </span>
-              <span className="text-xs sm:text-sm font-semibold text-stone-700 dark:text-stone-300 block">
-                Target Mobile LCP
-              </span>
-              <span className="text-[11px] text-stone-400 mt-1 block">
-                For e-commerce and treatment pages
-              </span>
-            </div>
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              Ready to turn these insights into measurable revenue?
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 max-w-xl leading-relaxed">
+              Book a free discovery conversation. We diagnose what is holding your search visibility back and agree on clear priorities.
+            </p>
           </div>
-        </section>
 
-        {/* =========================================================
-            5. CALL TO ACTION CONTAINER
-        ========================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 sm:mt-16">
-          <div className="relative p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#2563EB] to-[#1D4ED8] text-white overflow-hidden shadow-2xl">
-            {/* Ambient pattern */}
-            <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] opacity-15 pointer-events-none" />
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 shrink-0 w-full sm:w-auto">
+            {/* Primary Button */}
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold shadow-md shadow-blue-500/20 hover:bg-blue-700 hover:-translate-y-0.5 transition-all min-h-[44px]"
+            >
+              <span>Request Free Search Audit</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
 
-            <div className="relative z-10 max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[11px] font-mono font-bold uppercase tracking-wider mb-4 backdrop-blur-sm">
-                <Sparkles className="w-3.5 h-3.5" />
-                Custom Industry Solutions
-              </span>
-
-              <h3 className="text-2xl sm:text-4xl font-black tracking-tight mb-3">
-                Operate in a different high-stakes sector?
-              </h3>
-
-              <p className="text-sm sm:text-base text-blue-100 leading-relaxed mb-8">
-                Whether you run an international SaaS platform, specialized legal practice, or financial brokerage, we architect bespoke technical SEO roadmaps matching your sector’s search dynamics.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white text-stone-900 hover:bg-stone-100 text-xs sm:text-sm font-bold shadow-lg transition-all"
-                >
-                  <span>Request an Industry Audit</span>
-                  <ArrowRight className="w-4 h-4 text-[#2563EB]" />
-                </Link>
-
-                <Link
-                  href="/services"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs sm:text-sm font-bold transition-all backdrop-blur-md"
-                >
-                  <span>View All Services</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
+            {/* Secondary Button */}
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-xs sm:text-[13.5px] font-semibold hover:bg-slate-100 dark:hover:bg-white/10 transition-all min-h-[44px]"
+            >
+              <span>Explore All 25 Services</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </section>
       </main>
+
+      {/* =========================================================
+          INTERACTIVE GUIDE READING MODAL
+      ========================================================= */}
+      <AnimatePresence>
+        {activeGuideModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setActiveGuideModal(null)}
+              className="fixed inset-0 bg-black/75 backdrop-blur-sm cursor-pointer"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-2xl bg-white dark:bg-[#111B2E] rounded-[28px] p-6 sm:p-8 border border-slate-200 dark:border-white/10 shadow-2xl z-10 max-h-[88vh] overflow-y-auto"
+            >
+              <button
+                type="button"
+                onClick={() => setActiveGuideModal(null)}
+                className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 dark:bg-white/10 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Close dialog"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {activeGuideModal === "geo-guide" ? (
+                /* FEATURED ARTICLE MODAL: GEO FULL GUIDE */
+                <div>
+                  <div className="mb-4">
+                    <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/15">
+                      {FEATURED_ARTICLE.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-tight mb-3">
+                    {FEATURED_ARTICLE.title}
+                  </h3>
+
+                  <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-6 pb-4 border-b border-slate-200 dark:border-white/10">
+                    <span className="font-bold text-orange-600 dark:text-orange-400">
+                      By {FEATURED_ARTICLE.author}
+                    </span>
+                    <span>·</span>
+                    <span className="text-orange-600 dark:text-orange-400">
+                      {FEATURED_ARTICLE.date}
+                    </span>
+                    <span>·</span>
+                    <span>{FEATURED_ARTICLE.readTime}</span>
+                  </div>
+
+                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-medium">
+                    {FEATURED_ARTICLE.description}
+                  </p>
+
+                  <div className="space-y-6 mb-8 text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+                    {FEATURED_ARTICLE.deepDive.map((section, idx) => (
+                      <div key={idx} className="p-4 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/5">
+                        <h4 className="font-bold text-slate-950 dark:text-white mb-2">
+                          {section.heading}
+                        </h4>
+                        <p className="text-slate-600 dark:text-slate-300">
+                          {section.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <h4 className="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-3">
+                    Core Checklist Highlights:
+                  </h4>
+
+                  <div className="space-y-2.5 mb-8">
+                    {FEATURED_ARTICLE.highlights.map((h, i) => (
+                      <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-slate-200 dark:border-white/10">
+                    <Link
+                      href="/contact"
+                      onClick={() => setActiveGuideModal(null)}
+                      className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 transition-all"
+                    >
+                      <span>Request Free GEO Audit</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => setActiveGuideModal(null)}
+                      className="w-full sm:w-auto px-5 py-3 rounded-full border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              ) : selectedClusterGuide ? (
+                /* EDITORIAL TOPIC GUIDE MODAL */
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="w-1 h-3.5 bg-orange-600 dark:bg-orange-500 rounded-xs" />
+                    <span className="text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 font-mono">
+                      UPCOMING EDITORIAL GUIDE
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-tight mb-4">
+                    {selectedClusterGuide.title}
+                  </h3>
+
+                  <div className="p-4 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-100 dark:border-white/5 mb-6 text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+                    <h4 className="font-bold text-slate-950 dark:text-white mb-2">
+                      Guide Overview &amp; Key Takeaways:
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-300">
+                      {selectedClusterGuide.summary}
+                    </p>
+                  </div>
+
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-6">
+                    This comprehensive guide is part of our upcoming search engineering series written by specialist practitioners. Need immediate support implementing these solutions for your business?
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-slate-200 dark:border-white/10">
+                    <Link
+                      href="/contact"
+                      onClick={() => setActiveGuideModal(null)}
+                      className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 transition-all"
+                    >
+                      <span>Discuss Your Project</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => setActiveGuideModal(null)}
+                      className="w-full sm:w-auto px-5 py-3 rounded-full border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              ) : null}
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

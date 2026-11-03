@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
+import ServiceRealIcon from "@/components/ServiceRealIcon";
 import {
   Search,
   BarChart3,
@@ -26,6 +27,14 @@ import {
   ChevronRight,
   LineChart,
   Check,
+  FileCheck,
+  ShoppingCart,
+  Award,
+  Mail,
+  Smartphone,
+  ShieldCheck,
+  Code2,
+  Rocket,
 } from "lucide-react";
 import { SERVICES_DATA, type ServiceDetail } from "@/lib/servicesData";
 
@@ -98,6 +107,15 @@ const ICON_MAP = {
   Link2,
   DollarSign,
   Gauge,
+  FileCheck,
+  ShoppingCart,
+  Sparkles,
+  Award,
+  Mail,
+  Smartphone,
+  ShieldCheck,
+  Code2,
+  Rocket,
 };
 
 const CARDS_PER_PAGE = 6;
@@ -489,19 +507,18 @@ export default function Services() {
 
 
         {/* Section Eyebrow */}
-        <div className="mb-6 sm:mb-8 lg:mb-10">
-          <div className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-blue-400">
-            <span className="w-6 h-[2px] bg-[#2563EB] dark:bg-blue-500 rounded-full" />
-            <span>WHAT I DO </span>
-          </div>
-        </div>
+
 
         {/* 2-Column Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-start">
           {/* Left Column: Heading & Summary with Enhanced Text Sizes */}
           <div className="lg:col-span-4 lg:sticky lg:top-28 xl:top-32 flex flex-col justify-between pt-1">
+            <div className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-blue-400">
+              <span className="w-6 h-[2px] bg-[#2563EB] dark:bg-blue-500 rounded-full" />
+              <span>WHAT I DO </span>
+            </div>
             <div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black tracking-tight leading-[1.14] text-stone-900 dark:text-white mb-4 sm:mb-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black tracking-tight leading-[1.14] text-stone-900 dark:text-white mb-4 pt-5 sm:mb-5">
                 Everything that determines
                 <br />
                 <span className="text-[#2563EB]">
@@ -569,8 +586,11 @@ export default function Services() {
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
-                  Showing {currentPage === 0 ? "Services 01 – 06" : "Services 07 – 12"}{" "}
-                  <span className="text-stone-400 font-normal">of 12 Total</span>
+                  Showing Services {String(currentPage * CARDS_PER_PAGE + 1).padStart(2, "0")} –{" "}
+                  {String(
+                    Math.min((currentPage + 1) * CARDS_PER_PAGE, SERVICES_DATA.length)
+                  ).padStart(2, "0")}{" "}
+                  <span className="text-stone-400 font-normal">of {SERVICES_DATA.length} Total</span>
                 </span>
               </div>
 
@@ -624,7 +644,7 @@ export default function Services() {
 
                 {/* Page dots indicator with generous tap areas */}
                 <div className="flex items-center gap-1.5 px-1 min-h-[44px]">
-                  {[0, 1].map((dotIdx) => (
+                  {Array.from({ length: totalPages }).map((_, dotIdx) => (
                     <button
                       key={dotIdx}
                       type="button"
@@ -741,7 +761,8 @@ export default function Services() {
                         overflow-hidden
                         border
                         p-5 sm:p-6
-                        min-h-[320px] sm:min-h-[340px]
+                        min-h-[340px] sm:min-h-[360px]
+                        bg-white dark:bg-[#070D18]
                         flex
                         flex-col
                         justify-between
@@ -755,66 +776,69 @@ export default function Services() {
                         }
                       `}
                     >
-                      {/* Background Image */}
-                      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+                      {/* Showcase 3D Artwork (Full display, properly fitted, never cropped or cut) */}
+                      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center p-3 sm:p-4">
+                        {/* Light Mode 3D Illustration */}
                         <Image
-                          src={svc.image}
+                          src={svc.lightImage || svc.image}
                           alt={svc.title}
                           fill
-                          className={`object-cover object-center transition-transform duration-700 ease-out ${isSelected
-                            ? "scale-110"
-                            : "scale-100 group-hover:scale-110"
+                          className={`block dark:hidden object-contain object-center transition-transform duration-500 ease-out ${isSelected
+                            ? "scale-[1.02]"
+                            : "scale-100 group-hover:scale-[1.02]"
                             }`}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={75}
-                          loading={idx < 3 ? "eager" : "lazy"}
+                          quality={90}
+                          priority={idx < 3}
                         />
 
-                        {/* Default Image Vignette (Clear & Visible by Default) */}
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 transition-opacity duration-500 ${isSelected ? "opacity-0" : "opacity-100 group-hover:opacity-0"
+                        {/* Dark Mode 3D Illustration */}
+                        <Image
+                          src={svc.darkImage || svc.image}
+                          alt={svc.title}
+                          fill
+                          className={`hidden dark:block object-contain object-center transition-transform duration-500 ease-out ${isSelected
+                            ? "scale-[1.02]"
+                            : "scale-100 group-hover:scale-[1.02]"
                             }`}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          quality={90}
+                          priority={idx < 3}
                         />
 
-                        {/* Hover Darken Overlay (Dims image to reveal details on hover) */}
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-t from-black/95 via-black/85 to-black/75 transition-opacity duration-500 ${isSelected
-                            ? "opacity-100"
-                            : "opacity-0 group-hover:opacity-100"
-                            }`}
-                        />
+
                       </div>
 
                       {/* Corner Accent Notch */}
-                      <div className="absolute top-0 right-0 w-8 h-8 rounded-bl-xl bg-white/10 backdrop-blur-md border-b border-l border-white/20 pointer-events-none z-10" />
+                      <div className="absolute top-0 right-0 w-8 h-8 rounded-bl-xl bg-slate-100/90 dark:bg-white/10 backdrop-blur-md border-b border-l border-slate-200/90 dark:border-white/20 pointer-events-none z-10" />
 
-                      {/* Card Top: Icon & Animated Top-Right Button */}
+                      {/* Card Top: Real Colored Icon & Service Badge */}
                       <div className="relative z-10">
                         <div className="flex items-center justify-between gap-2 mb-3">
                           <div
                             className={`
-                              w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 backdrop-blur-md
-                              ${isSelected
-                                ? "bg-white text-stone-900 shadow-md"
-                                : "bg-black/50 border border-white/20 text-white group-hover:bg-white group-hover:text-stone-900 group-hover:border-white group-hover:shadow-md"
-                              }
+                              w-11 h-11 rounded-2xl flex items-center justify-center transition-all duration-300 backdrop-blur-md shadow-xs p-2
+                              bg-white/95 dark:bg-[#111B2E]/95 border border-slate-200/90 dark:border-white/15
+                              group-hover:scale-110 group-hover:shadow-md group-hover:border-blue-500/40
+                              ${isSelected ? "ring-2 ring-blue-500/40 scale-105 shadow-md" : ""}
                             `}
                           >
-                            <Icon className="w-5 h-5" />
+                            <ServiceRealIcon
+                              slug={svc.slug}
+                              className="w-6 h-6 transition-transform duration-300 group-hover:scale-105"
+                              size={24}
+                            />
                           </div>
 
-
+                          <span className="text-[11px] font-mono font-bold text-slate-600 dark:text-slate-400 px-2.5 py-1 rounded-lg bg-white/90 dark:bg-[#111B2E]/90 border border-slate-200/80 dark:border-white/10 backdrop-blur-md shadow-2xs">
+                            SERVICE {svc.num}
+                          </span>
                         </div>
                       </div>
 
                       {/* Card Bottom: Title & Hover Slide-in Details */}
-                      <div className="relative z-10">
-                        <h3
-                          className={`text-base sm:text-lg font-bold text-white transition-colors duration-300 drop-shadow-sm ${isSelected
-                            ? "text-blue-400"
-                            : "group-hover:text-blue-400"
-                            }`}
-                        >
+                      <div className="relative z-10 mt-auto pt-4 pb-1 -mx-2 px-3 rounded-b-2xl bg-gradient-to-t from-white via-white/95 to-transparent dark:from-[#070D18] dark:via-[#070D18]/95 dark:to-transparent">
+                        <h3 className="text-base sm:text-lg font-black tracking-tight text-slate-950 dark:text-white transition-colors duration-200">
                           {svc.title}
                         </h3>
 
@@ -826,7 +850,7 @@ export default function Services() {
                             }`}
                         >
                           <div className="overflow-hidden space-y-3">
-                            <p className="text-xs sm:text-sm text-stone-200 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                               {svc.desc}
                             </p>
 
@@ -838,7 +862,8 @@ export default function Services() {
                                 w-full
                                 pt-2.5
                                 border-t
-                                border-white/20
+                                border-slate-200/90
+                                dark:border-white/15
                                 flex
                                 items-center
                                 justify-between
@@ -846,25 +871,27 @@ export default function Services() {
                                 font-bold
                                 uppercase
                                 tracking-wider
-                                text-stone-200
-                                hover:text-white
+                                text-slate-800
+                                dark:text-slate-200
+                                hover:text-black
+                                dark:hover:text-white
                                 transition-colors
                                 group/cta
                               "
                             >
                               <span className="flex items-center gap-1.5">
-                                <Sparkles className="w-3 h-3 text-white" />
-                                Explore Details
+                                <Sparkles className="w-3 h-3 text-slate-500 dark:text-slate-400 group-hover/cta:rotate-12 transition-transform" />
+                                <span>Explore Details</span>
                               </span>
-                              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
+                              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 text-slate-600 dark:text-slate-300" />
                             </Link>
                           </div>
                         </div>
                       </div>
 
-                      {/* Active Bottom Glow Line */}
+                      {/* Active Bottom Line */}
                       {isSelected && (
-                        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-white to-transparent z-10" />
+                        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-slate-900 dark:via-white to-transparent z-10" />
                       )}
                     </div>
                   );

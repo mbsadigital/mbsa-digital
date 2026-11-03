@@ -3,17 +3,18 @@ import type { Metadata } from "next";
 import { constructMetadata, getBreadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Industries We Serve | Trust & Local Visibility Architecture",
+  title: "Insights on Search, Websites & Measurement | MBSA Digital",
   description:
-    "Experience where trust and local visibility matter most. Tailored technical SEO and growth strategies for Healthcare & Pharmacy, Health & Wellness, E-commerce, and Local Services.",
+    "Practical guides for business owners and marketing managers on SEO, GEO/AEO, websites, paid media, and GA4 measurement. Written and reviewed by specialist practitioners.",
   path: "/industries",
   keywords: [
-    "Healthcare SEO",
-    "Pharmacy Local Visibility",
-    "Health Beauty and Wellness Marketing",
-    "E-commerce D2C Brand SEO",
-    "Local Professional Services SEO",
-    "Google Map Pack Optimization",
+    "Insights on search",
+    "Generative Engine Optimisation GEO",
+    "AEO and GEO Guide",
+    "Technical SEO checklist",
+    "Local SEO guides",
+    "Web design conversion",
+    "GA4 setup checklist",
   ],
 });
 

@@ -488,10 +488,11 @@ export default function BlogDetailPage() {
                 </p>
               </div>
               <Link
-                href="/#contact"
-                className="px-4.5 py-2 rounded-xl bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-xs font-bold shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all inline-block mx-auto sm:mx-0 w-fit"
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 touch-manipulation mx-auto sm:mx-0 w-fit"
               >
-                Get In Touch
+                <span>Get In Touch</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
             <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 leading-relaxed">

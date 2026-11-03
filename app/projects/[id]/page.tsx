@@ -87,7 +87,7 @@ export default function ProjectDetailPage() {
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="/#projects"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-200 dark:border-white/10 bg-stone-100/70 dark:bg-white/[0.04] hover:border-orange-500/50 hover:bg-orange-500/10 text-stone-700 dark:text-stone-300 hover:text-[#2563EB] text-xs font-bold transition"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-200 dark:border-white/10 bg-stone-100/70 dark:bg-white/[0.04] hover:border-[#2563EB]/50 hover:bg-blue-500/10 text-stone-700 dark:text-stone-300 hover:text-[#2563EB] text-xs font-bold transition"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Projects</span>
@@ -111,7 +111,7 @@ export default function ProjectDetailPage() {
                 href={project.siteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-xs font-bold text-stone-800 dark:text-white hover:border-orange-500 hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition shadow-sm"
+                className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-xs font-bold text-stone-800 dark:text-white hover:border-[#2563EB] hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition shadow-sm"
               >
                 <span>Visit Live Site</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -137,7 +137,7 @@ export default function ProjectDetailPage() {
 
           {/* Top Metadata Badges */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-[#2563EB]/20 border border-orange-200 dark:border-[#2563EB]/35 text-[#2563EB] dark:text-[#14B8A6]">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-50 dark:bg-[#2563EB]/20 border border-blue-200 dark:border-[#2563EB]/35 text-[#2563EB] dark:text-[#14B8A6]">
               <Sparkles className="w-3 h-3" />
               <span>{project.category}</span>
             </span>
@@ -170,7 +170,7 @@ export default function ProjectDetailPage() {
                 href={project.siteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-bold shadow-lg shadow-orange-600/30 transition transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-bold shadow-lg shadow-blue-600/30 transition transform hover:-translate-y-0.5"
               >
                 <span>Visit Live Website</span>
                 <ExternalLink className="w-4 h-4" />
@@ -179,24 +179,24 @@ export default function ProjectDetailPage() {
 
             <a
               href="#seo-proof"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-stone-300 dark:border-white/20 bg-white/80 dark:bg-white/[0.04] hover:border-orange-500 text-stone-800 dark:text-white text-xs sm:text-sm font-bold shadow-sm transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-stone-300 dark:border-white/20 bg-white/80 dark:bg-white/[0.04] hover:border-[#2563EB] text-stone-800 dark:text-white text-xs sm:text-sm font-bold shadow-sm transition"
             >
               <BarChart2 className="w-4 h-4 text-[#2563EB]" />
               <span>View SEO & Analytics Proofs ({project.seoProofImages.length})</span>
             </a>
           </div>
 
-          {/* Hero Image Showcase */}
-          <div className="relative w-full h-72 sm:h-96 md:h-[520px] rounded-3xl overflow-hidden border border-stone-200 dark:border-white/10 shadow-2xl bg-stone-900 mb-14 group">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              priority
-              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
-
+          {/* Hero Image Showcase - FULL 3D MOCKUP PREVIEW WITHOUT CUTTING */}
+          <div className="relative w-full aspect-square sm:aspect-[16/10] md:aspect-[16/9] lg:aspect-[16/10] max-h-[580px] rounded-3xl overflow-hidden border border-stone-200/80 dark:border-white/10 shadow-2xl bg-stone-50 dark:bg-black/60 p-4 sm:p-8 mb-14 group flex items-center justify-center">
+            <div className="relative w-full h-full">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                priority
+                className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
           </div>
 
 
@@ -232,8 +232,8 @@ export default function ProjectDetailPage() {
             </div>
 
             {/* Strategic Solution */}
-            <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111B2E] border border-orange-500/20 dark:border-orange-500/30 shadow-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-50 dark:bg-[#2563EB]/20 text-[#2563EB] dark:text-[#14B8A6] border border-orange-200 dark:border-[#2563EB]/35 mb-4">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111B2E] border border-blue-500/20 dark:border-blue-500/30 shadow-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 dark:bg-[#2563EB]/20 text-[#2563EB] dark:text-[#14B8A6] border border-blue-200 dark:border-[#2563EB]/35 mb-4">
                 <span>TACTICAL EXECUTION</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-white mb-4">
@@ -243,7 +243,7 @@ export default function ProjectDetailPage() {
               <div className="space-y-4">
                 {project.solution.map((step, idx) => (
                   <div key={idx} className="flex items-start gap-3.5">
-                    <div className="p-1 rounded-full bg-orange-50 dark:bg-[#2563EB]/20 text-[#2563EB] dark:text-[#14B8A6] shrink-0 mt-0.5">
+                    <div className="p-1 rounded-full bg-blue-50 dark:bg-[#2563EB]/20 text-[#2563EB] dark:text-[#14B8A6] shrink-0 mt-0.5">
                       <CheckCircle className="w-4 h-4" />
                     </div>
                     <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
@@ -350,7 +350,7 @@ export default function ProjectDetailPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111B2E] border border-orange-500/15 dark:border-white/10 hover:border-orange-500/60 shadow-lg dark:shadow-[0_10px_35px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 flex flex-col justify-between"
+                className="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111B2E] border border-blue-500/15 dark:border-white/10 hover:border-[#2563EB]/60 shadow-lg dark:shadow-[0_10px_35px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   {/* Clickable Image Box with Zoom Overlay */}
@@ -373,7 +373,7 @@ export default function ProjectDetailPage() {
 
                     {/* Category Tag Badge */}
                     <div className="absolute top-3 left-3">
-                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-orange-400 border border-white/15">
+                      <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-[#14B8A6] border border-white/15">
                         {proof.category}
                       </span>
                     </div>
@@ -433,7 +433,7 @@ export default function ProjectDetailPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#111B2E] border border-orange-500/40 shadow-2xl z-10 p-5 sm:p-7 text-white flex flex-col"
+              className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#111B2E] border border-blue-500/40 shadow-2xl z-10 p-5 sm:p-7 text-white flex flex-col"
             >
               {/* Close Button */}
               <button
@@ -447,7 +447,7 @@ export default function ProjectDetailPage() {
 
               {/* Title & Info */}
               <div className="mb-4 pr-12">
-                <span className="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-orange-600/25 border border-orange-500/40 text-orange-400">
+                <span className="px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-blue-600/25 border border-blue-500/40 text-[#60A5FA]">
                   {activeProofZoom.category}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black mt-2 text-white">

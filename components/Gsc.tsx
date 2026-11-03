@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
@@ -14,6 +15,8 @@ import {
   MapPin,
   TrendingUp,
   Building2,
+  Folder,
+  ArrowRight,
 } from "lucide-react";
 
 /* ============================================================
@@ -859,7 +862,7 @@ export default function Gsc() {
         {/* ====================================================
             HEADER WITH VERIFICATION TAG
         ==================================================== */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-px bg-[#2563EB]" />
@@ -876,6 +879,17 @@ export default function Gsc() {
             <p className="mt-2.5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
               Real screenshots and performance data from Google Search Console, GA4, and Google Business Profiles across UK client campaigns. Each case reflects a 4 to 12-month optimization timeline benchmarked against starting baselines.
             </p>
+          </div>
+
+          <div className="shrink-0">
+            <Link
+              href="/analytics"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-500/25 transition-all"
+            >
+              <Folder className="w-4 h-4" />
+              <span>View All Client Proofs</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
 
@@ -913,7 +927,7 @@ export default function Gsc() {
           <div className="flex items-center justify-between sm:justify-start gap-2.5 w-full lg:w-auto shrink-0 flex-wrap">
             <div className="flex items-center gap-2">
               <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-orange-200 flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-[#2563EB] dark:text-orange-400" />
+                <Building2 className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#14B8A6]" />
                 Client:
               </span>
 
@@ -921,7 +935,7 @@ export default function Gsc() {
                 <select
                   value={selectedClient}
                   onChange={(e) => handleSelectClient(e.target.value)}
-                  className="appearance-none pl-3 pr-8 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-[#151413] border-2 border-stone-200 dark:border-white/20 hover:border-orange-400 focus:border-orange-400 text-stone-900 dark:text-white text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer outline-none touch-manipulation"
+                  className="appearance-none pl-3 pr-8 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-[#111B2E] border-2 border-stone-200 dark:border-white/20 hover:border-[#2563EB] focus:border-[#2563EB] text-stone-900 dark:text-white text-xs sm:text-sm font-bold shadow-xs transition-all cursor-pointer outline-none touch-manipulation"
                 >
                   {CLIENTS.map((client) => (
                     <option
@@ -933,12 +947,12 @@ export default function Gsc() {
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="w-4 h-4 text-stone-500 dark:text-orange-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <ChevronDown className="w-4 h-4 text-stone-500 dark:text-[#14B8A6] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
 
             {/* Proofs Count Badge */}
-            <span className="px-2.5 py-1 rounded-lg bg-orange-50 dark:bg-white/10 text-orange-700 dark:text-orange-300 text-[11px] font-bold border border-orange-200/80 dark:border-white/20 whitespace-nowrap">
+            <span className="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-white/10 text-[#2563EB] dark:text-[#60A5FA] text-[11px] font-bold border border-blue-200/80 dark:border-white/20 whitespace-nowrap">
               {totalCategorySlides} Proof{totalCategorySlides === 1 ? "" : "s"}
             </span>
           </div>
@@ -986,7 +1000,7 @@ export default function Gsc() {
                   damping: 26,
                 }}
                 className={`absolute w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer ${isCenter
-                  ? "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-orange-500/40"
+                  ? "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-[#2563EB]/40"
                   : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75"
                   } bg-stone-950`}
               >
@@ -1042,7 +1056,7 @@ export default function Gsc() {
                 aria-label="Previous Slide in Category"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-orange-400 backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
               </motion.button>
@@ -1056,7 +1070,7 @@ export default function Gsc() {
                 aria-label="Next Slide in Category"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-orange-400 backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
               </motion.button>
