@@ -3,20 +3,10 @@ const INITIAL_BLOGS = [
     title: "Website Traffic Dropping? 7 Causes and Fixes (2026)",
     slug: "website-traffic-dropping-causes-fixes",
     excerpt: "How modern businesses optimize page speed, clean site structure, and search markup to earn high-ranking citations in Google AI Overviews and ChatGPT.",
-    content: `## The Paradigm Shift in Organic Search
-
-The emergence of AI Overviews and multimodal search engines has fundamentally transformed SEO from keyword repetition to semantic entity validation. Crawlers no longer simply parse strings—they construct knowledge graphs and cross-reference structured data to verify authority before citing sources in generative snapshots.
-
-### 1. Entity Disambiguation with Deep Schema
-Modern search models prioritize entities with verified authoritative graph relationships. Implementing nested JSON-LD schema with sameAs, author, publisher, and about nodes clarifies your brand's topic authority directly to Google's semantic index.
-
-### 2. Core Web Vitals at Sub-Second Latencies
-Interaction to Next Paint (INP) and Largest Contentful Paint (LCP) are now baseline requirements. By transitioning to server components, streaming edge rendering, and optimized vector assets, our audit benchmarks achieved an average 42% lift in crawl efficiency.
-
-### 3. Key Takeaways for Marketing Leaders:
-- Shift focus from raw keyword volume to comprehensive entity coverage.
-- Treat Core Web Vitals as a ranking foundation, not an afterthought.
-- Establish verified author credentials (E-E-A-T) across all editorial pieces.`,
+    content: `Website traffic usually drops because of a Google core update, AI Overviews answering searches directly, a technical issue, or broken tracking. Seasonality and lost links can also play a part. Check Search Console first to see whether impressions or clicks fell, then work through the causes one by one.
+By Muskan Shekh, SEO and Digital Marketing Specialist | Published: 20 October 2026 | Last updated: 20 October 2026
+Few things feel worse than opening your analytics and seeing the line head downward. The good news is that most traffic drops have a clear cause, and you can usually find it in about an hour if you check things in the right order. Below are the seven causes I see most often, how to tell them apart and what to do about each one.
+.`,
     category: "Technical SEO",
     tags: ["SEO", "Core Web Vitals", "Schema Markup", "AI Search", "E-E-A-T"],
     readTime: "6 min read",

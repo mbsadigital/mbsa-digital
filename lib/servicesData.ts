@@ -786,9 +786,9 @@ export const SERVICES_DATA: ServiceDetail[] = [
     longDescription:
       "Meta remains the premier social advertising platform for generating direct consumer demand. Success on Facebook and Instagram requires high-velocity creative testing, persuasive video hooks, and robust Conversions API (CAPI) data flow. We build full-funnel Meta advertising campaigns that capture cold attention and retarget interested prospects until they convert.",
     iconName: "Share2",
-    image: "/images/services/dark/meta-ads.png",
-    lightImage: "/images/services/light/meta-ads.png",
-    darkImage: "/images/services/dark/meta-ads.png",
+    image: "/images/services/dark/metas-ads.png",
+    lightImage: "/images/services/light/metas-ads.png",
+    darkImage: "/images/services/dark/metas-ads.png",
     stats: {
       highlight: "3.9x",
       label: "Blended Return on Ad Spend",
