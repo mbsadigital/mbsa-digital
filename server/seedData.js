@@ -1,7 +1,7 @@
 const INITIAL_BLOGS = [
   {
-    title: "",
-    slug: "2026-technical-seo-blueprint-ai-overviews",
+    title: "Website Traffic Dropping? 7 Causes and Fixes (2026)",
+    slug: "website-traffic-dropping-causes-fixes",
     excerpt: "How modern businesses optimize page speed, clean site structure, and search markup to earn high-ranking citations in Google AI Overviews and ChatGPT.",
     content: `## The Paradigm Shift in Organic Search
 

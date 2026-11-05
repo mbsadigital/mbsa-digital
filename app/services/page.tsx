@@ -1826,19 +1826,21 @@ function ServicesContent() {
                                 src={svc.lightImage}
                                 alt={svc.title}
                                 fill
-                                className="block dark:hidden object-contain object-center p-3 transition-transform duration-500 ease-out group-hover:scale-105"
+                                className="service-img-light object-contain object-center p-3 transition-transform duration-500 ease-out group-hover:scale-105"
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                quality={80}
+                                quality={85}
                                 priority={idx < 4}
+                                unoptimized
                               />
                               <Image
                                 src={svc.darkImage || svc.lightImage}
                                 alt={svc.title}
                                 fill
-                                className="hidden dark:block object-contain object-center p-3 transition-transform duration-500 ease-out group-hover:scale-105"
+                                className="service-img-dark object-contain object-center p-3 transition-transform duration-500 ease-out group-hover:scale-105"
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                quality={80}
+                                quality={85}
                                 priority={idx < 4}
+                                unoptimized
                               />
                             </>
                           ) : (

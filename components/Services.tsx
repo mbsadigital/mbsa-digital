@@ -783,13 +783,14 @@ export default function Services() {
                           src={svc.lightImage || svc.image}
                           alt={svc.title}
                           fill
-                          className={`block dark:hidden object-contain object-center transition-transform duration-500 ease-out ${isSelected
+                          className={`service-img-light object-contain object-center transition-transform duration-500 ease-out ${isSelected
                             ? "scale-105"
                             : "scale-100 group-hover:scale-105"
                             }`}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={80}
+                          quality={85}
                           priority={idx < 3}
+                          unoptimized
                         />
 
                         {/* Dark Mode 3D Illustration */}
@@ -797,13 +798,14 @@ export default function Services() {
                           src={svc.darkImage || svc.image}
                           alt={svc.title}
                           fill
-                          className={`hidden dark:block object-contain object-center transition-transform duration-500 ease-out ${isSelected
+                          className={`service-img-dark object-contain object-center transition-transform duration-500 ease-out ${isSelected
                             ? "scale-105"
                             : "scale-100 group-hover:scale-105"
                             }`}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={80}
+                          quality={85}
                           priority={idx < 3}
+                          unoptimized
                         />
                       </div>
 
