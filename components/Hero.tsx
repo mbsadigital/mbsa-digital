@@ -168,7 +168,6 @@ export function HeroEarthStaticGlobe() {
         {/* Photorealistic NASA Earth Map - High-Priority Next.js Image for Instant LCP < 1.0s */}
         <Image
           src="/earth/earth_daymap.png"
-          loading="eager"
           alt="Photorealistic Earth Map"
           fill
           priority
@@ -302,13 +301,14 @@ function Hero3DEarthDashboard() {
                   `}
                 >
                   {/* Tool Icon */}
-                  <div className="w-6 h-6 min-[380px]:w-6.5 min-[380px]:h-6.5 sm:w-7 sm:h-7 lg:w-6.5 lg:h-6.5 xl:w-7 xl:h-7 rounded-md sm:rounded-lg bg-stone-50 dark:bg-white/[0.06] border border-stone-200/80 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden p-0.5 sm:p-1 shadow-xs">
+                  <div className="w-8 h-8 min-[380px]:w-6.5 min-[380px]:h-6.5 sm:w-7 sm:h-7 lg:w-6.5 lg:h-6.5 xl:w-7 xl:h-7 rounded-md sm:rounded-lg bg-stone-50 dark:bg-white/[0.06] border border-stone-200/80 dark:border-white/10 flex items-center justify-center shrink-0 overflow-hidden p-0.5 sm:p-1 shadow-xs">
                     <Image
                       src={node.image}
                       alt={node.name}
-                      width={32}
-                      height={32}
-                      sizes="52px"
+                      width={62}
+                      height={62}
+                      sizes="62px"
+                      loading="eager"
                       className="w-full h-full object-contain"
                     />
                   </div>

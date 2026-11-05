@@ -142,16 +142,18 @@ export default function Industries() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
           <div className="max-w-3xl">
             {/* Tag / Eyebrow */}
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-2.5 h-2.5 rounded-[2px] bg-[#F97316] shadow-xs" />
-              <span className="text-xs sm:text-[13px] font-mono font-bold tracking-widest uppercase text-stone-600 dark:text-stone-300">
-                INDUSTRIES
-              </span>
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-[#14B8A6] mb-2">
+              <span className="w-5 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
+              <span>INDUSTRIES</span>
             </div>
 
             {/* Headline matching screenshot */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
-              Experience where trust and local visibility matter most
+
+            <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
+              Experience where trust and <br />
+              <span className="text-[#2563EB]">
+                visibility more
+              </span>
             </h2>
           </div>
 
@@ -168,9 +170,9 @@ export default function Industries() {
         </div>
 
         {/* ==========================================================
-            4 INDUSTRY CARDS GRID (Exact Content + Site's Color & Theme)
+            4 INDUSTRY CARDS GRID (Exact Content + Live Moving Border)
         ========================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {INDUSTRIES_DATA.map((industry, index) => {
             const Icon = industry.icon;
 
@@ -182,44 +184,50 @@ export default function Industries() {
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
                 onClick={() => setSelectedIndustry(industry)}
-                className={`group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/90 dark:border-white/10 shadow-sm hover:shadow-xl hover:shadow-[#2563EB]/10 ${industry.borderDark} transition-all duration-300 cursor-pointer hover:-translate-y-1.5`}
+                className="relative p-[1.5px] rounded-2xl overflow-hidden group shadow-sm hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer h-full"
               >
-                {/* Top Section */}
-                <div>
-                  {/* Icon badge matching screenshot layout */}
-                  <div className="flex items-center justify-between mb-8">
-                    <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${industry.bgLight} ${industry.bgDark} border ${industry.borderLight} transition-transform duration-300 group-hover:scale-105`}
-                    >
-                      <Icon className="w-5 h-5" />
+                {/* Live Moving Border (Continuous spin, Gemini spectrum) matching Services.tsx */}
+                <div className="absolute inset-[-100%] animate-[spin_5s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_55%,#2563EB_68%,#38BDF8_76%,#FFFFFF_84%,#F59E0B_92%,#EC4899_98%,transparent_100%)] pointer-events-none" />
+
+                {/* Card Interior */}
+                <div className="relative z-10 flex flex-col justify-between h-full rounded-[calc(1rem-1.5px)] p-6 sm:p-7 bg-[#F8FAFC] dark:bg-[#0A1020] border border-stone-200/60 dark:border-white/5 transition-colors duration-300">
+                  {/* Top Section */}
+                  <div>
+                    {/* Icon badge matching screenshot layout */}
+                    <div className="flex items-center justify-between mb-8">
+                      <div
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center ${industry.bgLight} ${industry.bgDark} border ${industry.borderLight} transition-transform duration-300 group-hover:scale-105 shadow-xs`}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </div>
+
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-stone-100 dark:bg-white/5 text-stone-500 dark:text-stone-400 border border-stone-200/60 dark:border-white/5">
+                        {industry.badge}
+                      </span>
                     </div>
 
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-stone-100 dark:bg-white/5 text-stone-500 dark:text-stone-400 border border-stone-200/60 dark:border-white/5">
-                      {industry.badge}
-                    </span>
+                    {/* Title (Clean constant color, no hover color change) */}
+                    <h3 className="text-xl font-bold tracking-tight text-stone-900 dark:text-white mb-3">
+                      {industry.title}
+                    </h3>
+
+                    {/* Description from Screenshot */}
+                    <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-6 font-normal">
+                      {industry.description}
+                    </p>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold tracking-tight text-stone-900 dark:text-white mb-3 group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors">
-                    {industry.title}
-                  </h3>
+                  {/* Bottom Action: "Learn more →" (Clean constant color, no hover color change) */}
+                  <div className="pt-4 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between">
+                    <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-stone-900 dark:text-white">
+                      <span>Learn more</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
 
-                  {/* Description from Screenshot */}
-                  <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed mb-6">
-                    {industry.description}
-                  </p>
-                </div>
-
-                {/* Bottom Action: "Learn more →" matching screenshot */}
-                <div className="pt-4 border-t border-stone-100 dark:border-white/5 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors">
-                    <span>Learn more</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-
-                  <span className="text-[11px] font-mono font-semibold text-emerald-600 dark:text-emerald-400">
-                    {industry.stats.value}
-                  </span>
+                    <span className="text-[11px] font-mono font-semibold text-emerald-600 dark:text-emerald-400">
+                      {industry.stats.value}
+                    </span>
+                  </div>
                 </div>
               </motion.div>
             );
@@ -364,6 +372,6 @@ export default function Industries() {
           </div>
         )}
       </AnimatePresence>
-    </section>
+    </section >
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Star,
@@ -20,11 +19,35 @@ interface TestimonialCard {
   role: string;
   company: string;
   location: string;
-  avatar: string;
+  avatar?: string;
   metric: string;
   metricLabel: string;
   quote: string;
   projectSlug: string;
+}
+
+function getInitials(name: string): string {
+  // Strip common honorifics (Dr., Mr., Ms., Mrs., Prof.)
+  const clean = name.replace(/^(dr\.|mr\.|ms\.|mrs\.|prof\.)\s+/i, "").trim();
+  const parts = clean.split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return name.slice(0, 2).toUpperCase();
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function getClientGradient(id: string): string {
+  switch (id) {
+    case "harris-pharmacy":
+      return "bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500";
+    case "maia-health":
+      return "bg-gradient-to-br from-purple-600 via-pink-600 to-rose-500";
+    case "drtungs-uk":
+      return "bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-500";
+    case "artists-brush":
+      return "bg-gradient-to-br from-amber-500 via-orange-600 to-rose-500";
+    default:
+      return "bg-gradient-to-br from-[#2563EB] to-[#14B8A6]";
+  }
 }
 
 const TESTIMONIALS: TestimonialCard[] = [
@@ -226,15 +249,16 @@ export default function Testimonials() {
                     {/* Top Area: Headshot Photo + Client Info */}
                     <div>
                       <div className="flex items-center gap-3.5 mb-3.5">
-                        {/* Real Client Headshot Photo */}
-                        <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-[#2563EB]/40 shadow-md group-hover:ring-[#2563EB] transition-all">
-                          <Image
-                            src={item.avatar}
-                            alt={item.name}
-                            fill
-                            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                            sizes="48px"
-                          />
+                        {/* Client Initials Circle Avatar */}
+                        <div
+                          className={`relative w-12 h-12 rounded-full flex items-center justify-center shrink-0 ring-2 ring-[#2563EB]/35 dark:ring-blue-500/30 group-hover:ring-[#2563EB] shadow-md group-hover:scale-105 transition-all select-none ${getClientGradient(
+                            item.id
+                          )}`}
+                          aria-label={item.name}
+                        >
+                          <span className="text-white font-black text-sm sm:text-base tracking-wider drop-shadow-xs">
+                            {getInitials(item.name)}
+                          </span>
                         </div>
 
                         <div className="min-w-0">

@@ -254,7 +254,7 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
     category: "ART & DESIGN PORTFOLIO",
     client: "Studio Brush Collective",
     duration: "3 Months",
-    siteUrl: "https://studiobrush.co.uk",
+    siteUrl: "https://artistsbrush.co.uk/",
     image: "/aristhbrush.jpg",
     heroMetric: "4.2x",
     heroMetricLabel: "Booking Inquiries",

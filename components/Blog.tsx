@@ -144,7 +144,7 @@ export default function Blog() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/blog"
-              className="group/btn flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-[#14100E] hover:bg-[#2563EB] dark:hover:bg-[#2563EB] text-stone-900 dark:text-white hover:text-white text-xs sm:text-sm font-bold backdrop-blur-md border border-stone-200/80 dark:border-white/15 hover:border-[#2563EB] shadow-sm hover:shadow-orange-500/25 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+              className="group/btn flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-[#111B2E] hover:bg-[#2563EB] dark:hover:bg-[#2563EB] text-stone-900 dark:text-white hover:text-white text-xs sm:text-sm font-bold backdrop-blur-md border border-stone-200/80 dark:border-white/10 hover:border-[#2563EB] shadow-sm hover:shadow-[#2563EB]/25 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
             >
               <span>View all Articles</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -160,7 +160,7 @@ export default function Blog() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-12 group relative rounded-3xl overflow-hidden border border-orange-500/30 bg-white dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.4)] hover:border-orange-500/50 transition-all duration-300"
+            className="mb-12 group relative rounded-3xl overflow-hidden border border-[#2563EB]/25 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-md hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300"
           >
             {/* HERO ARTICLE TOP RIGHT: VIEW ALL ARTICLES BUTTON */}
 
@@ -177,13 +177,13 @@ export default function Blog() {
                   unoptimized
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="lazy"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/60" />
 
                 {/* Badge Overlay */}
                 <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-orange-600/40 flex items-center gap-1.5">
+                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-[#2563EB]/30 flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3" />
                     Featured Insight
                   </span>
@@ -198,7 +198,7 @@ export default function Blog() {
                 <div>
                   <div className="flex items-center gap-4 text-xs text-stone-500 dark:text-stone-400 mb-3 font-mono">
                     <span className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
+                      <Clock className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#14B8A6]" />
                       {featuredArticle.readTime}
                     </span>
                     <span>•</span>
@@ -214,7 +214,7 @@ export default function Blog() {
 
                   <Link
                     href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                    className="block text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] transition-colors duration-200 cursor-pointer leading-tight mb-3"
+                    className="block text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 cursor-pointer leading-tight mb-3"
                   >
                     {featuredArticle.title}
                   </Link>
@@ -240,7 +240,7 @@ export default function Blog() {
                 <div className="pt-4 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between flex-wrap gap-4">
                   {/* Author */}
                   <div className="flex items-center gap-3">
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-orange-500/40">
+                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#2563EB]/40">
                       <Image
                         src={featuredArticle.author?.avatar || PRESET_COVERS[0].url}
                         alt={featuredArticle.author?.name || "Author"}
@@ -268,14 +268,14 @@ export default function Blog() {
                       <div className="flex items-center gap-1 ml-1 pl-1 border-l border-stone-200 dark:border-stone-800">
                         <Link
                           href={`/createblog?id=${featuredArticle._id}`}
-                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-900 hover:bg-orange-500 hover:text-white text-stone-700 dark:text-stone-300 transition cursor-pointer inline-flex items-center justify-center"
+                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-900 hover:bg-[#2563EB] hover:text-white text-stone-700 dark:text-stone-300 transition cursor-pointer inline-flex items-center justify-center"
                           title="Edit Article"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </Link>
                         <button
                           onClick={() => setDeleteConfirmBlog(featuredArticle)}
-                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-900 hover:bg-red-500 hover:text-white text-stone-700 dark:text-stone-300 transition cursor-pointer"
+                          className="p-1.5 rounded-lg bg-stone-100 dark:bg-stone-900 hover:bg-rose-500 hover:text-white text-stone-700 dark:text-stone-300 transition cursor-pointer"
                           title="Delete Article"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -286,7 +286,7 @@ export default function Blog() {
                     {/* Read Full Article Button -> NAVIGATES TO /blog/[id] */}
                     <Link
                       href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                      className="ml-2 flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-orange-600 transition shadow-sm cursor-pointer"
+                      className="ml-2 flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold transition shadow-sm cursor-pointer"
                     >
                       <span>View Article</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -329,7 +329,7 @@ export default function Blog() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/80 dark:border-stone-800/80 bg-white dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-md hover:shadow-xl hover:border-orange-500/40 transition-all duration-300"
+                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-sm hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.18)] dark:hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1.5"
               >
                 <div>
                   {/* Article Card Image Container */}
@@ -345,14 +345,15 @@ export default function Blog() {
                         fill
                         unoptimized
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        priority={idx < 2}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
                     </Link>
 
                     {/* Category Pill on Image */}
                     <div className="absolute top-3 left-3 pointer-events-none z-10">
-                      <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-mono border border-white/15">
+                      <span className="px-2.5 py-1 rounded-full bg-stone-950/70 backdrop-blur-md text-white text-[10px] font-mono uppercase tracking-wider font-semibold border border-white/20">
                         {article.category}
                       </span>
                     </div>
@@ -363,7 +364,7 @@ export default function Blog() {
                         <Link
                           href={`/createblog?id=${article._id}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="p-1 rounded-lg hover:bg-orange-500 text-white transition cursor-pointer inline-flex items-center justify-center"
+                          className="p-1 rounded-lg hover:bg-[#2563EB] text-white transition cursor-pointer inline-flex items-center justify-center"
                           title="Edit Article"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
@@ -374,7 +375,7 @@ export default function Blog() {
                             e.stopPropagation();
                             setDeleteConfirmBlog(article);
                           }}
-                          className="p-1 rounded-lg hover:bg-red-500 text-white transition cursor-pointer"
+                          className="p-1 rounded-lg hover:bg-rose-500 text-white transition cursor-pointer"
                           title="Delete Article"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -382,12 +383,12 @@ export default function Blog() {
                       </div>
                     )}
 
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/80 font-mono pointer-events-none z-10">
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-[#2563EB]" />
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/90 font-mono pointer-events-none z-10">
+                      <span className="flex items-center gap-1 text-[#14B8A6] font-semibold">
+                        <Clock className="w-3 h-3" />
                         {article.readTime}
                       </span>
-                      <span>
+                      <span className="text-stone-300">
                         {new Date(article.createdAt).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
@@ -401,23 +402,23 @@ export default function Blog() {
                   <div className="p-5 sm:p-6">
                     <Link
                       href={`/blog/${article.slug || article._id}`}
-                      className="block text-lg font-bold tracking-tight text-stone-900 dark:text-stone-100 group-hover:text-[#2563EB] transition-colors duration-200 cursor-pointer line-clamp-2 mb-2.5"
+                      className="block text-lg font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 cursor-pointer line-clamp-2 leading-snug mb-2.5"
                     >
                       {article.title}
                     </Link>
 
-                    <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 line-clamp-3 leading-relaxed mb-4">
+                    <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 line-clamp-3 leading-relaxed mb-4">
                       {article.description || article.excerpt}
                     </p>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-1 mb-4">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
                       {article.tags?.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 rounded-md text-[12px] font-bold bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800"
+                          className="px-2 py-0.5 rounded-md text-[11px] font-mono text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800/80 border border-stone-200/60 dark:border-stone-700/60 group-hover:border-[#2563EB]/30 transition-colors"
                         >
-                          {tag}
+                          #{tag}
                         </span>
                       ))}
                     </div>
@@ -425,13 +426,11 @@ export default function Blog() {
                 </div>
 
                 {/* Card Footer */}
-                <div className="px-5 sm:px-6 py-4 border-t border-stone-100 dark:border-stone-800/80 flex items-center justify-between bg-stone-50/50 dark:bg-stone-950/40">
-
-
+                <div className="px-5 sm:px-6 py-4 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between bg-stone-50/50 dark:bg-stone-900/40">
                   {/* READ / VIEW ARTICLE BUTTON -> NAVIGATES TO /blog/[id] */}
                   <Link
                     href={`/blog/${article.slug || article._id}`}
-                    className="flex items-center gap-1 text-xs font-bold text-[#2563EB] hover:text-orange-600 transition group-hover:translate-x-1 duration-200 cursor-pointer"
+                    className="flex items-center gap-1 text-xs font-bold text-[#2563EB] dark:text-[#14B8A6] hover:text-[#1D4ED8] dark:hover:text-[#2DD4BF] transition group-hover:translate-x-1 duration-200 cursor-pointer"
                   >
                     <span>View Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -496,7 +495,7 @@ export default function Blog() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-md rounded-3xl border border-red-500/30 bg-white dark:bg-[#151210] p-6 sm:p-8 shadow-2xl"
+              className="relative w-full max-w-md rounded-3xl border border-rose-500/30 bg-white dark:bg-[#111B2E] p-6 sm:p-8 shadow-2xl"
             >
               <div className="p-3 rounded-2xl bg-red-500/10 text-red-500 w-fit mb-4">
                 <Trash2 className="w-6 h-6" />

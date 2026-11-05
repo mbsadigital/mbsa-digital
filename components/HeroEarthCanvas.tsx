@@ -163,9 +163,8 @@ function EarthStaticFallback() {
           alt="Earth Globe Map"
           fill
           priority
-          loading="eager"
           sizes="(max-width: 640px) 240px, (max-width: 1024px) 360px, 420px"
-          quality={85}
+          quality={80}
           className="object-cover rounded-full"
         />
 

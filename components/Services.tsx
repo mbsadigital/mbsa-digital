@@ -484,7 +484,7 @@ export default function Services() {
                 Most websites don&apos;t have a traffic problem.
                 <br />
                 <span>
-                  They have a <span className="text-[#2563EB]">findability </span>problem.
+                  They have a <span className="text-[#2563EB] dark:text-[#52adbff]">findability </span>problem.
                 </span>
               </h2>
 
@@ -521,10 +521,10 @@ export default function Services() {
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black tracking-tight leading-[1.14] text-stone-900 dark:text-white mb-4 pt-5 sm:mb-5">
                 Everything that determines
                 <br />
-                <span className="text-[#2563EB]">
+                <span>
                   whether you’re found, chosen
                   <br />
-                  and contacted.
+                  and <span className="text-[#2563EB] dark:text-[#52adbff]">contacted</span>
                 </span>
               </h2>
 
@@ -777,18 +777,18 @@ export default function Services() {
                       `}
                     >
                       {/* Showcase 3D Artwork (Full display, properly fitted, never cropped or cut) */}
-                      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 flex items-center justify-center p-3 sm:p-4">
+                      <div className="absolute inset-x-3 top-10 bottom-16 pointer-events-none overflow-hidden z-0 flex items-center justify-center p-2">
                         {/* Light Mode 3D Illustration */}
                         <Image
                           src={svc.lightImage || svc.image}
                           alt={svc.title}
                           fill
                           className={`block dark:hidden object-contain object-center transition-transform duration-500 ease-out ${isSelected
-                            ? "scale-[1.02]"
-                            : "scale-100 group-hover:scale-[1.02]"
+                            ? "scale-105"
+                            : "scale-100 group-hover:scale-105"
                             }`}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={90}
+                          quality={80}
                           priority={idx < 3}
                         />
 
@@ -798,15 +798,13 @@ export default function Services() {
                           alt={svc.title}
                           fill
                           className={`hidden dark:block object-contain object-center transition-transform duration-500 ease-out ${isSelected
-                            ? "scale-[1.02]"
-                            : "scale-100 group-hover:scale-[1.02]"
+                            ? "scale-105"
+                            : "scale-100 group-hover:scale-105"
                             }`}
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={90}
+                          quality={80}
                           priority={idx < 3}
                         />
-
-
                       </div>
 
                       {/* Corner Accent Notch */}
@@ -913,7 +911,7 @@ export default function Services() {
 
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-[1.14] text-stone-900 dark:text-white mb-5">
                 One team that connects search,
-                <span className="text-[#2563EB]">
+                <span className="text-[#2563EB] dark:text-[#52adbff]">
                   website and reporting
                 </span>
               </h2>

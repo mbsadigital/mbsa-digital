@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -17,13 +17,25 @@ import {
   Building2,
   Folder,
   ArrowRight,
+  Smartphone,
+  Signal,
+  Wifi,
+  CheckCircle2,
+  Play,
+  Pause,
 } from "lucide-react";
+import {
+  ALL_ANALYTICS_PROOFS,
+  CLIENT_FOLDERS,
+  AnalyticsProof,
+  CategoryId as AnalyticsCategoryId,
+} from "@/lib/analyticsData";
 
 /* ============================================================
-   CATEGORIES DEFINITION
+   CATEGORIES DEFINITION (INCL. SOCIAL MEDIA MOBILE ANALYTICS)
 ============================================================ */
 
-export type CategoryId = "gsc" | "ga4" | "gmb" | "keywords";
+export type CategoryId = AnalyticsCategoryId;
 
 interface CategoryMeta {
   id: CategoryId;
@@ -34,6 +46,7 @@ interface CategoryMeta {
 }
 
 const CATEGORIES: CategoryMeta[] = [
+
   {
     id: "gsc",
     name: "Google Search Console",
@@ -65,7 +78,7 @@ const CATEGORIES: CategoryMeta[] = [
 ];
 
 /* ============================================================
-   CLIENTS DEFINITION
+   CLIENTS DEFINITION (POPULATED FROM CLIENT_FOLDERS)
 ============================================================ */
 
 export interface ClientMeta {
@@ -75,679 +88,40 @@ export interface ClientMeta {
 }
 
 const CLIENTS: ClientMeta[] = [
-  { id: "all", name: "All Clients", shortName: "All" },
-  { id: "harris", name: "Harris Pharmacy", shortName: "Harris" },
-  { id: "maia", name: "Maia Health & Beauty", shortName: "Maia" },
-  { id: "drtungs", name: "drTung's UK", shortName: "drTung's" },
-  { id: "artistbrush", name: "Artist's Brush", shortName: "Artist's Brush" },
+  { id: "all", name: "All Clients & Campaigns", shortName: "All" },
+  ...CLIENT_FOLDERS.map((f) => ({
+    id: f.id,
+    name: f.name,
+    shortName: f.shortName,
+  })),
 ];
 
 /* ============================================================
-   PROOF SLIDES DATA (MAPPED TO CLIENT ANALYTICS IMAGES)
+   ANIMATION VARIANTS FOR SINGLE PHONE SLIDING IMAGES
 ============================================================ */
 
-interface ProofSlide {
-  id: string;
-  clientId: string;
-  clientName: string;
-  categoryId: CategoryId;
-  title: string;
-  shortTitle: string;
-  badge: string;
-  image: string;
-  metricLabel: string;
-  metricValue: string;
-  metricGrowth: string;
-  impressions: string;
-  avgPosition: string;
-  ctr: string;
-  tags: string[];
-  description: string;
-  highlights: { label: string; value: string }[];
-}
-
-const ALL_PROOFS: ProofSlide[] = [
-  // ==========================================
-  // --- HARRIS PHARMACY (public/Analytics/Harris) ---
-  // ==========================================
-  {
-    id: "harris-gsc-performance",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "gsc",
-    title: "Harris Pharmacy • Google Search Console Performance (185K Clicks)",
-    shortTitle: "Harris Search Console",
-    badge: "Harris Pharmacy • GSC Live Search",
-    image: "/Analytics/Harris/harrisgsc.jpeg",
-    metricLabel: "Organic Clicks",
-    metricValue: "185K Clicks",
-    metricGrowth: "+190% Lift",
-    impressions: "3.2M Impr",
-    avgPosition: "Pos 2.4 Avg",
-    ctr: "5.8% CTR",
-    tags: ["Harris Pharmacy", "London Healthcare", "GSC Live", "Local Pack"],
-    description:
-      "Google Search Console live search performance showing massive impressions and click surges across London pharmacy branches and NHS prescription requests.",
-    highlights: [
-      { label: "Organic Patient Clicks", value: "185K Clicks" },
-      { label: "Search Impressions", value: "3.20 Million" },
-      { label: "Average Position", value: "Pos 2.4 Avg" },
-      { label: "Prescription Lift", value: "+190% Inquiries" },
-    ],
+const phoneSlideVariants: Variants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      x: { type: "spring" as const, stiffness: 280, damping: 28 },
+      opacity: { duration: 0.25 },
+    },
   },
-  {
-    id: "harris-gsc-queries",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "keywords",
-    title: "Harris Pharmacy • Top Search Queries & SERP Positions",
-    shortTitle: "Harris Keyword Rankings",
-    badge: "Harris Pharmacy • SERP Top 1-3",
-    image: "/Analytics/Harris/harrisgsc2.jpeg",
-    metricLabel: "Query Positions",
-    metricValue: "Top 1-3 Ranks",
-    metricGrowth: "+142% Clicks",
-    impressions: "1.1M Impr",
-    avgPosition: "Pos 1.8 Avg",
-    ctr: "8.4% CTR",
-    tags: ["High-Intent Queries", "Top 1-3 Ranks", "NHS Queries", "Page 1 SERP"],
-    description:
-      "Rank #1 positions captured for urgent local healthcare queries, emergency pharmacy consultations, and electronic prescriptions.",
-    highlights: [
-      { label: "Query Positions", value: "Top 1-3 Ranks" },
-      { label: "Click Rate", value: "8.4% CTR" },
-      { label: "Query Impressions", value: "1.10 Million" },
-      { label: "Commercial Intent", value: "Page 1 SERP" },
-    ],
-  },
-  {
-    id: "harris-gsc-geo",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "gsc",
-    title: "Harris Pharmacy • Regional & Geographic Patient Reach",
-    shortTitle: "Harris Geo Density",
-    badge: "Harris Pharmacy • Local Reach",
-    image: "/Analytics/Harris/harrisgscgeo.jpeg",
-    metricLabel: "Regional Reach",
-    metricValue: "4 Boroughs",
-    metricGrowth: "Local Domination",
-    impressions: "840K Local Impr",
-    avgPosition: "Pos 1.2 Local",
-    ctr: "9.2% CTR",
-    tags: ["London Boroughs", "Local Pack #1", "High Density", "Local SEO"],
-    description:
-      "High patient density and localized search traffic across target regional London boroughs with #1 Local Pack domination.",
-    highlights: [
-      { label: "Target Boroughs", value: "4 Regional Clinics" },
-      { label: "Local Pack Rank", value: "#1 Local Pack" },
-      { label: "Local Impressions", value: "840K Impr" },
-      { label: "Patient Intent", value: "High Intent" },
-    ],
-  },
-  {
-    id: "harris-ga4-sessions",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "ga4",
-    title: "Harris Pharmacy • GA4 Patient Acquisition & Session Traffic",
-    shortTitle: "Harris GA4 Sessions",
-    badge: "Harris Pharmacy • GA4 Acquisition",
-    image: "/Analytics/Harris/harrisga.jpeg",
-    metricLabel: "Active Patients",
-    metricValue: "64.2K Users",
-    metricGrowth: "+185% Growth",
-    impressions: "92K Sessions",
-    avgPosition: "2m 45s Dwell",
-    ctr: "4.8% CVR",
-    tags: ["GA4 Live", "64.2K Patients", "Qualified Sessions", "Health Portal"],
-    description:
-      "GA4 user acquisition and qualified patient session analytics showing sustained monthly growth.",
-    highlights: [
-      { label: "Active Patients", value: "64.2K Users" },
-      { label: "Total Sessions", value: "92,000 Sessions" },
-      { label: "Avg Session Time", value: "2m 45s" },
-      { label: "Form Conversion", value: "4.8% CVR" },
-    ],
-  },
-  {
-    id: "harris-ga4-channels",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "ga4",
-    title: "Harris Pharmacy • Multi-Channel Attribution & Organic Share",
-    shortTitle: "Harris Channel ROAS",
-    badge: "Harris Pharmacy • Channel Attribution",
-    image: "/Analytics/Harris/harrisga2.jpeg",
-    metricLabel: "Organic Share",
-    metricValue: "58% Organic",
-    metricGrowth: "+210% ROI",
-    impressions: "5.1x Ad ROAS",
-    avgPosition: "Direct + SEO",
-    ctr: "5.1x ROAS",
-    tags: ["Attribution", "58% Organic", "5.1x ROAS", "GA4 Channels"],
-    description:
-      "Organic search and direct healthcare portals delivering the dominant share of prescription revenue.",
-    highlights: [
-      { label: "Organic Share", value: "58.4% Share" },
-      { label: "Campaign ROAS", value: "5.1x ROAS" },
-      { label: "Direct Portal Lift", value: "+210% YoY" },
-      { label: "Cost Per Patient", value: "-44% Lower" },
-    ],
-  },
-  {
-    id: "harris-ga4-events",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "ga4",
-    title: "Harris Pharmacy • Conversion Events & Call Tracking",
-    shortTitle: "Harris Conversions",
-    badge: "Harris Pharmacy • GA4 Conversions",
-    image: "/Analytics/Harris/harrisga3.jpeg",
-    metricLabel: "Tracked Calls",
-    metricValue: "1,845 Calls",
-    metricGrowth: "+190% Inquiries",
-    impressions: "4.2K Forms",
-    avgPosition: "High Intent",
-    ctr: "12.4% CVR",
-    tags: ["Conversion Events", "1,845 Phone Calls", "Form Transfers", "Event Tracking"],
-    description:
-      "Electronic prescription transfer submissions and emergency click-to-call conversions verified in GA4.",
-    highlights: [
-      { label: "Tracked Phone Calls", value: "1,845 Calls" },
-      { label: "Prescription Forms", value: "4,200 Forms" },
-      { label: "Call Growth", value: "+190% Lift" },
-      { label: "Conversion Rate", value: "12.4% CVR" },
-    ],
-  },
-  {
-    id: "harris-ga4-trend",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "ga4",
-    title: "Harris Pharmacy • Multi-Month Growth & Retention Trajectory",
-    shortTitle: "Harris Retention",
-    badge: "Harris Pharmacy • Multi-Month Trend",
-    image: "/Analytics/Harris/harrisga4.jpeg",
-    metricLabel: "User Baseline",
-    metricValue: "Steady Baseline",
-    metricGrowth: "Zero Ad Decay",
-    impressions: "4 Quarters",
-    avgPosition: "Sustained",
-    ctr: "Consistent",
-    tags: ["Quarterly Trend", "Sustained Baseline", "Patient Retention", "GA4 Growth"],
-    description:
-      "Baseline monthly users sustained across multiple quarters without reliance on ad spend spikes.",
-    highlights: [
-      { label: "Growth Duration", value: "4 Quarters" },
-      { label: "Baseline Lift", value: "+185% Retained" },
-      { label: "Ad Spend Decay", value: "0% Drop" },
-      { label: "Patient Loyalty", value: "High Retention" },
-    ],
-  },
-  {
-    id: "harris-gmb-local",
-    clientId: "harris",
-    clientName: "Harris Pharmacy",
-    categoryId: "gmb",
-    title: "Harris Pharmacy • Google My Business Profile & 3-Pack Rank",
-    shortTitle: "Harris GMB Profile",
-    badge: "Harris Pharmacy • Local 3-Pack",
-    image: "/images/gsc-2-local-seo.jpg",
-    metricLabel: "Local Interactions",
-    metricValue: "86.4K Actions",
-    metricGrowth: "+190% Calls",
-    impressions: "1.18M Local Views",
-    avgPosition: "#1 Local 3-Pack",
-    ctr: "7.3% CTR",
-    tags: ["Google 3-Pack", "18 Keywords", "Maps Direction", "Local SEO"],
-    description:
-      "Google Business Profile rankings in top 3 Local Pack for 18 primary keywords across regional branches.",
-    highlights: [
-      { label: "Local Pack Rank", value: "#1 Top Position" },
-      { label: "Keywords Ranked", value: "18 Primary Terms" },
-      { label: "Direction Requests", value: "10.9K Directions" },
-      { label: "Local CVR", value: "7.3% CTR" },
-    ],
-  },
-
-  // ==========================================
-  // --- MAIA HEALTH & BEAUTY (public/Analytics/Maia) ---
-  // ==========================================
-  {
-    id: "maia-gsc-impressions",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "gsc",
-    title: "Maia Health & Beauty • Google Search Console Growth (48K Visits)",
-    shortTitle: "Maia GSC Scale",
-    badge: "Maia Health • GSC Impressions",
-    image: "/Analytics/Maia/maiagsc.jpeg",
-    metricLabel: "Monthly Visits",
-    metricValue: "48K Visits",
-    metricGrowth: "+320% Traffic",
-    impressions: "2.8M Impr",
-    avgPosition: "Pos 3.2 Avg",
-    ctr: "6.2% CTR",
-    tags: ["Skincare Authority", "+320% Traffic", "Core Web Vitals", "GSC Live"],
-    description:
-      "Search impression explosion following Core Web Vitals overhaul, URL canonicalization, and technical audit.",
-    highlights: [
-      { label: "Monthly Organic Visits", value: "From 1.8k to 48k" },
-      { label: "Search Impressions", value: "2.80 Million" },
-      { label: "Traffic Growth", value: "+320% YoY" },
-      { label: "Average CTR", value: "6.2% CTR" },
-    ],
-  },
-  {
-    id: "maia-gsc-position",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "gsc",
-    title: "Maia Health • Average Ranking Position Climbing Top 3",
-    shortTitle: "Maia Rank Climbing",
-    badge: "Maia Health • Ranking Velocity",
-    image: "/Analytics/Maia/maiagsc2.jpeg",
-    metricLabel: "Average Position",
-    metricValue: "Pos #2.8",
-    metricGrowth: "Top 3 Tier",
-    impressions: "1.9M Impr",
-    avgPosition: "#2.8 Pos",
-    ctr: "7.1% CTR",
-    tags: ["SERP Ranks", "Top 3 Tier", "Dermatology", "Medical E-E-A-T"],
-    description:
-      "Average position climbed from #24 to top 3 tier for competitive health and aesthetic beauty queries.",
-    highlights: [
-      { label: "Average Position", value: "Pos #2.8" },
-      { label: "Previous Benchmark", value: "Pos #24.2" },
-      { label: "SERP Impressions", value: "1.90 Million" },
-      { label: "Click Rate", value: "7.1% CTR" },
-    ],
-  },
-  {
-    id: "maia-gsc-queries",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "keywords",
-    title: "Maia Health • High-Volume Skincare Keyword Rankings",
-    shortTitle: "Maia Query Matrix",
-    badge: "Maia Health • SERP Positions",
-    image: "/Analytics/Maia/maiagsc3.jpeg",
-    metricLabel: "Top Keywords",
-    metricValue: "140+ Keywords",
-    metricGrowth: "Top 3 Ranked",
-    impressions: "1.4M Impr",
-    avgPosition: "Pos 1-3",
-    ctr: "9.2% CTR",
-    tags: ["140+ Top Keywords", "Page 1 SERP", "High CVR", "Skincare SEO"],
-    description:
-      "Capturing high-commercial-intent skincare and aesthetic beauty search queries with rich snippet snippets.",
-    highlights: [
-      { label: "Top 3 Keywords", value: "140+ Keywords" },
-      { label: "SERP Bracket", value: "Positions 1-3" },
-      { label: "Keyword Impressions", value: "1.40 Million" },
-      { label: "Commercial Intent", value: "Page 1 Ranked" },
-    ],
-  },
-  {
-    id: "maia-gsc-pages",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "gsc",
-    title: "Maia Health • Product & Category Landing Pages Dominance",
-    shortTitle: "Maia Category SEO",
-    badge: "Maia Health • Category Indexing",
-    image: "/Analytics/Maia/maiagsc4.jpeg",
-    metricLabel: "Resolved Errors",
-    metricValue: "450+ Fixed",
-    metricGrowth: "+240% Indexing",
-    impressions: "2.1M Impr",
-    avgPosition: "Pos 3.4",
-    ctr: "6.8% CTR",
-    tags: ["Zero Crawl Errors", "Category SEO", "Product Schema", "Indexed Pages"],
-    description:
-      "Technical crawl refactor resolving 450+ crawl errors and accelerating category indexation nationwide.",
-    highlights: [
-      { label: "Crawl Errors Resolved", value: "450+ Fixed" },
-      { label: "Sub-1.2s LCP", value: "Core Web Vitals Pass" },
-      { label: "Landing Impressions", value: "2.10 Million" },
-      { label: "Conversion Lift", value: "+48% Lift" },
-    ],
-  },
-  {
-    id: "maia-ga4-ecommerce",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "ga4",
-    title: "Maia Health • GA4 Active Shoppers & E-Commerce Scale",
-    shortTitle: "Maia GA4 Buyers",
-    badge: "Maia Health • GA4 E-Commerce",
-    image: "/Analytics/Maia/maiaga.jpeg",
-    metricLabel: "Conversion Rate",
-    metricValue: "4.6% CVR",
-    metricGrowth: "+115% Revenue",
-    impressions: "48K Users",
-    avgPosition: "$145 AOV",
-    ctr: "-42% CAC",
-    tags: ["4.6% Conversion", "+115% Revenue", "-42% CAC", "GA4 E-commerce"],
-    description:
-      "Accelerated growth in unique monthly buyers and consultation checkout sessions lifting conversion rate to 4.6%.",
-    highlights: [
-      { label: "Conversion Rate", value: "4.6% (up from 1.9%)" },
-      { label: "Customer CAC", value: "-42% Drop" },
-      { label: "Monthly Buyers", value: "48K Users" },
-      { label: "Average Order Value", value: "$145 AOV" },
-    ],
-  },
-  {
-    id: "maia-ga4-sources",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "ga4",
-    title: "Maia Health • GA4 Acquisition Channels & Revenue Share",
-    shortTitle: "Maia Revenue Sources",
-    badge: "Maia Health • Channel Share",
-    image: "/Analytics/Maia/maiaga2.jpeg",
-    metricLabel: "Attributed Revenue",
-    metricValue: "+240% Revenue",
-    metricGrowth: "Organic Dominant",
-    impressions: "18.4K Orders",
-    avgPosition: "High ROAS",
-    ctr: "52% Share",
-    tags: ["Revenue Share", "18.4K Orders", "+240% Lift", "Attribution Model"],
-    description:
-      "Organic search outpacing paid channels with higher ROAS, lower bounce rates, and sustainable repeat orders.",
-    highlights: [
-      { label: "Organic Revenue Share", value: "52.4% Share" },
-      { label: "Completed Orders", value: "18,400 Orders" },
-      { label: "Revenue Lift", value: "+240% YoY" },
-      { label: "Paid Ad Savings", value: "$32K/mo Saved" },
-    ],
-  },
-  {
-    id: "maia-gmb-profile",
-    clientId: "maia",
-    clientName: "Maia Health & Beauty",
-    categoryId: "gmb",
-    title: "Maia Health • Clinic Business Profile Discovery & Consultations",
-    shortTitle: "Maia Clinic Profile",
-    badge: "Maia Health • Clinic GMB",
-    image: "/images/gmb-profile-live.jpg",
-    metricLabel: "Consultations",
-    metricValue: "62.1K Views",
-    metricGrowth: "+148% Calls",
-    impressions: "86.4K Actions",
-    avgPosition: "4.9 ★ Rating",
-    ctr: "10.9K Directions",
-    tags: ["Aesthetic Clinic", "Consultations", "Google Maps", "Local Trust"],
-    description:
-      "Direct clinic consultations and direction requests from clients across central UK regional boroughs.",
-    highlights: [
-      { label: "Profile Views", value: "62,100 Views" },
-      { label: "Clinic Bookings", value: "+148% Consultations" },
-      { label: "Rating & Reviews", value: "4.9 ★ (240+ Reviews)" },
-      { label: "Direction Requests", value: "10.9K Directions" },
-    ],
-  },
-
-  // ==========================================
-  // --- DRTUNG'S UK (public/Analytics/Drtungs) ---
-  // ==========================================
-  {
-    id: "drtungs-ga4-revenue",
-    clientId: "drtungs",
-    clientName: "drTung's UK",
-    categoryId: "ga4",
-    title: "drTung's UK • GA4 E-Commerce Revenue & Checkout Scale",
-    shortTitle: "drTung's Revenue",
-    badge: "drTung's UK • GA4 Transactions",
-    image: "/Analytics/Drtungs/drtungsga.jpeg",
-    metricLabel: "eCommerce Revenue",
-    metricValue: "+240% Revenue",
-    metricGrowth: "+78% Orders",
-    impressions: "12.8K Orders",
-    avgPosition: "3.8% CVR",
-    ctr: "+180% Clicks",
-    tags: ["+240% Revenue", "+78% Orders", "Shopify Plus", "GA4 Live"],
-    description:
-      "Significant upward trajectory in revenue from organic search visitors scaling direct-to-consumer transactions.",
-    highlights: [
-      { label: "eCommerce Revenue", value: "+240% Growth" },
-      { label: "Direct Orders", value: "+78% Orders" },
-      { label: "Total Transactions", value: "12,800 Orders" },
-      { label: "Organic Clicks", value: "+180% Lift" },
-    ],
-  },
-  {
-    id: "drtungs-ga4-engagement",
-    clientId: "drtungs",
-    clientName: "drTung's UK",
-    categoryId: "ga4",
-    title: "drTung's UK • Dwell Time & Educational Hub Engagement",
-    shortTitle: "drTung's Engagement",
-    badge: "drTung's UK • Dwell Time",
-    image: "/Analytics/Drtungs/drtungsga2.jpeg",
-    metricLabel: "Dwell Time",
-    metricValue: "3m 12s Dwell",
-    metricGrowth: "+85% Duration",
-    impressions: "15 Guides",
-    avgPosition: "Page 1 SERP",
-    ctr: "42 Snippets",
-    tags: ["15 Authority Guides", "3m 12s Dwell", "Content Hub", "FAQ Schemas"],
-    description:
-      "Longer on-site dwell times driven by 15 authoritative natural oral care guides ranking on Page 1 of Google UK.",
-    highlights: [
-      { label: "Avg Engagement Time", value: "3m 12s (+85%)" },
-      { label: "Authority Guides", value: "15 Page 1 Guides" },
-      { label: "Featured Snippets", value: "42 Captured" },
-      { label: "Repeat Buyers", value: "+45% Lift" },
-    ],
-  },
-  {
-    id: "drtungs-ga4-acquisition",
-    clientId: "drtungs",
-    clientName: "drTung's UK",
-    categoryId: "ga4",
-    title: "drTung's UK • Acquisition Breakdown & Channel ROAS",
-    shortTitle: "drTung's Channels",
-    badge: "drTung's UK • Channel ROAS",
-    image: "/Analytics/Drtungs/drtungsga3.jpeg",
-    metricLabel: "Organic Revenue",
-    metricValue: "62% Organic",
-    metricGrowth: "Top ROI",
-    impressions: "142K Sessions",
-    avgPosition: "Sub-1.2s LCP",
-    ctr: "Low Bounce",
-    tags: ["Channel ROAS", "62% Organic", "Klaviyo Flows", "Acquisition"],
-    description:
-      "Organic search established as the most cost-efficient revenue generator alongside automated loyalty flows.",
-    highlights: [
-      { label: "Organic Contribution", value: "62.0% Share" },
-      { label: "Organic Sessions", value: "142,000" },
-      { label: "Acquisition Cost", value: "Lowest Channel" },
-      { label: "Bounce Reduction", value: "-28% Drop" },
-    ],
-  },
-  {
-    id: "drtungs-ga4-geo",
-    clientId: "drtungs",
-    clientName: "drTung's UK",
-    categoryId: "gsc",
-    title: "drTung's UK • UK National Geographic Market Penetration",
-    shortTitle: "drTung's UK Market",
-    badge: "drTung's UK • National Reach",
-    image: "/Analytics/Drtungs/drtungsgeograph.jpeg",
-    metricLabel: "UK Reach",
-    metricValue: "UK Wide",
-    metricGrowth: "+160% Impr",
-    impressions: "1.8M Impr",
-    avgPosition: "National SERP",
-    ctr: "5.6% CTR",
-    tags: ["UK Market", "London & Manchester", "National Growth", "eCommerce SEO"],
-    description:
-      "Broad national buyer distribution across major UK metropolitan regions competing against legacy pharma brands.",
-    highlights: [
-      { label: "National Reach", value: "Entire UK Covered" },
-      { label: "Search Impressions", value: "1.80 Million" },
-      { label: "Impression Growth", value: "+160% YoY" },
-      { label: "Subscriber Lift", value: "+45% Email List" },
-    ],
-  },
-  {
-    id: "drtungs-ga4-funnel",
-    clientId: "drtungs",
-    clientName: "drTung's UK",
-    categoryId: "keywords",
-    title: "drTung's UK • Checkout Velocity & Conversion Rate Chart",
-    shortTitle: "drTung's Conversion",
-    badge: "drTung's UK • Checkout Velocity",
-    image: "/Analytics/Drtungs/drtungsgraph2.jpeg",
-    metricLabel: "Checkout CVR",
-    metricValue: "3.8% CVR",
-    metricGrowth: "+64% Velocity",
-    impressions: "Shopify Plus",
-    avgPosition: "Mobile Fast",
-    ctr: "Rich Snippets",
-    tags: ["Conversion Velocity", "3.8% CVR", "Faceted Search", "Checkout CRO"],
-    description:
-      "Optimized mobile funnel and faceted search filters resulting in steady upward trajectory in completed orders.",
-    highlights: [
-      { label: "Checkout Conversion", value: "3.8% CVR" },
-      { label: "Cart Abandonment", value: "-34% Dropped" },
-      { label: "Checkout Speed", value: "1-Click Accelerated" },
-      { label: "DTC Orders", value: "+78% Scaling" },
-    ],
-  },
-  {
-    id: "drtungs-gmb-brand",
-    clientId: "drtungs",
-    clientName: "drTung's UK",
-    categoryId: "gmb",
-    title: "drTung's UK • Brand Discovery & Stockist Locator Views",
-    shortTitle: "drTung's Stockists",
-    badge: "drTung's UK • Brand Locations",
-    image: "/images/gsc-1-ecommerce.jpg",
-    metricLabel: "Stockist Views",
-    metricValue: "148.7K Views",
-    metricGrowth: "+240% Lift",
-    impressions: "2.43M Impr",
-    avgPosition: "Brand SERP",
-    ctr: "6.1% CTR",
-    tags: ["Stockists", "UK Retailers", "Brand Presence", "Organic Scale"],
-    description:
-      "Customer searches for natural oral hygiene products and regional stockist locators across UK department stores.",
-    highlights: [
-      { label: "Brand Searches", value: "148.7K Clicks" },
-      { label: "Stockist Inquiries", value: "2.43 Million" },
-      { label: "Growth YoY", value: "+240.5% Lift" },
-      { label: "Click-Through", value: "6.1% CTR" },
-    ],
-  },
-
-  // ==========================================
-  // --- ARTIST'S BRUSH (public/Analytics/Aristbrush) ---
-  // ==========================================
-  {
-    id: "artist-ga4-live",
-    clientId: "artistbrush",
-    clientName: "Artist's Brush",
-    categoryId: "ga4",
-    title: "Artist's Brush • GA4 Live Analytics & Collector Engagement",
-    shortTitle: "Artist's GA4 Live",
-    badge: "Artist's Brush • Live GA4",
-    image: "/Analytics/Aristbrush/ga4-analytics-live.jpg",
-    metricLabel: "Bookings",
-    metricValue: "4.2x Inquiries",
-    metricGrowth: "+95% Session",
-    impressions: "48K Visitors",
-    avgPosition: "0.8s LCP",
-    ctr: "-35% Bounce",
-    tags: ["Next.js Fast", "4.2x Inquiries", "99/100 PageSpeed", "Live GA4"],
-    description:
-      "Real-time user sessions and artwork portfolio engagement tracking following Next.js headless rebuild.",
-    highlights: [
-      { label: "Commercial Inquiries", value: "4.2x Bookings" },
-      { label: "Mobile LCP Speed", value: "0.8s (99/100 Score)" },
-      { label: "Session Duration", value: "+95% Immersion" },
-      { label: "Bounce Rate", value: "-35% Drop" },
-    ],
-  },
-  {
-    id: "artist-gmb-profile",
-    clientId: "artistbrush",
-    clientName: "Artist's Brush",
-    categoryId: "gmb",
-    title: "Artist's Brush • Google Business Profile Discovery & Calls",
-    shortTitle: "Artist's GMB Profile",
-    badge: "Artist's Brush • Studio GMB",
-    image: "/Analytics/Aristbrush/gmb-profile-live.jpg",
-    metricLabel: "Studio Actions",
-    metricValue: "86.4K Actions",
-    metricGrowth: "+190% Calls",
-    impressions: "62.1K Views",
-    avgPosition: "4.9 ★ Rating",
-    ctr: "10.9K Directions",
-    tags: ["86.4K Actions", "1,845 Calls", "10.9K Directions", "Google Maps"],
-    description:
-      "Direct studio phone inquiries and map direction requests from collectors and commercial gallery clients.",
-    highlights: [
-      { label: "Profile Interactions", value: "86,400 Total" },
-      { label: "Commercial Calls", value: "1,845 (+190%)" },
-      { label: "Studio Directions", value: "10,912 Requests" },
-      { label: "Google Rating", value: "4.9 ★ Verified" },
-    ],
-  },
-  {
-    id: "artist-gsc-authority",
-    clientId: "artistbrush",
-    clientName: "Artist's Brush",
-    categoryId: "gsc",
-    title: "Artist's Brush • GSC Authority & Art Commission Search Growth",
-    shortTitle: "Artist's GSC Search",
-    badge: "Artist's Brush • GSC Authority",
-    image: "/Analytics/Aristbrush/gsc-3-authority.jpg",
-    metricLabel: "Search Clicks",
-    metricValue: "112K Clicks",
-    metricGrowth: "+320% SEO",
-    impressions: "1.92M Impr",
-    avgPosition: "Pos #2.4",
-    ctr: "5.8% CTR",
-    tags: ["Commercial Art", "112K Clicks", "Page 1 SERP", "High Intent"],
-    description:
-      "Top-ranking keywords for commercial art commissions, exhibition bookings, and creative studio services.",
-    highlights: [
-      { label: "Organic Search Clicks", value: "112,000 Clicks" },
-      { label: "SERP Impressions", value: "1.92 Million" },
-      { label: "Average Position", value: "Pos #2.4" },
-      { label: "Commercial Lift", value: "4.2x Bookings" },
-    ],
-  },
-  {
-    id: "artist-ga4-revenue",
-    clientId: "artistbrush",
-    clientName: "Artist's Brush",
-    categoryId: "keywords",
-    title: "Artist's Brush • Commission Revenue Attribution Model",
-    shortTitle: "Artist's Attribution",
-    badge: "Artist's Brush • Attribution",
-    image: "/Analytics/Aristbrush/gsc-5-ga4-revenue.jpg",
-    metricLabel: "Pipeline Value",
-    metricValue: "$2.1M Pipeline",
-    metricGrowth: "+240% ROI",
-    impressions: "14.2K Actions",
-    avgPosition: "High Value",
-    ctr: "Commercial",
-    tags: ["Commission Value", "$2.1M Pipeline", "High Intent", "GA4 Model"],
-    description:
-      "Direct commission values generated through organic search funnel and automated calendar inquiry booking.",
-    highlights: [
-      { label: "Attributed Value", value: "$2.1M Pipeline" },
-      { label: "Commercial Actions", value: "14,200 Inquiries" },
-      { label: "Organic Revenue Share", value: "48.4% Share" },
-      { label: "Conversion Lift", value: "+240% YoY" },
-    ],
-  },
-];
+  exit: (direction: number) => ({
+    x: direction > 0 ? "-100%" : "100%",
+    opacity: 0,
+    transition: {
+      x: { type: "spring" as const, stiffness: 280, damping: 28 },
+      opacity: { duration: 0.25 },
+    },
+  }),
+};
 
 /* ============================================================
    MAIN COMPONENT: CATEGORY & CLIENT PROOF SHOWCASE
@@ -755,16 +129,17 @@ const ALL_PROOFS: ProofSlide[] = [
 
 export default function Gsc() {
   const [selectedClient, setSelectedClient] = useState<string>("all");
-  const [selectedCategory, setSelectedCategory] = useState<CategoryId>("gsc");
+  const [selectedCategory, setSelectedCategory] = useState<CategoryId>("social");
   const [slideIndex, setSlideIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<number>(1);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Filter slides by client and category
+  // Filter slides by client and category from ALL_ANALYTICS_PROOFS
   const activeSlides = useMemo(() => {
     // 1. Filter by client
-    const clientFiltered = ALL_PROOFS.filter((item) =>
+    const clientFiltered = ALL_ANALYTICS_PROOFS.filter((item) =>
       selectedClient === "all" ? true : item.clientId === selectedClient
     );
 
@@ -786,15 +161,18 @@ export default function Gsc() {
 
   // Ensure slideIndex stays within bounds
   const currentSlideIndex = Math.min(slideIndex, Math.max(0, totalCategorySlides - 1));
-  const currentSlide = activeSlides[currentSlideIndex] || ALL_PROOFS[0];
+  const currentSlide: AnalyticsProof = activeSlides[currentSlideIndex] || ALL_ANALYTICS_PROOFS[0];
+
+  const isSocialCategory = selectedCategory === "social" || Boolean(activeSlides[0]?.isMobile);
 
   const handleSelectClient = (clientId: string) => {
     setSelectedClient(clientId);
     setSlideIndex(0);
+    setSlideDirection(1);
 
-    // If the selected client has slides in current category, keep it; otherwise switch to first category
+    // If the selected client has slides in current category, keep it; otherwise switch to first available category
     if (clientId !== "all") {
-      const clientSlides = ALL_PROOFS.filter((item) => item.clientId === clientId);
+      const clientSlides = ALL_ANALYTICS_PROOFS.filter((item) => item.clientId === clientId);
       const hasCurrentCat = clientSlides.some((item) => item.categoryId === selectedCategory);
       if (!hasCurrentCat && clientSlides.length > 0) {
         setSelectedCategory(clientSlides[0].categoryId);
@@ -805,15 +183,28 @@ export default function Gsc() {
   const handleSelectCategory = (catId: CategoryId) => {
     setSelectedCategory(catId);
     setSlideIndex(0);
+    setSlideDirection(1);
+
+    // If current selected client has no slides in this category, reset client to "all"
+    if (selectedClient !== "all") {
+      const clientHasCategory = ALL_ANALYTICS_PROOFS.some(
+        (item) => item.clientId === selectedClient && item.categoryId === catId
+      );
+      if (!clientHasCategory) {
+        setSelectedClient("all");
+      }
+    }
   };
 
   const nextSlide = useCallback(() => {
     if (totalCategorySlides <= 1) return;
+    setSlideDirection(1);
     setSlideIndex((prev) => (prev + 1) % totalCategorySlides);
   }, [totalCategorySlides]);
 
   const prevSlide = useCallback(() => {
     if (totalCategorySlides <= 1) return;
+    setSlideDirection(-1);
     setSlideIndex((prev) => (prev - 1 + totalCategorySlides) % totalCategorySlides);
   }, [totalCategorySlides]);
 
@@ -829,16 +220,16 @@ export default function Gsc() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [nextSlide, prevSlide]);
 
-  // Auto-play interval for slides within category
+  // Auto-play interval: slides one by one automatically
   useEffect(() => {
     if (!isAutoPlaying || isHovered || totalCategorySlides <= 1) return;
     const interval = setInterval(() => {
       nextSlide();
-    }, 5500);
+    }, isSocialCategory ? 3800 : 5500);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isHovered, nextSlide, totalCategorySlides]);
+  }, [isAutoPlaying, isHovered, nextSlide, totalCategorySlides, isSocialCategory]);
 
-  // Helper to calculate cyclic signed distance for 3D carousel
+  // Helper to calculate cyclic signed distance for 3D carousel (for widescreen desktop proofs)
   const getOffset = (index: number) => {
     let diff = index - currentSlideIndex;
     if (diff > totalCategorySlides / 2) diff -= totalCategorySlides;
@@ -846,8 +237,8 @@ export default function Gsc() {
     return diff;
   };
 
-  const activeCategoryMeta = CATEGORIES.find((c) => c.id === selectedCategory)!;
-  const activeClientMeta = CLIENTS.find((c) => c.id === selectedClient)!;
+  const activeCategoryMeta =
+    CATEGORIES.find((c) => c.id === selectedCategory) || CATEGORIES[0];
 
   return (
     <section
@@ -858,7 +249,6 @@ export default function Gsc() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.15] blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
         {/* ====================================================
             HEADER WITH VERIFICATION TAG
         ==================================================== */}
@@ -866,18 +256,18 @@ export default function Gsc() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-px bg-[#2563EB]" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-orange-400">
-                Verified Search &amp; Revenue Analytics
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#60A5FA]">
+                Verified Search, GA4 &amp; Social Analytics
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Measurable Results.{" "}
-              <span className="text-[#2563EB]">
+              <span className="text-[#2563EB] dark:text-[#3B82F6]">
                 Verified by Live Data.
               </span>
             </h2>
             <p className="mt-2.5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
-              Real screenshots and performance data from Google Search Console, GA4, and Google Business Profiles across UK client campaigns. Each case reflects a 4 to 12-month optimization timeline benchmarked against starting baselines.
+              Real screenshots and verified performance telemetry from Google Search Console, GA4, Google Business Profiles, and Social Media campaigns across 5 client folders (52 total audits).
             </p>
           </div>
 
@@ -887,7 +277,7 @@ export default function Gsc() {
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-500/25 transition-all"
             >
               <Folder className="w-4 h-4" />
-              <span>View All Client Proofs</span>
+              <span>Explore All 52 Proofs</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -895,15 +285,16 @@ export default function Gsc() {
 
         {/* ====================================================
             UNIFIED CONTROLS BAR:
-            - Left: Primary Category Tabs (Search Console, GA4, GMB, Keywords)
-            - Right: Client Selector (Selected Option Dropdown Way)
+            - Left: Primary Category Tabs (Social Media, Search Console, GA4, GMB, Keywords)
+            - Right: Client Selector Dropdown
         ==================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 mb-6 sm:mb-8 pb-3 border-b border-stone-200/90 dark:border-white/15">
-          {/* Left Side: Primary Category Tabs (Horizontally scrollable with shrink-0 buttons) */}
+          {/* Left Side: Primary Category Tabs */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 overflow-x-auto no-scrollbar py-1 w-full lg:w-auto">
             {CATEGORIES.map((cat) => {
               const Icon = cat.icon;
               const isCatActive = selectedCategory === cat.id;
+              const isSocial = cat.id === "social";
 
               return (
                 <motion.button
@@ -912,22 +303,31 @@ export default function Gsc() {
                   onClick={() => handleSelectCategory(cat.id)}
                   whileTap={{ scale: 0.96 }}
                   className={`shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none touch-manipulation ${isCatActive
-                    ? "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-orange-500/40"
-                    : "bg-stone-100/90 dark:bg-white/10 text-stone-700 dark:text-stone-200 border-stone-200/90 dark:border-white/20 hover:bg-stone-200/80 dark:hover:bg-white/20 hover:border-orange-400 hover:text-stone-950 dark:hover:text-white"
+                    ? isSocial
+                      ? "bg-gradient-to-r from-pink-600 to-purple-600 text-white border-pink-500 shadow-lg shadow-pink-500/30"
+                      : "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-blue-500/30"
+                    : "bg-stone-100/90 dark:bg-white/10 text-stone-700 dark:text-stone-200 border-stone-200/90 dark:border-white/20 hover:bg-stone-200/80 dark:hover:bg-white/20 hover:border-blue-400 hover:text-stone-950 dark:hover:text-white"
                     }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isCatActive ? "text-white" : "text-[#2563EB] dark:text-orange-400"}`} />
+                  <Icon
+                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isCatActive
+                      ? "text-white"
+                      : isSocial
+                        ? "text-pink-500"
+                        : "text-[#2563EB] dark:text-blue-400"
+                      }`}
+                  />
                   <span>{cat.shortName}</span>
                 </motion.button>
               );
             })}
           </div>
 
-          {/* Right Side: Client Filter (Selected Option Way) */}
+          {/* Right Side: Client Filter Dropdown & Status */}
           <div className="flex items-center justify-between sm:justify-start gap-2.5 w-full lg:w-auto shrink-0 flex-wrap">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-orange-200 flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#14B8A6]" />
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
+                <Building2 className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
                 Client:
               </span>
 
@@ -941,139 +341,260 @@ export default function Gsc() {
                     <option
                       key={client.id}
                       value={client.id}
-                      className="bg-white dark:bg-[#1a1918] text-stone-900 dark:text-white py-1.5"
+                      className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white py-1.5"
                     >
                       {client.name}
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="w-4 h-4 text-stone-500 dark:text-[#14B8A6] absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <ChevronDown className="w-4 h-4 text-stone-500 dark:text-stone-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
 
-            {/* Proofs Count Badge */}
-            <span className="px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-white/10 text-[#2563EB] dark:text-[#60A5FA] text-[11px] font-bold border border-blue-200/80 dark:border-white/20 whitespace-nowrap">
-              {totalCategorySlides} Proof{totalCategorySlides === 1 ? "" : "s"}
-            </span>
+
           </div>
         </div>
 
         {/* ====================================================
-            SHOWCASE STAGE (DISPLAYS ONLY SELECTED CATEGORY & CLIENT IMAGES)
+            SHOWCASE STAGE:
+            - SOCIAL MEDIA: EXACTLY 1 CENTERED SMARTPHONE WITH AUTO-SLIDING IMAGES ONE BY ONE
+            - OTHER CATEGORIES: WIDESCREEN 3D CAROUSEL
         ==================================================== */}
         <div
-          className="relative w-full h-[260px] sm:h-[340px] md:h-[400px] lg:h-[430px] flex items-center justify-center overflow-hidden rounded-3xl select-none"
+          className={`relative w-full flex items-center justify-center overflow-hidden rounded-3xl select-none transition-all duration-300 ${isSocialCategory
+            ? "h-[440px] sm:h-[490px] md:h-[530px]"
+            : "h-[320px] sm:h-[380px] md:h-[440px] lg:h-[470px]"
+            }`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          style={{ perspective: "1000px" }}
+          style={{ perspective: isSocialCategory ? "none" : "1000px" }}
         >
-          {activeSlides.map((slide, index) => {
-            const offset = getOffset(index);
-            const isCenter = offset === 0;
-            const isVisible = Math.abs(offset) <= 1 || totalCategorySlides <= 2;
+          {isSocialCategory ? (
+            /* ====================================================
+               1. SINGLE MOBILE PHONE SHOWCASE (AUTO-SLIDING ONE BY ONE)
+            ==================================================== */
+            <div className="relative w-full h-full flex items-center justify-center">
+              {/* Floating Left Navigation Arrow */}
 
-            if (!isVisible && Math.abs(offset) > 1) {
-              return null;
-            }
 
-            return (
-              <motion.div
-                key={slide.id}
-                onClick={() => {
-                  if (isCenter) {
-                    setIsLightboxOpen(true);
-                  } else {
-                    setSlideIndex(index);
-                  }
-                }}
-                initial={false}
-                animate={{
-                  x: totalCategorySlides > 1 ? `${offset * 68}%` : "0%",
-                  scale: isCenter ? 1 : 0.84,
-                  opacity: isCenter ? 1 : 0.45,
-                  rotateY: totalCategorySlides > 1 ? offset * -14 : 0,
-                  zIndex: isCenter ? 20 : 10,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 26,
-                }}
-                className={`absolute w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer ${isCenter
-                  ? "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-[#2563EB]/40"
-                  : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75"
-                  } bg-stone-950`}
+              {/* THE 1 SINGLE REALISTIC SMARTPHONE FRAME */}
+              <div
+                onClick={() => setIsLightboxOpen(true)}
+                className="relative h-[95%] sm:h-[98%] max-h-[490px] aspect-[9/19.5] rounded-[2.6rem] sm:rounded-[2.8rem] p-2.5 sm:p-3 overflow-hidden cursor-zoom-in select-none bg-gradient-to-b from-stone-800 via-stone-900 to-black border-2 border-pink-500/80 shadow-[0_22px_65px_-15px_rgba(236,72,153,0.45),0_0_0_1px_rgba(255,255,255,0.15)] ring-1 ring-pink-500/30 group/phone transition-transform duration-300 hover:scale-[1.015]"
               >
-                {/* Image */}
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  loading="lazy"
-                  className="object-contain transition-transform duration-500 hover:scale-[1.02]"
-                  sizes="(max-width: 768px) 90vw, 65vw"
-                />
+                {/* Side buttons simulation */}
+                <div className="absolute -left-[3px] top-16 w-[3px] h-8 bg-stone-600 rounded-l-xs" />
+                <div className="absolute -left-[3px] top-26 w-[3px] h-8 bg-stone-600 rounded-l-xs" />
+                <div className="absolute -right-[3px] top-20 w-[3px] h-12 bg-stone-600 rounded-r-xs" />
 
-                {/* Subtle vignette on active slide */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30 pointer-events-none" />
-
-                {/* Active Slide Floating Overlay Header */}
-                {isCenter && (
-                  <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 right-2.5 sm:right-3.5 flex items-center justify-between pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 border border-white/20 text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider backdrop-blur-md">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      {slide.badge}
-                    </span>
-
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsLightboxOpen(true);
-                      }}
-                      className="p-1.5 rounded-xl bg-black/75 hover:bg-[#2563EB] border border-white/20 text-white transition-colors pointer-events-auto cursor-pointer"
-                      title="Zoom Image"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                    </button>
+                {/* Inner phone screen */}
+                <div className="relative w-full h-full rounded-[2rem] sm:rounded-[2.2rem] overflow-hidden bg-black flex flex-col">
+                  {/* Dynamic Island */}
+                  <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-30 h-4 w-20 bg-black rounded-full flex items-center justify-between px-2.5 border border-white/10 shadow-sm pointer-events-none">
+                    <div className="w-2 h-2 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center">
+                      <div className="w-0.5 h-0.5 rounded-full bg-blue-500/70" />
+                    </div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
-                )}
 
+                  {/* Status Bar (9:41, Signal, Wifi) */}
+                  <div className="absolute top-1 left-3.5 right-3.5 z-20 flex items-center justify-between text-[9px] font-mono font-bold text-white/90 pointer-events-none select-none">
+                    <span>9:41</span>
+                    <div className="flex items-center gap-1">
+                      <Signal className="w-2.5 h-2.5 text-white/90" />
+                      <Wifi className="w-2.5 h-2.5 text-white/90" />
+                    </div>
+                  </div>
 
-              </motion.div>
-            );
-          })}
+                  {/* Story Style Segmented Progress Bars (Instagram Stories Style) */}
+                  <div className="absolute top-6 left-3 right-3 z-30 flex items-center gap-1 pointer-events-none">
+                    {activeSlides.map((_, dotIdx) => (
+                      <div
+                        key={dotIdx}
+                        className={`h-[2px] flex-1 rounded-full transition-all duration-300 ${dotIdx === currentSlideIndex
+                          ? "bg-white shadow-xs"
+                          : dotIdx < currentSlideIndex
+                            ? "bg-white/60"
+                            : "bg-white/20"
+                          }`}
+                      />
+                    ))}
+                  </div>
 
-          {/* Floating On-Image Side Click Arrows (Only when category has multiple images) */}
-          {totalCategorySlides > 1 && (
+                  {/* THE SLIDING IMAGES (ONE BY ONE AUTO-SLIDE) */}
+                  <div className="relative w-full h-full overflow-hidden">
+                    <AnimatePresence initial={false} custom={slideDirection} mode="popLayout">
+                      <motion.div
+                        key={currentSlide.id}
+                        custom={slideDirection}
+                        variants={phoneSlideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        className="absolute inset-0 w-full h-full"
+                      >
+                        <Image
+                          src={currentSlide.image}
+                          alt={currentSlide.title}
+                          fill
+                          priority
+                          className="object-cover object-top"
+                          sizes="(max-width: 768px) 80vw, 360px"
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Subtle glossy glass reflection glare */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.12] pointer-events-none" />
+
+                  {/* Top Badge Inside Phone */}
+                  <div className="absolute top-8 left-3 z-20 pointer-events-none">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-black/80 backdrop-blur-md border border-white/20 text-white text-[9px] font-semibold uppercase tracking-wider">
+                      <Smartphone className="w-2.5 h-2.5 text-pink-400" />
+                      {currentSlide.badge}
+                    </span>
+                  </div>
+
+                  {/* Hover Inspect Pill */}
+                  <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] opacity-0 group-hover/phone:opacity-100 transition-opacity duration-200 flex items-center justify-center z-20 pointer-events-none">
+                    <span className="px-3.5 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xl">
+                      <Maximize2 className="w-3.5 h-3.5 text-pink-400" />
+                      <span>Tap to Inspect Proof</span>
+                    </span>
+                  </div>
+
+                  {/* Bottom Home Indicator Bar */}
+                  <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-20 w-20 h-1 bg-white/70 rounded-full pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Floating Right Navigation Arrow */}
+              {totalCategorySlides > 1 && (
+                <motion.button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                  }}
+                  aria-label="Next Screenshot"
+                  whileHover={{ scale: 1.15 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute right-2 sm:right-6 md:right-14 lg:right-28 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 dark:bg-stone-900/90 hover:bg-pink-600 text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/20 hover:border-pink-500 shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                >
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
+                </motion.button>
+              )}
+            </div>
+          ) : (
+            /* ====================================================
+               2. WIDESCREEN 3D CAROUSEL (FOR GSC, GA4, GMB, KEYWORDS)
+            ==================================================== */
             <>
-              <motion.button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  prevSlide();
-                }}
-                aria-label="Previous Slide in Category"
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-              </motion.button>
+              {activeSlides.map((slide, index) => {
+                const offset = getOffset(index);
+                const isCenter = offset === 0;
+                const isVisible = Math.abs(offset) <= 1 || totalCategorySlides <= 2;
 
-              <motion.button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  nextSlide();
-                }}
-                aria-label="Next Slide in Category"
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.9 }}
-                className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-              </motion.button>
+                if (!isVisible && Math.abs(offset) > 1) {
+                  return null;
+                }
+
+                return (
+                  <motion.div
+                    key={slide.id}
+                    onClick={() => {
+                      if (isCenter) {
+                        setIsLightboxOpen(true);
+                      } else {
+                        setSlideDirection(offset > 0 ? 1 : -1);
+                        setSlideIndex(index);
+                      }
+                    }}
+                    initial={false}
+                    animate={{
+                      x: totalCategorySlides > 1 ? `${offset * 68}%` : "0%",
+                      scale: isCenter ? 1 : 0.84,
+                      opacity: isCenter ? 1 : 0.45,
+                      rotateY: totalCategorySlides > 1 ? offset * -14 : 0,
+                      zIndex: isCenter ? 20 : 10,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 26,
+                    }}
+                    className={`absolute w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer ${isCenter
+                      ? "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-[#2563EB]/40"
+                      : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75"
+                      } bg-stone-950`}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      fill
+                      loading="lazy"
+                      className="object-contain transition-transform duration-500 hover:scale-[1.02]"
+                      sizes="(max-width: 768px) 90vw, 65vw"
+                    />
+
+
+                    {isCenter && (
+                      <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 right-2.5 sm:right-3.5 flex items-center justify-between pointer-events-none">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 border border-white/20 text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider backdrop-blur-md">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                          {slide.badge}
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsLightboxOpen(true);
+                          }}
+                          className="p-1.5 rounded-xl bg-black/75 hover:bg-[#2563EB] border border-white/20 text-white transition-colors pointer-events-auto cursor-pointer"
+                          title="Zoom Image"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+
+              {/* Floating Side Arrows for Widescreen */}
+              {totalCategorySlides > 1 && (
+                <>
+                  <motion.button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevSlide();
+                    }}
+                    aria-label="Previous Slide in Category"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+                  </motion.button>
+
+                  <motion.button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextSlide();
+                    }}
+                    aria-label="Next Slide in Category"
+                    whileHover={{ scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
+                  >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
+                  </motion.button>
+                </>
+              )}
             </>
           )}
         </div>
@@ -1084,10 +605,19 @@ export default function Gsc() {
         <div className="mt-5 p-4 sm:p-5 rounded-2xl bg-white/90 dark:bg-[#111B2E]/90 border border-stone-200/80 dark:border-white/10 shadow-sm backdrop-blur-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider">
+                <span
+                  className={`text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 ${isSocialCategory
+                    ? "text-pink-600 dark:text-pink-400"
+                    : "text-[#2563EB] dark:text-blue-400"
+                    }`}
+                >
                   {currentSlide.clientName} • {activeCategoryMeta.name} • Verified Proof
+                </span>
+                <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3" />
+                  {currentSlide.metricGrowth}
                 </span>
               </div>
               <h3 className="text-sm sm:text-base font-bold text-stone-900 dark:text-white">
@@ -1098,12 +628,12 @@ export default function Gsc() {
               </p>
             </div>
 
-            {/* 4 Quick Stat Highlights (Responsive 2-col on mobile, 4-col on tablet/desktop) */}
+            {/* 4 Quick Stat Highlights */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-3 w-full lg:w-auto shrink-0">
               {currentSlide.highlights.map((item, hIdx) => (
                 <div
                   key={hIdx}
-                  className="p-2 sm:p-2.5 rounded-xl bg-stone-50 dark:bg-[#171310] border border-stone-200/60 dark:border-white/5 flex flex-col justify-between"
+                  className="p-2 sm:p-2.5 rounded-xl bg-stone-50 dark:bg-[#070D18] border border-stone-200/60 dark:border-white/5 flex flex-col justify-between"
                 >
                   <div className="text-[10px] sm:text-[11px] text-stone-500 dark:text-stone-400 font-medium truncate">
                     {item.label}
@@ -1119,7 +649,9 @@ export default function Gsc() {
       </div>
 
       {/* ====================================================
-          FULLSCREEN LIGHTBOX MODAL
+          FULLSCREEN LIGHTBOX MODAL:
+          - Smartphone Frame for Social Media
+          - Widescreen for GSC / GA4
       ==================================================== */}
       <AnimatePresence>
         {isLightboxOpen && (
@@ -1131,44 +663,80 @@ export default function Gsc() {
             className="fixed inset-0 z-[9999] bg-black/92 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 cursor-zoom-out"
           >
             <div
-              className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center cursor-default"
+              className={`relative w-full max-h-[92vh] flex flex-col items-center justify-center cursor-default ${currentSlide.isMobile ? "max-w-md" : "max-w-5xl"
+                }`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
+                type="button"
                 onClick={() => setIsLightboxOpen(false)}
-                className="absolute -top-12 right-0 p-2 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors cursor-pointer"
+                className="absolute -top-12 right-0 p-2 rounded-full bg-white/10 hover:bg-rose-600 text-white transition-colors cursor-pointer"
                 title="Close Lightbox (Esc)"
               >
                 <X className="w-6 h-6" />
               </button>
 
-              {/* Lightbox Image */}
-              <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black">
-                <Image
-                  src={currentSlide.image}
-                  alt={currentSlide.title}
-                  fill
-                  className="object-contain"
-                  sizes="100vw"
-                />
-              </div>
+              {currentSlide.isMobile ? (
+                /* SMARTPHONE FRAME IN LIGHTBOX */
+                <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[9/19.5] rounded-[2.6rem] p-2.5 bg-gradient-to-b from-stone-800 via-stone-900 to-black border-[3px] border-stone-700 shadow-2xl">
+                  <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-black flex flex-col">
+                    {/* Dynamic Island */}
+                    <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-30 h-4 w-20 bg-black rounded-full flex items-center justify-between px-2 border border-white/10 shadow-sm pointer-events-none">
+                      <div className="w-1.5 h-1.5 rounded-full bg-stone-900 border border-stone-800" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    </div>
+
+                    {/* Status Bar */}
+                    <div className="absolute top-1 left-3.5 right-3.5 z-20 flex items-center justify-between text-[9px] font-mono font-bold text-white/90 pointer-events-none">
+                      <span>9:41</span>
+                      <div className="flex items-center gap-1">
+                        <Signal className="w-2.5 h-2.5 text-white/90" />
+                        <Wifi className="w-2.5 h-2.5 text-white/90" />
+                      </div>
+                    </div>
+
+                    <Image
+                      src={currentSlide.image}
+                      alt={currentSlide.title}
+                      fill
+                      className="object-cover object-top"
+                      sizes="400px"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.12] pointer-events-none" />
+                    <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-20 w-20 h-1 bg-white/70 rounded-full pointer-events-none" />
+                  </div>
+                </div>
+              ) : (
+                /* WIDESCREEN DASHBOARD IN LIGHTBOX */
+                <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black">
+                  <Image
+                    src={currentSlide.image}
+                    alt={currentSlide.title}
+                    fill
+                    className="object-contain"
+                    sizes="100vw"
+                  />
+                </div>
+              )}
 
               {/* Lightbox Footer Bar */}
               <div className="w-full mt-3 flex items-center justify-between text-white text-xs sm:text-sm">
-                <div>
+                <div className="truncate max-w-[70%]">
                   <span className="font-bold">{currentSlide.title}</span>
-
                 </div>
                 {totalCategorySlides > 1 && (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 shrink-0">
                     <button
+                      type="button"
                       onClick={prevSlide}
                       className="p-2 rounded-xl bg-white/10 hover:bg-[#2563EB] transition-colors cursor-pointer"
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button
+                      type="button"
                       onClick={nextSlide}
                       className="p-2 rounded-xl bg-white/10 hover:bg-[#2563EB] transition-colors cursor-pointer"
                     >

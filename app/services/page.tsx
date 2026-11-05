@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback, Suspense, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import {
@@ -1774,7 +1775,7 @@ function ServicesContent() {
                 exit="exit"
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
               >
-                {displayedServices.map((svc) => {
+                {displayedServices.map((svc, idx) => {
                   const isCardHovered = hoveredCardSlug === svc.slug;
                   const animId = `service_ani_${svc.id.replace(/-/g, "_")}`;
 
@@ -1819,31 +1820,54 @@ function ServicesContent() {
                           {/* Live light scan beam on hover */}
                           <div className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/50 dark:via-white/15 to-transparent transition-transform duration-1000 ease-in-out" />
 
-                          <div className={`lottie-ani-wrap lottie-ani-wrap${svc.num} w-full h-full flex items-center justify-center`}>
-                            <div
-                              id={animId}
-                              className="dotlottie-ani w-full h-full flex items-center justify-center"
-                            >
+                          {svc.lightImage ? (
+                            <>
+                              <Image
+                                src={svc.lightImage}
+                                alt={svc.title}
+                                fill
+                                className="block dark:hidden object-contain object-center p-3 transition-transform duration-500 ease-out group-hover:scale-105"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                quality={80}
+                                priority={idx < 4}
+                              />
+                              <Image
+                                src={svc.darkImage || svc.lightImage}
+                                alt={svc.title}
+                                fill
+                                className="hidden dark:block object-contain object-center p-3 transition-transform duration-500 ease-out group-hover:scale-105"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                quality={80}
+                                priority={idx < 4}
+                              />
+                            </>
+                          ) : (
+                            <div className={`lottie-ani-wrap lottie-ani-wrap${svc.num} w-full h-full flex items-center justify-center`}>
                               <div
-                                id="animation-container"
-                                role="img"
-                                aria-label={`${svc.title} illustration`}
-                                className="main w-full h-full flex items-center justify-center"
+                                id={animId}
+                                className="dotlottie-ani w-full h-full flex items-center justify-center"
                               >
                                 <div
-                                  id="animation"
-                                  className="animation w-full h-full flex items-center justify-center"
-                                  style={{ background: "transparent" }}
+                                  id="animation-container"
+                                  role="img"
+                                  aria-label={`${svc.title} illustration`}
+                                  className="main w-full h-full flex items-center justify-center"
                                 >
-                                  <ServiceCardIllustration
-                                    slug={svc.slug}
-                                    isSelected={false}
-                                    isHovered={isCardHovered}
-                                  />
+                                  <div
+                                    id="animation"
+                                    className="animation w-full h-full flex items-center justify-center"
+                                    style={{ background: "transparent" }}
+                                  >
+                                    <ServiceCardIllustration
+                                      slug={svc.slug}
+                                      isSelected={false}
+                                      isHovered={isCardHovered}
+                                    />
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
+                          )}
                         </div>
 
                         {/* Middle: Number badge, Category & Title & Description */}

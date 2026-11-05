@@ -319,7 +319,7 @@ export default function ServiceDetailPage() {
 
               <div className="flex items-center justify-between mb-4 pb-3 border-b border-stone-200/70 dark:border-white/10">
                 <span className="text-xs font-mono font-bold text-stone-500 dark:text-stone-400">
-                  INTERACTIVE VECTOR VISUAL
+                  {service.lightImage ? "3D ARCHITECTURAL SHOWCASE" : "INTERACTIVE VECTOR VISUAL"}
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-mono font-bold">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -327,13 +327,34 @@ export default function ServiceDetailPage() {
                 </span>
               </div>
 
-              {/* Dedicated Animated SVG Canvas */}
-              <div className="relative w-full h-72 sm:h-80 rounded-2xl bg-stone-50/90 dark:bg-black/60 border border-stone-200/80 dark:border-white/10 flex items-center justify-center p-4 overflow-hidden shadow-inner">
-                <ServiceCardIllustration
-                  slug={service.slug}
-                  isSelected={true}
-                  isHovered={true}
-                />
+              {/* Dedicated Showcase Canvas */}
+              <div className="relative w-full h-72 sm:h-80 rounded-2xl bg-stone-50/90 dark:bg-black/60 border border-stone-200/80 dark:border-white/10 flex items-center justify-center p-4 overflow-hidden shadow-inner group/canvas">
+                {service.lightImage ? (
+                  <>
+                    <Image
+                      src={service.lightImage}
+                      alt={`${service.title} 3D Visual (Light Mode)`}
+                      fill
+                      className="block dark:hidden object-contain p-3 sm:p-5 transition-transform duration-500 ease-out group-hover/canvas:scale-105"
+                      priority
+                      quality={80}
+                    />
+                    <Image
+                      src={service.darkImage || service.lightImage}
+                      alt={`${service.title} 3D Visual (Dark Mode)`}
+                      fill
+                      className="hidden dark:block object-contain p-3 sm:p-5 transition-transform duration-500 ease-out group-hover/canvas:scale-105"
+                      priority
+                      quality={80}
+                    />
+                  </>
+                ) : (
+                  <ServiceCardIllustration
+                    slug={service.slug}
+                    isSelected={true}
+                    isHovered={true}
+                  />
+                )}
               </div>
 
               {/* Under-illustration metadata bar */}
@@ -459,14 +480,36 @@ export default function ServiceDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Column: Proof Viewer Preview */}
             <div className="lg:col-span-7 relative">
-              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-black shadow-2xl">
-                <Image
-                  src={proofSlides[currentSlide]?.url || "/images/gsc-console-live.jpg"}
-                  alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                />
+              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-stone-50/90 dark:bg-black/70 shadow-2xl">
+                {currentSlide === 0 && (service.lightImage || service.darkImage) ? (
+                  <>
+                    <Image
+                      src={service.lightImage || proofSlides[0].url}
+                      alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
+                      fill
+                      className="block dark:hidden object-contain p-3 sm:p-5"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      quality={80}
+                    />
+                    <Image
+                      src={service.darkImage || proofSlides[0].url}
+                      alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
+                      fill
+                      className="hidden dark:block object-contain p-3 sm:p-5"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      quality={80}
+                    />
+                  </>
+                ) : (
+                  <Image
+                    src={proofSlides[currentSlide]?.url || "/images/gsc-console-live.jpg"}
+                    alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    quality={80}
+                  />
+                )}
                 <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[11px] font-mono font-bold border border-white/20">
                   {proofSlides[currentSlide]?.tag}
                 </div>

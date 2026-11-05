@@ -7,6 +7,7 @@ import { ArrowUp } from "lucide-react";
 import Hero from "@/components/Hero";
 
 // Code-split below-the-fold sections to maximize LCP and minimize initial JS execution
+const Industries = dynamic(() => import("@/components/Industries"));
 const Banner = dynamic(() => import("@/components/Banner"));
 const Services = dynamic(() => import("@/components/Services"));
 const Projects = dynamic(() => import("@/components/Projects"));
@@ -126,6 +127,10 @@ export default function Home() {
           {/* 8. Client Testimonials & Endorsements */}
           <RevealSection>
             <Testimonials />
+          </RevealSection>
+
+          <RevealSection>
+            <Industries />
           </RevealSection>
 
           {/* 9. Blog Articles Section with Motion inView */}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, BarChart3, TrendingUp, FolderCheck, ShieldCheck } from "lucide-react";
+import { ArrowLeft, ArrowRight, BarChart3, TrendingUp, FolderCheck, ShieldCheck, Smartphone } from "lucide-react";
 import AnalyticsGallery from "@/components/AnalyticsGallery";
 
 export default function AnalyticsPage() {
@@ -34,13 +34,13 @@ export default function AnalyticsPage() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] text-[11px] font-bold uppercase tracking-wider mb-3">
                 <BarChart3 className="w-3.5 h-3.5" />
-                <span>Verified Client Analytics &amp; GSC Audits</span>
+                <span>Verified Client Analytics, GSC &amp; Social Media Proofs</span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 dark:text-white">
-                Search Performance &amp; Client Analytics
+                Client Analytics &amp; Mobile Social Proofs
               </h1>
               <p className="mt-2 text-sm sm:text-base text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
-                Direct evidence of organic traffic compounding, keyword dominance, and verified Search Console impressions across client folders in.
+                Direct evidence of organic search compounding, keyword dominance, GA4 conversions, and viral social media engagement captured live in native smartphone frames.
               </p>
             </div>
 
@@ -51,7 +51,7 @@ export default function AnalyticsPage() {
                 </span>
                 <span className="text-sm font-extrabold text-[#22C55E] flex items-center justify-end gap-1">
                   <TrendingUp className="w-3.5 h-3.5" />
-                  <span>22 Real Audits</span>
+                  <span>52 Real Audits</span>
                 </span>
               </div>
             </div>

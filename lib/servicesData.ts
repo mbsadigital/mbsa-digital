@@ -1534,7 +1534,6 @@ export const SERVICES_DATA: ServiceDetail[] = [
     deliverables: [
       "Custom responsive UI/UX design crafted in Figma tailored to your brand identity",
       "Lightweight, block-based WordPress development (zero bloated page builders like Elementor)",
-      "Next.js and Tailwind CSS modern frontend options for maximum scalability",
       "Full mobile-first optimization guaranteeing responsive perfection on all screen sizes",
       "Built-in on-page technical SEO: semantic HTML5, Schema markup, and clean URLs",
       "Robust security hardening, automated cloud backups, and SSL/HTTPS configuration",
@@ -1562,7 +1561,7 @@ export const SERVICES_DATA: ServiceDetail[] = [
         description: "Cross-browser QA testing, 301 redirect validation, and seamless zero-downtime DNS migration.",
       },
     ],
-    tools: ["WordPress", "Next.js", "Tailwind CSS", "Figma", "TypeScript", "WP Engine", "Vercel"],
+    tools: ["WordPress", "HTML", "CSS", "Figma"],
     benefits: [
       "Drastically lower bounce rates with instant page loads under 1 second",
       "Rank faster on Google thanks to clean, semantic code without page builder bloat",

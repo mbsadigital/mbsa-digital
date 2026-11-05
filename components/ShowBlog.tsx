@@ -24,6 +24,8 @@ import {
   SlidersHorizontal,
   BookOpen,
   TrendingUp,
+  Eye,
+  Check,
 } from "lucide-react";
 import { BlogPost, FALLBACK_BLOGS, CATEGORIES, PRESET_COVERS } from "@/lib/fallbackBlogs";
 import {
@@ -200,22 +202,22 @@ export default function ShowBlog() {
 
   const hasActiveFilters = selectedCategory !== "All" || searchQuery.trim() !== "" || sortBy !== "newest";
 
-  // Featured Hero Article Spotlight (shown when viewing all articles without active search)
+  // Featured Hero Article Spotlight (shown when browsing all articles without active search)
   const featuredArticle = useMemo(() => {
     return blogs.find((b) => b.featured) || blogs[0];
   }, [blogs]);
 
-  // Articles for regular grid (if featured is spotlighted on top, we show the full catalog)
+  // Articles for regular grid
   const displayArticles = useMemo(() => {
     return blogs;
   }, [blogs]);
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white transition-colors duration-500 overflow-x-hidden">
-      {/* Background Ambient Glow & Subtle Texture */}
+      {/* Background Ambient Glow & Dot Texture */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute top-1/4 right-1/4 h-[550px] w-[550px] rounded-full bg-[#2563EB]/[0.06] blur-[160px]" />
-        <div className="absolute bottom-10 left-10 h-[450px] w-[450px] rounded-full bg-[#FB923C]/[0.05] blur-[150px]" />
+        <div className="absolute top-1/4 right-1/4 h-[550px] w-[550px] rounded-full bg-[#2563EB]/[0.07] blur-[160px]" />
+        <div className="absolute bottom-10 left-10 h-[450px] w-[450px] rounded-full bg-[#14B8A6]/[0.06] blur-[150px]" />
         <div
           className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04]"
           style={{
@@ -225,13 +227,13 @@ export default function ShowBlog() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-20">
         {/* =========================================================
             TOP NAVIGATION & EDITORIAL HEADER
         ========================================================= */}
         <div className="mb-10 sm:mb-14">
           {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 text-xs font-mono text-stone-500 mb-6">
+          <div className="flex items-center gap-2 text-xs font-mono text-stone-500 dark:text-stone-400 mb-6">
             <Link
               href="/"
               className="hover:text-[#2563EB] dark:hover:text-[#14B8A6] transition-colors flex items-center gap-1.5"
@@ -240,31 +242,59 @@ export default function ShowBlog() {
               <span>Home</span>
             </Link>
             <span className="text-stone-300 dark:text-stone-700">/</span>
-            <span className="text-[#2563EB] font-semibold">Articles &amp; Insights</span>
+            <span className="text-[#2563EB] dark:text-[#14B8A6] font-semibold">Articles &amp; Insights</span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/10 dark:bg-orange-500/15 border border-orange-500/20 text-[#2563EB] dark:text-[#14B8A6] text-[11px] font-bold uppercase tracking-[0.22em] mb-4 shadow-sm">
-                <Sparkles className="w-3 h-3" />
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 text-[#2563EB] dark:text-[#14B8A6] text-[11px] font-bold uppercase tracking-[0.22em] mb-4 shadow-sm">
+                <Sparkles className="w-3 h-3 text-[#2563EB] dark:text-[#14B8A6]" />
                 <span>KNOWLEDGE BASE &amp; INDUSTRY INSIGHTS</span>
               </div>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-stone-900 dark:text-white">
                 Explore All{" "}
-                <span className="bg-gradient-to-r from-[#2563EB] via-[#14B8A6] to-[#FB923C] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(37,99,235,0.35)]">
+                <span className="bg-[#2563EB] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(37,99,235,0.25)]">
                   Articles.
                 </span>
               </h1>
-              <p className="mt-3.5 text-sm sm:text-base text-stone-600 dark:text-stone-400 max-w-2xl leading-relaxed">
+              <p className="mt-3.5 text-sm sm:text-base md:text-lg text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
                 Browse our complete collection of technical SEO, Google Ads, GA4 attribution, and autonomous growth marketing publications.
               </p>
             </div>
 
-            {/* Right Controls: Consultation CTA and Admin Session (Admin Key and MongoDB removed) */}
+            {/* Right Controls: Consultation CTA and Admin Session */}
             <div className="flex flex-wrap items-center gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
+                className=" group
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  w-full
+                  sm:w-auto
+                  px-5
+                  sm:px-6
+                  py-2.5
+                  sm:py-3
+                  rounded-full
+                  bg-[#2563EB]
+                  text-white
+                  text-xs
+                  sm:text-[13.5px]
+                  font-bold
+                  border
+
+                  hover:border-blue-800
+                  shadow-md
+                  shadow-[#2563EB]
+                  hover:shadow-[#2563EB]
+                  hover:-translate-y-0.5
+                  transition-all
+                  duration-300
+                  min-h-[42px]
+                  sm:min-h-[44px]
+                  touch-manipulation"
               >
                 <span>Schedule Consultation</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -272,20 +302,20 @@ export default function ShowBlog() {
 
               {adminToken && (
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-600/15 border border-orange-500/30 text-orange-600 dark:text-orange-400 text-xs font-semibold">
-                    <Unlock className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#2563EB]/15 border border-[#2563EB]/30 text-[#2563EB] dark:text-[#14B8A6] text-xs font-semibold">
+                    <Unlock className="w-3.5 h-3.5" />
                     <span>Admin Mode</span>
                   </div>
                   <button
                     type="button"
                     onClick={handleAdminLogout}
-                    className="px-3 py-1.5 rounded-full bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-red-500/20 hover:text-red-500 text-xs font-medium transition cursor-pointer"
+                    className="px-3 py-1.5 rounded-full bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-rose-500/20 hover:text-rose-500 text-xs font-medium transition cursor-pointer"
                   >
                     Logout
                   </button>
                   <Link
-                    href="/createblog"
-                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-xs font-bold shadow-md hover:shadow-orange-500/30 transition cursor-pointer"
+                    href="/blog/create"
+                    className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-xs font-bold shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/40 transition cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5" />
                     <span>Write Article</span>
@@ -296,9 +326,9 @@ export default function ShowBlog() {
           </div>
 
           {/* Metric Highlights Strip */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-8 pt-8 border-t border-stone-200/70 dark:border-white/5">
-            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/70 dark:bg-[#111B2E]/70 border border-stone-200/80 dark:border-white/5 backdrop-blur-md shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-[#2563EB] shrink-0">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-8 pt-8 border-t border-stone-200/80 dark:border-white/10">
+            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/90 dark:border-white/10 backdrop-blur-md shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 flex items-center justify-center text-[#2563EB] dark:text-[#14B8A6] shrink-0">
                 <BookOpen className="w-5 h-5" />
               </div>
               <div>
@@ -311,8 +341,8 @@ export default function ShowBlog() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/70 dark:bg-[#111B2E]/70 border border-stone-200/80 dark:border-white/5 backdrop-blur-md shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-[#2563EB] shrink-0">
+            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/90 dark:border-white/10 backdrop-blur-md shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 flex items-center justify-center text-[#2563EB] dark:text-[#14B8A6] shrink-0">
                 <Layers className="w-5 h-5" />
               </div>
               <div>
@@ -325,8 +355,8 @@ export default function ShowBlog() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/70 dark:bg-[#111B2E]/70 border border-stone-200/80 dark:border-white/5 backdrop-blur-md shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-[#2563EB] shrink-0">
+            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/90 dark:border-white/10 backdrop-blur-md shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 flex items-center justify-center text-[#2563EB] dark:text-[#14B8A6] shrink-0">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
@@ -339,8 +369,8 @@ export default function ShowBlog() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white/70 dark:bg-[#111B2E]/70 border border-stone-200/80 dark:border-white/5 backdrop-blur-md shadow-sm">
-              <div className="w-10 h-10 rounded-xl bg-orange-500/10 dark:bg-orange-500/15 border border-orange-500/20 flex items-center justify-center text-[#2563EB] shrink-0">
+            <div className="flex items-center gap-3 p-3.5 sm:p-4 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/90 dark:border-white/10 backdrop-blur-md shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 flex items-center justify-center text-[#2563EB] dark:text-[#14B8A6] shrink-0">
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div>
@@ -364,13 +394,13 @@ export default function ShowBlog() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-12 group relative rounded-3xl overflow-hidden border border-orange-500/25 bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-[0_15px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.4)] hover:border-orange-500/50 transition-all duration-300"
+            className="mb-12 group relative rounded-3xl overflow-hidden border border-[#2563EB]/25 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-md hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
               {/* Visual Banner */}
               <Link
                 href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                className="relative lg:col-span-6 h-64 sm:h-80 lg:h-auto min-h-[300px] overflow-hidden block cursor-pointer"
+                className="relative lg:col-span-7 h-64 sm:h-80 lg:h-auto min-h-[260px] sm:min-h-[340px] lg:min-h-[420px] overflow-hidden block cursor-pointer"
                 aria-label={featuredArticle.title}
               >
                 <Image
@@ -378,29 +408,29 @@ export default function ShowBlog() {
                   alt={featuredArticle.title}
                   fill
                   unoptimized
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-stone-950/75" />
 
                 {/* Floating Badges */}
-                <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-orange-600/40 flex items-center gap-1.5">
+                <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2 z-10">
+                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-[#2563EB]/30 flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3" />
                     Featured Spotlight
                   </span>
-                  <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-mono border border-white/20">
+                  <span className="px-2.5 py-1 rounded-full bg-stone-950/70 backdrop-blur-md text-white text-[10px] font-mono border border-white/20">
                     {featuredArticle.category}
                   </span>
                 </div>
               </Link>
 
               {/* Content Column */}
-              <div className="lg:col-span-6 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
+              <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400 mb-3.5 font-mono">
-                    <span className="flex items-center gap-1.5 text-[#2563EB] font-semibold">
+                    <span className="flex items-center gap-1.5 text-[#2563EB] dark:text-[#14B8A6] font-semibold">
                       <Clock className="w-3.5 h-3.5" />
                       {featuredArticle.readTime || "6 min read"}
                     </span>
@@ -417,7 +447,7 @@ export default function ShowBlog() {
 
                   <Link
                     href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                    className="block text-2xl sm:text-3xl font-black tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] transition-colors duration-200 cursor-pointer leading-tight mb-4"
+                    className="block text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 cursor-pointer leading-tight mb-4"
                   >
                     {featuredArticle.title}
                   </Link>
@@ -440,9 +470,9 @@ export default function ShowBlog() {
                   )}
                 </div>
 
-                <div className="pt-4 border-t border-stone-100 dark:border-white/5 flex items-center justify-between flex-wrap gap-4">
+                <div className="pt-4 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between flex-wrap gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="relative w-9 h-9 rounded-full overflow-hidden border border-orange-500/40">
+                    <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#2563EB]/40 shrink-0">
                       <Image
                         src={featuredArticle.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
                         alt={featuredArticle.author?.name || "Author"}
@@ -463,7 +493,7 @@ export default function ShowBlog() {
 
                   <Link
                     href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                    className="group/cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#2563EB] hover:bg-orange-600 text-white text-xs font-bold shadow-md shadow-orange-600/30 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+                    className="group/cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#2563EB]/25 hover:shadow-lg hover:shadow-[#2563EB]/35 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                   >
                     <span>Read Full Story</span>
                     <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
@@ -477,9 +507,9 @@ export default function ShowBlog() {
         {/* =========================================================
             SEARCH, FILTER & CATEGORIES TOOLBAR
         ========================================================= */}
-        <div className="mb-10 p-5 sm:p-6 rounded-3xl bg-white/90 dark:bg-[#111B2E]/90 border border-stone-200/90 dark:border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+        <div className="mb-10 p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#111B2E] border border-stone-200/90 dark:border-white/10 shadow-sm backdrop-blur-xl">
           {/* Top Row: Search Input + Sort Controls */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-5 pb-5 border-b border-stone-100 dark:border-white/5">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4 mb-5 pb-5 border-b border-stone-200/70 dark:border-white/10">
             {/* Search Input */}
             <div className="relative flex-1 max-w-xl">
               <Search className="w-4 h-4 text-stone-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -488,7 +518,7 @@ export default function ShowBlog() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search insights by keywords, topics, or technical concepts..."
-                className="w-full pl-11 pr-10 py-3 rounded-2xl text-xs sm:text-sm bg-stone-50 dark:bg-stone-900/90 border border-stone-200 dark:border-stone-800 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-stone-900 dark:text-stone-100 placeholder:text-stone-400 transition-all shadow-inner"
+                className="w-full pl-11 pr-10 py-3 rounded-2xl text-xs sm:text-sm bg-stone-50 dark:bg-[#0B1220] border border-stone-200 dark:border-white/10 focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/20 text-stone-900 dark:text-stone-100 placeholder:text-stone-400 transition-all shadow-inner min-h-[44px]"
               />
               {searchQuery && (
                 <button
@@ -497,24 +527,24 @@ export default function ShowBlog() {
                   className="absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 text-sm cursor-pointer p-1"
                   title="Clear search"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  <X className="w-4 h-4" />
                 </button>
               )}
             </div>
 
             {/* Sort & Reset Controls */}
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800">
-                <SlidersHorizontal className="w-3.5 h-3.5 text-[#2563EB]" />
+              <div className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-stone-50 dark:bg-[#0B1220] border border-stone-200 dark:border-white/10 min-h-[44px]">
+                <SlidersHorizontal className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#14B8A6]" />
                 <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 hidden sm:inline">Sort:</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as "newest" | "popular" | "likes")}
                   className="bg-transparent text-xs font-semibold text-stone-800 dark:text-stone-200 focus:outline-none cursor-pointer"
                 >
-                  <option value="newest" className="bg-white dark:bg-stone-900 text-stone-900 dark:text-white">Newest First</option>
-                  <option value="popular" className="bg-white dark:bg-stone-900 text-stone-900 dark:text-white">Most Read</option>
-                  <option value="likes" className="bg-white dark:bg-stone-900 text-stone-900 dark:text-white">Most Liked</option>
+                  <option value="newest" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Newest First</option>
+                  <option value="popular" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Most Read</option>
+                  <option value="likes" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Most Liked</option>
                 </select>
               </div>
 
@@ -522,7 +552,7 @@ export default function ShowBlog() {
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-orange-500/10 hover:bg-orange-500/20 text-[#2563EB] text-xs font-bold border border-orange-500/20 transition cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-2xl bg-[#2563EB]/10 hover:bg-[#2563EB]/20 text-[#2563EB] dark:text-[#14B8A6] text-xs font-bold border border-[#2563EB]/20 transition cursor-pointer min-h-[44px]"
                   title="Reset all filters"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
@@ -533,36 +563,35 @@ export default function ShowBlog() {
           </div>
 
           {/* Bottom Row: Category Filter Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none no-scrollbar">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none no-scrollbar touch-pan-x">
             <button
               onClick={() => setSelectedCategory("All")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
-                selectedCategory === "All"
-                  ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/30 scale-[1.02]"
-                  : "bg-stone-100 hover:bg-stone-200/80 dark:bg-stone-900 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800"
-              }`}
+              className={`px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 min-h-[38px] ${selectedCategory === "All"
+                ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/25 scale-[1.02]"
+                : "bg-stone-100 hover:bg-stone-200/80 dark:bg-[#0B1220] dark:hover:bg-[#1E293B] text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10"
+                }`}
             >
               <span>All Categories</span>
-              <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedCategory === "All" ? "bg-white/20 text-white" : "bg-stone-200 dark:bg-stone-800 text-stone-500"}`}>
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedCategory === "All" ? "bg-white/20 text-white" : "bg-stone-200 dark:bg-stone-800 text-stone-500 dark:text-stone-400"}`}>
                 {blogs.length}
               </span>
             </button>
 
             {CATEGORIES.map((cat) => {
               const count = blogs.filter((b) => b.category === cat).length;
+              const isSelected = selectedCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
-                    selectedCategory === cat
-                      ? "bg-[#2563EB] text-white shadow-md shadow-orange-500/30 scale-[1.02]"
-                      : "bg-stone-100 hover:bg-stone-200/80 dark:bg-stone-900 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800"
-                  }`}
+                  className={`px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 min-h-[38px] ${isSelected
+                    ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/25 scale-[1.02]"
+                    : "bg-stone-100 hover:bg-stone-200/80 dark:bg-[#0B1220] dark:hover:bg-[#1E293B] text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-white/10"
+                    }`}
                 >
                   <span>{cat}</span>
                   {count > 0 && (
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${selectedCategory === cat ? "bg-white/20 text-white" : "bg-stone-200 dark:bg-stone-800 text-stone-500"}`}>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${isSelected ? "bg-white/20 text-white" : "bg-stone-200 dark:bg-stone-800 text-stone-500 dark:text-stone-400"}`}>
                       {count}
                     </span>
                   )}
@@ -572,20 +601,20 @@ export default function ShowBlog() {
           </div>
 
           {/* Active Summary Strip */}
-          <div className="mt-4 pt-3.5 border-t border-stone-100 dark:border-white/5 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
+          <div className="mt-3.5 pt-3.5 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
+              <span className="w-2 h-2 rounded-full bg-[#2563EB] dark:bg-[#14B8A6] animate-pulse" />
               <span>
                 Displaying <strong className="text-stone-900 dark:text-white font-bold">{displayArticles.length}</strong> {displayArticles.length === 1 ? "publication" : "publications"}
                 {selectedCategory !== "All" && (
-                  <span className="text-[#2563EB] font-semibold"> • {selectedCategory}</span>
+                  <span className="text-[#2563EB] dark:text-[#14B8A6] font-semibold"> • {selectedCategory}</span>
                 )}
                 {searchQuery && (
                   <span> • Matching &ldquo;{searchQuery}&rdquo;</span>
                 )}
               </span>
             </div>
-            {loading && <span className="text-[#2563EB] font-semibold animate-pulse">Syncing...</span>}
+            {loading && <span className="text-[#2563EB] dark:text-[#14B8A6] font-semibold animate-pulse">Syncing...</span>}
           </div>
         </div>
 
@@ -593,35 +622,35 @@ export default function ShowBlog() {
             ALL ARTICLES GRID
         ========================================================= */}
         {displayArticles.length === 0 ? (
-          <div className="py-24 text-center rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#111B2E] p-8 shadow-sm">
+          <div className="py-24 text-center rounded-3xl border border-stone-200 dark:border-white/10 bg-white dark:bg-[#111B2E] p-8 shadow-sm">
             <Layers className="w-12 h-12 text-stone-400 mx-auto mb-3" />
-            <h3 className="text-lg font-bold text-stone-800 dark:text-stone-200">
+            <h3 className="text-lg font-bold text-stone-900 dark:text-white">
               No matching publications found
             </h3>
-            <p className="text-xs text-stone-500 mt-1 max-w-sm mx-auto">
+            <p className="text-xs text-stone-500 dark:text-stone-400 mt-1 max-w-sm mx-auto">
               We couldn&apos;t find any articles matching your current search or category filter.
             </p>
             <button
               type="button"
               onClick={handleResetFilters}
-              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#2563EB] text-white text-xs font-bold shadow-md hover:bg-orange-600 transition cursor-pointer"
+              className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-md shadow-[#2563EB]/25 transition cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Search & Filters</span>
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
             {displayArticles.map((article, idx) => (
               <motion.article
                 key={article._id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
-                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_45px_-10px_rgba(37,99,235,0.15)] hover:border-orange-500/60 dark:hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-1"
+                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-sm hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.18)] dark:hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1.5"
               >
                 <div>
-                  {/* Image container */}
+                  {/* Article Card Image Container */}
                   <div className="relative aspect-[16/10] w-full overflow-hidden block">
                     <Link
                       href={`/blog/${article.slug || article._id}`}
@@ -633,40 +662,37 @@ export default function ShowBlog() {
                         alt={article.title}
                         fill
                         unoptimized
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        priority={idx < 3}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
                     </Link>
 
                     {/* Category pill on image */}
                     <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold font-mono tracking-wider uppercase bg-black/60 backdrop-blur-md text-white border border-white/20">
+                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold font-mono tracking-wider uppercase bg-stone-950/70 backdrop-blur-md text-white border border-white/20">
                         {article.category}
                       </span>
                     </div>
 
                     {article.featured && (
                       <div className="absolute top-3 right-3 z-10">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#2563EB] text-white flex items-center gap-1 shadow-md shadow-orange-600/40">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white flex items-center gap-1 shadow-md shadow-[#2563EB]/30">
                           <Sparkles className="w-2.5 h-2.5" />
                           Featured
                         </span>
                       </div>
                     )}
-                  </div>
 
-                  {/* Body Content */}
-                  <div className="p-5 sm:p-6">
-                    {/* Read time and date */}
-                    <div className="flex items-center gap-3 text-[11px] text-stone-500 dark:text-stone-400 font-mono mb-2.5">
-                      <span className="flex items-center gap-1 text-[#2563EB] font-semibold">
+                    {/* Bottom strip overlay with read time and date */}
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/90 font-mono pointer-events-none z-10">
+                      <span className="flex items-center gap-1 text-[#14B8A6] font-semibold">
                         <Clock className="w-3 h-3" />
                         {article.readTime || "5 min read"}
                       </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3 text-stone-400" />
+                      <span className="flex items-center gap-1 text-stone-300">
+                        <Calendar className="w-3 h-3" />
                         {new Date(article.createdAt).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric",
@@ -674,17 +700,20 @@ export default function ShowBlog() {
                         })}
                       </span>
                     </div>
+                  </div>
 
+                  {/* Body Content */}
+                  <div className="p-5 sm:p-6">
                     {/* Article Title */}
                     <Link
                       href={`/blog/${article.slug || article._id}`}
-                      className="block text-base sm:text-lg font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] transition-colors duration-200 line-clamp-2 leading-snug mb-2.5 cursor-pointer"
+                      className="block text-lg sm:text-xl font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 line-clamp-2 leading-snug mb-2.5 cursor-pointer"
                     >
                       {article.title}
                     </Link>
 
                     {/* Excerpt */}
-                    <p className="text-xs text-stone-600 dark:text-stone-400 line-clamp-2 leading-relaxed mb-4">
+                    <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 line-clamp-2 leading-relaxed mb-4">
                       {article.description || article.excerpt}
                     </p>
 
@@ -694,7 +723,7 @@ export default function ShowBlog() {
                         {article.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] font-mono text-stone-600 dark:text-stone-400 bg-stone-100 dark:bg-stone-800/80 px-2 py-0.5 rounded-md border border-stone-200/50 dark:border-stone-700/50"
+                            className="text-[10px] sm:text-[11px] font-mono text-stone-600 dark:text-stone-400 bg-stone-100 dark:bg-stone-800/80 px-2 py-0.5 rounded-md border border-stone-200/60 dark:border-stone-700/60 group-hover:border-[#2563EB]/30 transition-colors"
                           >
                             #{tag}
                           </span>
@@ -705,10 +734,10 @@ export default function ShowBlog() {
                 </div>
 
                 {/* Footer Info & Actions */}
-                <div className="px-5 sm:px-6 pb-5 pt-3 border-t border-stone-100 dark:border-white/5 flex items-center justify-between">
+                <div className="px-5 sm:px-6 pb-5 pt-3.5 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between gap-3">
                   {/* Author & Interactive Like */}
-                  <div className="flex items-center gap-2.5">
-                    <div className="relative w-7 h-7 rounded-full overflow-hidden border border-orange-500/40">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full overflow-hidden border border-[#2563EB]/30 shrink-0">
                       <Image
                         src={article.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
                         alt={article.author?.name || "Author"}
@@ -717,37 +746,42 @@ export default function ShowBlog() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="text-[11px] font-bold text-stone-800 dark:text-stone-200 truncate max-w-[85px]">
-                      {article.author?.name || "Muskan Shekh"}
+                    <div className="min-w-0">
+                      <div className="text-[11px] sm:text-xs font-bold text-stone-900 dark:text-stone-100 truncate max-w-[90px] sm:max-w-[110px]">
+                        {article.author?.name || "Muskan Shekh"}
+                      </div>
+                      <div className="text-[9px] sm:text-[10px] text-stone-500 dark:text-stone-400 truncate">
+                        Verified
+                      </div>
                     </div>
 
                     {/* Interactive Heart / Like */}
                     <button
                       type="button"
                       onClick={(e) => handleLike(e, article._id)}
-                      className="group/heart flex items-center gap-1 text-[11px] font-mono text-stone-400 hover:text-red-500 transition-colors p-1 rounded-md cursor-pointer ml-1"
+                      className="group/heart flex items-center gap-1 text-[11px] font-mono text-stone-400 hover:text-rose-500 transition-colors p-1 rounded-md cursor-pointer ml-1"
                       title="Like this publication"
                     >
-                      <Heart className="w-3.5 h-3.5 group-hover/heart:fill-red-500 group-hover/heart:text-red-500 transition-colors" />
+                      <Heart className="w-3.5 h-3.5 group-hover/heart:fill-rose-500 group-hover/heart:text-rose-500 transition-colors" />
                       <span>{article.likes || 0}</span>
                     </button>
                   </div>
 
                   {/* Actions: Admin and Read Button */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 shrink-0">
                     {/* Admin Actions if logged in */}
                     {adminToken && (
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1 border-r border-stone-200 dark:border-white/10 pr-2">
                         <Link
                           href={`/blog/create?id=${article._id}`}
-                          className="p-1 rounded-md text-stone-400 hover:text-orange-500 transition cursor-pointer"
+                          className="p-1 rounded-md text-stone-400 hover:text-[#2563EB] transition cursor-pointer"
                           title="Edit"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </Link>
                         <button
                           onClick={() => setDeleteConfirmBlog(article)}
-                          className="p-1 rounded-md text-stone-400 hover:text-red-500 transition cursor-pointer"
+                          className="p-1 rounded-md text-stone-400 hover:text-rose-500 transition cursor-pointer"
                           title="Delete"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -757,10 +791,10 @@ export default function ShowBlog() {
 
                     <Link
                       href={`/blog/${article.slug || article._id}`}
-                      className="group/read inline-flex items-center gap-1 text-xs font-bold text-[#2563EB] hover:text-orange-600 transition ml-1"
+                      className="group/read inline-flex items-center gap-1 text-xs font-bold text-[#2563EB] dark:text-[#14B8A6] hover:text-[#1D4ED8] dark:hover:text-[#2DD4BF] transition"
                     >
                       <span>Read</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover/read:translate-x-0.5 transition-transform" />
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/read:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -772,17 +806,18 @@ export default function ShowBlog() {
         {/* =========================================================
             EDITORIAL NEWSLETTER / CONSULTATION DIGEST BANNER
         ========================================================= */}
-        <div className="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#1A1613] via-[#111B2E] to-[#0A0807] text-white border border-stone-800 shadow-2xl relative overflow-hidden">
+        <div className="mt-16 sm:mt-20 p-6 sm:p-10 lg:p-12 rounded-3xl bg-gradient-to-br from-[#0B1220] via-[#111B2E] to-[#0A101D] text-white border border-[#2563EB]/25 dark:border-white/10 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#2563EB]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#14B8A6]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-orange-400 text-[11px] font-bold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB]/20 border border-[#2563EB]/40 text-[#14B8A6] text-[11px] font-bold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Growth Intelligence Digest</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-3">
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white mb-3 leading-tight">
               Never Miss an Algorithmic Shift.
             </h3>
-            <p className="text-stone-300 text-sm leading-relaxed mb-6">
+            <p className="text-stone-300 text-sm sm:text-base leading-relaxed mb-6">
               Get our bi-weekly breakdown of Search Generative Experience, advanced GA4 schemas, and high-ticket paid media experiments delivered straight to your inbox.
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
@@ -791,12 +826,12 @@ export default function ShowBlog() {
                 required
                 value={subscriberEmail}
                 onChange={(e) => setSubscriberEmail(e.target.value)}
-                placeholder="Enter your email address..."
-                className="px-4 py-3 rounded-2xl bg-white/10 border border-white/15 text-white placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:border-[#2563EB] flex-1"
+                placeholder="Enter your business email address..."
+                className="px-4 py-3 rounded-2xl bg-white/10 border border-white/15 text-white placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/30 flex-1 min-h-[44px]"
               />
               <button
                 type="submit"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation cursor-pointer shrink-0"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-bold shadow-lg shadow-[#2563EB]/30 hover:shadow-[#2563EB]/50 hover:-translate-y-0.5 transition-all duration-300 min-h-[44px] touch-manipulation cursor-pointer shrink-0"
               >
                 <span>{subscribed ? "Subscribed!" : "Subscribe Now"}</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -807,16 +842,16 @@ export default function ShowBlog() {
       </div>
 
       {/* =========================================================
-          ADMIN LOGIN MODAL (Retained for authorized actions)
+          ADMIN LOGIN MODAL
       ========================================================= */}
       <AnimatePresence>
         {isAdminLoginOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-sm rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-[#151210] p-6 shadow-2xl"
+              className="relative w-full max-w-sm rounded-3xl border border-stone-200 dark:border-white/10 bg-white dark:bg-[#111B2E] p-6 shadow-2xl"
             >
               <button
                 type="button"
@@ -826,9 +861,9 @@ export default function ShowBlog() {
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="flex items-center gap-2 mb-3 text-[#2563EB]">
+              <div className="flex items-center gap-2 mb-3 text-[#2563EB] dark:text-[#14B8A6]">
                 <Unlock className="w-5 h-5" />
-                <h3 className="text-lg font-bold text-stone-900 dark:text-stone-100">
+                <h3 className="text-lg font-bold text-stone-900 dark:text-white">
                   Admin Passcode
                 </h3>
               </div>
@@ -840,11 +875,11 @@ export default function ShowBlog() {
                     value={adminPasswordInput}
                     onChange={(e) => setAdminPasswordInput(e.target.value)}
                     placeholder="Enter admin passcode"
-                    className="w-full px-4 py-2.5 rounded-xl bg-stone-100 dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-2.5 rounded-xl bg-stone-100 dark:bg-[#0B1220] border border-stone-300 dark:border-white/10 text-sm text-stone-900 dark:text-white focus:outline-none focus:border-[#2563EB]"
                     autoFocus
                   />
                   {adminLoginError && (
-                    <p className="mt-1.5 text-xs text-red-500 font-medium">
+                    <p className="mt-1.5 text-xs text-rose-500 font-medium">
                       {adminLoginError}
                     </p>
                   )}
@@ -854,14 +889,14 @@ export default function ShowBlog() {
                   <button
                     type="button"
                     onClick={() => setIsAdminLoginOpen(false)}
-                    className="flex-1 py-2 rounded-xl border border-stone-300 dark:border-stone-800 text-xs font-semibold hover:bg-stone-100 dark:hover:bg-stone-900 transition"
+                    className="flex-1 py-2 rounded-xl border border-stone-300 dark:border-white/10 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={adminLoginLoading}
-                    className="flex-1 py-2 rounded-xl bg-[#2563EB] hover:bg-orange-600 text-white text-xs font-bold shadow-md shadow-orange-600/30 transition disabled:opacity-50"
+                    className="flex-1 py-2 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-md shadow-[#2563EB]/25 transition disabled:opacity-50"
                   >
                     {adminLoginLoading ? "Checking..." : "Unlock"}
                   </button>
@@ -882,13 +917,13 @@ export default function ShowBlog() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-md rounded-3xl border border-red-500/30 bg-white dark:bg-[#151210] p-6 shadow-2xl"
+              className="relative w-full max-w-md rounded-3xl border border-rose-500/30 bg-white dark:bg-[#111B2E] p-6 shadow-2xl"
             >
-              <div className="p-3 rounded-2xl bg-red-500/10 text-red-500 w-fit mb-3">
+              <div className="p-3 rounded-2xl bg-rose-500/10 text-rose-500 w-fit mb-3">
                 <Trash2 className="w-5 h-5" />
               </div>
 
-              <h3 className="text-lg font-bold text-stone-900 dark:text-stone-100 mb-1">
+              <h3 className="text-lg font-bold text-stone-900 dark:text-white mb-1">
                 Delete Article?
               </h3>
               <p className="text-xs text-stone-600 dark:text-stone-400 mb-4 leading-relaxed">
@@ -899,14 +934,14 @@ export default function ShowBlog() {
                 <button
                   type="button"
                   onClick={() => setDeleteConfirmBlog(null)}
-                  className="flex-1 py-2 rounded-xl border border-stone-300 dark:border-stone-800 text-xs font-bold hover:bg-stone-100 dark:hover:bg-stone-900 transition"
+                  className="flex-1 py-2 rounded-xl border border-stone-300 dark:border-white/10 text-xs font-bold text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={handleConfirmDelete}
-                  className="flex-1 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-md shadow-red-600/30 transition"
+                  className="flex-1 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-md shadow-rose-600/30 transition"
                 >
                   Delete
                 </button>
@@ -925,16 +960,15 @@ export default function ShowBlog() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
-            className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] px-5 py-3 rounded-2xl shadow-2xl backdrop-blur-xl border flex items-center gap-2.5 text-xs sm:text-sm font-semibold ${
-              toastMessage.type === "success"
-                ? "bg-emerald-950/90 border-emerald-500/40 text-emerald-200"
-                : "bg-red-950/90 border-red-500/40 text-red-200"
-            }`}
+            className={`fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] px-5 py-3 rounded-2xl shadow-2xl backdrop-blur-xl border flex items-center gap-2.5 text-xs sm:text-sm font-semibold ${toastMessage.type === "success"
+              ? "bg-emerald-950/90 border-emerald-500/40 text-emerald-200"
+              : "bg-rose-950/90 border-rose-500/40 text-rose-200"
+              }`}
           >
             {toastMessage.type === "success" ? (
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             ) : (
-              <AlertCircle className="w-4 h-4 text-red-400" />
+              <AlertCircle className="w-4 h-4 text-rose-400" />
             )}
             <span>{toastMessage.text}</span>
           </motion.div>

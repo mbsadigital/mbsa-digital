@@ -190,8 +190,9 @@ export const Banner: React.FC<BannerProps> = ({
                     <Image
                       src={item.logo}
                       alt={item.name}
-                      width={58}
-                      height={58}
+                      width={68}
+                      height={68}
+                      loading="eager"
                       className="w-full h-full object-contain"
                     />
                   </div>

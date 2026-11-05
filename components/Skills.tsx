@@ -81,17 +81,17 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "03 Web Dev",
     domain: "Sub-Second Reactive Full-Stack Runtimes",
     overview:
-      "Edge-computed Next.js pipelines, TypeScript modular components, concurrent state sync, and sub-50ms interaction latencies.",
+      "Build The website using HTML,CSS,JS and Custom Software,ios development and Software Development.",
     image: "/banner/webdevelopement.png",
     accentColor: "#2563EB",
     frequency: "144.0 kHz",
     proficiency: 98,
     busOutputY: 155,
     stack: [
-      { tool: "Next.js App Router", tier: "Framework" },
-      { tool: "TypeScript Strict", tier: "Architecture" },
-      { tool: "Tailwind CSS", tier: "Design System" },
-      { tool: "Framer Motion", tier: "Kinematics" },
+      { tool: "Wordpress,WooCommerce", tier: "OpenSourece" },
+      { tool: "ios Development,Software Development,Shopify", tier: "Development" },
+      { tool: "HTML,CSS,JS", tier: "Design System" },
+      { tool: "CMS,Custom Software,", tier: "Develop website" },
     ],
   },
   {
@@ -269,7 +269,7 @@ export default function Skills() {
         <div
           className="absolute inset-0 opacity-[0.035]"
           style={{
-            backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)`,
+            backgroundImage: `radial-gradient(#6e7ccbff 1px, transparent 1px)`,
             backgroundSize: "28px 28px",
           }}
         />
@@ -300,7 +300,7 @@ export default function Skills() {
             >
               Honeycomb Reactors.
               <br />
-              <span className="text-[#2563EB]">
+              <span className="text-[#2563EB] dark:text-[#52adbff]">
                 Hardware-Grade Execution.
               </span>
             </motion.h2>
@@ -498,6 +498,7 @@ export default function Skills() {
                       alt={activeSkill.name}
                       width={80}
                       height={80}
+                      loading="eager"
                       className="h-full w-full object-contain"
                     />
                   </motion.div>
@@ -654,6 +655,7 @@ function HexCell({
               alt={skill.name}
               width={48}
               height={48}
+              loading="eager"
               className="h-full w-full object-contain"
             />
           </div>
