@@ -175,7 +175,7 @@ const SERVICE_CATEGORIES = [
     count: 4,
     icon: Code2,
     color: "text-blue-600 dark:text-blue-400",
-    flagship: "Next.js Dev & E-Commerce",
+    flagship: "Wordpress , Shpify & E-Commerce",
     href: "/services?cat=websites-creative",
   },
   {
@@ -279,19 +279,19 @@ export default function Footer() {
               </Link>
 
               <p className="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed max-w-sm mb-5">
-                We combine algorithmic technical SEO, Generative Engine Optimisation (GEO), and high-performance Next.js engineering to build enduring digital visibility that converts into measurable revenue.
+                We combine algorithmic technical SEO, Generative Engine Optimisation (GEO), and high-performance Custom Software engineering to build enduring digital visibility that converts into measurable revenue.
               </p>
 
               {/* Dual-Market Presence Pill */}
               <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
                 <span className="flex items-center gap-1.5">
-                  <UKFlag className="w-4 h-3" />
-                  <span>London, UK</span>
+                  <IndiaFlag className="w-4 h-3" />
+                  <span>Vadodara , Gujarat</span>
                 </span>
                 <span className="text-[#2563EB] font-bold">⇄</span>
                 <span className="flex items-center gap-1.5">
-                  <IndiaFlag className="w-4 h-3" />
-                  <span>Vadodara, India</span>
+                  <UKFlag className="w-4 h-3" />
+                  <span>London , UK</span>
                 </span>
               </div>
             </div>
@@ -366,9 +366,6 @@ export default function Footer() {
                           {cat.title}
                         </span>
                       </div>
-                      <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-md bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 group-hover:bg-blue-500/10 group-hover:text-[#2563EB] transition-colors">
-                        {cat.count}
-                      </span>
                     </div>
                     <p className="text-[11px] text-slate-500 dark:text-slate-400 pl-5.5 mt-0.5 leading-snug truncate">
                       {cat.flagship}

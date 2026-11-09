@@ -424,3 +424,13 @@ canvas {
     transparent 100%
   );
 }
+
+/* ============================================================
+   PERFORMANCE & DEVTOOLS RECORDING OPTIMIZATIONS
+   content-visibility allows modern browsers to defer layout & paint
+   of off-screen sections until scrolled into view.
+============================================================ */
+.perf-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}

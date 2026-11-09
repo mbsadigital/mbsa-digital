@@ -6,7 +6,7 @@ const ADMIN_STORAGE_KEY = "digital_portfolio_admin_token";
 export interface BlogFilterOptions {
   category?: string;
   search?: string;
-  sort?: "newest" | "popular" | "likes";
+  sort?: "newest" | "oldest" | string;
 }
 
 export interface BlogFormData {

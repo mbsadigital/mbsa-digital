@@ -106,7 +106,7 @@ export const Banner: React.FC<BannerProps> = ({
 
   return (
     <div
-      className={`relative w-full overflow-hidden select-none py-8 sm:py-12 ${className}`}
+      className={`relative w-full overflow-hidden select-none py-8 sm:py-12 min-h-[104px] sm:min-h-[120px] ${className}`}
       style={{ "--marquee-speed": `${speed}s` } as React.CSSProperties}
     >
       {/* Subtle dotted grid aura behind the ribbon matching the reference design */}
@@ -192,7 +192,7 @@ export const Banner: React.FC<BannerProps> = ({
                       alt={item.name}
                       width={68}
                       height={68}
-                      loading="eager"
+                      loading="lazy"
                       className="w-full h-full object-contain"
                     />
                   </div>

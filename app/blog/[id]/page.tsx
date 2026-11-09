@@ -21,13 +21,14 @@ import {
   BookOpen,
   Plus,
   Tag,
-  AlertCircle
+  AlertCircle,
+  HelpCircle,
+  ChevronDown
 } from "lucide-react";
 import { BlogPost, FALLBACK_BLOGS } from "@/lib/fallbackBlogs";
 import {
   fetchBlogById,
   fetchBlogs,
-  likeBlog,
   deleteBlog,
   getStoredAdminToken,
   loginAdmin
@@ -43,8 +44,7 @@ export default function BlogDetailPage() {
   const [allBlogs, setAllBlogs] = useState<BlogPost[]>(FALLBACK_BLOGS);
   const [loading, setLoading] = useState(true);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [hasLikedLocally, setHasLikedLocally] = useState(false);
-  const [, setLocalLikesCount] = useState<number>(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   // Admin Authentication State
   const [adminToken, setAdminToken] = useState<string | null>(null);
@@ -133,14 +133,12 @@ export default function BlogDetailPage() {
       try {
         const data = await fetchBlogById(idOrSlug);
         setBlog(data);
-        setLocalLikesCount(data.likes || 0);
       } catch {
         // Fallback matching
         const fallback =
           FALLBACK_BLOGS.find((b) => b._id === idOrSlug || b.slug === idOrSlug) ||
           FALLBACK_BLOGS[0];
         setBlog(fallback);
-        setLocalLikesCount(fallback.likes || 0);
       } finally {
         setLoading(false);
       }
@@ -251,7 +249,7 @@ export default function BlogDetailPage() {
             <div className="h-4 w-[1px] bg-stone-300 dark:bg-stone-800 hidden md:block" />
 
             {/* Breadcrumb snippet */}
-            <div className="hidden md:flex items-center gap-2 text-xs text-stone-500 font-mono">
+            <div className="hidden md:flex items-center gap-2 text-xs text-stone-500 font-medium">
               <Link href="/" className="hover:text-stone-900 dark:hover:text-stone-100">Home</Link>
               <span>/</span>
               <Link href="/blog" className="hover:text-stone-900 dark:hover:text-stone-100">Articles</Link>
@@ -321,11 +319,11 @@ export default function BlogDetailPage() {
       <article className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14">
         {/* CATEGORY KICKER */}
         <div className="flex items-center gap-3 mb-4">
-          <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
+          <span className="w-8 h-px bg-[#2563EB]" />
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB]">
             {blog.category}
           </span>
-          <span className="text-xs font-mono text-stone-500 dark:text-stone-400">
+          <span className="text-xs font-medium text-stone-500 dark:text-stone-400">
             Case Study & Strategic Growth Blueprint
           </span>
         </div>
@@ -338,10 +336,10 @@ export default function BlogDetailPage() {
         {/* 2. BELOW TITLE: SMALL DATE, READ TIME (AND AUTHOR & ENGAGEMENT ACTIONS) */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 py-4 mb-8 border-y border-stone-200/90 dark:border-stone-800/90">
           {/* Left: Author + Small Date + Small Read Time */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-stone-600 dark:text-stone-400 font-mono">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-stone-600 dark:text-stone-400 font-medium">
             {/* Author */}
             <div className="flex items-center gap-2 font-sans font-medium text-stone-900 dark:text-stone-100">
-              <div className="relative w-8 h-8 rounded-full overflow-hidden border border-orange-500/40 shrink-0">
+              <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#2563EB]/40 shrink-0">
                 <Image
                   src={blog.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
                   alt={blog.author?.name || "Author"}
@@ -416,10 +414,10 @@ export default function BlogDetailPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
           <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-center justify-between pointer-events-none">
-            <span className="px-3 py-1.5 rounded-xl bg-black/65 backdrop-blur-md text-white/95 text-xs font-mono border border-white/20">
+            <span className="px-3 py-1.5 rounded-xl bg-black/65 backdrop-blur-md text-white/95 text-xs font-medium border border-white/20">
               {blog.category} Strategic Case Study
             </span>
-            <span className="text-white/80 text-xs font-mono drop-shadow hidden sm:inline">
+            <span className="text-white/80 text-xs font-medium drop-shadow hidden sm:inline">
               Digital Marketing & SEO Blueprint
             </span>
           </div>
@@ -444,12 +442,61 @@ export default function BlogDetailPage() {
           <ArticleMarkdownRenderer content={blog.content} />
         </div>
 
+        {/* 5.1 BLOG-WISE FAQ ACCORDION */}
+        {blog.faqs && blog.faqs.length > 0 && (
+          <div className="my-10 p-6 sm:p-8 rounded-3xl border border-stone-200/90 dark:border-white/10 bg-white/80 dark:bg-[#111B2E] shadow-sm backdrop-blur-xl">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2.5 rounded-2xl bg-[#2563EB]/10 text-[#2563EB] shrink-0">
+                <HelpCircle className="w-5 h-5 text-[#2563EB]" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-[#2563EB]">
+                  Questions & Answers
+                </p>
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-white">
+                  Frequently Asked Questions
+                </h3>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              {blog.faqs.map((faq, fIdx) => {
+                const isOpen = openFaqIndex === fIdx;
+                return (
+                  <div
+                    key={fIdx}
+                    className="rounded-2xl border border-stone-200/80 dark:border-white/10 bg-stone-50/60 dark:bg-stone-900/50 overflow-hidden transition-colors"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaqIndex(isOpen ? null : fIdx)}
+                      className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left font-bold text-stone-900 dark:text-stone-100 hover:text-[#2563EB] dark:hover:text-blue-400 transition cursor-pointer"
+                    >
+                      <span className="text-sm sm:text-base">{faq.question}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-stone-500 shrink-0 transition-transform duration-300 ${
+                          isOpen ? "rotate-180 text-[#2563EB]" : ""
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="px-4 pb-4 sm:px-5 sm:pb-5 pt-0 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed border-t border-stone-200/50 dark:border-white/5 mt-1 pt-3">
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* 6. AFTER CONTENT ARTICLE: TAGS */}
         {blog.tags && blog.tags.length > 0 && (
           <div className="pt-8 pb-4 border-t border-stone-200 dark:border-stone-800">
             <div className="flex items-center gap-2 mb-3.5">
               <Tag className="w-4 h-4 text-[#2563EB]" />
-              <p className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 font-mono">
+              <p className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 font-medium">
                 Tags & SEO Keywords
               </p>
             </div>
@@ -542,14 +589,14 @@ export default function BlogDetailPage() {
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-0.5 rounded-lg bg-black/60 text-white text-[10px] font-mono">
+                        <span className="px-2.5 py-0.5 rounded-lg bg-black/60 text-white text-[10px] font-medium">
                           {rel.category}
                         </span>
                       </div>
                     </Link>
 
                     <div className="p-5">
-                      <div className="flex items-center gap-2 text-[11px] text-stone-500 font-mono mb-2">
+                      <div className="flex items-center gap-2 text-[11px] text-stone-500 font-medium mb-2">
                         <span>{rel.readTime}</span>
                       </div>
                       <Link

@@ -4,6 +4,7 @@ import {
   constructMetadata,
   getBlogPostJsonLd,
   getBreadcrumbJsonLd,
+  getFaqJsonLd,
 } from "@/lib/seo";
 import { FALLBACK_BLOGS, type BlogPost } from "@/lib/fallbackBlogs";
 
@@ -34,8 +35,6 @@ function findBlog(id: string): BlogPost {
         role: "Digital Marketing & SEO Specialist",
         avatar: "/muskan-portrait.jpg",
       },
-      views: 120,
-      likes: 15,
       featured: false,
       published: true,
       createdAt: new Date().toISOString(),
@@ -74,6 +73,10 @@ export default async function BlogDetailLayout({
     { name: "Blog", path: "/blog" },
     { name: blog.title, path: `/blog/${blog.slug || blog._id}` },
   ]);
+  const faqJsonLd =
+    blog.faqs && blog.faqs.length > 0
+      ? getFaqJsonLd(blog.faqs.map((f) => ({ q: f.question, a: f.answer })))
+      : null;
 
   return (
     <>
@@ -85,6 +88,12 @@ export default async function BlogDetailLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       {children}
     </>
   );

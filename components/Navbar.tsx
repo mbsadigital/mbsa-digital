@@ -422,8 +422,6 @@ export default function Navbar() {
     if (
       pathname === "/industries" ||
       pathname.startsWith("/industries/") ||
-      pathname === "/insights" ||
-      pathname.startsWith("/insights/") ||
       pathname === "/skills" ||
       pathname.startsWith("/skills/")
     )

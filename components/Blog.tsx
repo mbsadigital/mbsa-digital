@@ -122,8 +122,8 @@ export default function Blog() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
-              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
+              <span className="w-8 h-px bg-[#2563EB]" />
+              <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB]">
                 Blog Article
               </span>
             </div>
@@ -144,7 +144,7 @@ export default function Blog() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/blog"
-              className="group/btn flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/95 dark:bg-[#111B2E] hover:bg-[#2563EB] dark:hover:bg-[#2563EB] text-stone-900 dark:text-white hover:text-white text-xs sm:text-sm font-bold backdrop-blur-md border border-stone-200/80 dark:border-white/10 hover:border-[#2563EB] shadow-sm hover:shadow-[#2563EB]/25 transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+              className="group/btn flex items-center gap-1.5 sm:gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#111B2E] text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-semibold backdrop-blur-md border border-stone-200/90 dark:border-white/10 hover:border-stone-400 dark:hover:border-white/25 shadow-xs transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
             >
               <span>View all Articles</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -153,17 +153,15 @@ export default function Blog() {
         </div>
 
         {/* =========================================================
-            FEATURED ARTICLE HERO BANNER -> NAVIGATES TO /viewblog/[id]
+            FEATURED ARTICLE HERO BANNER -> NAVIGATES TO /blog/[id]
         ========================================================= */}
         {featuredArticle && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-12 group relative rounded-3xl overflow-hidden border border-[#2563EB]/25 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-md hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300"
+            className="mb-12 group relative rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E] shadow-sm hover:shadow-xl hover:border-stone-300 dark:hover:border-white/20 transition-all duration-300"
           >
-            {/* HERO ARTICLE TOP RIGHT: VIEW ALL ARTICLES BUTTON */}
-
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
               {/* Image Column */}
               <Link
@@ -183,11 +181,11 @@ export default function Blog() {
 
                 {/* Badge Overlay */}
                 <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-[#2563EB]/30 flex items-center gap-1.5">
+                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-bold uppercase tracking-wider shadow-md shadow-[#2563EB]/25 flex items-center gap-1.5">
                     <Sparkles className="w-3 h-3" />
                     Featured Insight
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-mono border border-white/20">
+                  <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-medium border border-white/20">
                     {featuredArticle.category}
                   </span>
                 </div>
@@ -196,9 +194,9 @@ export default function Blog() {
               {/* Content Column */}
               <div className="lg:col-span-6 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-4 text-xs text-stone-500 dark:text-stone-400 mb-3 font-mono">
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#14B8A6]" />
+                  <div className="flex items-center gap-4 text-xs text-stone-500 dark:text-stone-400 mb-3 font-medium">
+                    <span className="flex items-center gap-1.5 text-[#2563EB]">
+                      <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
                       {featuredArticle.readTime}
                     </span>
                     <span>•</span>
@@ -214,7 +212,7 @@ export default function Blog() {
 
                   <Link
                     href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                    className="block text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 cursor-pointer leading-tight mb-3"
+                    className="block text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-stone-900 dark:text-white transition-colors duration-200 cursor-pointer leading-tight mb-3"
                   >
                     {featuredArticle.title}
                   </Link>
@@ -228,15 +226,15 @@ export default function Blog() {
                     {featuredArticle.tags?.slice(0, 4).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2.5 py-0.5 rounded-lg text-[12px] font-bold bg-stone-100 dark:bg-stone-900 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-800"
+                        className="px-2.5 py-0.5 rounded-lg text-[12px] font-medium bg-stone-100 dark:bg-stone-800/80 text-stone-600 dark:text-stone-300 border border-stone-200/80 dark:border-stone-700/80"
                       >
-                        {tag}
+                        #{tag}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Footer with Author, Metrics, and Actions */}
+                {/* Footer with Author and Action Buttons */}
                 <div className="pt-4 border-t border-stone-200 dark:border-stone-800 flex items-center justify-between flex-wrap gap-4">
                   {/* Author */}
                   <div className="flex items-center gap-3">
@@ -254,15 +252,13 @@ export default function Blog() {
                         {featuredArticle.author?.name || "Muskan Shekh"}
                       </p>
                       <p className="text-[10px] text-stone-500 dark:text-stone-400">
-                        {featuredArticle.author?.role || "Digital Marketing Specialist"}
+                        {featuredArticle.author?.role || "Digital Marketing & SEO Specialist"}
                       </p>
                     </div>
                   </div>
 
-                  {/* Metrics & Action Buttons */}
+                  {/* Actions */}
                   <div className="flex items-center gap-2">
-
-
                     {/* Edit & Delete Action Buttons (Admin Only) */}
                     {adminToken && (
                       <div className="flex items-center gap-1 ml-1 pl-1 border-l border-stone-200 dark:border-stone-800">
@@ -329,7 +325,7 @@ export default function Blog() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-sm hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.18)] dark:hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1.5"
+                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E] shadow-sm hover:shadow-xl hover:border-stone-300 dark:hover:border-white/20 transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
                   {/* Article Card Image Container */}
@@ -353,7 +349,7 @@ export default function Blog() {
 
                     {/* Category Pill on Image */}
                     <div className="absolute top-3 left-3 pointer-events-none z-10">
-                      <span className="px-2.5 py-1 rounded-full bg-stone-950/70 backdrop-blur-md text-white text-[10px] font-mono uppercase tracking-wider font-semibold border border-white/20">
+                      <span className="px-2.5 py-1 rounded-full bg-stone-950/70 backdrop-blur-md text-white text-[10px] uppercase tracking-wider font-semibold border border-white/20">
                         {article.category}
                       </span>
                     </div>
@@ -383,8 +379,8 @@ export default function Blog() {
                       </div>
                     )}
 
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/90 font-mono pointer-events-none z-10">
-                      <span className="flex items-center gap-1 text-[#14B8A6] font-semibold">
+                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/90 font-medium pointer-events-none z-10">
+                      <span className="flex items-center gap-1 text-blue-400 font-semibold">
                         <Clock className="w-3 h-3" />
                         {article.readTime}
                       </span>
@@ -402,7 +398,7 @@ export default function Blog() {
                   <div className="p-5 sm:p-6">
                     <Link
                       href={`/blog/${article.slug || article._id}`}
-                      className="block text-lg font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 cursor-pointer line-clamp-2 leading-snug mb-2.5"
+                      className="block text-lg font-bold tracking-tight text-stone-900 dark:text-white transition-colors duration-200 cursor-pointer line-clamp-2 leading-snug mb-2.5"
                     >
                       {article.title}
                     </Link>
@@ -416,7 +412,7 @@ export default function Blog() {
                       {article.tags?.slice(0, 3).map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 rounded-md text-[11px] font-mono text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800/80 border border-stone-200/60 dark:border-stone-700/60 group-hover:border-[#2563EB]/30 transition-colors"
+                          className="px-2 py-0.5 rounded-md text-[11px] font-medium text-stone-600 dark:text-stone-300 bg-stone-100 dark:bg-stone-800/80 border border-stone-200/60 dark:border-stone-700/60"
                         >
                           #{tag}
                         </span>
@@ -427,10 +423,25 @@ export default function Blog() {
 
                 {/* Card Footer */}
                 <div className="px-5 sm:px-6 py-4 border-t border-stone-200/70 dark:border-white/10 flex items-center justify-between bg-stone-50/50 dark:bg-stone-900/40">
+                  <div className="flex items-center gap-2">
+                    <div className="relative w-6 h-6 rounded-full overflow-hidden border border-[#2563EB]/30 shrink-0">
+                      <Image
+                        src={article.author?.avatar || PRESET_COVERS[0].url}
+                        alt={article.author?.name || "Author"}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                      />
+                    </div>
+                    <span className="text-xs font-semibold text-stone-700 dark:text-stone-300 truncate max-w-[110px]">
+                      {article.author?.name || "Muskan Shekh"}
+                    </span>
+                  </div>
+
                   {/* READ / VIEW ARTICLE BUTTON -> NAVIGATES TO /blog/[id] */}
                   <Link
                     href={`/blog/${article.slug || article._id}`}
-                    className="flex items-center gap-1 text-xs font-bold text-[#2563EB] dark:text-[#14B8A6] hover:text-[#1D4ED8] dark:hover:text-[#2DD4BF] transition group-hover:translate-x-1 duration-200 cursor-pointer"
+                    className="flex items-center gap-1 text-xs font-bold text-[#2563EB] dark:text-blue-400 hover:text-[#1D4ED8] dark:hover:text-blue-300 transition group-hover:translate-x-0.5 duration-200 cursor-pointer"
                   >
                     <span>View Article</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -447,38 +458,10 @@ export default function Blog() {
         <div className="mt-14 sm:mt-16 text-center">
           <Link
             href="/blog"
-            className=" group
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  w-full
-                  sm:w-auto
-                  px-5
-                  sm:px-6
-                  py-2.5
-                  sm:py-3
-                  rounded-full
-                  bg-[#2563EB]
-                  text-white
-                  text-xs
-                  sm:text-[13.5px]
-                  font-bold
-                  border
-
-                  hover:border-blue-800
-                  shadow-md
-                  shadow-[#2563EB]
-                  hover:shadow-[#2563EB]
-                  hover:-translate-y-0.5
-                  transition-all
-                  duration-300
-                  min-h-[42px]
-                  sm:min-h-[44px]
-                  touch-manipulation"
+            className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs sm:text-sm font-bold shadow-md shadow-[#2563EB]/20 hover:shadow-lg hover:shadow-[#2563EB]/30 hover:-translate-y-0.5 transition-all duration-300 min-h-[44px] cursor-pointer"
           >
             <span>View All Articles & Publications</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>
       </div>

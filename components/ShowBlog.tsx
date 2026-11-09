@@ -9,7 +9,6 @@ import {
   Plus,
   Edit3,
   Trash2,
-  Heart,
   Clock,
   Unlock,
   X,
@@ -24,14 +23,12 @@ import {
   SlidersHorizontal,
   BookOpen,
   TrendingUp,
-  Eye,
   Check,
 } from "lucide-react";
 import { BlogPost, FALLBACK_BLOGS, CATEGORIES, PRESET_COVERS } from "@/lib/fallbackBlogs";
 import {
   fetchBlogs,
   deleteBlog,
-  likeBlog,
   loginAdmin,
   getStoredAdminToken,
   removeAdminToken,
@@ -44,7 +41,7 @@ export default function ShowBlog() {
   // Filtering & Sorting State
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState<"newest" | "popular" | "likes">("newest");
+  const [sortBy, setSortBy] = useState<"newest" | "oldest">("newest");
 
   // Admin Authentication State
   const [adminToken, setAdminToken] = useState<string | null>(null);
@@ -110,10 +107,8 @@ export default function ShowBlog() {
             b.tags?.some((t) => t.toLowerCase().includes(q))
         );
       }
-      if (sortBy === "popular") {
-        filtered.sort((a, b) => (b.views || 0) - (a.views || 0));
-      } else if (sortBy === "likes") {
-        filtered.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+      if (sortBy === "oldest") {
+        filtered.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
       } else {
         filtered.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
       }
@@ -168,21 +163,6 @@ export default function ShowBlog() {
     }
   };
 
-  // Like Article
-  const handleLike = async (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    try {
-      const newLikes = await likeBlog(id);
-      setBlogs((prev) =>
-        prev.map((b) => (b._id === id ? { ...b, likes: newLikes } : b))
-      );
-    } catch {
-      setBlogs((prev) =>
-        prev.map((b) => (b._id === id ? { ...b, likes: (b.likes || 0) + 1 } : b))
-      );
-    }
-  };
 
   // Reset Filters
   const handleResetFilters = () => {
@@ -539,12 +519,11 @@ export default function ShowBlog() {
                 <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 hidden sm:inline">Sort:</span>
                 <select
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as "newest" | "popular" | "likes")}
+                  onChange={(e) => setSortBy(e.target.value as "newest" | "oldest")}
                   className="bg-transparent text-xs font-semibold text-stone-800 dark:text-stone-200 focus:outline-none cursor-pointer"
                 >
                   <option value="newest" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Newest First</option>
-                  <option value="popular" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Most Read</option>
-                  <option value="likes" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Most Liked</option>
+                  <option value="oldest" className="bg-white dark:bg-[#111B2E] text-stone-900 dark:text-white">Oldest First</option>
                 </select>
               </div>
 
@@ -754,17 +733,6 @@ export default function ShowBlog() {
                         Verified
                       </div>
                     </div>
-
-                    {/* Interactive Heart / Like */}
-                    <button
-                      type="button"
-                      onClick={(e) => handleLike(e, article._id)}
-                      className="group/heart flex items-center gap-1 text-[11px] font-mono text-stone-400 hover:text-rose-500 transition-colors p-1 rounded-md cursor-pointer ml-1"
-                      title="Like this publication"
-                    >
-                      <Heart className="w-3.5 h-3.5 group-hover/heart:fill-rose-500 group-hover/heart:text-rose-500 transition-colors" />
-                      <span>{article.likes || 0}</span>
-                    </button>
                   </div>
 
                   {/* Actions: Admin and Read Button */}

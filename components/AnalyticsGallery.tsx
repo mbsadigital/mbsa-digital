@@ -19,10 +19,7 @@ import {
   Layers,
   Sparkles,
   Smartphone,
-  Wifi,
-  Signal,
   Eye,
-  Share2,
 } from "lucide-react";
 import {
   ALL_ANALYTICS_PROOFS,
@@ -37,7 +34,7 @@ type CategoryFilter = CategoryId;
 
 const CATEGORY_TABS: { id: CategoryFilter; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: "all", label: "All Proofs", icon: Layers },
-  { id: "social", label: "Social Media (Mobile UI)", icon: Smartphone },
+  { id: "social", label: "Social Media Posts", icon: Sparkles },
   { id: "gsc", label: "Search Console (GSC)", icon: Search },
   { id: "ga4", label: "Google Analytics (GA4)", icon: BarChart3 },
   { id: "keywords", label: "Keyword SERP", icon: TrendingUp },
@@ -101,7 +98,7 @@ export default function AnalyticsGallery() {
 
   // Total proofs count
   const totalProofsCount = ALL_ANALYTICS_PROOFS.length;
-  const totalSocialCount = ALL_ANALYTICS_PROOFS.filter((p) => p.isMobile).length;
+  const totalSocialCount = ALL_ANALYTICS_PROOFS.filter((p) => p.isSocialPost || p.isMobile || p.categoryId === "social").length;
 
   // Active item in lightbox
   const activeLightboxProof =
@@ -136,63 +133,7 @@ export default function AnalyticsGallery() {
 
   return (
     <div className="w-full">
-      {/* ====================================================
-          1. STATS OVERVIEW BANNER (High-Impact Proof Summary)
-      ==================================================== */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
-        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-xs">
-          <div className="flex items-center justify-between text-stone-500 dark:text-stone-400 text-xs font-medium mb-1">
-            <span>Verified Screenshots</span>
-            <Folder className="w-4 h-4 text-[#2563EB]" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white">
-            {totalProofsCount} Proofs
-          </div>
-          <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-1 flex items-center gap-1">
-            <CheckCircle2 className="w-3 h-3" />
-            5 Folders (incl. Social Media)
-          </div>
-        </div>
 
-        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-xs">
-          <div className="flex items-center justify-between text-stone-500 dark:text-stone-400 text-xs font-medium mb-1">
-            <span>Social &amp; Mobile Reach</span>
-            <Smartphone className="w-4 h-4 text-pink-500" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white">
-            2.4M+
-          </div>
-          <div className="text-[11px] text-pink-600 dark:text-pink-400 font-semibold mt-1">
-            {totalSocialCount} Mobile Phone Proofs
-          </div>
-        </div>
-
-        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-xs">
-          <div className="flex items-center justify-between text-stone-500 dark:text-stone-400 text-xs font-medium mb-1">
-            <span>GSC &amp; Viral Impr</span>
-            <Search className="w-4 h-4 text-[#2563EB]" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white">
-            20.6M+
-          </div>
-          <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
-            Live Impressions Audited
-          </div>
-        </div>
-
-        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#111B2E] border border-stone-200/80 dark:border-white/10 shadow-xs">
-          <div className="flex items-center justify-between text-stone-500 dark:text-stone-400 text-xs font-medium mb-1">
-            <span>SERP &amp; Viral Tier</span>
-            <TrendingUp className="w-4 h-4 text-purple-500" />
-          </div>
-          <div className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white">
-            Top 1-3
-          </div>
-          <div className="text-[11px] text-stone-500 dark:text-stone-400 font-semibold mt-1">
-            Google #1 &amp; Viral For You
-          </div>
-        </div>
-      </div>
 
       {/* ====================================================
           2. FILTER & CLIENT FOLDER CONTROLS BAR
@@ -205,20 +146,18 @@ export default function AnalyticsGallery() {
             <button
               type="button"
               onClick={() => setSelectedFolder("all")}
-              className={`shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
-                selectedFolder === "all"
+              className={`shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${selectedFolder === "all"
                   ? "bg-[#2563EB] text-white border-[#2563EB] shadow-md shadow-blue-500/25"
                   : "bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-200 border-stone-200 dark:border-white/10 hover:border-blue-400"
-              }`}
+                }`}
             >
               <Layers className="w-3.5 h-3.5" />
               <span>All Client Folders</span>
               <span
-                className={`ml-1 px-1.5 py-0.5 rounded-full text-[10px] ${
-                  selectedFolder === "all"
+                className={`ml-1 px-1.5 py-0.5 rounded-full text-[10px] ${selectedFolder === "all"
                     ? "bg-white/20 text-white"
                     : "bg-stone-200 dark:bg-white/10 text-stone-600 dark:text-stone-300"
-                }`}
+                  }`}
               >
                 {totalProofsCount}
               </span>
@@ -227,32 +166,33 @@ export default function AnalyticsGallery() {
             {/* Individual Client Folders */}
             {CLIENT_FOLDERS.map((folder) => {
               const isSelected = selectedFolder === folder.folderName;
-              const isSocial = folder.folderName === "Social media";
+              const isSocial =
+                folder.folderName === "Social media" ||
+                folder.folderName === "Social Media Post" ||
+                folder.isSocialPost;
               return (
                 <button
                   key={folder.id}
                   type="button"
                   onClick={() => setSelectedFolder(folder.folderName)}
-                  className={`shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
-                    isSelected
+                  className={`shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${isSelected
                       ? isSocial
                         ? "bg-gradient-to-r from-pink-600 to-purple-600 text-white border-pink-500 shadow-md shadow-pink-500/25"
                         : "bg-[#2563EB] text-white border-[#2563EB] shadow-md shadow-blue-500/25"
                       : "bg-stone-100 dark:bg-white/5 text-stone-700 dark:text-stone-200 border-stone-200 dark:border-white/10 hover:border-blue-400"
-                  }`}
+                    }`}
                 >
                   {isSocial ? (
-                    <Smartphone className="w-3.5 h-3.5 text-pink-400" />
+                    <Sparkles className="w-3.5 h-3.5 text-pink-400" />
                   ) : (
                     <Folder className="w-3.5 h-3.5 text-amber-500" />
                   )}
                   <span>{folder.name}</span>
                   <span
-                    className={`ml-1 px-1.5 py-0.5 rounded-full text-[10px] font-mono ${
-                      isSelected
+                    className={`ml-1 px-1.5 py-0.5 rounded-full text-[10px] font-mono ${isSelected
                         ? "bg-white/20 text-white"
                         : "bg-stone-200 dark:bg-white/10 text-stone-600 dark:text-stone-300"
-                    }`}
+                      }`}
                   >
                     {folder.totalImages}
                   </span>
@@ -275,19 +215,18 @@ export default function AnalyticsGallery() {
                   key={tab.id}
                   type="button"
                   onClick={() => setSelectedCategory(tab.id)}
-                  className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
-                    isCatActive
+                  className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${isCatActive
                       ? isSocialTab
                         ? "bg-pink-600/10 text-pink-600 dark:text-pink-400 font-bold border border-pink-500/30"
                         : "bg-blue-600/10 text-[#2563EB] dark:text-blue-400 font-bold border border-blue-500/30"
                       : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-100 dark:hover:bg-white/5"
-                  }`}
+                    }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
                   <span>{tab.label}</span>
                   {isSocialTab && (
                     <span className="px-1.5 py-0.2 rounded-full text-[9px] bg-pink-500/20 text-pink-600 dark:text-pink-300 font-bold">
-                      14
+                      {totalSocialCount}
                     </span>
                   )}
                 </button>
@@ -345,7 +284,13 @@ export default function AnalyticsGallery() {
       ) : (
         <div className="space-y-12 sm:space-y-16">
           {proofsByFolder.map(({ folder, proofs }) => {
-            const isSocialFolder = folder.folderName === "Social media";
+            const isSocialPostFolder =
+              folder.folderName === "Social Media Post" || folder.isSocialPost;
+            const isMobileFolder =
+              folder.folderName === "SocialMedia" ||
+              folder.folderName === "Social media" ||
+              folder.isMobile;
+            const isSpecialFolder = isMobileFolder || isSocialPostFolder;
 
             return (
               <section
@@ -355,20 +300,18 @@ export default function AnalyticsGallery() {
               >
                 {/* Folder Group Header Bar */}
                 <div
-                  className={`p-4 sm:p-5 rounded-2xl border mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
-                    isSocialFolder
+                  className={`p-4 sm:p-5 rounded-2xl border mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${isSpecialFolder
                       ? "bg-gradient-to-r from-pink-50 via-purple-50/50 to-transparent dark:from-pink-950/25 dark:via-purple-950/20 dark:to-transparent border-pink-200 dark:border-pink-900/40"
                       : "bg-gradient-to-r from-blue-50 via-white to-transparent dark:from-blue-950/25 dark:via-[#111B2E] dark:to-transparent border-blue-100 dark:border-white/10"
-                  }`}
+                    }`}
                 >
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <span
-                        className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider ${
-                          isSocialFolder
+                        className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider ${isSpecialFolder
                             ? "bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-500/20"
                             : "bg-blue-500/10 text-[#2563EB] dark:text-blue-400 border border-blue-500/20"
-                        }`}
+                          }`}
                       >
                         {folder.industry}
                       </span>
@@ -378,8 +321,10 @@ export default function AnalyticsGallery() {
                     </div>
 
                     <h2 className="text-xl sm:text-2xl font-black text-stone-900 dark:text-white flex items-center gap-2">
-                      {isSocialFolder ? (
+                      {isMobileFolder ? (
                         <Smartphone className="w-5 h-5 text-pink-500" />
+                      ) : isSocialPostFolder ? (
+                        <Sparkles className="w-5 h-5 text-pink-500" />
                       ) : (
                         <Folder className="w-5 h-5 text-amber-500" />
                       )}
@@ -398,11 +343,10 @@ export default function AnalyticsGallery() {
                         Top Metric
                       </span>
                       <span
-                        className={`text-sm font-extrabold ${
-                          isSocialFolder
+                        className={`text-sm font-extrabold ${isSpecialFolder
                             ? "text-pink-600 dark:text-pink-400"
                             : "text-[#2563EB] dark:text-blue-400"
-                        }`}
+                          }`}
                       >
                         {folder.highlightStat}
                       </span>
@@ -420,14 +364,15 @@ export default function AnalyticsGallery() {
 
                 {/* ==========================================================
                     GRID DISPLAY:
-                    - For Social Media: Specialized Portrait Smartphone Grid (4 cols)
+                    - For SocialMedia Mobile: Specialized 9:19.5 Smartphone Frame Grid
+                    - For Social Media Post: Specialized 4:5 Social Media Creative Grid
                     - For Standard Proofs: Landscape Dashboard Grid (3 cols)
                 ========================================================== */}
-                {isSocialFolder ? (
+                {isMobileFolder ? (
                   /* ----------------------------------------------------
-                     A. SOCIAL MEDIA SMARTPHONE UI FRAME SHOWCASE GRID
+                     A. SOCIAL MEDIA MOBILE SMARTPHONE GRID (In Phone Show Proper)
                   ---------------------------------------------------- */
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-stretch">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
                     {proofs.map((proof) => {
                       const globalIndex = filteredProofs.findIndex((p) => p.id === proof.id);
 
@@ -438,58 +383,39 @@ export default function AnalyticsGallery() {
                           initial={{ opacity: 0, y: 16 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="group flex flex-col justify-between rounded-3xl bg-stone-100/90 dark:bg-[#0d1524] border border-stone-200/90 dark:border-white/10 p-3 sm:p-4 shadow-sm hover:shadow-2xl hover:border-pink-500/50 transition-all duration-300"
+                          onClick={() => setActiveLightboxIndex(globalIndex)}
+                          className="group flex flex-col items-center cursor-zoom-in"
                         >
-                          {/* SMARTPHONE UI PHONE FRAME */}
-                          <div className="relative mx-auto w-full aspect-[9/19.5] rounded-[2.2rem] sm:rounded-[2.4rem] p-2 bg-gradient-to-b from-stone-800 via-stone-900 to-black dark:from-stone-700 dark:via-stone-900 dark:to-black shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.1)] ring-1 ring-black/40">
-                            {/* Side phone button notches */}
-                            <div className="absolute -left-[3px] top-16 w-[3px] h-8 bg-stone-600 rounded-l-xs" />
-                            <div className="absolute -left-[3px] top-26 w-[3px] h-8 bg-stone-600 rounded-l-xs" />
-                            <div className="absolute -right-[3px] top-20 w-[3px] h-11 bg-stone-600 rounded-r-xs" />
+                          {/* Realistic Smartphone Chassis Frame */}
+                          <div className="relative w-full max-w-[260px] sm:max-w-[275px] aspect-[9/19.5] rounded-[2.6rem] sm:rounded-[2.8rem] p-2 sm:p-2.5 bg-gradient-to-b from-stone-800 via-stone-900 to-black border-[4px] border-stone-700 shadow-xl group-hover:shadow-2xl group-hover:border-blue-500/60 transition-all duration-300 group-hover:-translate-y-1.5">
+                            {/* Side hardware buttons */}
+                            <div className="absolute -left-[4px] top-16 w-[3px] h-6 bg-stone-600 rounded-l-xs" />
+                            <div className="absolute -left-[4px] top-26 w-[3px] h-10 bg-stone-600 rounded-l-xs" />
+                            <div className="absolute -right-[4px] top-20 w-[3px] h-12 bg-stone-600 rounded-r-xs" />
 
-                            {/* Inner Screen Area */}
-                            <div
-                              onClick={() => setActiveLightboxIndex(globalIndex)}
-                              className="relative w-full h-full rounded-[1.8rem] overflow-hidden bg-black flex flex-col cursor-zoom-in group/screen"
-                            >
-                              {/* Dynamic Island Pill */}
-                              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-30 h-4 w-20 bg-black rounded-full flex items-center justify-between px-2 border border-white/10 shadow-sm pointer-events-none">
-                                <div className="w-2 h-2 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center">
-                                  <div className="w-0.5 h-0.5 rounded-full bg-blue-500/70" />
-                                </div>
-                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                              </div>
+                            {/* Inner Screen */}
+                            <div className="relative w-full h-full rounded-[2rem] sm:rounded-[2.2rem] overflow-hidden bg-black flex flex-col select-none">
+                              {/* Top Speaker Grill Notch */}
+                              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-30 h-1.5 w-14 bg-stone-800 rounded-full pointer-events-none" />
 
-                              {/* Phone Status Bar (9:41, Signal, Wifi, Battery) */}
-                              <div className="absolute top-1 left-3.5 right-3.5 z-20 flex items-center justify-between text-[9px] font-mono font-bold text-white/90 pointer-events-none select-none">
-                                <span>9:41</span>
-                                <div className="flex items-center gap-1">
-                                  <Signal className="w-2.5 h-2.5 text-white/90" />
-                                  <Wifi className="w-2.5 h-2.5 text-white/90" />
-                                  <div className="w-3.5 h-1.5 rounded-[2px] border border-white/80 p-[0.5px] flex items-center">
-                                    <div className="w-full h-full bg-white rounded-[0.5px]" />
-                                  </div>
-                                </div>
-                              </div>
-
-                              {/* Screenshot Image with crisp scaling */}
+                              {/* The Mobile Screenshot Image */}
                               <Image
                                 src={proof.image}
                                 alt={proof.title}
                                 fill
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                                className="object-cover object-top transition-transform duration-500 group-hover/screen:scale-[1.04]"
+                                className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                                 priority={globalIndex < 4}
                               />
 
-                              {/* Realistic glossy glass reflection glare */}
-                              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.12] pointer-events-none" />
+                              {/* Glossy glass reflection glare */}
+                              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.12] pointer-events-none" />
 
-                              {/* Floating Hover Magnify Pill */}
-                              <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] opacity-0 group-hover/screen:opacity-100 transition-opacity duration-200 flex items-center justify-center z-20 pointer-events-none">
-                                <span className="px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xl">
-                                  <Maximize2 className="w-3.5 h-3.5 text-pink-400" />
-                                  <span>Inspect Mobile Proof</span>
+                              {/* Hover Zoom Pill */}
+                              <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center z-30 pointer-events-none">
+                                <span className="px-3 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xl">
+                                  <Maximize2 className="w-3.5 h-3.5 text-[#38BDF8]" />
+                                  <span>Inspect Phone</span>
                                 </span>
                               </div>
 
@@ -497,39 +423,61 @@ export default function AnalyticsGallery() {
                               <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 z-20 w-20 h-1 bg-white/70 rounded-full pointer-events-none" />
                             </div>
                           </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                ) : isSocialPostFolder ? (
+                  /* ----------------------------------------------------
+                     B. SOCIAL MEDIA POST CREATIVE GRID - ONLY SHOW IMAGE PROPER SET
+                  ---------------------------------------------------- */
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 items-stretch">
+                    {proofs.map((proof) => {
+                      const globalIndex = filteredProofs.findIndex((p) => p.id === proof.id);
 
-                          {/* Card Content & Details (Below Smartphone Frame) */}
-                          <div className="mt-3.5 pt-3 border-t border-stone-200/60 dark:border-white/10 flex-1 flex flex-col justify-between">
-                            <div>
-                              <div className="flex items-center justify-between text-xs mb-1">
-                                <span className="font-bold text-pink-600 dark:text-pink-400 text-[10px] uppercase tracking-wider flex items-center gap-1">
-                                  <Smartphone className="w-3 h-3" />
-                                  {proof.badge}
-                                </span>
-                                <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
-                                  <CheckCircle2 className="w-3 h-3" />
-                                  {proof.metricGrowth}
-                                </span>
-                              </div>
+                      return (
+                        <motion.div
+                          key={proof.id}
+                          layout
+                          initial={{ opacity: 0, y: 16 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3 }}
+                          onClick={() => setActiveLightboxIndex(globalIndex)}
+                          className="group relative aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden bg-stone-950 border border-stone-200/90 dark:border-white/10 shadow-sm hover:shadow-2xl hover:border-blue-500/60 transition-all duration-300 cursor-zoom-in"
+                        >
+                          {/* Ambient blurred reflection backdrop */}
+                          <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl sm:rounded-3xl">
+                            <Image
+                              src={proof.image}
+                              alt=""
+                              fill
+                              className="object-cover blur-2xl opacity-35 scale-125"
+                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            />
+                            <div className="absolute inset-0 bg-[#070D18]/50 backdrop-blur-xs" />
+                          </div>
 
-                              <h3 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white line-clamp-2 leading-snug group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
-                                {proof.shortTitle || proof.title}
-                              </h3>
+                          {/* Only Show Image - Proper Set */}
+                          <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-2.5">
+                            <Image
+                              src={proof.image}
+                              alt={proof.title}
+                              fill
+                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                              className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                              priority={globalIndex < 4}
+                            />
+                          </div>
 
-                              <p className="mt-1 text-[11px] text-stone-600 dark:text-stone-300 line-clamp-2 leading-relaxed">
-                                {proof.description}
-                              </p>
-                            </div>
+                          {/* Subtle glare overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.08] pointer-events-none" />
 
-                            {/* Stat pill footer */}
-                            <div className="mt-2.5 pt-2 border-t border-stone-200/50 dark:border-white/5 flex items-center justify-between text-[11px] font-mono">
-                              <span className="text-stone-500 dark:text-stone-400">
-                                {proof.metricLabel}:
-                              </span>
-                              <span className="font-extrabold text-stone-900 dark:text-white">
-                                {proof.metricValue}
-                              </span>
-                            </div>
+                          {/* Floating Hover Magnify Pill */}
+                          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center z-20 pointer-events-none">
+                            <span className="px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold flex items-center gap-1.5 shadow-xl">
+                              <Maximize2 className="w-3.5 h-3.5 text-[#38BDF8]" />
+                              <span>Zoom Image</span>
+                            </span>
                           </div>
                         </motion.div>
                       );
@@ -646,7 +594,11 @@ export default function AnalyticsGallery() {
           >
             <div
               className={`relative w-full cursor-default my-auto ${
-                activeLightboxProof.isMobile ? "max-w-4xl" : "max-w-6xl"
+                activeLightboxProof.isMobile
+                  ? "max-w-md"
+                  : activeLightboxProof.isSocialPost
+                  ? "max-w-lg"
+                  : "max-w-6xl"
               }`}
               onClick={(e) => e.stopPropagation()}
             >
@@ -665,11 +617,10 @@ export default function AnalyticsGallery() {
               <div className="flex items-center justify-between pb-3 text-white">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`px-2.5 py-1 rounded-lg border font-mono text-xs font-bold flex items-center gap-1.5 ${
-                      activeLightboxProof.isMobile
+                    className={`px-2.5 py-1 rounded-lg border font-mono text-xs font-bold flex items-center gap-1.5 ${activeLightboxProof.isMobile
                         ? "bg-pink-600/30 border-pink-400/40 text-pink-300"
                         : "bg-blue-600/30 border-blue-400/40 text-blue-300"
-                    }`}
+                      }`}
                   >
                     {activeLightboxProof.isMobile ? (
                       <Smartphone className="w-3.5 h-3.5" />
@@ -717,121 +668,66 @@ export default function AnalyticsGallery() {
                 </div>
               </div>
 
-              {/* Lightbox Body: Conditional Mobile Phone Frame vs Desktop Dashboard */}
+              {/* Lightbox Body: Conditional Mobile Phone Frame vs Social Media Post vs Desktop Dashboard */}
               {activeLightboxProof.isMobile ? (
                 /* =======================================================
-                   LIGHTBOX MOBILE SMARTPHONE PRESENTATION
+                   LIGHTBOX MOBILE SMARTPHONE PRESENTATION (In Phone Show Proper)
                 ======================================================= */
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-6 bg-stone-950/80 p-4 sm:p-6 rounded-3xl border border-white/15 backdrop-blur-xl">
-                  {/* Smartphone Frame in Lightbox */}
-                  <div className="relative shrink-0 w-full max-w-[280px] sm:max-w-[320px] aspect-[9/19.5] rounded-[2.8rem] p-3 bg-gradient-to-b from-stone-800 via-stone-900 to-black border-[4px] border-stone-700 shadow-2xl ring-1 ring-black/50">
-                    {/* Side button notches */}
-                    <div className="absolute -left-[4px] top-20 w-[4px] h-10 bg-stone-600 rounded-l-xs" />
-                    <div className="absolute -left-[4px] top-32 w-[4px] h-10 bg-stone-600 rounded-l-xs" />
-                    <div className="absolute -right-[4px] top-24 w-[4px] h-14 bg-stone-600 rounded-r-xs" />
+                <div className="relative max-h-[82vh] h-[78vh] sm:h-[82vh] aspect-[9/19.5] mx-auto rounded-[3rem] p-2.5 sm:p-3 bg-gradient-to-b from-stone-800 via-stone-900 to-black border-[4px] border-stone-700 shadow-2xl flex flex-col items-center justify-center">
+                  {/* Side button notches */}
+                  <div className="absolute -left-[4px] top-20 w-[4px] h-10 bg-stone-600 rounded-l-xs" />
+                  <div className="absolute -left-[4px] top-32 w-[4px] h-10 bg-stone-600 rounded-l-xs" />
+                  <div className="absolute -right-[4px] top-24 w-[4px] h-14 bg-stone-600 rounded-r-xs" />
 
-                    <div className="relative w-full h-full rounded-[2.1rem] overflow-hidden bg-black flex flex-col">
-                      {/* Dynamic Island */}
-                      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 h-4.5 w-24 bg-black rounded-full flex items-center justify-between px-2.5 border border-white/10 shadow-sm pointer-events-none">
-                        <div className="w-2.5 h-2.5 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center">
-                          <div className="w-1 h-1 rounded-full bg-blue-500/70" />
-                        </div>
-                        <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      </div>
+                  {/* Inner Screen */}
+                  <div className="relative w-full h-full rounded-[2.3rem] overflow-hidden bg-black select-none">
+                    {/* Top Speaker Grill */}
+                    <div className="absolute top-1.5 left-1/2 -translate-x-1/2 z-30 h-1.5 w-16 bg-stone-800 rounded-full pointer-events-none" />
 
-                      {/* Phone Status Bar */}
-                      <div className="absolute top-1.5 left-4 right-4 z-20 flex items-center justify-between text-[10px] font-mono font-bold text-white/90 pointer-events-none select-none">
-                        <span>9:41</span>
-                        <div className="flex items-center gap-1.5">
-                          <Signal className="w-3 h-3 text-white/90" />
-                          <Wifi className="w-3 h-3 text-white/90" />
-                          <div className="w-4 h-2 rounded-[2px] border border-white/80 p-[0.5px] flex items-center">
-                            <div className="w-full h-full bg-white rounded-[1px]" />
-                          </div>
-                        </div>
-                      </div>
+                    {/* High-res Image inside screen */}
+                    <Image
+                      src={activeLightboxProof.image}
+                      alt={activeLightboxProof.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-contain object-center"
+                      priority
+                    />
 
-                      {/* High-res Image inside screen */}
-                      <Image
-                        src={activeLightboxProof.image}
-                        alt={activeLightboxProof.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 400px"
-                        className="object-cover object-top"
-                        priority
-                      />
+                    {/* Glossy glass reflection */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.08] pointer-events-none" />
 
-                      {/* Glossy glass reflection */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.12] pointer-events-none" />
-
-                      {/* Bottom Home Indicator */}
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 w-24 h-1 bg-white/70 rounded-full pointer-events-none" />
-                    </div>
+                    {/* Bottom Home Indicator */}
+                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 w-24 h-1 bg-white/70 rounded-full pointer-events-none" />
+                  </div>
+                </div>
+              ) : activeLightboxProof.isSocialPost ? (
+                /* =======================================================
+                   LIGHTBOX SOCIAL MEDIA POST - ONLY SHOW IMAGE PROPER SET
+                ======================================================= */
+                <div className="relative w-full aspect-[4/5] max-h-[82vh] mx-auto rounded-2xl sm:rounded-3xl overflow-hidden bg-black border border-white/20 shadow-2xl flex items-center justify-center p-2 sm:p-3">
+                  {/* Ambient blurred reflection backdrop */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-2xl sm:rounded-3xl">
+                    <Image
+                      src={activeLightboxProof.image}
+                      alt=""
+                      fill
+                      className="object-cover blur-3xl opacity-40 scale-125"
+                      sizes="600px"
+                    />
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-xs" />
                   </div>
 
-                  {/* Details Sidebar for Mobile Proof */}
-                  <div className="flex-1 flex flex-col justify-between text-white space-y-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2 flex-wrap">
-                        <span className="text-xs px-2.5 py-1 rounded-full bg-pink-500/20 text-pink-400 font-bold flex items-center gap-1.5">
-                          <Smartphone className="w-3 h-3" />
-                          {activeLightboxProof.badge}
-                        </span>
-                        <span className="text-xs px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3" />
-                          {activeLightboxProof.metricGrowth}
-                        </span>
-                      </div>
-
-                      <h3 className="text-lg sm:text-xl font-black text-white leading-snug">
-                        {activeLightboxProof.title}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
-                        {activeLightboxProof.description}
-                      </p>
-                    </div>
-
-                    {/* Metric Highlights Grid */}
-                    <div className="grid grid-cols-2 gap-2.5 pt-2">
-                      {activeLightboxProof.highlights.map((h, i) => (
-                        <div
-                          key={i}
-                          className="p-3 rounded-xl bg-white/5 border border-white/10"
-                        >
-                          <span className="block text-[11px] text-stone-400">{h.label}</span>
-                          <span className="block text-sm font-bold text-white mt-0.5">
-                            {h.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex items-center gap-1.5 flex-wrap pt-2">
-                      {activeLightboxProof.tags.map((t, i) => (
-                        <span
-                          key={i}
-                          className="px-2.5 py-1 rounded-lg bg-black/60 border border-white/10 text-stone-300 text-[11px] font-mono"
-                        >
-                          #{t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Close button in sidebar */}
-                    <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-xs text-stone-400">
-                        1080 × 2400 Native Mobile Screenshot
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setActiveLightboxIndex(null)}
-                        className="px-4 py-2 rounded-xl bg-white/10 hover:bg-rose-600 text-white text-xs font-bold transition-all cursor-pointer border border-white/15"
-                      >
-                        Close Preview
-                      </button>
-                    </div>
+                  {/* High-res Image - Only Show Image Proper Set */}
+                  <div className="relative w-full h-full flex items-center justify-center">
+                    <Image
+                      src={activeLightboxProof.image}
+                      alt={activeLightboxProof.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-contain"
+                      priority
+                    />
                   </div>
                 </div>
               ) : (

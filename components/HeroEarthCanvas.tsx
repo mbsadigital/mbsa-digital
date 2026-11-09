@@ -49,17 +49,17 @@ function NormalEarth({ isVisible, onReady }: { isVisible: boolean; onReady?: () 
     return Math.min((minDim * 0.72) / (GLOBE_RADIUS * 2), 1.0);
   }, [viewport.width, viewport.height]);
 
-  // Load NASA photorealistic Earth textures from public/earth (.png format)
+  // Load NASA photorealistic Earth textures from public/earth (.webp optimized format)
   const [dayMap, cloudsMap, specularMap, normalMap] = useTexture([
-    "/earth/earth_daymap.png",
-    "/earth/earth_clouds.png",
-    "/earth/earth_specular.png",
-    "/earth/earth_normal.png",
+    "/earth/earth_daymap.webp",
+    "/earth/earth_clouds.webp",
+    "/earth/earth_specular.webp",
+    "/earth/earth_normal.webp",
   ]);
 
   // Ensure sRGB color space so dayMap colors are rich and vibrant
   useEffect(() => {
-    if (dayMap) {
+    if (dayMap && dayMap.colorSpace !== THREE.SRGBColorSpace) {
       dayMap.colorSpace = THREE.SRGBColorSpace;
       dayMap.needsUpdate = true;
     }
@@ -159,12 +159,12 @@ function EarthStaticFallback() {
       <div className="relative w-[75%] h-[75%] rounded-full overflow-hidden flex items-center justify-center shadow-[0_0_60px_rgba(37,99,235,0.45)] border-2 border-cyan-400/40">
         {/* Photorealistic NASA Earth Map - High-Priority LCP Image */}
         <Image
-          src="/earth/earth_daymap.png"
+          src="/earth/earth_globe_static.webp"
           alt="Earth Globe Map"
           fill
           priority
           sizes="(max-width: 640px) 240px, (max-width: 1024px) 360px, 420px"
-          quality={80}
+          quality={85}
           className="object-cover rounded-full"
         />
 
@@ -246,7 +246,7 @@ export default function HeroEarthCanvas() {
             position: [0, 0, 6.8],
             fov: 42,
           }}
-          dpr={[1, 1.5]}
+          dpr={[1, 1.25]}
           gl={{
             antialias: true,
             alpha: true,

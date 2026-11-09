@@ -3,18 +3,19 @@ import type { Metadata } from "next";
 import { constructMetadata, getBreadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Insights on Search, Websites & Measurement | MBSA Digital",
+  title: "Industries We Serve | High-Trust Growth & SEO | MBSA Digital",
   description:
-    "Practical guides for business owners and marketing managers on SEO, GEO/AEO, websites, paid media, and GA4 measurement. Written and reviewed by specialist practitioners.",
+    "Explore the specialized industries served by MBSA Digital — from Healthcare, Pharmacy, and Wellness to E-Commerce, D2C Brands, and Local Professional Services. Data-driven growth and SEO engineered for high-trust niches.",
   path: "/industries",
   keywords: [
-    "Insights on search",
-    "Generative Engine Optimisation GEO",
-    "AEO and GEO Guide",
-    "Technical SEO checklist",
-    "Local SEO guides",
-    "Web design conversion",
-    "GA4 setup checklist",
+    "Industries we serve",
+    "Healthcare SEO",
+    "Pharmacy digital marketing",
+    "E-commerce SEO agency",
+    "D2C growth marketing",
+    "Local business SEO",
+    "Wellness clinic marketing",
+    "B2B digital marketing agency",
   ],
 });
 
@@ -38,4 +39,3 @@ export default function IndustriesLayout({
     </>
   );
 }
-

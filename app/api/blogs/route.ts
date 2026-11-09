@@ -53,10 +53,11 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  if (sort === "popular") {
-    results.sort((a, b) => (b.views || 0) - (a.views || 0));
-  } else if (sort === "likes") {
-    results.sort((a, b) => (b.likes || 0) - (a.likes || 0));
+  if (sort === "oldest") {
+    results.sort(
+      (a, b) =>
+        new Date(a.createdAt || 0).getTime() - new Date(b.createdAt || 0).getTime()
+    );
   } else {
     results.sort(
       (a, b) =>

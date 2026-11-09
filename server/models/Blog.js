@@ -36,6 +36,14 @@ const blogSchema = new mongoose.Schema(
       trim: true,
       maxlength: [320, "Meta Description cannot exceed 320 characters"]
     },
+    primaryKeyword: {
+      type: String,
+      trim: true
+    },
+    secondaryKeywords: {
+      type: [String],
+      default: []
+    },
     imageUrl: {
       type: String,
       default: ""
@@ -48,6 +56,12 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: [true, "Content is required"]
     },
+    faqs: [
+      {
+        question: { type: String, required: true },
+        answer: { type: String, required: true }
+      }
+    ],
     category: {
       type: String,
       required: [true, "Category is required"],

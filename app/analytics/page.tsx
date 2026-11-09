@@ -34,13 +34,13 @@ export default function AnalyticsPage() {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] text-[11px] font-bold uppercase tracking-wider mb-3">
                 <BarChart3 className="w-3.5 h-3.5" />
-                <span>Verified Client Analytics, GSC &amp; Social Media Proofs</span>
+                <span>Verified Client Analytics, GSC &amp; Mobile Social Media Proofs</span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-stone-900 dark:text-white">
-                Client Analytics &amp; Mobile Social Proofs
+                Client Analytics &amp; <span className="text-[#2563EB]">Social Media Proofs</span>
               </h1>
               <p className="mt-2 text-sm sm:text-base text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
-                Direct evidence of organic search compounding, keyword dominance, GA4 conversions, and viral social media engagement captured live in native smartphone frames.
+                Direct evidence of organic search compounding, keyword dominance, GA4 conversions, mobile growth telemetry, and viral social media post creatives captured with verified performance telemetry.
               </p>
             </div>
 
@@ -51,7 +51,7 @@ export default function AnalyticsPage() {
                 </span>
                 <span className="text-sm font-extrabold text-[#22C55E] flex items-center justify-end gap-1">
                   <TrendingUp className="w-3.5 h-3.5" />
-                  <span>52 Real Audits</span>
+                  <span>69 Real Audits</span>
                 </span>
               </div>
             </div>

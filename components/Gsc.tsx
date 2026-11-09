@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -18,6 +18,7 @@ import {
   Folder,
   ArrowRight,
   CheckCircle2,
+  Sparkles,
 } from "lucide-react";
 import {
   ALL_ANALYTICS_PROOFS,
@@ -27,7 +28,7 @@ import {
 } from "@/lib/analyticsData";
 
 /* ============================================================
-   CATEGORIES DEFINITION (SEARCH, GA4, GMB, KEYWORDS)
+   CATEGORIES DEFINITION (SEARCH, GA4, SOCIAL MEDIA POSTS, GMB, KEYWORDS)
 ============================================================ */
 
 export type CategoryId = AnalyticsCategoryId;
@@ -56,6 +57,13 @@ const CATEGORIES: CategoryMeta[] = [
     icon: BarChart3,
   },
   {
+    id: "social",
+    name: "Social Media Posts",
+    shortName: "Social Media Posts",
+    subtitle: "Viral Creatives & Engagement",
+    icon: Sparkles,
+  },
+  {
     id: "gmb",
     name: "Google My Business",
     shortName: "Business Profile",
@@ -72,7 +80,7 @@ const CATEGORIES: CategoryMeta[] = [
 ];
 
 /* ============================================================
-   CLIENTS DEFINITION (EXCLUDING SOCIAL MEDIA)
+   CLIENTS DEFINITION (INCLUDING SOCIAL MEDIA POST CAMPAIGNS)
 ============================================================ */
 
 export interface ClientMeta {
@@ -83,7 +91,7 @@ export interface ClientMeta {
 
 const CLIENTS: ClientMeta[] = [
   { id: "all", name: "All Clients & Campaigns", shortName: "All" },
-  ...CLIENT_FOLDERS.filter((f) => f.id !== "social-media").map((f) => ({
+  ...CLIENT_FOLDERS.map((f) => ({
     id: f.id,
     name: f.name,
     shortName: f.shortName,
@@ -103,11 +111,9 @@ export default function Gsc() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Exclude Social Media images and category from the Gsc slider
+  // All verified analytics proofs (Social Media proofs only from the Social Media Post folder)
   const gscProofList = useMemo(() => {
-    return ALL_ANALYTICS_PROOFS.filter(
-      (item) => item.categoryId !== "social" && item.clientId !== "social-media"
-    );
+    return ALL_ANALYTICS_PROOFS;
   }, []);
 
   // Filter slides by client and category
@@ -131,6 +137,8 @@ export default function Gsc() {
 
   const currentSlideIndex = Math.min(slideIndex, Math.max(0, totalCategorySlides - 1));
   const currentSlide: AnalyticsProof = activeSlides[currentSlideIndex] || gscProofList[0];
+
+  const isCurrentSocial = currentSlide?.categoryId === "social" || currentSlide?.isSocialPost;
 
   const handleSelectClient = (clientId: string) => {
     setSelectedClient(clientId);
@@ -222,7 +230,7 @@ export default function Gsc() {
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-px bg-[#2563EB]" />
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#60A5FA]">
-                Verified Search &amp; GA4 Analytics
+                Verified Search, GA4 &amp; Social Media Proofs
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
@@ -232,7 +240,7 @@ export default function Gsc() {
               </span>
             </h2>
             <p className="mt-2.5 text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
-              Real screenshots and verified performance telemetry from Google Search Console, GA4, and Google Business Profiles across client campaigns.
+              Real screenshots and verified performance telemetry from Google Search Console, GA4, Google Business Profiles, and high-impact Social Media Post creatives.
             </p>
           </div>
 
@@ -250,7 +258,7 @@ export default function Gsc() {
 
         {/* ====================================================
             UNIFIED CONTROLS BAR:
-            - Left: Primary Category Tabs (Search Console, GA4, GMB, Keywords)
+            - Left: Primary Category Tabs (Search Console, GA4, Social Media Posts, GMB, Keywords)
             - Right: Client Selector Dropdown
         ==================================================== */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 mb-6 sm:mb-8 pb-3 border-b border-stone-200/90 dark:border-white/15">
@@ -266,14 +274,16 @@ export default function Gsc() {
                   type="button"
                   onClick={() => handleSelectCategory(cat.id)}
                   whileTap={{ scale: 0.96 }}
-                  className={`shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none touch-manipulation ${isCatActive
-                    ? "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-blue-500/30"
-                    : "bg-stone-100/90 dark:bg-white/10 text-stone-700 dark:text-stone-200 border-stone-200/90 dark:border-white/20 hover:bg-stone-200/80 dark:hover:bg-white/20 hover:border-blue-400 hover:text-stone-950 dark:hover:text-white"
-                    }`}
+                  className={`shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none touch-manipulation ${
+                    isCatActive
+                      ? "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-blue-500/30"
+                      : "bg-stone-100/90 dark:bg-white/10 text-stone-700 dark:text-stone-200 border-stone-200/90 dark:border-white/20 hover:bg-stone-200/80 dark:hover:bg-white/20 hover:border-blue-400 hover:text-stone-950 dark:hover:text-white"
+                  }`}
                 >
                   <Icon
-                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isCatActive ? "text-white" : "text-[#2563EB] dark:text-blue-400"
-                      }`}
+                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                      isCatActive ? "text-white" : "text-[#2563EB] dark:text-blue-400"
+                    }`}
                   />
                   <span>{cat.shortName}</span>
                 </motion.button>
@@ -312,10 +322,14 @@ export default function Gsc() {
         </div>
 
         {/* ====================================================
-            SHOWCASE STAGE: WIDESCREEN 3D CAROUSEL (GSC, GA4, GMB, KEYWORDS)
+            SHOWCASE STAGE: 3D CAROUSEL (DYNAMIC SOCIAL MEDIA POST UI & WIDESCREEN DASHBOARD)
         ==================================================== */}
         <div
-          className="relative w-full h-[320px] sm:h-[380px] md:h-[440px] lg:h-[470px] flex items-center justify-center overflow-hidden rounded-3xl select-none transition-all duration-300"
+          className={`relative w-full ${
+            selectedCategory === "social"
+              ? "h-[450px] sm:h-[490px] md:h-[530px]"
+              : "h-[320px] sm:h-[380px] md:h-[440px] lg:h-[470px]"
+          } flex items-center justify-center overflow-hidden rounded-3xl select-none transition-all duration-300`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{ perspective: "1000px" }}
@@ -324,6 +338,7 @@ export default function Gsc() {
             const offset = getOffset(index);
             const isCenter = offset === 0;
             const isVisible = Math.abs(offset) <= 1 || totalCategorySlides <= 2;
+            const isSocial = slide.categoryId === "social" || slide.isSocialPost;
 
             if (!isVisible && Math.abs(offset) > 1) {
               return null;
@@ -342,9 +357,14 @@ export default function Gsc() {
                 }}
                 initial={false}
                 animate={{
-                  x: totalCategorySlides > 1 ? `${offset * 68}%` : "0%",
-                  scale: isCenter ? 1 : 0.84,
-                  opacity: isCenter ? 1 : 0.45,
+                  x:
+                    totalCategorySlides > 1
+                      ? isSocial
+                        ? `${offset * 72}%`
+                        : `${offset * 68}%`
+                      : "0%",
+                  scale: isCenter ? 1 : isSocial ? 0.88 : 0.84,
+                  opacity: isCenter ? 1 : 0.42,
                   rotateY: totalCategorySlides > 1 ? offset * -14 : 0,
                   zIndex: isCenter ? 20 : 10,
                 }}
@@ -353,45 +373,104 @@ export default function Gsc() {
                   stiffness: 260,
                   damping: 26,
                 }}
-                className={`absolute w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer ${isCenter
-                  ? "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-[#2563EB]/40"
-                  : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75"
-                  } bg-stone-950`}
+                className={`absolute ${
+                  isSocial
+                    ? "w-[280px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl sm:rounded-3xl"
+                    : "w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl"
+                } overflow-hidden cursor-pointer ${
+                  isCenter
+                    ? isSocial
+                      ? "border-2 border-[#2563EB] shadow-[0_16px_50px_rgba(37,99,235,0.35)] ring-1 ring-[#2563EB]/50 bg-stone-950"
+                      : "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-[#2563EB]/40 bg-stone-950"
+                    : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75 bg-stone-950"
+                }`}
               >
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  loading="lazy"
-                  className="object-contain transition-transform duration-500 hover:scale-[1.02]"
-                  sizes="(max-width: 768px) 90vw, 65vw"
-                />
+                {/* ------------------------------------------------------------------
+                    A. SOCIAL MEDIA POST - ONLY SHOW IMAGE PROPER SET
+                ------------------------------------------------------------------ */}
+                {isSocial ? (
+                  <>
+                    {/* Ambient blurred reflection backdrop */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                      <Image
+                        src={slide.image}
+                        alt=""
+                        fill
+                        className="object-cover blur-2xl opacity-35 scale-125"
+                        sizes="360px"
+                      />
+                      <div className="absolute inset-0 bg-[#070D18]/50 backdrop-blur-xs" />
+                    </div>
 
-                {isCenter && (
-                  <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 right-2.5 sm:right-3.5 flex items-center justify-between pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 border border-white/20 text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider backdrop-blur-md">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      {slide.badge}
-                    </span>
+                    {/* Only Show Image - Proper Set */}
+                    <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-2.5">
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        fill
+                        loading="lazy"
+                        className="object-contain transition-transform duration-500 hover:scale-[1.02]"
+                        sizes="(max-width: 640px) 300px, 400px"
+                      />
+                    </div>
 
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsLightboxOpen(true);
-                      }}
-                      className="p-1.5 rounded-xl bg-black/75 hover:bg-[#2563EB] border border-white/20 text-white transition-colors pointer-events-auto cursor-pointer"
-                      title="Zoom Image"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
+                    {isCenter && (
+                      <div className="absolute top-2.5 right-2.5 z-20 pointer-events-auto">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsLightboxOpen(true);
+                          }}
+                          className="p-1.5 rounded-xl bg-black/75 hover:bg-[#2563EB] border border-white/20 text-white transition-colors cursor-pointer shadow-lg"
+                          title="Zoom Image"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  /* ------------------------------------------------------------------
+                      B. STANDARD WIDESCREEN DASHBOARD (GSC, GA4, GMB, KEYWORDS)
+                  ------------------------------------------------------------------ */
+                  <>
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      fill
+                      loading="lazy"
+                      className="object-contain transition-transform duration-500 hover:scale-[1.02]"
+                      sizes="(max-width: 768px) 90vw, 65vw"
+                    />
+
+                    {isCenter && (
+                      <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-3.5 right-2.5 sm:right-3.5 flex items-center justify-between pointer-events-none">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/75 border border-white/20 text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider backdrop-blur-md">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                          {slide.badge}
+                        </span>
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsLightboxOpen(true);
+                          }}
+                          className="p-1.5 rounded-xl bg-black/75 hover:bg-[#2563EB] border border-white/20 text-white transition-colors pointer-events-auto cursor-pointer"
+                          title="Zoom Image"
+                        >
+                          <Maximize2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    )}
+                  </>
                 )}
               </motion.div>
             );
           })}
 
-          {/* Floating Side Arrows for Widescreen */}
+          {/* Floating Side Navigation Arrows */}
           {totalCategorySlides > 1 && (
             <>
               <motion.button
@@ -400,7 +479,7 @@ export default function Gsc() {
                   e.stopPropagation();
                   prevSlide();
                 }}
-                aria-label="Previous Slide in Category"
+                aria-label="Previous Slide"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 className="absolute left-1 sm:left-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
@@ -414,7 +493,7 @@ export default function Gsc() {
                   e.stopPropagation();
                   nextSlide();
                 }}
-                aria-label="Next Slide in Category"
+                aria-label="Next Slide"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 className="absolute right-1 sm:right-4 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 dark:bg-black/75 hover:bg-[#2563EB] text-stone-800 dark:text-white hover:text-white border border-stone-200 dark:border-white/30 hover:border-[#2563EB] backdrop-blur-md shadow-xl flex items-center justify-center transition-all duration-200 cursor-pointer"
@@ -470,7 +549,7 @@ export default function Gsc() {
       </div>
 
       {/* ====================================================
-          FULLSCREEN LIGHTBOX MODAL: WIDESCREEN DASHBOARD
+          FULLSCREEN LIGHTBOX MODAL: ADAPTIVE SOCIAL / WIDESCREEN
       ==================================================== */}
       <AnimatePresence>
         {isLightboxOpen && (
@@ -482,7 +561,9 @@ export default function Gsc() {
             className="fixed inset-0 z-[9999] bg-black/92 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 cursor-zoom-out"
           >
             <div
-              className="relative w-full max-h-[92vh] max-w-5xl flex flex-col items-center justify-center cursor-default"
+              className={`relative w-full max-h-[92vh] ${
+                isCurrentSocial ? "max-w-lg" : "max-w-5xl"
+              } flex flex-col items-center justify-center cursor-default`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -495,8 +576,14 @@ export default function Gsc() {
                 <X className="w-6 h-6" />
               </button>
 
-              {/* WIDESCREEN DASHBOARD IN LIGHTBOX */}
-              <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black">
+              {/* CARD CONTAINER IN LIGHTBOX */}
+              <div
+                className={`relative w-full ${
+                  isCurrentSocial
+                    ? "max-w-lg aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-black"
+                    : "max-w-5xl aspect-[16/9] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black"
+                }`}
+              >
                 <Image
                   src={currentSlide.image}
                   alt={currentSlide.title}
