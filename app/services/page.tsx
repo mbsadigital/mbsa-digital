@@ -1702,7 +1702,7 @@ function ServicesContent() {
             {/* Category Filter Pills & Mode Switcher Row */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               {/* Filter pills */}
-              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none no-scrollbar touch-pan-x">
                 {CATEGORY_TABS.map((tab) => {
                   const isActive = activeCategory === tab.id;
                   const count =

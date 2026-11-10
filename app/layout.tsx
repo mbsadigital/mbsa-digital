@@ -25,6 +25,7 @@ const caveat = Caveat({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
     { media: "(prefers-color-scheme: dark)", color: "#0B1220" },
@@ -97,7 +98,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${plusJakartaSans.variable} ${caveat.variable} light scroll-smooth`}
+      className={`${plusJakartaSans.variable} ${caveat.variable} light scroll-smooth overflow-x-hidden max-w-full`}
       suppressHydrationWarning
     >
       <head>
@@ -113,11 +114,11 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased font-sans flex flex-col"
+        className="min-h-screen bg-[var(--background)] text-[var(--foreground)] antialiased font-sans flex flex-col w-full overflow-x-hidden max-w-full"
       >
         <ThemeProvider>
           <Navbar />
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col min-w-0 w-full overflow-x-clip">
             {children}
           </div>
           <Footer />

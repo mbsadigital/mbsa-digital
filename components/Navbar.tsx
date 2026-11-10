@@ -735,53 +735,6 @@ export default function Navbar() {
                         </motion.div>
                       )}
                     </AnimatePresence>
-
-                    {/* COMPACT ABOUT DROPDOWN ANCHORED UNDER BUTTON */}
-                    <AnimatePresence>
-                      {aboutDropdownOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 6, scale: 0.97 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 6, scale: 0.97 }}
-                          transition={{ duration: 0.16, ease: "easeOut" }}
-                          onMouseEnter={handleMouseEnterAbout}
-                          onMouseLeave={handleMouseLeaveAbout}
-                          className="hidden lg:block absolute top-full left-0 pt-2 z-50 pointer-events-auto"
-                        >
-                          <div className="w-72 sm:w-80 rounded-2xl bg-white dark:bg-[#0B1220] border border-slate-200/90 dark:border-white/10 shadow-xl shadow-slate-900/10 dark:shadow-black/70 p-2 overflow-hidden">
-                            {ABOUT_DROPDOWN_ITEMS.map((aboutItem) => {
-                              const isSelected = pathname === aboutItem.href;
-                              return (
-                                <Link
-                                  key={aboutItem.href}
-                                  href={aboutItem.href}
-                                  onClick={() => setAboutDropdownOpen(false)}
-                                  className={`group block p-3 rounded-xl transition-all duration-150 ${isSelected
-                                    ? "bg-blue-50/80 dark:bg-white/[0.08]"
-                                    : "hover:bg-slate-50 dark:hover:bg-white/[0.05]"
-                                    }`}
-                                >
-                                  <div className="flex items-center justify-between">
-                                    <span
-                                      className={`text-[13.5px] font-bold transition-colors leading-snug ${isSelected
-                                        ? "text-[#2563EB] dark:text-[#60A5FA]"
-                                        : "text-slate-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA]"
-                                        }`}
-                                    >
-                                      {aboutItem.title}
-                                    </span>
-                                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#2563EB] dark:group-hover:text-[#60A5FA] group-hover:translate-x-0.5 transition-all opacity-0 group-hover:opacity-100" />
-                                  </div>
-                                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
-                                    {aboutItem.desc}
-                                  </p>
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
                   </div>
                 );
               }
