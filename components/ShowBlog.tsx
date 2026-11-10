@@ -457,6 +457,7 @@ export default function ShowBlog() {
                         src={featuredArticle.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
                         alt={featuredArticle.author?.name || "Author"}
                         fill
+                        sizes="36px"
                         unoptimized
                         className="object-cover"
                       />
@@ -721,6 +722,7 @@ export default function ShowBlog() {
                         src={article.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
                         alt={article.author?.name || "Author"}
                         fill
+                        sizes="32px"
                         unoptimized
                         className="object-cover"
                       />

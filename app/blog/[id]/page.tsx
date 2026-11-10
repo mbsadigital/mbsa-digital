@@ -214,11 +214,13 @@ export default function BlogDetailPage() {
     );
   }
 
-  const formattedDate = new Date(blog.createdAt || Date.now()).toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric"
-  });
+  const formattedDate = useMemo(() => {
+    return new Date(blog.createdAt || "2025-01-01").toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+  }, [blog.createdAt]);
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#2563EB]/25 selection:text-[#2563EB] transition-colors duration-300">
@@ -344,6 +346,7 @@ export default function BlogDetailPage() {
                   src={blog.author?.avatar || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80"}
                   alt={blog.author?.name || "Author"}
                   fill
+                  sizes="32px"
                   unoptimized
                   className="object-cover"
                 />

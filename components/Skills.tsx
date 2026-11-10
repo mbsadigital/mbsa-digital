@@ -300,7 +300,7 @@ export default function Skills() {
             >
               Honeycomb Reactors.
               <br />
-              <span className="text-[#2563EB] dark:text-[#52adbff]">
+              <span className="text-[#2563EB] dark:text-[#2f97ee]">
                 Hardware-Grade Execution.
               </span>
             </motion.h2>

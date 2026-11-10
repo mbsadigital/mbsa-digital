@@ -194,6 +194,7 @@ export default function ProjectDetailPage() {
                 alt={project.title}
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 1200px"
                 className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
               />
             </div>
@@ -362,6 +363,7 @@ export default function ProjectDetailPage() {
                       src={proof.image}
                       alt={proof.title}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -464,6 +466,7 @@ export default function ProjectDetailPage() {
                   src={activeProofZoom.image}
                   alt={activeProofZoom.title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 85vw"
                   className="object-contain"
                   unoptimized
                 />
@@ -540,6 +543,7 @@ export default function ProjectDetailPage() {
                       src={other.image}
                       alt={other.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">

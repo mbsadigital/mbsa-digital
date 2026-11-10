@@ -3,22 +3,21 @@ import type { Metadata } from "next";
 import {
   constructMetadata,
   getProjectsCollectionJsonLd,
-  getBreadcrumbJsonLd,
 } from "@/lib/seo";
 import { PROJECTS_DATA_FULL } from "@/lib/projectsData";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Case Studies & SEO Growth Proof | Muskan Shekh Portfolio",
+  title: "Portfolio: SEO & Marketing Case Studies by MBSA Digital",
   description:
-    "Explore verified client case studies featuring Google Search Console clicks, GA4 conversion attribution, and Google Business Profile 3-Pack rankings.",
+    "Browse MBSA Digital case studies in SEO, local search, websites, ads and social. Every result shows its baseline, timeframe and data source. View our work.",
   path: "/projects",
   keywords: [
-    "SEO Case Studies",
-    "Digital Marketing Portfolio",
-    "Google Search Console Proof",
-    "Local SEO 3-Pack Rankings",
-    "Harris Pharmacy Case Study",
-    "London Healthcare SEO",
+    "SEO case studies",
+    "digital marketing portfolio",
+    "digital marketing case studies",
+    "website design portfolio",
+    "local SEO case study",
+    "MBSA Digital client results",
   ],
 });
 
@@ -28,20 +27,12 @@ export default function ProjectsLayout({
   children: React.ReactNode;
 }) {
   const collectionJsonLd = getProjectsCollectionJsonLd(PROJECTS_DATA_FULL);
-  const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
-  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {children}
     </>

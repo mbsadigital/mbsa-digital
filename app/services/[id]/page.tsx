@@ -44,6 +44,7 @@ import {
 } from "lucide-react";
 import { SERVICES_DATA, type ServiceDetail } from "@/lib/servicesData";
 import { getServiceFitDetails } from "@/lib/serviceFitData";
+import { getServiceProofSlides } from "@/lib/serviceProofData";
 import { ServiceCardIllustration } from "../page";
 
 // Icon mapping helper
@@ -76,15 +77,18 @@ export default function ServiceDetailPage() {
   const router = useRouter();
   const id = (params?.id as string) || "";
 
-  // Lookup active service by id or slug or alias
+  // Lookup active service by id or slug or alias (supports slug, id, or number e.g. "4" or "04")
   const service = useMemo<ServiceDetail>(() => {
+    const rawId = id.trim();
     return (
       SERVICES_DATA.find(
         (s) =>
-          s.id.toLowerCase() === id.toLowerCase() ||
-          s.slug.toLowerCase() === id.toLowerCase() ||
-          s.num === id ||
-          s.aliases?.some((a) => a.toLowerCase() === id.toLowerCase())
+          s.id.toLowerCase() === rawId.toLowerCase() ||
+          s.slug.toLowerCase() === rawId.toLowerCase() ||
+          s.num === rawId ||
+          s.num === rawId.padStart(2, "0") ||
+          (!isNaN(Number(rawId)) && parseInt(s.num, 10) === parseInt(rawId, 10)) ||
+          s.aliases?.some((a) => a.toLowerCase() === rawId.toLowerCase())
       ) || SERVICES_DATA[0]
     );
   }, [id]);
@@ -110,66 +114,9 @@ export default function ServiceDetailPage() {
 
   const ServiceIcon = ICON_MAP[service.iconName] || Search;
 
-  // Rich verified telemetry proofs for this service
+  // Verified real client telemetry proofs mapped to this service
   const proofSlides = useMemo(() => {
-    return [
-      {
-        url: service.image || "/images/gsc-console-live.jpg",
-        title: `${service.shortTitle} Primary Deliverable`,
-        tag: "Live Execution Proof",
-        metric: service.stats.highlight,
-        metricLabel: service.stats.label,
-        description: `Production-ready architectural deployment for ${service.title}, ensuring top search visibility, robust technical stability, and sustained growth.`,
-        highlights: [
-          { label: "Core Impact", value: service.stats.highlight },
-          { label: "Benchmark", value: service.stats.label },
-          { label: "Client Validation", value: service.caseStudy.client },
-          { label: "Deployment", value: "Verified Active" },
-        ],
-      },
-      {
-        url: "/images/gsc-console-live.jpg",
-        title: "Google Search Console Organic Clicks & Impressions",
-        tag: "GSC Telemetry",
-        metric: "+185%",
-        metricLabel: "Organic Impressions",
-        description: "Direct Search Console live telemetry showing sustained indexation growth, top-3 keyword rankings, and high-intent organic clicks.",
-        highlights: [
-          { label: "Organic Lift", value: "+185% Impressions" },
-          { label: "Avg Position", value: "Top 3 SERP" },
-          { label: "Crawl Health", value: "100% Indexed" },
-          { label: "Source", value: "Google Search Console" },
-        ],
-      },
-      {
-        url: "/images/ga4-analytics-live.jpg",
-        title: "GA4 E-commerce & Conversion Flow Attribution",
-        tag: "Analytics Tracking",
-        metric: "5.1x",
-        metricLabel: "Attributed ROAS",
-        description: "Full-funnel Google Analytics 4 tracking measuring user journeys, purchase conversion rates, and revenue impact across organic channels.",
-        highlights: [
-          { label: "Return on Spend", value: "5.1x ROAS" },
-          { label: "Funnel Conversion", value: "+42% Lift" },
-          { label: "Attribution", value: "Data-Driven" },
-          { label: "Platform", value: "Google Analytics 4" },
-        ],
-      },
-      {
-        url: "/Analytics/Aristbrush/gsc-5-ga4-revenue.jpg",
-        title: `${service.caseStudy.client} Revenue Impact`,
-        tag: "Case Study Milestone",
-        metric: service.caseStudy.metric,
-        metricLabel: service.caseStudy.impact.slice(0, 48) + "...",
-        description: `Audited performance case study on ${service.caseStudy.client} demonstrating compounding growth and revenue milestone delivery.`,
-        highlights: [
-          { label: "Key Outcome", value: service.caseStudy.metric },
-          { label: "Partner Brand", value: service.caseStudy.client },
-          { label: "Deliverables", value: `${service.deliverables.length} Assets` },
-          { label: "Status", value: "Completed & Verified" },
-        ],
-      },
-    ];
+    return getServiceProofSlides(service.slug || service.id);
   }, [service]);
 
   return (
@@ -335,17 +282,21 @@ export default function ServiceDetailPage() {
                       src={service.lightImage}
                       alt={`${service.title} 3D Visual (Light Mode)`}
                       fill
-                      className="block dark:hidden object-contain p-3 sm:p-5 transition-transform duration-500 ease-out group-hover/canvas:scale-105"
+                      className="service-img-light object-contain p-3 sm:p-5 transition-transform duration-500 ease-out group-hover/canvas:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 42vw"
                       priority
-                      quality={80}
+                      quality={85}
+                      unoptimized
                     />
                     <Image
                       src={service.darkImage || service.lightImage}
                       alt={`${service.title} 3D Visual (Dark Mode)`}
                       fill
-                      className="hidden dark:block object-contain p-3 sm:p-5 transition-transform duration-500 ease-out group-hover/canvas:scale-105"
+                      className="service-img-dark object-contain p-3 sm:p-5 transition-transform duration-500 ease-out group-hover/canvas:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 42vw"
                       priority
-                      quality={80}
+                      quality={85}
+                      unoptimized
                     />
                   </>
                 ) : (
@@ -403,11 +354,10 @@ export default function ServiceDetailPage() {
                     key={idx}
                     type="button"
                     onClick={() => setActiveInclusionTab(idx)}
-                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-                      activeInclusionTab === idx
+                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${activeInclusionTab === idx
                         ? "bg-[#2563EB] text-white shadow-md shadow-blue-500/25"
                         : "bg-stone-100 dark:bg-white/5 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-white/10"
-                    }`}
+                      }`}
                   >
                     {cat.title}
                   </button>
@@ -477,47 +427,70 @@ export default function ServiceDetailPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Column: Proof Viewer Preview */}
-            <div className="lg:col-span-7 relative">
-              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-stone-50/90 dark:bg-black/70 shadow-2xl">
-                {currentSlide === 0 && (service.lightImage || service.darkImage) ? (
-                  <>
-                    <Image
-                      src={service.lightImage || proofSlides[0].url}
-                      alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
-                      fill
-                      className="block dark:hidden object-contain p-3 sm:p-5"
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                      quality={80}
-                    />
-                    <Image
-                      src={service.darkImage || proofSlides[0].url}
-                      alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
-                      fill
-                      className="hidden dark:block object-contain p-3 sm:p-5"
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                      quality={80}
-                    />
-                  </>
-                ) : (
-                  <Image
-                    src={proofSlides[currentSlide]?.url || "/images/gsc-console-live.jpg"}
-                    alt={proofSlides[currentSlide]?.title || "Proof Screenshot"}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    quality={80}
-                  />
-                )}
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-white text-[11px] font-mono font-bold border border-white/20">
-                  {proofSlides[currentSlide]?.tag}
+            <div className="lg:col-span-7 space-y-3">
+              <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-stone-900/5 dark:bg-black/80 shadow-2xl flex items-center justify-center group">
+                <Image
+                  src={proofSlides[currentSlide]?.url || "/Analytics/Harris/harrisgsc.png"}
+                  alt={proofSlides[currentSlide]?.title || "Live Performance Telemetry"}
+                  fill
+                  className="object-contain p-2 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  priority={currentSlide === 0}
+                  quality={90}
+                  unoptimized
+                />
+
+                {/* Top Badge: Channel / Telemetry Tag + Service Badge */}
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-white text-[11px] font-mono font-bold border border-white/20 shadow-md">
+                    {proofSlides[currentSlide]?.tag}
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-bold border border-blue-400/30 shadow-md">
+                    {service.shortTitle}
+                  </span>
                 </div>
+
+                {/* Top Badge: Client Brand */}
+                {proofSlides[currentSlide]?.client && (
+                  <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-[11px] font-semibold border border-blue-400/30 shadow-md">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-200" />
+                    <span>{proofSlides[currentSlide]?.client}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Interactive Slide Thumbnails */}
+              <div className={`grid gap-2.5 pt-2 ${proofSlides.length > 4 ? "grid-cols-5" : "grid-cols-4"}`}>
+                {proofSlides.map((slide, pIdx) => (
+                  <button
+                    key={pIdx}
+                    type="button"
+                    onClick={() => setCurrentSlide(pIdx)}
+                    className={`relative aspect-[16/10] rounded-xl overflow-hidden border transition-all cursor-pointer bg-stone-100 dark:bg-stone-900 ${
+                      currentSlide === pIdx
+                        ? "border-[#2563EB] ring-2 ring-[#2563EB]/40 scale-[1.02]"
+                        : "border-stone-200 dark:border-white/10 opacity-70 hover:opacity-100 hover:border-stone-400 dark:hover:border-white/30"
+                    }`}
+                    aria-label={`View proof slide ${pIdx + 1}: ${slide.title}`}
+                  >
+                    <Image
+                      src={slide.url}
+                      alt={slide.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 25vw, 140px"
+                      unoptimized
+                    />
+                    <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
+                  </button>
+                ))}
               </div>
 
               {/* Slider Navigation Dots and Controls */}
-              <div className="flex items-center justify-between mt-4">
-                <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between pt-3 pb-1">
+                <div className="flex items-center gap-1.5">
                   {proofSlides.map((_, pIdx) => (
                     <button
                       key={pIdx}
@@ -526,7 +499,7 @@ export default function ServiceDetailPage() {
                       className={`h-2 rounded-full transition-all cursor-pointer ${
                         currentSlide === pIdx
                           ? "w-8 bg-[#2563EB]"
-                          : "w-2 bg-stone-300 dark:bg-white/20 hover:bg-stone-400"
+                          : "w-2 bg-stone-300 dark:bg-white/20 hover:bg-stone-400 dark:hover:bg-white/40"
                       }`}
                       aria-label={`Go to proof slide ${pIdx + 1}`}
                     />
@@ -539,7 +512,7 @@ export default function ServiceDetailPage() {
                     onClick={() =>
                       setCurrentSlide((prev) => (prev <= 0 ? proofSlides.length - 1 : prev - 1))
                     }
-                    className="p-2 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
                     aria-label="Previous proof"
                   >
                     <ChevronLeft className="w-4 h-4" />
@@ -549,7 +522,7 @@ export default function ServiceDetailPage() {
                     onClick={() =>
                       setCurrentSlide((prev) => (prev + 1) % proofSlides.length)
                     }
-                    className="p-2 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
+                    className="p-2.5 rounded-xl bg-stone-100 dark:bg-white/10 hover:bg-stone-200 dark:hover:bg-white/20 text-stone-700 dark:text-stone-200 transition-colors cursor-pointer"
                     aria-label="Next proof"
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -561,10 +534,22 @@ export default function ServiceDetailPage() {
             {/* Right Column: Slide Telemetry Details */}
             <div className="lg:col-span-5 space-y-5">
               <div className="space-y-2">
-                <span className="text-xs font-mono font-bold text-[#2563EB] dark:text-[#60A5FA]">
-                  PROOF 0{currentSlide + 1} OF 0{proofSlides.length}
-                </span>
-                <h3 className="text-2xl font-black text-stone-900 dark:text-white">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold text-[#2563EB] dark:text-[#60A5FA]">
+                    PROOF 0{currentSlide + 1} OF 0{proofSlides.length}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                      {service.shortTitle}
+                    </span>
+                    {proofSlides[currentSlide]?.client && (
+                      <span className="text-xs font-mono font-semibold text-stone-500 dark:text-stone-400">
+                        {proofSlides[currentSlide]?.client}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <h3 className="text-2xl font-black text-stone-900 dark:text-white leading-tight">
                   {proofSlides[currentSlide]?.title}
                 </h3>
                 <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
@@ -582,7 +567,7 @@ export default function ServiceDetailPage() {
                     {proofSlides[currentSlide]?.metric}
                   </p>
                 </div>
-                <span className="text-xs font-semibold text-stone-600 dark:text-stone-300">
+                <span className="text-xs font-semibold text-stone-600 dark:text-stone-300 max-w-[50%] text-right">
                   {proofSlides[currentSlide]?.metricLabel}
                 </span>
               </div>
@@ -704,44 +689,6 @@ export default function ServiceDetailPage() {
           </div>
         </section>
 
-        {/* ========================================================
-            8. PROVEN CLIENT IMPACT CASE STUDY SPOTLIGHT
-        ======================================================== */}
-        <section className="p-8 sm:p-12 rounded-[36px] bg-gradient-to-br from-stone-900 to-black text-white relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/20 rounded-full blur-[140px] pointer-events-none" />
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold uppercase tracking-wider">
-                Case Study Proof
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white">
-                Client Result: {service.caseStudy.client}
-              </h2>
-              <p className="text-stone-300 text-sm sm:text-base leading-relaxed max-w-xl">
-                {service.caseStudy.impact}
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-white/10 border border-white/15 backdrop-blur-xl text-center space-y-2">
-              <span className="text-4xl sm:text-5xl font-black text-[#60A5FA] font-mono">
-                {service.caseStudy.metric}
-              </span>
-              <p className="text-xs uppercase tracking-wider text-stone-300 font-bold">
-                Audited Performance Milestone
-              </p>
-              {service.caseStudy.link && (
-                <Link
-                  href={service.caseStudy.link}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-white pt-2 transition-colors"
-                >
-                  <span>View Case Study Details</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              )}
-            </div>
-          </div>
-        </section>
 
         {/* ========================================================
             9. FREQUENTLY ASKED QUESTIONS (FAQ)
@@ -750,7 +697,7 @@ export default function ServiceDetailPage() {
           <section className="space-y-6">
             <div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#2563EB] dark:text-[#60A5FA]">
-                Clear Answers
+                {service.title} FAQs
               </span>
               <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-stone-900 dark:text-white mt-1">
                 Frequently Asked Questions

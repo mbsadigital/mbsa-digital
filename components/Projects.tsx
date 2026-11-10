@@ -94,7 +94,7 @@ export default function Projects() {
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.08] mb-4">
               Results we
               Can Show You <br />
-              <span className="text-[#2563EB] ">
+              <span className="text-[#2563EB] dark:text-[#2f97ee]">
                 With The Data Behind Them.
 
               </span>

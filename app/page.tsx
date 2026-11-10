@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import Hero from "@/components/Hero";
 import Banner from "@/components/Banner";
+import { getHomeGraphJsonLd } from "@/lib/seo";
 
 // Code-split below-the-fold sections to maximize LCP and minimize initial JS execution
 const Industries = dynamic(() => import("@/components/Industries"));
@@ -115,8 +116,14 @@ function ScrollProgressBar() {
 }
 
 export default function Home() {
+  const homeGraphJsonLd = getHomeGraphJsonLd();
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#0B1220] text-stone-900 dark:text-stone-100 flex flex-col transition-colors duration-500 relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeGraphJsonLd) }}
+      />
       {/* Top Global Scroll Progress Bar (Hardware-accelerated Framer Motion transform) */}
       <ScrollProgressBar />
 

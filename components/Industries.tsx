@@ -151,7 +151,7 @@ export default function Industries() {
 
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Experience where trust and <br />
-              <span className="text-[#2563EB]">
+              <span className="text-[#2563EB] dark:text-[#2f97ee]">
                 visibility more
               </span>
             </h2>

@@ -8,17 +8,19 @@ import {
 import { SERVICES_DATA } from "@/lib/servicesData";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Growth Frameworks & Digital Marketing Services | Muskan Shekh",
+  title: "Digital Marketing Services: SEO, AI, Ads | MBSA Digital",
   description:
-    "Explore Technical SEO audits, AI search optimization (AEO/GEO), content strategy, WordPress e-commerce development, and data-driven marketing frameworks.",
+    "Explore 25 digital marketing services from MBSA Digital: SEO, AI search, Google and Meta Ads, social, websites, analytics and CRO. Pick one or a full plan.",
   path: "/services",
   keywords: [
-    "Technical SEO Services",
-    "AEO Search Optimization",
-    "Generative Engine Optimization GEO",
-    "WordPress E-Commerce SEO",
-    "GA4 Analytics and Reporting",
-    "Digital Growth Frameworks",
+    "digital marketing services",
+    "digital marketing agency services",
+    "SEO and PPC services",
+    "online marketing services",
+    "full service digital marketing agency",
+    "AI search optimization",
+    "Google Ads management",
+    "conversion rate optimisation",
   ],
 });
 
@@ -28,20 +30,12 @@ export default function ServicesLayout({
   children: React.ReactNode;
 }) {
   const collectionJsonLd = getServicesCollectionJsonLd(SERVICES_DATA);
-  const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
-  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {children}
     </>

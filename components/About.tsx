@@ -56,7 +56,6 @@ export default function About() {
       className="
         relative overflow-hidden
         py-16 sm:py-20 lg:py-24
-        bg-white dark:bg-[#090807]
         text-slate-900 dark:text-white
         font-[family-name:var(--font-plus-jakarta-sans)]
         transition-colors duration-500
@@ -97,8 +96,8 @@ export default function About() {
 
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08] text-slate-950 dark:text-white">
-              Smart business
-              <span className="block mt-1 sm:mt-2 text-[#2563EB] dark:text-[#3B82F6]">
+              Smart business With
+              <span className="block mt-1 sm:mt-2 text-[#2563EB] dark:text-[#2f97ee]">
                 Smart people
               </span>
             </h2>

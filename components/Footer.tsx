@@ -662,10 +662,17 @@ export default function Footer() {
             </Link>
             <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
             <Link
-              href="/contact"
+              href="/privacy-policy"
               className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
             >
-              Privacy &amp; Terms
+              Privacy Policy
+            </Link>
+            <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+            <Link
+              href="/terms-and-conditions"
+              className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
+            >
+              Terms
             </Link>
             <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
 

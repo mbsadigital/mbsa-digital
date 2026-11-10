@@ -484,7 +484,7 @@ export default function Services() {
                 Most websites don&apos;t have a traffic problem.
                 <br />
                 <span>
-                  They have a <span className="text-[#2563EB] dark:text-[#52adbff]">findability </span>problem.
+                  They have a <span className="text-[#2563EB] dark:text-[#2f97ee]">findability </span>problem.
                 </span>
               </h2>
 
@@ -524,7 +524,7 @@ export default function Services() {
                 <span>
                   whether you’re found, chosen
                   <br />
-                  and <span className="text-[#2563EB] dark:text-[#52adbff]">contacted</span>
+                  and <span className="text-[#2563EB] dark:text-[#2f97ee]">contacted</span>
                 </span>
               </h2>
 
@@ -913,7 +913,7 @@ export default function Services() {
 
               <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight leading-[1.14] text-stone-900 dark:text-white mb-5">
                 One team that connects search,
-                <span className="text-[#2563EB] dark:text-[#52adbff]">
+                <span className="text-[#2563EB] dark:text-[#2f97ee]">
                   website and reporting
                 </span>
               </h2>

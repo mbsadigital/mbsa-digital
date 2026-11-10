@@ -1,21 +1,21 @@
 import React from "react";
 import type { Metadata } from "next";
-import { constructMetadata, getBreadcrumbJsonLd } from "@/lib/seo";
+import { constructMetadata, getIndustriesGraphJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Industries We Serve | High-Trust Growth & SEO | MBSA Digital",
+  title: "Digital Marketing by Industry: Healthcare to D2C | MBSA",
   description:
-    "Explore the specialized industries served by MBSA Digital — from Healthcare, Pharmacy, and Wellness to E-Commerce, D2C Brands, and Local Professional Services. Data-driven growth and SEO engineered for high-trust niches.",
+    "SEO and digital marketing for healthcare and pharmacy, beauty and wellness, ecommerce and D2C, and local services, shaped around how every sector searches.",
   path: "/industries",
   keywords: [
-    "Industries we serve",
-    "Healthcare SEO",
-    "Pharmacy digital marketing",
-    "E-commerce SEO agency",
-    "D2C growth marketing",
-    "Local business SEO",
-    "Wellness clinic marketing",
-    "B2B digital marketing agency",
+    "digital marketing by industry",
+    "digital marketing for healthcare",
+    "healthcare SEO",
+    "pharmacy SEO",
+    "beauty brand SEO",
+    "ecommerce SEO services",
+    "local business SEO",
+    "Shopify SEO",
   ],
 });
 
@@ -24,16 +24,13 @@ export default function IndustriesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Industries", path: "/industries" },
-  ]);
+  const industriesGraphJsonLd = getIndustriesGraphJsonLd();
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(industriesGraphJsonLd) }}
       />
       {children}
     </>

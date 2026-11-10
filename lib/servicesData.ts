@@ -40,6 +40,11 @@ export interface ServiceDetail {
   desc: string;
   tagline: string;
   longDescription: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  primaryKeyword?: string;
+  serviceType?: string;
+  schemaDescription?: string;
   iconName: ServiceIconName;
   image: string;
   lightImage: string;
@@ -133,6 +138,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Build a rock-solid algorithmic foundation that Google loves crawling, indexing, and ranking at the top.",
     longDescription:
       "Search engines cannot rank what they cannot easily crawl, render, and understand. Our complete SEO Services tackle technical bottlenecks, on-page keyword mapping, architecture hierarchies, and content relevance. Every page is systematically optimized with semantic HTML, JSON-LD structured data, and high-intent targeting to deliver sustained organic traffic and revenue growth.",
+    metaTitle: "SEO Services: Technical and On-Page Optimisation | MBSA",
+    metaDescription: "SEO services that fix what holds rankings back: technical audits, Core Web Vitals, on-page SEO, schema and plain-English reports. Book a free consultation.",
+    primaryKeyword: "SEO services",
+    serviceType: "Search engine optimisation",
+    schemaDescription: "SEO services improve a website so search engines can crawl, understand and rank it for the searches your customers make. Good SEO combines technical fixes, well-structured pages that answer real questions, and signals that show your business is trustworthy, so more of the right people find you without paying for every click.",
     iconName: "Search",
     image: "/images/services/dark/seo-services.png",
     lightImage: "/images/services/light/seo-services.png",
@@ -186,18 +196,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects#harris-pharmacy",
     },
     faqs: [
-      {
-        q: "How soon do SEO fixes reflect in Google rankings?",
-        a: "Technical and indexing fixes are often recognized by Google within 7 to 14 days following Search Console URL inspection requests. Full keyword ranking lifts typically consolidate over 6 to 12 weeks.",
-      },
-      {
-        q: "Do you fix the code directly or just provide a PDF recommendation?",
-        a: "We implement the changes directly in your CMS, Next.js codebase, or WordPress theme, ensuring error-free deployment and automated verification.",
-      },
-      {
-        q: "How do you handle site migrations without losing rankings?",
-        a: "We implement rigorous 1-to-1 301 redirect mapping, preserve canonical hierarchies, verify staging headers, and monitor Googlebot crawl logs in real-time.",
-      },
+          {
+                "q": "How long does SEO take to show results?",
+                "a": "Technical fixes and improvements to existing pages can show movement within a few weeks. Bigger gains from new content and authority usually take three to six months or more, depending on your competition and your site’s history. We give you a realistic timeline after the audit."
+          },
+          {
+                "q": "How much do SEO services cost?",
+                "a": "Cost depends on the size of your website, how competitive your market is and how much work is needed. We offer one-off audits, fixed-scope projects and monthly retainers, and we quote after a free consultation so you only pay for what will make a difference."
+          },
+          {
+                "q": "Do you guarantee first-page rankings on Google?",
+                "a": "No. Nobody controls Google’s rankings, and any agency that guarantees positions is overpromising. We commit to doing the right work in the right order and to reporting honestly on the results."
+          },
+          {
+                "q": "What is the difference between technical SEO and on-page SEO?",
+                "a": "Technical SEO makes sure search engines can access, render and index your site efficiently, covering speed, crawlability, redirects and structured data. On-page SEO makes each page clearly relevant to the searches it targets through its content, headings, titles and internal links. This service includes both."
+          },
+          {
+                "q": "Will SEO changes disrupt our live website?",
+                "a": "No. We test changes on a staging site where possible, roll them out in small batches and keep a log of everything we change, so nothing is broken and every change can be reversed."
+          },
+          {
+                "q": "Do you also optimise for AI search like ChatGPT and Google AI Overviews?",
+                "a": "Yes. Strong technical SEO is the foundation for AI search visibility. For deeper work on answer engines and AI assistants, see our AEO and GEO service."
+          },
+          {
+                "q": "What is included in your SEO services?",
+                "a": "The core elements most clients receive are: technical SEO audit; Core Web Vitals and speed; on-page optimisation; structured data; keyword mapping; monthly reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which website platforms do you provide SEO for?",
+                "a": "We work with WordPress, Shopify, WooCommerce, Webflow and custom-built websites. The service suits any business whose website isn’t bringing in enough qualified search traffic."
+          }
     ],
   },
   {
@@ -214,6 +244,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "A comprehensive 150-point diagnostic revealing every technical, semantic, and AI barrier holding back your rankings.",
     longDescription:
       "Before investing in content or campaigns, you need clarity on what is truly stopping your website from ranking. Our comprehensive SEO Audit examines your server configuration, JavaScript rendering, crawl paths, content depth, backlink risk, and AI search readiness. You receive an actionable, prioritized roadmap ranked by ROI impact.",
+    metaTitle: "SEO Audit Services: A Clear Prioritised Fix Plan | MBSA",
+    metaDescription: "Get a website SEO audit that ranks every issue by impact: technical crawl, Core Web Vitals, content, links and AI search readiness. Request an audit today.",
+    primaryKeyword: "SEO audit services",
+    serviceType: "SEO audit",
+    schemaDescription: "An SEO audit is a structured review of everything that affects how your website performs in search: technical health, content quality, search intent, internal links, page experience, local signals and authority. A useful audit doesn’t just list problems. It ranks them by impact so you know what to fix first.",
     iconName: "FileCheck",
     image: "/images/services/dark/seo-audit.png",
     lightImage: "/images/services/light/seo-audit.png",
@@ -267,18 +302,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What makes this different from an automated online SEO checker?",
-        a: "Automated tools run generic scripts that miss nuanced JavaScript rendering errors, canonical loops, and intent mismatches. Our audit is manually conducted by senior technical SEOs using enterprise crawlers.",
-      },
-      {
-        q: "What format will the audit be delivered in?",
-        a: "You receive an interactive executive dashboard, a detailed technical spreadsheet with exact URLs, and ready-to-assign Jira or GitHub tickets for your developers.",
-      },
-      {
-        q: "Can you implement the audit fixes for us?",
-        a: "Yes. We offer turnkey execution where our engineering team directly implements all technical, schema, and on-page fixes.",
-      },
+          {
+                "q": "What is included in an SEO audit?",
+                "a": "Our audit covers technical SEO (crawling, indexing, redirects, canonicals, sitemaps), page speed and Core Web Vitals, content quality and search intent, internal linking, a backlink summary, local SEO signals where relevant, and AI search readiness. You receive a prioritised action plan and a walkthrough call."
+          },
+          {
+                "q": "How much does an SEO audit cost?",
+                "a": "The price depends mainly on the size and complexity of your website. A small business site needs far less time than a large e-commerce store. We confirm a fixed price before starting."
+          },
+          {
+                "q": "How long does an SEO audit take?",
+                "a": "Most audits take one to three weeks from receiving access, depending on site size. Urgent pre-launch audits can be prioritised."
+          },
+          {
+                "q": "Is a free SEO audit tool enough?",
+                "a": "Free tools are useful for spotting obvious errors, but they can’t judge search intent, prioritise by business value or explain what to fix first. An expert audit interprets the data for your goals."
+          },
+          {
+                "q": "What access do you need?",
+                "a": "Ideally read access to Google Search Console and Google Analytics 4, plus your website URL. Access is granted through each platform’s user settings, so you never share passwords."
+          },
+          {
+                "q": "Will you fix the issues you find?",
+                "a": "We can. Many clients implement fixes themselves using our developer-ready tickets; others ask us to handle them as part of our ongoing SEO services."
+          },
+          {
+                "q": "What is an SEO audit?",
+                "a": "An SEO audit is a structured review of everything that affects how your website performs in search: technical health, content quality, search intent, internal links, page experience, local signals and authority. A useful audit doesn’t just list problems. It ranks them by impact so you know what to fix first."
+          },
+          {
+                "q": "When should a business get an SEO audit?",
+                "a": "An audit is most useful when you are planning an SEO budget, preparing a redesign or migration, or trying to recover lost traffic. You get a prioritised findings report plus a walkthrough call."
+          }
     ],
   },
   {
@@ -295,6 +350,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Dominate the Google 3-Pack map rankings and capture high-intent local customer calls and foot traffic.",
     longDescription:
       "For regional businesses and multi-location brands, the Google Map Pack drives over 44% of total local clicks. We optimize your Google Business Profile, synchronize citations across all major local aggregators, build localized landing pages, and implement geo-targeted schema markup to ensure you rank #1 whenever nearby customers search.",
+    metaTitle: "Local SEO Services: More Calls From Google Maps by MBSA",
+    metaDescription: "Local SEO services that win calls, visits and bookings: Google Business Profile optimisation, location pages, citations and real reviews. Get a free audit.",
+    primaryKeyword: "local SEO services",
+    serviceType: "Local SEO",
+    schemaDescription: "Local SEO improves your visibility for searches with local intent, such as “pharmacy near me” or “dentist in Manchester”. It covers your Google Business Profile, consistent business details across the web, location pages on your website, reviews and local relevance signals that help Google trust you in your area.",
     iconName: "MapPin",
     image: "/images/services/dark/local-seo.png",
     lightImage: "/images/services/light/local-seo.png",
@@ -348,18 +408,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "How does Local SEO differ from regular organic SEO?",
-        a: "Local SEO focuses on physical proximity, Google Business Profile optimization, local citations, and geo-targeted landing pages to win map pack listings, whereas organic SEO targets global or national web search results.",
-      },
-      {
-        q: "Can you manage local SEO for businesses with multiple branches?",
-        a: "Yes. We create distinct location page hierarchies, manage multi-location GBP bulk verification, and prevent internal cannibalization between nearby branches.",
-      },
-      {
-        q: "How important are Google reviews for map rankings?",
-        a: "Review quantity, velocity, keyword mentions in reviews, and owner response rates are among the top 3 ranking factors for Google's local algorithm.",
-      },
+          {
+                "q": "How do I get my business into the Google Maps results?",
+                "a": "Google ranks local results on relevance, distance and prominence. You can strengthen relevance and prominence by completing your Business Profile accurately, choosing the right categories, earning genuine reviews and building strong location pages. Distance from the searcher is outside anyone’s control."
+          },
+          {
+                "q": "How long does local SEO take?",
+                "a": "Fixing incorrect details and improving a Business Profile can show results within weeks. Building prominence through reviews, content and citations typically takes three to six months in competitive areas."
+          },
+          {
+                "q": "How much do local SEO services cost?",
+                "a": "It depends on the number of locations and how competitive your area is. Single-location businesses need far less work than a 20-branch chain. We quote after reviewing your current listings."
+          },
+          {
+                "q": "Can you manage multiple locations?",
+                "a": "Yes. We set up a consistent process so every branch has accurate details, a useful location page and its own reporting."
+          },
+          {
+                "q": "Do you buy or write reviews?",
+                "a": "Never. Fake or incentivised reviews breach Google’s policies and can get your profile suspended. We help you ask real customers and respond well. See our online reputation management service for more."
+          },
+          {
+                "q": "Is local SEO different in the UK and India?",
+                "a": "The principles are the same, but directories, search behaviour and competition differ. We plan local work around the cities and platforms your customers actually use."
+          },
+          {
+                "q": "What is local SEO?",
+                "a": "Local SEO improves your visibility for searches with local intent, such as “pharmacy near me” or “dentist in Manchester”. It covers your Google Business Profile, consistent business details across the web, location pages on your website, reviews and local relevance signals that help Google trust you in your area."
+          },
+          {
+                "q": "How do you measure local SEO results?",
+                "a": "We measure the outcomes that matter locally: calls, direction requests, bookings and local rankings, plus Business Profile interactions and rank checks for your priority searches."
+          }
     ],
   },
   {
@@ -376,6 +456,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Transform your product catalogs and category taxonomy into high-converting organic revenue engines.",
     longDescription:
       "E-commerce websites face unique search challenges: faceted navigation crawl traps, duplicate product variants, thin category pages, and out-of-stock index bloat. We optimize your e-commerce architecture for Shopify, WooCommerce, or headless stores, ensuring every high-margin category and product ranks for buyer-intent search queries.",
+    metaTitle: "Ecommerce SEO Services for Shopify & WooCommerce | MBSA",
+    metaDescription: "Ecommerce SEO for Shopify and WooCommerce stores: category and product page optimisation, duplicate URL fixes and Product schema that grow organic revenue.",
+    primaryKeyword: "ecommerce SEO services",
+    serviceType: "Ecommerce SEO",
+    schemaDescription: "E-commerce SEO is the practice of improving an online store so its category and product pages rank for the searches shoppers make. It combines technical fixes (like duplicate URLs from filters), helpful category and product content, accurate Product structured data and a site structure that guides both shoppers and search engines.",
     iconName: "ShoppingCart",
     image: "/images/services/dark/ecommerce-seo.png",
     lightImage: "/images/services/light/ecommerce-seo.png",
@@ -429,18 +514,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "How do you handle out-of-stock products for SEO?",
-        a: "We avoid returning 404s for temporary out-of-stock items. We keep the page live with email restock alerts, recommend related in-stock items, and update schema to 'OutOfStock' to preserve accumulated link equity.",
-      },
-      {
-        q: "Why is faceted navigation dangerous for e-commerce SEO?",
-        a: "Filters (color, size, price) can generate millions of duplicate URLs, consuming Google's crawl budget and diluting ranking power. We configure proper canonicalization and robots rules to prevent index bloat.",
-      },
-      {
-        q: "Can you optimize Shopify stores that use third-party apps?",
-        a: "Yes. We audit third-party app scripts, remove unused render-blocking code, and inject clean native schemas directly into theme files.",
-      },
+          {
+                "q": "What is the difference between ecommerce SEO and regular SEO?",
+                "a": "E-commerce SEO deals with problems specific to online stores: thousands of product URLs, filters and variants that create duplicates, out-of-stock items, product feeds and structured data for prices and availability. The goal is ranking category and product pages for buying searches."
+          },
+          {
+                "q": "Is Shopify good for SEO?",
+                "a": "Shopify is a solid platform for SEO, but it has quirks, such as duplicate product URLs inside collections, a fixed URL structure and speed issues from too many apps. We know how to work around them."
+          },
+          {
+                "q": "How long does ecommerce SEO take to increase sales?",
+                "a": "Technical fixes can lift visibility within weeks. Meaningful growth in organic revenue usually builds over three to six months, faster for stores with existing authority."
+          },
+          {
+                "q": "Should we write unique product descriptions for every product?",
+                "a": "For your best-selling and highest-margin products, yes. Unique descriptions that answer buyers’ questions help both rankings and conversions. For very large catalogues, we prioritise by revenue and use smart templates for the rest."
+          },
+          {
+                "q": "Do you help with Google Shopping and Merchant Center?",
+                "a": "We make sure your product structured data and feed are accurate and consistent, which supports free listings. Paid Shopping campaigns are part of our Google Ads management."
+          },
+          {
+                "q": "How much does ecommerce SEO cost?",
+                "a": "Pricing depends on catalogue size, platform and competition. We quote after a store audit."
+          },
+          {
+                "q": "Which ecommerce platforms do you work with?",
+                "a": "We work with Shopify and Shopify Plus stores, WooCommerce (WordPress) stores and custom-built online stores, including growing direct-to-consumer brands."
+          },
+          {
+                "q": "How do you measure ecommerce SEO success?",
+                "a": "We measure organic revenue, transactions and non-brand visibility, so you can see the sales that search brings in rather than just traffic."
+          }
     ],
   },
   {
@@ -457,6 +562,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Scale your organic footprint across worldwide markets with rock-solid hreflang architecture and localized regional search positioning.",
     longDescription:
       "Expanding across multiple countries or languages requires precise algorithmic orchestration. A single hreflang mismatch can cause Google to show US pricing to UK shoppers or index machine-translated content poorly. We architect foolproof international SEO structures (ccTLDs, subdomains, or subdirectories), implement bidirectional hreflang tags, and optimize for regional search engines like Yandex, Baidu, and local Google indexes.",
+    metaTitle: "International SEO Services: Hreflang & Multilingual SEO",
+    metaDescription: "International SEO services for brands expanding overseas: hreflang setup, site structure advice, localised keyword research and clear per-market reporting.",
+    primaryKeyword: "international SEO services",
+    serviceType: "International SEO",
+    schemaDescription: "International SEO helps search engines show the right version of your website to people in each country and language. It covers site structure (country domains, subfolders or subdomains), hreflang tags, localised keyword research and content, and building relevance in each market.",
     iconName: "Globe",
     image: "/images/services/dark/international-seo.png",
     lightImage: "/images/services/light/international-seo.png",
@@ -510,18 +620,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Should I use ccTLDs (.co.uk, .de) or subdirectories (/uk/, /de/)?",
-        a: "Subdirectories (/uk/, /de/) allow all international versions to inherit the domain authority of your primary root domain, making it far faster and more cost-effective to rank compared to maintaining separate ccTLDs.",
-      },
-      {
-        q: "What is the most common hreflang mistake?",
-        a: "Missing reciprocal return tags (e.g., page A points to page B as German, but page B does not point back to page A as English). We automate validation to ensure 100% bi-directional compliance.",
-      },
-      {
-        q: "Can I just use Google Translate for multilingual SEO?",
-        a: "Machine-translated content without human review often fails Google's helpful content criteria and misses colloquial search keywords. We recommend human-reviewed localization for primary pages.",
-      },
+          {
+                "q": "What is hreflang and do I need it?",
+                "a": "Hreflang is an HTML attribute that tells search engines which language and region each version of a page is for. If you have similar pages for different countries or languages, such as a UK and an India version, you need it to help Google show the right one."
+          },
+          {
+                "q": "Should I use country domains, subfolders or subdomains?",
+                "a": "Each works. Country domains (.co.uk, .in) send strong local signals but split authority and cost more to maintain. Subfolders (/uk/, /in/) are easier to manage and share authority. We recommend a structure based on your markets, budget and team."
+          },
+          {
+                "q": "Is translation enough for international SEO?",
+                "a": "No. People in different markets use different words, care about different things and trust different signals. Effective international SEO localises keywords, examples, prices and proof, not just the language."
+          },
+          {
+                "q": "Can international SEO hurt my existing rankings?",
+                "a": "Done badly, yes, for example through duplicate content or incorrect redirects. Done carefully with hreflang and a clear structure, it protects and builds on existing visibility."
+          },
+          {
+                "q": "How long does it take to rank in a new country?",
+                "a": "Expect three to nine months for meaningful visibility in a new market, depending on competition and how much local content and authority you build."
+          },
+          {
+                "q": "What is international SEO?",
+                "a": "International SEO helps search engines show the right version of your website to people in each country and language. It covers site structure (country domains, subfolders or subdomains), hreflang tags, localised keyword research and content, and building relevance in each market."
+          },
+          {
+                "q": "What does your international SEO service include?",
+                "a": "The core elements most clients receive are: market and keyword research; site structure recommendation; hreflang implementation; localisation guidance; market authority plan; per-market reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which markets do you support for international SEO?",
+                "a": "We support businesses in the UK, India and other English-speaking and multilingual markets, including Indian brands entering the UK and stores that ship internationally."
+          }
     ],
   },
   {
@@ -538,6 +668,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Acquire hard-to-replicate editorial backlinks from high-DR industry publications that compound rankings.",
     longDescription:
       "Backlinks remain one of Google's foundational ranking signals. However, spammy guest posts and PBN links will harm your domain. Our link building and digital PR service focuses exclusively on white-hat, editorial acquisitions: proprietary data studies, journalist commentary (HARO/Connectively), interactive assets, and industry resource citations that build unassailable domain authority.",
+    metaTitle: "Link Building Services and Digital PR That Lasts | MBSA",
+    metaDescription: "White hat link building and digital PR that earn relevant links and brand mentions from trusted sites. No paid links or PBNs. Request your backlink review.",
+    primaryKeyword: "link building services",
+    serviceType: "Link building and digital PR",
+    schemaDescription: "Link building is the process of earning links to your website from other relevant, trustworthy websites. Search engines use these links as one signal of credibility. Ethical link building earns them through useful content, genuine relationships and newsworthy stories, rather than buying them.",
     iconName: "Link2",
     image: "/images/services/dark/link-building-digital-pr.png",
     lightImage: "/images/services/light/link-building-digital-pr.png",
@@ -591,18 +726,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Do you buy links or use private blog networks (PBNs)?",
-        a: "Never. We strictly execute manual digital PR, journalist pitching, and content-driven editorial outreach. Every link is earned on real, editorial websites with genuine organic traffic.",
-      },
-      {
-        q: "How many links do you build per month?",
-        a: "We prioritize quality over vanity metrics. Typically, campaigns secure 6 to 15 high-DR (DR 50-90+), highly relevant editorial placements each month.",
-      },
-      {
-        q: "Can backlinks help pages that are currently stuck on page 2?",
-        a: "Yes. When technical SEO and content quality are solid, targeted high-authority contextual links are often the exact catalyst needed to push page 2 URLs into the top 3.",
-      },
+          {
+                "q": "Do you buy links?",
+                "a": "No. Buying or selling links to manipulate rankings breaches Google’s spam policies and can lead to penalties. We earn links through content, outreach and digital PR."
+          },
+          {
+                "q": "How many links will I get each month?",
+                "a": "We focus on relevance and quality rather than volume, so we don’t promise fixed numbers. One link from a respected industry publication can be worth more than dozens of weak ones. We report every link earned."
+          },
+          {
+                "q": "What is digital PR?",
+                "a": "Digital PR uses traditional PR techniques, such as data stories, expert commentary and newsworthy angles, to earn coverage and links from online publications. It builds both search authority and brand recognition."
+          },
+          {
+                "q": "Do links still matter for SEO in 2026?",
+                "a": "Yes. Links remain one of the signals search engines use to judge authority, although content quality and relevance matter more than ever. Brand mentions on trusted sites also help AI systems understand who you are."
+          },
+          {
+                "q": "How much do link building services cost?",
+                "a": "It depends on your market, goals and whether we create new assets. We quote a monthly budget after reviewing your link profile."
+          },
+          {
+                "q": "What is link building?",
+                "a": "Link building is the process of earning links to your website from other relevant, trustworthy websites. Search engines use these links as one signal of credibility. Ethical link building earns them through useful content, genuine relationships and newsworthy stories, rather than buying them."
+          },
+          {
+                "q": "What does your link building service include?",
+                "a": "The core elements most clients receive are: backlink audit; linkable assets; personalised outreach; digital PR; unlinked mention reclamation; monthly link reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which link building tactics do you never use?",
+                "a": "We never use private blog networks, paid links or automated spam. Links are earned through linkable assets, personalised outreach and digital PR."
+          }
     ],
   },
   {
@@ -619,6 +774,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Position your brand as the cited, trusted answer in generative AI engines and Google AI Overviews.",
     longDescription:
       "Search is evolving beyond 10 blue links. Large language models like Google Gemini, ChatGPT, Perplexity, and Claude now synthesize answers directly from web knowledge graphs. Generative Engine Optimization (GEO) and Answer Engine Optimization (AEO) structure your digital footprint into unambiguous entities, concise factual answers, and authoritative citations so AI engines repeatedly cite your business as the source.",
+    metaTitle: "AEO & GEO Services to Get Your Brand Cited in AI | MBSA",
+    metaDescription: "AEO & GEO services that help ChatGPT, Gemini, Perplexity and Google AI Overviews understand and cite your business. Request an AI search visibility review.",
+    primaryKeyword: "AEO and GEO services",
+    serviceType: "Answer engine optimisation and generative engine optimisation",
+    schemaDescription: "Answer engine optimisation (AEO) structures content so search features can extract clear answers to specific questions. Generative engine optimisation (GEO) aims to make your business a trustworthy, well-understood source for AI systems that write answers, such as Google’s AI Overviews, ChatGPT, Gemini and Perplexity. Both build on solid SEO rather than replacing it.",
     iconName: "Sparkles",
     image: "/images/services/dark/aeo-geo-ai-search.png",
     lightImage: "/images/services/light/aeo-geo-ai-search.png",
@@ -672,18 +832,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What is the difference between SEO and GEO (Generative Engine Optimization)?",
-        a: "SEO optimizes for keyword algorithms that match queries to web URLs. GEO optimizes for neural networks and LLMs that evaluate semantic concepts, entity relationships, factual authority, and concise answers.",
-      },
-      {
-        q: "Will blocking AI bots harm my SEO rankings?",
-        a: "Blocking commercial AI scrapers won't immediately hurt traditional Google rankings, but it stops your brand from being cited in ChatGPT, Perplexity, and Apple Intelligence. We create tailored robots rules balancing content protection and visibility.",
-      },
-      {
-        q: "How do AI engines decide which websites to cite?",
-        a: "LLMs prioritize sources that offer high information gain (unique statistics, expert quotes), clear structural formatting (tables, bullet points), and strong entity verification across Wikidata and top-tier publications.",
-      },
+          {
+                "q": "Can you guarantee my business will appear in ChatGPT or Google AI Overviews?",
+                "a": "No. AI systems decide what to include, answers vary between users and sessions, and no provider offers a way to guarantee inclusion. We make your content clearer, more accurate and better evidenced, which improves your chances."
+          },
+          {
+                "q": "Is AEO or GEO different from SEO?",
+                "a": "They build on SEO. Crawlable, fast, well-structured pages remain the foundation. AEO and GEO put extra emphasis on direct answers, consistent business information, evidence and authorship."
+          },
+          {
+                "q": "How do I get my business mentioned in ChatGPT?",
+                "a": "Make sure your business is described consistently and clearly across your website and trusted third-party sources, publish content that directly answers customer questions with evidence, and earn mentions on reputable sites. Then monitor a fixed set of questions over time."
+          },
+          {
+                "q": "Do I need an llms.txt file or special schema for AI search?",
+                "a": "Google states that no special files or schema are needed for its AI features beyond normal SEO best practice. An llms.txt file is optional and its effect elsewhere is unproven, so we treat it as low priority."
+          },
+          {
+                "q": "How do you measure AEO and GEO?",
+                "a": "We use a documented set of 20 to 50 real customer questions, check them on a schedule across AI tools, and record whether and how your business is mentioned or cited. We also track referral traffic from AI tools in GA4."
+          },
+          {
+                "q": "How long before we see changes in AI answers?",
+                "a": "Some AI tools reflect website changes within weeks; others update more slowly. We typically review progress over three to six months and report observed patterns with dates."
+          },
+          {
+                "q": "What does your AEO and GEO service include?",
+                "a": "The core elements most clients receive are: AI visibility review; entity consistency; answer-ready content; evidence and authorship; structured data; ongoing monitoring. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Who benefits most from AEO and GEO?",
+                "a": "Businesses whose customers research before buying benefit most, such as clinics and health brands, professional services and product brands. No one can guarantee inclusion or citations in AI answers."
+          }
     ],
   },
 
@@ -704,6 +884,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "High-ROI paid search campaigns engineered for bottom-of-funnel conversion and ruthless budget efficiency.",
     longDescription:
       "Pay-per-click advertising should be an investment with predictable returns, not a budget sinkhole. We build tightly themed Google Search, Performance Max, and Shopping campaigns that filter out low-intent clicks. By integrating server-side conversion tracking and automated bidding with first-party CRM data, we maximize ROAS and scale client revenue.",
+    metaTitle: "Google Ads Management: PPC That Converts | MBSA Digital",
+    metaDescription: "Google Ads management built on solid tracking: Search, Performance Max, Shopping and AI Max campaigns reported by cost per lead. Get a free account review.",
+    primaryKeyword: "Google Ads management",
+    serviceType: "Google Ads management",
+    schemaDescription: "Google Ads management is the ongoing planning, building and optimisation of paid campaigns on Google Search, Shopping, YouTube and Performance Max. It covers keyword and audience targeting, ad copy, bidding, budgets, landing pages and conversion tracking, with the goal of producing customers at a cost that works for your business. It is also known as PPC (pay-per-click) or SEM (search engine marketing).",
     iconName: "DollarSign",
     image: "/images/services/dark/google-ads-management.png",
     lightImage: "/images/services/light/google-ads-management.png",
@@ -757,18 +942,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What monthly ad spend do you typically manage?",
-        a: "We work with businesses spending anywhere from £1,500/month to £50,000+/month across Google Ads and Microsoft Advertising.",
-      },
-      {
-        q: "Do you own our Google Ads account?",
-        a: "No. You retain 100% administrative ownership of your Google Ads and analytics accounts. We access them via our Google Partner MCC.",
-      },
-      {
-        q: "What is Performance Max and should I be using it?",
-        a: "Performance Max runs across Search, YouTube, Display, Discover, and Maps. It is powerful when fed clean first-party conversion data and strict negative keywords, but can burn budget if unmonitored.",
-      },
+          {
+                "q": "How much should we spend on Google Ads?",
+                "a": "It depends on how competitive your searches are, what a customer is worth to you and how many enquiries you can handle. We estimate a sensible starting budget in the audit and adjust based on real results."
+          },
+          {
+                "q": "How much does Google Ads management cost?",
+                "a": "Management fees depend on account size and complexity. Ad spend is paid directly to Google from your own account, separately from our fee."
+          },
+          {
+                "q": "What is the difference between PPC, SEM and Google Ads?",
+                "a": "PPC (pay-per-click) is any advertising where you pay per click. SEM (search engine marketing) usually means paid search ads. Google Ads is the largest platform for both. In practice, people often use the three terms interchangeably."
+          },
+          {
+                "q": "What is AI Max for Search?",
+                "a": "AI Max for Search is a set of Google Ads features that uses AI to match your ads to more relevant searches and tailor ad text automatically. Google is replacing Dynamic Search Ads with it in 2026. It works best with accurate conversion tracking and careful controls."
+          },
+          {
+                "q": "Who owns the Google Ads account?",
+                "a": "You do. Campaigns run in an account owned by your business, and you keep full access to all data and assets if we stop working together."
+          },
+          {
+                "q": "Do you manage Microsoft (Bing) Ads too?",
+                "a": "Yes. Microsoft Advertising often delivers cheaper clicks, especially for B2B and older audiences, and we can import and adapt successful Google campaigns."
+          },
+          {
+                "q": "What is Google Ads management?",
+                "a": "Google Ads management is the ongoing planning, building and optimisation of paid campaigns on Google Search, Shopping, YouTube and Performance Max. It covers keyword and audience targeting, ad copy, bidding, budgets, landing pages and conversion tracking, with the goal of producing customers at a cost that works for your business. It is also known as PPC (pay-per-click) or SEM (search engine marketing)."
+          },
+          {
+                "q": "How do you measure Google Ads performance?",
+                "a": "We measure cost per lead, cost per sale and return on ad spend. Conversion tracking is audited and set up first, so the numbers can be trusted."
+          }
     ],
   },
   {
@@ -785,6 +990,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Scroll-stopping visual campaigns and precision lookalike targeting that turn social users into buyers.",
     longDescription:
       "Meta remains the premier social advertising platform for generating direct consumer demand. Success on Facebook and Instagram requires high-velocity creative testing, persuasive video hooks, and robust Conversions API (CAPI) data flow. We build full-funnel Meta advertising campaigns that capture cold attention and retarget interested prospects until they convert.",
+    metaTitle: "Meta Ads Agency for Facebook & Instagram | MBSA Digital",
+    metaDescription: "Facebook & Instagram ads built for leads and sales: scroll-stopping creatives, audience strategy, Conversions API tracking and click-to-WhatsApp campaigns.",
+    primaryKeyword: "Meta Ads agency",
+    serviceType: "Meta Ads management",
+    schemaDescription: "Meta Ads management is the planning, creative production, targeting, budgeting and optimisation of paid campaigns across Facebook, Instagram, Messenger and WhatsApp. Because Meta’s AI now does much of the audience targeting, creative quality and accurate conversion data have become the biggest levers for results.",
     iconName: "Share2",
     image: "/images/services/dark/metas-ads.png",
     lightImage: "/images/services/light/metas-ads.png",
@@ -838,18 +1048,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Who provides the creative assets (photos, videos)?",
-        a: "We can work with your existing brand assets or script, design, and produce UGC-style video ads and custom graphics tailored for direct-response performance.",
-      },
-      {
-        q: "How does the Meta Conversions API (CAPI) help after iOS 14 updates?",
-        a: "Browser pixels lose up to 30% of conversion data due to ad blockers and privacy limits. CAPI sends conversion data directly from your server to Meta, restoring accurate attribution and algorithm learning.",
-      },
-      {
-        q: "How often should ad creative be refreshed?",
-        a: "Depending on your ad spend, creative fatigue typically sets in after 2 to 4 weeks. We introduce new hooks and visual variations continuously to maintain high CTRs.",
-      },
+          {
+                "q": "How much should I spend on Facebook and Instagram ads?",
+                "a": "Enough to give Meta’s algorithm sufficient conversions to learn, typically at least several times your target cost per result per week, per ad set. We recommend a starting budget after reviewing your goals and margins."
+          },
+          {
+                "q": "Why are my Facebook ads not converting?",
+                "a": "Common causes are broken or incomplete tracking, weak creative, the wrong campaign objective, a slow or unclear landing page, or an offer that doesn’t match the audience. Our audit checks all five."
+          },
+          {
+                "q": "What is the Conversions API and do I need it?",
+                "a": "The Conversions API sends conversion data from your server directly to Meta, making measurement more reliable when browsers block cookies. Most advertisers benefit from using it alongside the Meta Pixel."
+          },
+          {
+                "q": "Do you create the ad creative?",
+                "a": "Yes. We design static and carousel ads and produce or edit short-form video for Reels and Stories. We also use your own photos and footage, which often perform best."
+          },
+          {
+                "q": "Can you run click-to-WhatsApp ads?",
+                "a": "Yes. Click-to-WhatsApp ads are especially effective in India, letting customers start a chat with your business directly from an ad. See our WhatsApp marketing service."
+          },
+          {
+                "q": "What is Meta Ads management?",
+                "a": "Meta Ads management is the planning, creative production, targeting, budgeting and optimisation of paid campaigns across Facebook, Instagram, Messenger and WhatsApp. Because Meta’s AI now does much of the audience targeting, creative quality and accurate conversion data have become the biggest levers for results."
+          },
+          {
+                "q": "Which platforms do your Meta Ads campaigns run on?",
+                "a": "We run campaigns across Facebook, Instagram, Messenger and WhatsApp click-to-chat. They suit consumer brands, local businesses and ecommerce stores."
+          },
+          {
+                "q": "How do you measure Meta Ads results?",
+                "a": "We measure cost per lead, cost per purchase and return on ad spend (ROAS), using Pixel and Conversions API data for accurate tracking."
+          }
     ],
   },
   {
@@ -866,6 +1096,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Target C-suite executives, directors, and B2B buyers with precision ABM funnels and sponsored content.",
     longDescription:
       "LinkedIn is the unrivaled channel for B2B client acquisition. With unmatched professional demographic targeting (job title, seniority, company headcount, industry, and revenue), we put your message directly in front of enterprise decision-makers. We manage Sponsored Content, Document Ads, Lead Gen Forms, and executive thought leadership to generate qualified B2B sales meetings.",
+    metaTitle: "LinkedIn Marketing Agency for B2B: Ads & Content | MBSA",
+    metaDescription: "B2B LinkedIn marketing to reach decision-makers: founder-led content, profile optimisation, LinkedIn Ads and lead gen forms that grow a qualified pipeline.",
+    primaryKeyword: "LinkedIn marketing agency",
+    serviceType: "LinkedIn marketing and advertising",
+    schemaDescription: "LinkedIn marketing uses organic content and paid LinkedIn Ads to build awareness, trust and leads among professional audiences. Because you can target by job title, seniority, industry and company, it is especially effective for B2B businesses that sell to specific decision-makers.",
     iconName: "Layers",
     image: "/images/services/dark/linkedin-marketing-ads.png",
     lightImage: "/images/services/light/linkedin-marketing-ads.png",
@@ -919,18 +1154,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Why are LinkedIn ad clicks more expensive than Facebook or Google?",
-        a: "LinkedIn allows you to pinpoint the exact VP of Engineering or Chief Marketing Officer at a Fortune 500 company. While cost-per-click is higher, lead quality and deal sizes are substantially larger.",
-      },
-      {
-        q: "What is the best ad format for B2B lead generation?",
-        a: "Native LinkedIn Lead Gen Forms combined with Document Ads (PDF carousels) usually achieve the lowest cost per qualified lead because users don't have to leave the LinkedIn app.",
-      },
-      {
-        q: "Can you target specific named accounts (ABM)?",
-        a: "Yes. You can upload a list of target companies (e.g. 500 enterprise accounts) and target only employees matching your desired seniority levels within those specific companies.",
-      },
+          {
+                "q": "Is LinkedIn advertising worth it for small businesses?",
+                "a": "It can be, if you sell to a well-defined business audience and your deal value justifies higher click costs. LinkedIn clicks usually cost more than other platforms, but the audience precision often produces better-qualified leads."
+          },
+          {
+                "q": "What is a Thought Leader Ad?",
+                "a": "A Thought Leader Ad lets you promote a post from an individual’s profile, such as a founder or expert, as an ad. Content from a real person often earns more trust and engagement than company page posts."
+          },
+          {
+                "q": "Do you write posts for our founders?",
+                "a": "Yes. We interview your founders and experts, then write posts in their voice for approval. Nothing is published without sign-off."
+          },
+          {
+                "q": "How long does LinkedIn marketing take to work?",
+                "a": "LinkedIn Ads can generate leads within weeks. Organic thought leadership builds over three to six months of consistent posting."
+          },
+          {
+                "q": "Do you do automated LinkedIn outreach?",
+                "a": "No. Automated connection and message tools breach LinkedIn’s terms and can get accounts restricted. We focus on content, ads and genuine engagement."
+          },
+          {
+                "q": "What is LinkedIn marketing?",
+                "a": "LinkedIn marketing uses organic content and paid LinkedIn Ads to build awareness, trust and leads among professional audiences. Because you can target by job title, seniority, industry and company, it is especially effective for B2B businesses that sell to specific decision-makers."
+          },
+          {
+                "q": "What does your LinkedIn marketing service include?",
+                "a": "The core elements most clients receive are: profile and page optimisation; content strategy and writing; LinkedIn Ads; account-based campaigns; engagement guidance; pipeline reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Who is LinkedIn marketing best for?",
+                "a": "LinkedIn marketing works best for B2B services, consultancies, SaaS and professional firms that sell to specific decision-makers. Results are measured by qualified leads, pipeline and engagement from target accounts."
+          }
     ],
   },
   {
@@ -947,6 +1202,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Tap into the world's second-largest search engine with optimized video rankings and high-ROI video ads.",
     longDescription:
       "Video content builds trust faster than any other medium. We manage end-to-end YouTube marketing: organic video SEO (tags, keywords, title hooks, descriptions, and custom thumbnail design) to capture long-tail search traffic, alongside Google Video Ads (In-Feed, In-Stream, and Shorts ads) that drive high-intent viewers to your offers.",
+    metaTitle: "YouTube Marketing Services: SEO, Ads and Shorts by MBSA",
+    metaDescription: "YouTube and video marketing services: channel strategy, scripting, YouTube SEO, Shorts, Reels, and video ads that build trust and turn viewers into buyers.",
+    primaryKeyword: "YouTube marketing services",
+    serviceType: "YouTube and video marketing",
+    schemaDescription: "YouTube and video marketing uses video content and video ads to attract, educate and convert customers. It includes channel strategy, scripting and production, YouTube SEO (titles, descriptions, chapters and thumbnails), short-form video for Shorts and Reels, and paid video campaigns on YouTube and Google.",
     iconName: "TrendingUp",
     image: "/images/services/dark/youtube-video-marketing.png",
     lightImage: "/images/services/light/youtube-video-marketing.png",
@@ -1000,18 +1260,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What matters most for ranking videos on YouTube?",
-        a: "Click-Through Rate (CTR) from the thumbnail/title and Average Percentage Viewed (Audience Retention). We design packaging that wins clicks and advise on script structure to keep viewers watching.",
-      },
-      {
-        q: "Are YouTube Shorts useful for B2B brands?",
-        a: "Yes. Repurposing key insights from longer webinars or podcasts into 30-60 second Shorts helps build top-of-funnel brand recall rapidly on mobile devices.",
-      },
-      {
-        q: "How do you track sales or leads from YouTube videos?",
-        a: "We use tracked UTM parameters in video descriptions, pinned comments, and YouTube interactive end-screen cards, combined with GA4 attribution.",
-      },
+          {
+                "q": "How do I rank my videos on YouTube?",
+                "a": "Choose topics people actually search for, use clear titles and descriptions with those terms, add chapters and captions, design a compelling thumbnail, and hold attention in the first 30 seconds. Retention and satisfaction strongly influence how YouTube recommends videos."
+          },
+          {
+                "q": "Do you film the videos?",
+                "a": "We plan, script and edit, and can coordinate filming."
+          },
+          {
+                "q": "Are YouTube ads expensive?",
+                "a": "YouTube ads can be cost-effective because you often pay only when someone watches or engages. Costs vary by audience and format; we recommend a test budget before scaling."
+          },
+          {
+                "q": "Should we focus on long videos or Shorts?",
+                "a": "Usually both. Long videos build depth and search visibility, while Shorts and Reels build reach. We often film once and edit for both."
+          },
+          {
+                "q": "Does video help SEO?",
+                "a": "Yes. Videos can appear in Google search results and video carousels, and embedding helpful videos on your pages can improve engagement. We add VideoObject structured data where it fits."
+          },
+          {
+                "q": "What is YouTube and video marketing?",
+                "a": "YouTube and video marketing uses video content and video ads to attract, educate and convert customers. It includes channel strategy, scripting and production, YouTube SEO (titles, descriptions, chapters and thumbnails), short-form video for Shorts and Reels, and paid video campaigns on YouTube and Google."
+          },
+          {
+                "q": "What does your YouTube marketing service include?",
+                "a": "The core elements most clients receive are: channel and content strategy; scripts and storyboards; production and editing; YouTube SEO; Shorts and Reels; video ads and reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which video formats do you work with?",
+                "a": "We work with YouTube videos, Shorts, Reels and video ads, for brands with expertise, products or results worth showing."
+          }
     ],
   },
 
@@ -1032,6 +1312,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Dominant topical authority maps and intent-targeted content that systematically wins competitive keywords.",
     longDescription:
       "Random blogging does not rank on modern search engines. To rank for high-value terms, you must establish complete topical authority. We map your domain into structured topic clusters, identify high-intent commercial keywords, and craft detailed content briefs designed to satisfy both human searchers and Google's helpful content algorithms.",
+    metaTitle: "Content Marketing and Keyword Strategy Services by MBSA",
+    metaDescription: "Content marketing services built on keyword research: intent mapping, topic clusters, briefs, and human-written SEO content that ranks and earns enquiries.",
+    primaryKeyword: "content marketing services",
+    serviceType: "Content marketing and keyword strategy",
+    schemaDescription: "A content and keyword strategy decides which topics and searches your business should be visible for, which page should answer each one and in what order to create or improve them. It connects customer questions to commercial pages, so content supports enquiries and sales rather than just traffic.",
     iconName: "Search",
     image: "/images/services/dark/content-keyword-strategy.png",
     lightImage: "/images/services/light/content-keyword-strategy.png",
@@ -1085,18 +1370,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What is a topic cluster?",
-        a: "A topic cluster consists of a central 'pillar' page covering a broad topic comprehensively, linked bi-directionally to multiple detailed sub-pages covering specific questions. This architecture signals deep topical authority to Google.",
-      },
-      {
-        q: "Do you write the articles or just provide the keywords?",
-        a: "We offer both: full end-to-end SEO writing with subject-matter research, or detailed editorial briefs that your internal team can write.",
-      },
-      {
-        q: "How do you prevent keyword cannibalization?",
-        a: "We audit every target keyword against your existing indexed URLs to ensure each unique search intent maps to one single canonical URL.",
-      },
+          {
+                "q": "Do you use AI to write content?",
+                "a": "We may use AI tools to speed up research and outlines, but every piece is planned, written or heavily edited, fact-checked and approved by people. We don’t publish unedited AI text."
+          },
+          {
+                "q": "How many articles should we publish each month?",
+                "a": "Quality beats volume. Two to four genuinely useful, well-researched pieces a month usually outperform a high volume of thin posts. We recommend a cadence after the research phase."
+          },
+          {
+                "q": "What is a topic cluster?",
+                "a": "A topic cluster is a group of related pages: one comprehensive pillar page on a broad topic, linked to several detailed articles on subtopics. It helps search engines and readers understand your depth on a subject."
+          },
+          {
+                "q": "Can you write for regulated industries like healthcare?",
+                "a": "Yes, with care. We follow your compliance requirements, avoid unsupported claims and build in review by a qualified person on your team."
+          },
+          {
+                "q": "Where do your keyword volumes come from?",
+                "a": "From established tools such as Semrush, Ahrefs and Google Search Console. Volumes are estimates, so we label each with its source and date and use them to compare opportunities, not as promises."
+          },
+          {
+                "q": "What is a content and keyword strategy?",
+                "a": "A content and keyword strategy decides which topics and searches your business should be visible for, which page should answer each one and in what order to create or improve them. It connects customer questions to commercial pages, so content supports enquiries and sales rather than just traffic."
+          },
+          {
+                "q": "What does your content marketing service include?",
+                "a": "The core elements most clients receive are: keyword and question research; intent mapping; topic clusters; content briefs; writing and editing; content refresh plan. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Who is content and keyword strategy best for?",
+                "a": "It suits businesses with expertise to share but no clear publishing plan, including service businesses, online stores and healthcare and finance brands. Content is written for people first and structured for search and AI answers."
+          }
     ],
   },
   {
@@ -1113,6 +1418,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Consistent, high-engagement organic social presence that elevates brand recall and community trust.",
     longDescription:
       "A silent or sporadic social media presence damages prospective buyer confidence. We build and execute consistent social media marketing strategies across Instagram, Facebook, LinkedIn, and X. From strategic content calendars and eye-catching carousel designs to active community engagement and trend tapping, we keep your brand top-of-mind.",
+    metaTitle: "Social Media Marketing Services: Content & Reels | MBSA",
+    metaDescription: "Social media marketing that keeps your brand visible: strategy, monthly content calendars, Reels, design and community management. Get a free review today.",
+    primaryKeyword: "social media marketing services",
+    serviceType: "Social media marketing",
+    schemaDescription: "Social media marketing is the use of platforms like Instagram, Facebook, LinkedIn and YouTube to build awareness, trust and relationships with customers. It covers strategy, content creation, publishing, community management and measurement, and often works alongside paid social ads.",
     iconName: "Share2",
     image: "/images/services/dark/social-media-marketing.png",
     lightImage: "/images/services/light/social-media-marketing.png",
@@ -1166,18 +1476,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Which social media platforms should my business focus on?",
-        a: "It depends on your audience: B2B companies should prioritize LinkedIn and YouTube, while consumer lifestyle, retail, and hospitality brands thrive on Instagram and TikTok.",
-      },
-      {
-        q: "Do I get to approve posts before they go live?",
-        a: "Yes. All copy, graphics, and video drafts are uploaded to a collaborative preview calendar for your feedback and signoff before scheduling.",
-      },
-      {
-        q: "Can organic social media replace paid advertising?",
-        a: "Organic social builds brand credibility, trust, and retention, while paid ads offer targeted scale. The two work best when integrated together.",
-      },
+          {
+                "q": "Which social media platforms should my business be on?",
+                "a": "The ones your customers use. For most consumer and local brands that means Instagram and Facebook; for B2B it is usually LinkedIn. We recommend a focused mix rather than every platform."
+          },
+          {
+                "q": "How often should we post on social media?",
+                "a": "Consistency matters more than volume. Three to five quality posts a week on your main platform is a good starting point for most businesses."
+          },
+          {
+                "q": "Do you buy followers or engagement?",
+                "a": "No. Bought followers and engagement damage trust, harm reach and distort your data."
+          },
+          {
+                "q": "Do you need us to provide photos and videos?",
+                "a": "Your own photos of your team, premises and work usually perform best. We can plan simple shoots with you and supplement with design-led graphics."
+          },
+          {
+                "q": "How do you measure social media ROI?",
+                "a": "We track reach and engagement, but focus on website visits, enquiries and sales from social using GA4 and UTM-tagged links."
+          },
+          {
+                "q": "What is social media marketing?",
+                "a": "Social media marketing is the use of platforms like Instagram, Facebook, LinkedIn and YouTube to build awareness, trust and relationships with customers. It covers strategy, content creation, publishing, community management and measurement, and often works alongside paid social ads."
+          },
+          {
+                "q": "What is included in your social media management?",
+                "a": "The core elements most clients receive are: social media strategy; monthly content calendar; design and Reels; captions and hashtags; community management; monthly reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Who is your social media marketing service best for?",
+                "a": "It suits brands that want a consistent social presence without hiring in-house, such as clinics, salons, restaurants, product brands and professional services."
+          }
     ],
   },
   {
@@ -1194,6 +1524,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Partner with trusted micro-influencers and niche creators to generate authentic social proof and conversions.",
     longDescription:
       "Consumers trust creators far more than traditional corporate advertisements. Rather than wasting money on overpriced celebrity influencers with unverified followers, we identify vetted micro-influencers (10k-100k followers) with authentic engagement and niche authority. We handle outreach, contract negotiation, product gifting, creative briefs, and ROI tracking.",
+    metaTitle: "Influencer Marketing Agency for Micro-Creator Campaigns",
+    metaDescription: "Influencer marketing with micro and nano creators your customers trust: vetting, briefs, disclosure compliance, UGC for ads and campaigns tracked to sales.",
+    primaryKeyword: "influencer marketing agency",
+    serviceType: "Influencer marketing",
+    schemaDescription: "Influencer marketing is a partnership between a brand and content creators who promote its products or services to their audience. Smaller creators (micro and nano influencers) often have closer, more engaged communities, which can make their recommendations more persuasive and cost-effective than large celebrity accounts.",
     iconName: "Award",
     image: "/images/services/dark/influencer-marketing.png",
     lightImage: "/images/services/light/influencer-marketing.png",
@@ -1247,18 +1582,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Why choose micro-influencers over celebrity influencers?",
-        a: "Micro-influencers typically enjoy 3x to 5x higher engagement rates, charge significantly lower fees, and possess authentic rapport with their followers, resulting in superior conversion rates.",
-      },
-      {
-        q: "How do you detect fake followers or bot engagement?",
-        a: "We use specialized auditing software (Modash, HypeAuditor) to analyze follower growth anomalies, comment quality, audience location distributions, and engagement ratios before outreach.",
-      },
-      {
-        q: "What is creator whitelisting?",
-        a: "Whitelisting allows your brand to run paid ads through the influencer's official social profile. It combines their personal credibility with your targeted ad spend.",
-      },
+          {
+                "q": "How much does influencer marketing cost?",
+                "a": "Costs range from free product for nano creators to significant fees for larger accounts. Most small and mid-sized brands get the best value from paid micro-influencer partnerships. We build a plan around your budget."
+          },
+          {
+                "q": "What is the difference between micro and nano influencers?",
+                "a": "Definitions vary, but nano influencers typically have around 1,000 to 10,000 followers and micro influencers around 10,000 to 100,000. Smaller creators often have higher engagement and lower costs."
+          },
+          {
+                "q": "Do influencer posts need to be labelled as ads?",
+                "a": "Yes. In the UK the ASA and CMA require clear disclosure, and in India ASCI guidelines require it too. We make sure every creator labels paid content correctly."
+          },
+          {
+                "q": "How do you measure influencer marketing results?",
+                "a": "With unique discount codes, tracked links and UTM parameters, plus reach and engagement. We report cost per sale or sign-up for each creator."
+          },
+          {
+                "q": "Can we use creator content in our own ads?",
+                "a": "Yes, if usage rights are agreed in the contract. We negotiate rights for paid use so you can run top-performing creator content as ads."
+          },
+          {
+                "q": "What is influencer marketing?",
+                "a": "Influencer marketing is a partnership between a brand and content creators who promote its products or services to their audience. Smaller creators (micro and nano influencers) often have closer, more engaged communities, which can make their recommendations more persuasive and cost-effective than large celebrity accounts."
+          },
+          {
+                "q": "What does your influencer marketing service include?",
+                "a": "The core elements most clients receive are: creator discovery and vetting; outreach and negotiation; creative briefs; compliance; UGC for ads; tracking and reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which brands are best suited to influencer marketing?",
+                "a": "Consumer brands in beauty, wellness, food, fashion and lifestyle tend to benefit most, along with restaurants, clinics, gyms and brands launching new products."
+          }
     ],
   },
   {
@@ -1275,6 +1630,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "High-converting email sequences, welcome flows, and newsletter campaigns that turn subscribers into repeat buyers.",
     longDescription:
       "Your email list is your most valuable owned asset—immune to algorithm updates and ad platform bans. We design and build automated lifecycle email flows (Welcome Series, Abandoned Cart, Post-Purchase, Winback) and engaging regular campaigns that build customer loyalty and drive 20% to 40% of total company revenue.",
+    metaTitle: "Email Marketing Services: Campaigns & Automation | MBSA",
+    metaDescription: "Email marketing services that turn subscribers into repeat customers: welcome, abandoned-cart and winback flows, newsletters, templates and deliverability.",
+    primaryKeyword: "email marketing services",
+    serviceType: "Email marketing",
+    schemaDescription: "Email marketing is sending relevant, permission-based emails to subscribers and customers to build relationships and drive sales. Modern email marketing relies on automated flows, such as welcome, abandoned-cart and win-back sequences, plus segmented campaigns that send the right message to the right people.",
     iconName: "Mail",
     image: "/images/services/dark/email-marketing.png",
     lightImage: "/images/services/light/email-marketing.png",
@@ -1328,18 +1688,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Which email marketing platform do you recommend?",
-        a: "For e-commerce (Shopify/WooCommerce), Klaviyo is the gold standard for data integration. For B2B lead nurturing, ActiveCampaign or HubSpot provide superior CRM automation.",
-      },
-      {
-        q: "How do you ensure emails land in the primary inbox rather than Spam or Promotions?",
-        a: "We authenticate SPF, DKIM, and DMARC records, maintain clean list hygiene by pruning unengaged contacts, and balance image-to-text ratios to satisfy email client filters.",
-      },
-      {
-        q: "How many promotional emails should we send per week?",
-        a: "Most brands find optimal engagement with 1 to 2 targeted weekly campaigns, combined with behavioral automated flows that trigger only when a customer takes a specific action.",
-      },
+          {
+                "q": "How often should we send marketing emails?",
+                "a": "Most brands do well with one to four campaigns a month plus automated flows. The right frequency depends on how much useful content and offers you have; we test and adjust."
+          },
+          {
+                "q": "Which email marketing platform is best?",
+                "a": "Klaviyo is strong for e-commerce, HubSpot for B2B with a CRM, and Mailchimp or Brevo for simpler needs. We recommend one based on your platform and budget."
+          },
+          {
+                "q": "Why are my emails going to spam?",
+                "a": "Common causes are missing SPF, DKIM or DMARC records, sending to old or purchased lists, and low engagement. We fix authentication and improve list hygiene."
+          },
+          {
+                "q": "Can I buy an email list?",
+                "a": "We don’t recommend it. Bought lists usually breach data protection rules such as UK GDPR and harm deliverability. We help you grow a permission-based list instead."
+          },
+          {
+                "q": "What is a good email open rate?",
+                "a": "It varies by industry and is less reliable since privacy changes inflated open counts. We focus on clicks, conversions and revenue per email."
+          },
+          {
+                "q": "What is email marketing?",
+                "a": "Email marketing is sending relevant, permission-based emails to subscribers and customers to build relationships and drive sales. Modern email marketing relies on automated flows, such as welcome, abandoned-cart and win-back sequences, plus segmented campaigns that send the right message to the right people."
+          },
+          {
+                "q": "What does your email marketing service include?",
+                "a": "The core elements most clients receive are: email strategy; automated flows; campaign planning and copy; responsive templates; deliverability setup; testing and reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which email platforms do you work with?",
+                "a": "We work with Klaviyo, Mailchimp, HubSpot, Brevo and other email platforms, for ecommerce brands and businesses with a customer or lead list."
+          }
     ],
   },
   {
@@ -1356,6 +1736,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Unlock 98% open rates with compliant WhatsApp Business API broadcasts, automated alerts, and conversational commerce.",
     longDescription:
       "While email averages a 20% open rate, WhatsApp delivers an astonishing 98% open rate within minutes of delivery. We deploy official WhatsApp Business API solutions to help your business send compliant broadcast marketing, order tracking alerts, abandoned cart reminders, and automated customer support chatbots that drive immediate engagement.",
+    metaTitle: "WhatsApp Marketing Services & Business API Setup | MBSA",
+    metaDescription: "WhatsApp marketing services: Business API setup, approved templates, opt-in broadcasts, chatbots and click-to-WhatsApp ads linked to your CRM. Speak to us.",
+    primaryKeyword: "WhatsApp marketing services",
+    serviceType: "WhatsApp marketing",
+    schemaDescription: "WhatsApp marketing uses the WhatsApp Business app or the WhatsApp Business Platform (API) to communicate with customers who have opted in. It covers broadcast campaigns using approved message templates, automated replies and chatbots, click-to-WhatsApp ads, catalogues and one-to-one support conversations.",
     iconName: "Smartphone",
     image: "/images/services/dark/whatsapp-marketing.png",
     lightImage: "/images/services/light/whatsapp-marketing.png",
@@ -1409,18 +1794,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What is the difference between WhatsApp Business app and the WhatsApp API?",
-        a: "The standard mobile app is limited to one device and small broadcast lists. The WhatsApp Business API allows multi-user access, unlimited broadcasts, automated CRM webhooks, and chatbot integrations.",
-      },
-      {
-        q: "Is there a risk of my WhatsApp number being blocked?",
-        a: "We strictly adhere to Meta's opt-in policies and message quality tier guidelines, using only pre-approved templates and opt-in lists to ensure 100% account safety.",
-      },
-      {
-        q: "Can customers reply and talk to a real person?",
-        a: "Yes. Inquiries can be answered automatically by our conversational bot, and seamlessly escalated to human agents on a unified dashboard when complex support is required.",
-      },
+          {
+                "q": "What is the WhatsApp Business API?",
+                "a": "The WhatsApp Business API, now called the WhatsApp Business Platform, lets medium and large businesses send messages at scale, use automation and chatbots, connect multiple team members and integrate with CRMs. It is accessed through Meta directly or approved providers."
+          },
+          {
+                "q": "Is bulk WhatsApp messaging legal?",
+                "a": "Sending marketing messages is allowed only to people who have opted in, using approved templates through the official platform. Unofficial bulk-sending tools breach WhatsApp’s policies and can get your number banned."
+          },
+          {
+                "q": "How much does WhatsApp marketing cost?",
+                "a": "Meta charges per message based on category and country, and providers charge a platform fee. We estimate costs based on your expected message volume."
+          },
+          {
+                "q": "What is the difference between WhatsApp Business app and API?",
+                "a": "The free app suits very small businesses managing chats by hand on one or two devices. The platform (API) supports automation, multiple agents, broadcasts to opted-in lists and integrations."
+          },
+          {
+                "q": "Can WhatsApp connect to our CRM?",
+                "a": "Yes. Through your provider, conversations and leads can sync with CRMs such as HubSpot, Zoho or Salesforce. See our marketing automation service."
+          },
+          {
+                "q": "What is WhatsApp marketing?",
+                "a": "WhatsApp marketing uses the WhatsApp Business app or the WhatsApp Business Platform (API) to communicate with customers who have opted in. It covers broadcast campaigns using approved message templates, automated replies and chatbots, click-to-WhatsApp ads, catalogues and one-to-one support conversations."
+          },
+          {
+                "q": "What does your WhatsApp marketing service include?",
+                "a": "The core elements most clients receive are: WhatsApp Business Platform setup; message templates; automated journeys; click-to-WhatsApp ads; opt-in list growth; CRM and reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which businesses benefit most from WhatsApp marketing?",
+                "a": "D2C brands, clinics and diagnostics, education, real estate and local services benefit most, especially for high-consideration enquiries. All campaigns are opt-in only and follow WhatsApp Business policies."
+          }
     ],
   },
   {
@@ -1437,6 +1842,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Protect your brand search results, cultivate authentic 5-star customer reviews, and suppress negative press.",
     longDescription:
       "When prospective clients Google your business name, what appears on Page 1 determines whether they contact you or a competitor. Our Online Reputation Management (ORM) service cleans up search engine results, generates a steady stream of authentic 5-star customer reviews across Trustpilot and Google, and defends your executive leadership from unfair negative press.",
+    metaTitle: "Online Reputation Management and Review Services | MBSA",
+    metaDescription: "Online reputation management that builds trust: genuine Google review growth, response management, brand search monitoring and checks on what AI tools say.",
+    primaryKeyword: "online reputation management",
+    serviceType: "Online reputation management",
+    schemaDescription: "Online reputation management (ORM) is the ongoing work of monitoring, building and protecting how your business appears online. It covers earning genuine reviews, responding to feedback, improving what appears when people search your brand name, and correcting inaccurate information, including in AI-generated answers.",
     iconName: "ShieldCheck",
     image: "/images/services/dark/online-reputation-management.png",
     lightImage: "/images/services/light/online-reputation-management.png",
@@ -1490,18 +1900,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Can you remove a fake or defamatory Google review?",
-        a: "Yes. If a review violates Google's prohibited and restricted content policies (conflict of interest, harassment, spam, fake engagement), we submit formal evidence-based removal appeals.",
-      },
-      {
-        q: "How do you push negative search results off Page 1?",
-        a: "We create and optimize authoritative web properties (Crunchbase, LinkedIn articles, press releases, medium interviews, YouTube videos) that naturally outrank negative threads over time.",
-      },
-      {
-        q: "How long does reputation cleanup typically take?",
-        a: "Review acceleration and rating improvements show results within 2 to 4 weeks. Pushing down third-party negative URLs on Google typically takes 3 to 6 months of systematic SEO and PR.",
-      },
+          {
+                "q": "Can you remove negative reviews?",
+                "a": "We can’t remove genuine reviews, and no ethical provider should promise to. We can report reviews that breach a platform’s policies, such as fake or abusive content, and help you respond professionally to the rest."
+          },
+          {
+                "q": "How do I get more Google reviews?",
+                "a": "Ask every satisfied customer at the right moment, make it easy with a direct link or QR code, and follow up once. Don’t offer incentives or filter who you ask, as that breaches Google’s policies."
+          },
+          {
+                "q": "How should I respond to a negative review?",
+                "a": "Respond promptly and politely, acknowledge the experience, avoid sharing private details, and offer to resolve it offline. A good reply often reassures future customers more than the review worries them."
+          },
+          {
+                "q": "How much does online reputation management cost?",
+                "a": "It depends on the number of locations, platforms and review volume. We quote after an initial audit."
+          },
+          {
+                "q": "Can you fix what AI tools say about my business?",
+                "a": "We can’t edit AI answers directly, but we can correct and strengthen the sources they draw from, such as your website, profiles and directory listings, which often improves accuracy over time."
+          },
+          {
+                "q": "What is online reputation management?",
+                "a": "Online reputation management (ORM) is the ongoing work of monitoring, building and protecting how your business appears online. It covers earning genuine reviews, responding to feedback, improving what appears when people search your brand name, and correcting inaccurate information, including in AI-generated answers."
+          },
+          {
+                "q": "What does your online reputation management service include?",
+                "a": "The core elements most clients receive are: review generation; response management; brand search monitoring; AI answer checks; policy-violating review reports; reputation reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Who needs online reputation management?",
+                "a": "It suits clinics, local businesses, hospitality and service brands, chains and franchises, and businesses recovering after a difficult period. We never use fake reviews or try to hide genuine feedback."
+          }
     ],
   },
 
@@ -1522,6 +1952,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Bespoke, blazingly fast websites built with modern UI design, clean code, and built-in search readiness.",
     longDescription:
       "A slow, outdated website actively drives paying customers away. We design and develop custom, responsive websites using WordPress, Headless CMS, or Next.js. Engineered with computer engineering precision, our sites boast sub-second loading speeds, full Core Web Vitals compliance, conversion-focused UI/UX layouts, and clean semantic architecture.",
+    metaTitle: "Website Design and Development: SEO-Ready Sites by MBSA",
+    metaDescription: "Website design and development for fast, SEO-ready WordPress and custom sites, with Core Web Vitals, tracking and redirect plans built in. Request a quote.",
+    primaryKeyword: "website design and development",
+    serviceType: "Website design and development",
+    schemaDescription: "An SEO-friendly website is fast, mobile-friendly, accessible and easy for search engines to crawl. It has a logical page structure, one clear purpose per page, descriptive headings, accurate metadata and structured data, and it preserves existing rankings when it replaces an older site.",
     iconName: "Globe",
     image: "/images/services/dark/website-design-development.png",
     lightImage: "/images/services/light/website-design-development.png",
@@ -1574,18 +2009,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Why do you avoid bloated page builders like Elementor or Divi?",
-        a: "Heavy builders inject hundreds of unneeded CSS/JS files that tank Core Web Vitals and slow down your site. We use clean custom Gutenberg blocks or Next.js to ensure lightning-fast speeds.",
-      },
-      {
-        q: "Will our team be able to edit text and add blog posts easily?",
-        a: "Yes. We create custom, user-friendly fields and provide full video training so your team can easily update content without touching code.",
-      },
-      {
-        q: "How do you ensure our existing SEO rankings aren't lost during a redesign?",
-        a: "We maintain identical URL structures where possible, map 100% of changed URLs with 301 redirects, and preserve existing metadata and schema markup.",
-      },
+          {
+                "q": "How much does a business website cost?",
+                "a": "It depends on the number of pages, features, integrations and content needed. A focused brochure site costs much less than a large custom build. We provide a fixed quote after a discovery call."
+          },
+          {
+                "q": "How long does it take to build a website?",
+                "a": "A focused business website typically takes four to eight weeks from kick-off to launch, depending on content readiness and feedback rounds. Larger builds take longer; we agree milestones up front."
+          },
+          {
+                "q": "Will a redesign hurt our Google rankings?",
+                "a": "It can if URLs, content and internal links change without a plan. We map every important old URL to a new one, set up 301 redirects, keep valuable content and monitor indexing after launch."
+          },
+          {
+                "q": "Can we edit the website ourselves?",
+                "a": "Yes. We build with editable blocks or sections and provide a short training session and written guide."
+          },
+          {
+                "q": "Do you provide hosting and maintenance?",
+                "a": "We can recommend reliable hosting and offer maintenance plans for updates, backups, security and small changes."
+          },
+          {
+                "q": "What makes a website SEO-friendly?",
+                "a": "An SEO-friendly website is fast, mobile-friendly, accessible and easy for search engines to crawl. It has a logical page structure, one clear purpose per page, descriptive headings, accurate metadata and structured data, and it preserves existing rankings when it replaces an older site."
+          },
+          {
+                "q": "What is included in your website design and development service?",
+                "a": "The core elements most clients receive are: sitemap and UX planning; visual design; development; speed and Core Web Vitals; migration protection; tracking from launch. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which platforms do you build websites on?",
+                "a": "We build on WordPress, Webflow and custom HTML/JS, with SEO structure, speed, accessibility and GA4 tracking built in."
+          }
     ],
   },
   {
@@ -1602,6 +2057,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "High-converting online stores engineered for smooth checkout, lightning speed, and maximum average order value.",
     longDescription:
       "An e-commerce store needs to do more than look pretty—it must convert browsers into buyers. We build custom Shopify, Shopify Plus, and WooCommerce stores optimized for high transaction velocity. From frictionless mobile 1-click checkouts and smart upsell bundles to inventory management integrations and payment gateways, we build stores that scale.",
+    metaTitle: "Ecommerce Website Development for Shopify & WooCommerce",
+    metaDescription: "Ecommerce website development on Shopify and WooCommerce: fast themes, product pages that convert, payments, shipping and GA4 tracking set up from day one.",
+    primaryKeyword: "ecommerce website development",
+    serviceType: "Ecommerce website development",
+    schemaDescription: "We design and build online stores that load quickly, rank well and make buying easy, with payments, shipping, product data and analytics set up properly from day one.",
     iconName: "ShoppingCart",
     image: "/images/services/dark/ecommerce-website-development.png",
     lightImage: "/images/services/light/ecommerce-website-development.png",
@@ -1655,18 +2115,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Should I choose Shopify or WooCommerce for my online store?",
-        a: "Shopify is ideal for ease of maintenance, hosted security, and global payment scale. WooCommerce offers unlimited open-source customization and complete ownership for specialized requirements.",
-      },
-      {
-        q: "Can you migrate all our existing products, customer accounts, and order history?",
-        a: "Yes. We execute secure database migrations transferring all SKUs, product variations, customer records, and past orders without data loss.",
-      },
-      {
-        q: "How do you handle subscriptions or recurring orders?",
-        a: "We integrate leading subscription engines like ReCharge or native Shopify Subscriptions, enabling automated repeat billing and customer portal management.",
-      },
+          {
+                "q": "Is Shopify or WooCommerce better for SEO?",
+                "a": "Both can perform well. Shopify handles hosting and security for you but has a fixed URL structure. WooCommerce offers more control but needs good hosting and maintenance. The quality of the build matters more than the platform."
+          },
+          {
+                "q": "How much does an ecommerce website cost?",
+                "a": "It depends on catalogue size, design, integrations and migration needs. We provide a fixed quote after discovery."
+          },
+          {
+                "q": "Can you migrate our store without losing rankings?",
+                "a": "Yes. We map old URLs to new ones, set up 301 redirects, migrate product content and metadata, and monitor indexing closely after launch."
+          },
+          {
+                "q": "Which payment gateways do you set up?",
+                "a": "We work with major gateways including Shopify Payments, Razorpay, Stripe and PayPal, depending on your country and needs."
+          },
+          {
+                "q": "Do you offer ongoing store support?",
+                "a": "Yes. We offer maintenance, app reviews, speed checks and conversion improvements after launch."
+          },
+          {
+                "q": "What is included in your ecommerce website development?",
+                "a": "The core elements most clients receive are: store design; theme development; products and collections; payments and shipping; migration and replatforming; tracking and feeds. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which ecommerce platforms do you build stores on?",
+                "a": "We build on Shopify, Shopify Plus and WooCommerce, for new online stores, replatforming projects and store redesigns."
+          },
+          {
+                "q": "What is built into every store you develop?",
+                "a": "Every store is built with product SEO, Core Web Vitals performance and GA4 ecommerce tracking from day one, with payments, shipping and product data set up properly."
+          }
     ],
   },
   {
@@ -1683,6 +2163,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Memorable brand identities, typography, color palettes, and digital assets that distinguish you from the competition.",
     longDescription:
       "First impressions happen in milliseconds. In a crowded digital market, generic templates will get your business overlooked. We build cohesive visual brand identities from the ground up: memorable logo marks, sophisticated typography pairings, curated color systems, and comprehensive brand guideline books that command premium pricing and customer loyalty.",
+    metaTitle: "Branding Agency: Logo Design and Visual Identity | MBSA",
+    metaDescription: "Branding and design that make you recognisable: brand strategy, logo design, a visual identity system, brand guidelines, and ready-to-use marketing assets.",
+    primaryKeyword: "branding agency",
+    serviceType: "Branding and design",
+    schemaDescription: "A branding agency helps a business define how it wants to be seen and expresses that consistently. Work usually includes brand strategy (positioning, audience, personality and tone of voice), logo design, a visual identity system of colours, typography and imagery, brand guidelines, and templates for marketing materials.",
     iconName: "Layers",
     image: "/images/services/dark/branding-design.png",
     lightImage: "/images/services/light/branding-design.png",
@@ -1736,18 +2221,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What file formats will I receive for my logo?",
-        a: "You receive industry-standard vector formats (AI, EPS, SVG) that can scale infinitely without quality loss, as well as high-resolution transparent PNGs and JPEGs for web and digital use.",
-      },
-      {
-        q: "How many logo concepts do you present?",
-        a: "We present 3 to 4 distinct creative concepts, each with real-world mockups. We then iterate and refine your chosen concept until it is 100% perfect.",
-      },
-      {
-        q: "Do I own full copyright to the final designs?",
-        a: "Yes. Upon project completion and final payment, 100% intellectual property ownership and commercial copyright transfer directly to you.",
-      },
+          {
+                "q": "How much does branding cost?",
+                "a": "It depends on scope. A logo and basic identity costs less than full strategy, guidelines and asset design. We quote after a discovery call."
+          },
+          {
+                "q": "What is the difference between a logo and a brand?",
+                "a": "A logo is one symbol. A brand is the whole perception of your business: positioning, personality, visuals, tone of voice and customer experience. A logo is part of your brand identity."
+          },
+          {
+                "q": "How long does a branding project take?",
+                "a": "A logo and visual identity usually takes three to six weeks, depending on feedback rounds. Full brand strategy and guidelines take longer."
+          },
+          {
+                "q": "Will I own the logo files?",
+                "a": "Yes. On final payment you receive full ownership and all source files in formats suitable for web, social and print."
+          },
+          {
+                "q": "Can you design social media templates and ads?",
+                "a": "Yes. We create on-brand templates and creatives your team can reuse, plus campaign assets for our social media and Meta Ads services."
+          },
+          {
+                "q": "What does a branding agency do?",
+                "a": "A branding agency helps a business define how it wants to be seen and expresses that consistently. Work usually includes brand strategy (positioning, audience, personality and tone of voice), logo design, a visual identity system of colours, typography and imagery, brand guidelines, and templates for marketing materials."
+          },
+          {
+                "q": "What do you deliver in a branding project?",
+                "a": "Brand strategy, a logo, a visual identity system, brand guidelines and marketing graphics, delivered as ready-to-use files for web, social and print."
+          },
+          {
+                "q": "Who is branding and design best for?",
+                "a": "It suits new businesses, rebrands and brands that look inconsistent, including growing companies and D2C and retail brands."
+          }
     ],
   },
   {
@@ -1764,6 +2269,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Persuasive, customer-centric copy that speaks directly to audience pain points and drives decisive conversions.",
     longDescription:
       "Design grabs attention, but words make the sale. Weak, cliché-ridden copy causes interested visitors to hesitate and leave. We write clear, high-converting direct-response copy for websites, landing pages, digital ads, and email campaigns. Grounded in customer psychology, our messaging clearly articulates your unique value proposition and dissolves buyer skepticism.",
+    metaTitle: "Copywriting Services: Web, SEO, Ads & Email Copy | MBSA",
+    metaDescription: "Copywriting services for websites, SEO pages, landing pages, ads and emails: clear, persuasive copy written by people in your brand voice. Request a quote.",
+    primaryKeyword: "copywriting services",
+    serviceType: "Copywriting",
+    schemaDescription: "Copywriting is writing words that persuade people to take an action, such as making an enquiry, buying or signing up. It includes website copy, landing pages, ads, emails and product descriptions. SEO copywriting also makes sure pages match what people search for, without sacrificing readability.",
     iconName: "FileCheck",
     image: "/images/services/dark/copywriting-messaging.png",
     lightImage: "/images/services/light/copywriting-messaging.png",
@@ -1817,18 +2327,34 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What is voice-of-customer (VoC) research?",
-        a: "VoC research involves studying how real customers describe their problems and what made them choose your solution. Using their actual vocabulary in your copy makes your messaging resonate instantly.",
-      },
-      {
-        q: "Do you write copy with SEO in mind?",
-        a: "Yes. We seamlessly blend primary and semantic search terms into natural, compelling headings and body paragraphs without ever compromising conversion psychology.",
-      },
-      {
-        q: "Can you review and improve our existing website copy?",
-        a: "Yes. We offer copy auditing and rewrites where we analyze your existing pages, remove corporate fluff, and sharpen your value propositions.",
-      },
+          {
+                "q": "Do you use AI to write copy?",
+                "a": "We may use AI for research or first-draft ideas, but every piece is written and edited by people who understand your brand and customers. Unedited AI copy tends to sound generic and rarely converts well."
+          },
+          {
+                "q": "What is SEO copywriting?",
+                "a": "SEO copywriting is writing pages that read naturally for people while matching what they search for, using clear headings, relevant terms and direct answers, without keyword stuffing."
+          },
+          {
+                "q": "How much do copywriting services cost?",
+                "a": "Costs depend on the number of pages and the research involved. We quote per project or per page."
+          },
+          {
+                "q": "How many revisions are included?",
+                "a": "Our projects normally include two rounds of revisions per piece, so you can shape the copy until it feels right."
+          },
+          {
+                "q": "Can you write in our brand voice?",
+                "a": "Yes. We start by understanding your tone of voice, or help you define one, and write consistently to it."
+          },
+          {
+                "q": "What is copywriting?",
+                "a": "Copywriting is writing words that persuade people to take an action, such as making an enquiry, buying or signing up. It includes website copy, landing pages, ads, emails and product descriptions. SEO copywriting also makes sure pages match what people search for, without sacrificing readability."
+          },
+          {
+                "q": "What does your copywriting service include?",
+                "a": "The core elements most clients receive are: messaging framework; website copy; sEO copywriting; ad copy; email copy; editing and proofreading. The exact scope is agreed after a short discovery call."
+          }
     ],
   },
 
@@ -1849,6 +2375,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Crystal-clear tracking architectures and executive dashboards that illuminate true customer acquisition ROI.",
     longDescription:
       "You cannot grow what you cannot accurately measure. Many businesses operate on broken tracking setups, double-counting pageviews, or missing critical form submission conversions. We build bulletproof tracking ecosystems using Google Analytics 4 (GA4), Google Tag Manager (GTM), and automated Looker Studio dashboards that translate complex telemetry into clear growth actions.",
+    metaTitle: "GA4 Setup, Analytics and Looker Studio Reporting | MBSA",
+    metaDescription: "GA4 setup and analytics services: tracking audits, Google Tag Manager events, Consent Mode and Looker Studio dashboards that show what really drives leads.",
+    primaryKeyword: "GA4 setup",
+    serviceType: "Analytics and reporting",
+    schemaDescription: "Marketing analytics is the setup and analysis of data that shows how people find and use your website and which channels lead to enquiries or sales. Reporting turns that data into a regular, plain-English summary of what changed and what to do next.",
     iconName: "BarChart3",
     image: "/images/services/dark/analytics-reporting.png",
     lightImage: "/images/services/light/analytics-reporting.png",
@@ -1902,18 +2433,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What is Google Consent Mode v2 and do I need it?",
-        a: "Consent Mode v2 is mandatory for any business advertising on Google in Europe or the UK. It adjusts tag behavior based on user cookie consent, preserving conversion modeling while respecting privacy laws.",
-      },
-      {
-        q: "Why is GA4 showing lower session counts than Universal Analytics used to?",
-        a: "GA4 uses an event-based data model rather than session-based tracking, and deduplicates multiple hits more accurately. We configure GA4 to ensure you have a clean, comparable baseline.",
-      },
-      {
-        q: "Can Looker Studio dashboards connect to non-Google ad platforms like Facebook and LinkedIn?",
-        a: "Yes. Using verified connectors, we pull data from Meta Ads, LinkedIn, Shopify, and Google into one single unified executive report.",
-      },
+          {
+                "q": "Why don’t GA4 numbers match our ad platform or CRM?",
+                "a": "Each tool counts differently: attribution models, time zones, consent choices and ad blockers all affect totals. We explain the differences and set up reporting so you compare like with like."
+          },
+          {
+                "q": "What is a key event in GA4?",
+                "a": "A key event (previously called a conversion) is an action you mark as important, such as a form submission, phone call click or purchase. Key events can be imported into Google Ads to guide bidding."
+          },
+          {
+                "q": "Do we need Google Tag Manager?",
+                "a": "For most businesses, yes. It makes tracking easier to manage, test and change without editing website code each time."
+          },
+          {
+                "q": "What is Consent Mode v2?",
+                "a": "Consent Mode v2 tells Google tags whether a visitor has agreed to cookies and adjusts tracking accordingly. It is important for advertisers reaching users in the UK and EU."
+          },
+          {
+                "q": "Can you track phone calls and WhatsApp clicks?",
+                "a": "We can track clicks on phone numbers and WhatsApp links as events. Tracking completed calls usually needs a call-tracking tool, which we can recommend."
+          },
+          {
+                "q": "What is marketing analytics and reporting?",
+                "a": "Marketing analytics is the setup and analysis of data that shows how people find and use your website and which channels lead to enquiries or sales. Reporting turns that data into a regular, plain-English summary of what changed and what to do next."
+          },
+          {
+                "q": "What does your analytics and reporting service include?",
+                "a": "The core elements most clients receive are: GA4 audit; measurement plan; Google Tag Manager setup; consent-aware tracking; Looker Studio dashboards; insight reports. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which analytics tools do you use?",
+                "a": "We work with GA4, Google Tag Manager, Search Console and Looker Studio, and deliver clean tracking, a measurement plan and a live dashboard."
+          }
     ],
   },
   {
@@ -1930,6 +2481,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Data-backed heuristic analysis and split testing to convert a higher percentage of existing visitors into customers.",
     longDescription:
       "Doubling your conversion rate produces the exact same revenue impact as doubling your marketing budget—at a fraction of the cost. We conduct deep quantitative and qualitative CRO analysis: scroll heatmaps, session recordings, heuristic friction audits, and statistical A/B split tests to remove roadblocks and turn existing traffic into paying clients.",
+    metaTitle: "Conversion Rate Optimisation & A/B Tests | MBSA Digital",
+    metaDescription: "CRO services that win more customers from existing traffic: conversion audits, user research, landing page and checkout fixes, and A/B testing. Talk to us.",
+    primaryKeyword: "conversion rate optimisation",
+    serviceType: "Conversion rate optimisation",
+    schemaDescription: "Conversion rate optimisation is the process of increasing the percentage of website visitors who take a desired action, such as making an enquiry or a purchase. It uses analytics, user research and controlled experiments to find and remove what stops people converting.",
     iconName: "Gauge",
     image: "/images/services/dark/conversion-rate-optimisation.png",
     lightImage: "/images/services/light/conversion-rate-optimisation.png",
@@ -1983,18 +2539,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "How much traffic do I need to run A/B split testing?",
-        a: "Reliable A/B testing typically requires at least 15,000 to 25,000 monthly unique visitors. For lower-traffic sites, we execute qualitative heuristic optimization and user-testing sprints with massive impact.",
-      },
-      {
-        q: "What kinds of changes do you test?",
-        a: "We test value proposition headlines, call-to-action button placements, form field reduction, checkout layouts, trust badges, pricing page displays, and mobile navigation ergonomics.",
-      },
-      {
-        q: "Will A/B testing hurt my SEO rankings?",
-        a: "No. Testing tools use JavaScript DOM manipulation and standard canonical headers so search engines see no cloaking or duplicate content violations.",
-      },
+          {
+                "q": "What is a good website conversion rate?",
+                "a": "It varies widely by industry, traffic source and what counts as a conversion. Rather than chase a benchmark, we measure your own baseline and aim to improve it steadily."
+          },
+          {
+                "q": "How long does an A/B test take?",
+                "a": "Usually two to six weeks, depending on traffic and the size of the change being tested. Low-traffic sites may rely more on research-led fixes than formal tests."
+          },
+          {
+                "q": "Do I need lots of traffic for CRO?",
+                "a": "Formal A/B testing needs enough traffic for reliable results, but every site benefits from conversion research and best-practice fixes."
+          },
+          {
+                "q": "Will CRO hurt our SEO?",
+                "a": "No, when done properly. We follow Google’s guidance on testing, avoid cloaking and keep tests temporary."
+          },
+          {
+                "q": "What tools do you use for CRO?",
+                "a": "Typically GA4, Microsoft Clarity or Hotjar for behaviour analysis, and VWO or Optimizely for testing, depending on your platform and budget."
+          },
+          {
+                "q": "What is conversion rate optimisation?",
+                "a": "Conversion rate optimisation is the process of increasing the percentage of website visitors who take a desired action, such as making an enquiry or a purchase. It uses analytics, user research and controlled experiments to find and remove what stops people converting."
+          },
+          {
+                "q": "What does your CRO service include?",
+                "a": "The core elements most clients receive are: conversion audit; user research; hypothesis backlog; A/B and multivariate testing; landing page optimisation; form and checkout optimisation. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "How do you measure CRO success?",
+                "a": "We measure conversion rate, revenue per visitor and cost per lead, so improvements are tied to enquiries and sales rather than opinions."
+          }
     ],
   },
   {
@@ -2011,6 +2587,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Intelligent automation workflows and AI tooling that streamline sales processes and nurture prospects 24/7.",
     longDescription:
       "Manual data entry, delayed lead follow-ups, and repetitive tasks drain valuable team time. We design intelligent automation pipelines connecting your website forms, CRM (HubSpot, Salesforce, Pipedrive), and internal messaging. By leveraging modern AI agents and workflow automation (Make, Zapier), we ensure every lead is qualified and routed in seconds.",
+    metaTitle: "Marketing Automation & AI Services for CRM Leads | MBSA",
+    metaDescription: "Marketing automation services that stop leads slipping away: CRM set-up, workflows, lead scoring, email and WhatsApp nurturing, and practical AI for teams.",
+    primaryKeyword: "marketing automation services",
+    serviceType: "Marketing automation",
+    schemaDescription: "Marketing automation uses software to run repetitive marketing and sales tasks automatically, such as capturing leads into a CRM, sending follow-up emails or WhatsApp messages, scoring leads and alerting your team. AI can add smarter steps, like summarising enquiries or drafting first replies, under human control.",
     iconName: "Zap",
     image: "/images/services/dark/marketing-automation-ai.png",
     lightImage: "/images/services/light/marketing-automation-ai.png",
@@ -2064,18 +2645,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "Why is fast lead response time so critical?",
-        a: "Studies consistently show that contacting an inbound lead within 5 minutes makes you 21x more likely to qualify them compared to waiting 30 minutes. Automation ensures this happens 24/7.",
-      },
-      {
-        q: "Do we need enterprise software like Salesforce to benefit from automation?",
-        a: "No. Small businesses can build world-class automation pipelines using affordable tools like Make.com, HubSpot Free/Starter, and Airtable.",
-      },
-      {
-        q: "Can AI help categorize and summarize incoming inquiries?",
-        a: "Yes. We configure AI models to read incoming contact submissions, extract key requirements, score urgency, and draft personalized initial responses for your team to approve.",
-      },
+          {
+                "q": "What is the best marketing automation software for small businesses?",
+                "a": "HubSpot, Zoho and Brevo are popular choices. The best one depends on your budget, existing tools and how sales and marketing work together. We recommend after mapping your process."
+          },
+          {
+                "q": "How is AI used in marketing automation?",
+                "a": "AI can summarise enquiries, suggest replies, personalise messages and help create content. We keep people in control of anything customer-facing and avoid using AI where accuracy is critical without review."
+          },
+          {
+                "q": "Is marketing automation the same as spam?",
+                "a": "No. Good automation sends relevant, permission-based messages at the right time. We follow data protection rules such as UK GDPR and India’s DPDP Act."
+          },
+          {
+                "q": "Can you connect our website forms to our CRM?",
+                "a": "Yes. We connect forms, ads, WhatsApp and calendars to your CRM so every lead is captured with its source."
+          },
+          {
+                "q": "How long does automation setup take?",
+                "a": "A focused setup with core workflows typically takes two to six weeks, depending on your tools and data quality."
+          },
+          {
+                "q": "What is marketing automation?",
+                "a": "Marketing automation uses software to run repetitive marketing and sales tasks automatically, such as capturing leads into a CRM, sending follow-up emails or WhatsApp messages, scoring leads and alerting your team. AI can add smarter steps, like summarising enquiries or drafting first replies, under human control."
+          },
+          {
+                "q": "What does your marketing automation service include?",
+                "a": "The core elements most clients receive are: CRM setup and clean-up; automated workflows; lead scoring; aI-assisted processes; integrations; pipeline reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "Which CRM and automation platforms do you work with?",
+                "a": "We work with HubSpot, Zoho, Brevo, Zapier, Make and other platforms, for growing businesses with more leads than time."
+          }
     ],
   },
 
@@ -2096,6 +2697,11 @@ export const SERVICES_DATA: ServiceDetail[] = [
     tagline: "Integrated, multi-channel inbound and outbound acquisition funnels engineered to keep your sales calendar full.",
     longDescription:
       "Isolated marketing tactics rarely produce scalable growth. Real revenue scale requires an integrated system where SEO captures high-intent organic demand, targeted paid ads test offers, conversion rate optimization maximizes inquiry rates, and automated nurturing closes deals. Our Lead Generation program unites all disciplines into one cohesive, revenue-focused engine.",
+    metaTitle: "Lead Generation Services: SEO, Ads & CRO | MBSA Digital",
+    metaDescription: "Lead generation services that combine SEO, paid ads, landing pages, CRO and prompt follow-up in one programme measured by qualified leads, not just clicks.",
+    primaryKeyword: "lead generation services",
+    serviceType: "Lead generation",
+    schemaDescription: "Lead generation is the process of attracting potential customers and capturing their details or enquiries so your team can follow up. In digital marketing it combines channels such as SEO, paid ads and social media with landing pages, lead magnets and automated follow-up, measured by the quality and cost of leads.",
     iconName: "Target",
     image: "/images/services/dark/lead-generation.png",
     lightImage: "/images/services/light/lead-generation.png",
@@ -2149,18 +2755,38 @@ export const SERVICES_DATA: ServiceDetail[] = [
       link: "/projects",
     },
     faqs: [
-      {
-        q: "What makes this different from hiring separate SEO or ad agencies?",
-        a: "Separate agencies often point fingers at each other when leads don't convert. Our full-funnel approach takes ownership of the entire chain: the traffic, the landing page speed, the copy, and the CRM automation.",
-      },
-      {
-        q: "How quickly can a lead generation program go live?",
-        a: "Initial landing page creation, tracking setup, and paid search campaigns can typically launch within 10 to 14 days, generating leads immediately while long-term organic SEO compounds.",
-      },
-      {
-        q: "How do you ensure lead quality rather than spam submissions?",
-        a: "We implement multi-step qualification questions, reCAPTCHA v3 protection, and first-party conversion feedback loops that train ad algorithms on qualified prospects only.",
-      },
+          {
+                "q": "What is the best lead generation channel?",
+                "a": "It depends on your audience. Search (SEO and Google Ads) captures people actively looking, LinkedIn suits B2B decision-makers, and Meta works well for consumer services. Most businesses benefit from a mix."
+          },
+          {
+                "q": "How much does a lead cost?",
+                "a": "Cost per lead varies widely by industry, location and channel. We establish your baseline and work to reduce it while keeping quality high."
+          },
+          {
+                "q": "Do you guarantee a number of leads?",
+                "a": "We don’t guarantee lead numbers because results depend on market, offer and budget. We do commit to clear targets, transparent reporting and continuous improvement."
+          },
+          {
+                "q": "Do you sell or share lead lists?",
+                "a": "No. All leads are generated for your business from your own campaigns, and the data belongs to you."
+          },
+          {
+                "q": "How quickly will we see leads?",
+                "a": "Paid campaigns can generate leads within days of launch. SEO and content build over months. A combined programme gives you both quick wins and long-term growth."
+          },
+          {
+                "q": "What is lead generation?",
+                "a": "Lead generation is the process of attracting potential customers and capturing their details or enquiries so your team can follow up. In digital marketing it combines channels such as SEO, paid ads and social media with landing pages, lead magnets and automated follow-up, measured by the quality and cost of leads."
+          },
+          {
+                "q": "What does your lead generation service include?",
+                "a": "The core elements most clients receive are: channel strategy; landing pages; offers and lead magnets; CRO; follow-up automation; lead reporting. The exact scope is agreed after a short discovery call."
+          },
+          {
+                "q": "How do you measure lead generation success?",
+                "a": "We measure qualified leads, cost per lead and pipeline value, so the programme is judged on enquiries that turn into business, not clicks."
+          }
     ],
   },
 ];

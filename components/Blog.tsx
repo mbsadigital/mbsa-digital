@@ -129,7 +129,7 @@ export default function Blog() {
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-[1.08]">
               Engineering Scalable{" "}
-              <span className="text-[#2563EB]">
+              <span className="text-[#2563EB] dark:text-[#2f97ee]">
                 Digital Growth.
               </span>
             </h2>
@@ -243,6 +243,7 @@ export default function Blog() {
                         src={featuredArticle.author?.avatar || PRESET_COVERS[0].url}
                         alt={featuredArticle.author?.name || "Author"}
                         fill
+                        sizes="32px"
                         unoptimized
                         className="object-cover"
                       />
@@ -429,6 +430,7 @@ export default function Blog() {
                         src={article.author?.avatar || PRESET_COVERS[0].url}
                         alt={article.author?.name || "Author"}
                         fill
+                        sizes="24px"
                         unoptimized
                         className="object-cover"
                       />

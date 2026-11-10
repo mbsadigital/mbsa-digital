@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SITE_CONFIG, SITE_URL, getWebsiteJsonLd, getPersonJsonLd } from "@/lib/seo";
+import { SITE_CONFIG, SITE_URL, getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -34,21 +34,21 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "MBSA Digital Marketing & Technical SEO Specialist",
-    template: "%s | MBSA",
+    default: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
+    template: "%s | MBSA Digital",
   },
-  description: SITE_CONFIG.description,
+  description: "MBSA Digital is a search-led digital marketing agency for India and the UK. SEO, AI search, ads and websites that turn visits into leads. Get a free audit.",
   keywords: [
-    "MBSA",
-    "Digital Marketing Specialist",
-    "Technical SEO Specialist",
-    "Core Web Vitals",
-    "AEO GEO Search Optimization",
+    "digital marketing agency",
+    "SEO agency",
+    "AI SEO agency",
+    "SEO and digital marketing agency",
+    "digital marketing agency India",
+    "UK digital marketing agency",
+    "Technical SEO",
+    "Google Ads",
+    "Meta Ads",
     "GA4 Analytics",
-    "WordPress Development",
-    "Conversion Rate Optimization",
-    "London SEO Consultant",
-    "UK Healthcare SEO",
   ],
   authors: [{ name: SITE_CONFIG.name }],
   creator: SITE_CONFIG.name,
@@ -68,8 +68,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "MBSA Digital Marketing & Technical SEO Specialist",
-    description: SITE_CONFIG.description,
+    title: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
+    description: "MBSA Digital is a search-led digital marketing agency for India and the UK. SEO, AI search, ads and websites that turn visits into leads. Get a free audit.",
     url: SITE_URL,
     siteName: SITE_CONFIG.siteName,
     images: [
@@ -77,13 +77,12 @@ export const metadata: Metadata = {
         url: `${SITE_URL}${SITE_CONFIG.defaultOgImage}`,
         width: 1200,
         height: 630,
-        alt: "MBSA - Digital Marketing & Technical SEO Specialist",
+        alt: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
       },
     ],
     locale: "en_GB",
     type: "website",
   },
-
 };
 
 export default function RootLayout({
@@ -91,8 +90,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const organizationJsonLd = getOrganizationJsonLd();
   const websiteJsonLd = getWebsiteJsonLd();
-  const personJsonLd = getPersonJsonLd();
 
   return (
     <html
@@ -102,15 +101,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-
-        {/* Global Structured Data: WebSite & Person Entity */}
+        {/* Global Structured Data: Organization & WebSite */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
       </head>
       <body

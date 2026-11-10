@@ -235,7 +235,7 @@ export default function Gsc() {
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12]">
               Measurable Results.{" "}
-              <span className="text-[#2563EB] dark:text-[#3B82F6]">
+              <span className="text-[#2563EB] dark:text-[#2f97ee]">
                 Verified by Live Data.
               </span>
             </h2>
@@ -274,16 +274,14 @@ export default function Gsc() {
                   type="button"
                   onClick={() => handleSelectCategory(cat.id)}
                   whileTap={{ scale: 0.96 }}
-                  className={`shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none touch-manipulation ${
-                    isCatActive
+                  className={`shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer border select-none touch-manipulation ${isCatActive
                       ? "bg-[#2563EB] text-white border-[#2563EB] shadow-lg shadow-blue-500/30"
                       : "bg-stone-100/90 dark:bg-white/10 text-stone-700 dark:text-stone-200 border-stone-200/90 dark:border-white/20 hover:bg-stone-200/80 dark:hover:bg-white/20 hover:border-blue-400 hover:text-stone-950 dark:hover:text-white"
-                  }`}
+                    }`}
                 >
                   <Icon
-                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                      isCatActive ? "text-white" : "text-[#2563EB] dark:text-blue-400"
-                    }`}
+                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isCatActive ? "text-white" : "text-[#2563EB] dark:text-blue-400"
+                      }`}
                   />
                   <span>{cat.shortName}</span>
                 </motion.button>
@@ -325,11 +323,10 @@ export default function Gsc() {
             SHOWCASE STAGE: 3D CAROUSEL (DYNAMIC SOCIAL MEDIA POST UI & WIDESCREEN DASHBOARD)
         ==================================================== */}
         <div
-          className={`relative w-full ${
-            selectedCategory === "social"
+          className={`relative w-full ${selectedCategory === "social"
               ? "h-[450px] sm:h-[490px] md:h-[530px]"
               : "h-[320px] sm:h-[380px] md:h-[440px] lg:h-[470px]"
-          } flex items-center justify-center overflow-hidden rounded-3xl select-none transition-all duration-300`}
+            } flex items-center justify-center overflow-hidden rounded-3xl select-none transition-all duration-300`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           style={{ perspective: "1000px" }}
@@ -373,17 +370,15 @@ export default function Gsc() {
                   stiffness: 260,
                   damping: 26,
                 }}
-                className={`absolute ${
-                  isSocial
+                className={`absolute ${isSocial
                     ? "w-[280px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl sm:rounded-3xl"
                     : "w-[88%] sm:w-[74%] md:w-[68%] aspect-[16/9] rounded-2xl sm:rounded-3xl"
-                } overflow-hidden cursor-pointer ${
-                  isCenter
+                  } overflow-hidden cursor-pointer ${isCenter
                     ? isSocial
                       ? "border-2 border-[#2563EB] shadow-[0_16px_50px_rgba(37,99,235,0.35)] ring-1 ring-[#2563EB]/50 bg-stone-950"
                       : "border-2 border-[#2563EB] shadow-[0_12px_45px_rgba(37,99,235,0.30)] ring-1 ring-[#2563EB]/40 bg-stone-950"
                     : "border border-stone-300 dark:border-stone-800 shadow-lg hover:opacity-75 bg-stone-950"
-                }`}
+                  }`}
               >
                 {/* ------------------------------------------------------------------
                     A. SOCIAL MEDIA POST - ONLY SHOW IMAGE PROPER SET
@@ -561,9 +556,8 @@ export default function Gsc() {
             className="fixed inset-0 z-[9999] bg-black/92 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 cursor-zoom-out"
           >
             <div
-              className={`relative w-full max-h-[92vh] ${
-                isCurrentSocial ? "max-w-lg" : "max-w-5xl"
-              } flex flex-col items-center justify-center cursor-default`}
+              className={`relative w-full max-h-[92vh] ${isCurrentSocial ? "max-w-lg" : "max-w-5xl"
+                } flex flex-col items-center justify-center cursor-default`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -578,11 +572,10 @@ export default function Gsc() {
 
               {/* CARD CONTAINER IN LIGHTBOX */}
               <div
-                className={`relative w-full ${
-                  isCurrentSocial
+                className={`relative w-full ${isCurrentSocial
                     ? "max-w-lg aspect-[4/5] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-black"
                     : "max-w-5xl aspect-[16/9] rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-black"
-                }`}
+                  }`}
               >
                 <Image
                   src={currentSlide.image}

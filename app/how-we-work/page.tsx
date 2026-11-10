@@ -1,27 +1,32 @@
 import type { Metadata } from "next";
-import { constructMetadata } from "@/lib/seo";
+import { constructMetadata, getHowWeWorkGraphJsonLd } from "@/lib/seo";
 import HowWeWorkClient from "./HowWeWorkClient";
 
 export const metadata: Metadata = constructMetadata({
-  title: "How We Work | A Clear Process From First Call to Measurable Growth",
+  title: "Our Digital Marketing Process in 4 Steps | MBSA Digital",
   description:
-    "Every MBSA Digital engagement follows a transparent 4-step process: Discover & Analyse, Plan & Optimise, Track & Improve, and Grow & Scale. Plain English, zero jargon, and verifiable commercial results.",
+    "See how MBSA Digital works: discovery call, audit, prioritised roadmap, delivery and monthly reporting. Know what happens at each stage before you sign up.",
   path: "/how-we-work",
   keywords: [
-    "How We Work MBSA Digital",
-    "Technical SEO Process",
-    "Digital Marketing Methodology",
-    "SEO Engagement Models",
-    "Data-Driven Search Strategy",
-    "Discovery Call SEO",
+    "digital marketing process",
+    "SEO process",
+    "how digital marketing agencies work",
+    "agency onboarding process",
+    "digital marketing strategy process",
+    "transparent search methodology",
   ],
 });
 
 export default function HowWeWorkPage() {
+  const howWeWorkGraphJsonLd = getHowWeWorkGraphJsonLd();
+
   return (
     <main className="min-h-screen font-[family-name:var(--font-plus-jakarta-sans)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howWeWorkGraphJsonLd) }}
+      />
       <HowWeWorkClient />
     </main>
   );
 }
-

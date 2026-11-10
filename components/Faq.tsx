@@ -13,46 +13,46 @@ interface FAQItem {
 
 const FAQ_LIST: FAQItem[] = [
   {
-    id: "specialization",
-    question: "What does an SEO specialist actually do?",
+    id: "agency-scope",
+    question: "What does an SEO and digital marketing agency actually do?",
     answer:
-      "I make sure the right people can find your website. That means fixing technical problems, writing helpful content around what customers search for, earning trustworthy links, and tracking results so we know what is working.",
+      "We help the right people find your business online and make it easy for them to get in touch. In practice that means fixing technical problems on your website, improving and creating the pages people search for, building your local presence, running paid campaigns where they make sense, and reporting on the enquiries and sales that result.",
   },
   {
-    id: "early-stage",
-    question: "What is AEO and GEO, and do I need them?",
-    answer:
-      "AEO (Answer Engine Optimization) and GEO (Generative Engine Optimization) help your content get chosen as the answer in featured snippets, voice search, and AI tools like ChatGPT, Gemini, and Perplexity. If your customers ask questions before they buy, you need them.",
-  },
-  {
-    id: "project-timeline",
+    id: "seo-timeline",
     question: "How long does SEO take to show results?",
     answer:
-      "Small technical fixes can show movement in weeks. Steady ranking and traffic growth usually takes a few months, and it depends on your competition and site history. I will always be honest about timelines.",
+      "Technical fixes and improvements to existing pages can show movement within a few weeks to a few months. New content and authority usually take longer, often several months, depending on your competition, your website’s history and how much you can invest. We will give you a realistic view after the audit, and we never guarantee rankings.",
   },
   {
-    id: "ai-integration",
-    question: "Have you worked with UK businesses?",
+    id: "aeo-geo-need",
+    question: "What are AEO and GEO, and do I need them?",
     answer:
-      "Yes. I lived in London from September 2023 to November 2025 and handled UK health, pharmacy, and beauty brands, so I understand UK search habits, spelling, and customer expectations.",
+      "Answer engine optimisation (AEO) and generative engine optimisation (GEO) are about making your content clear, accurate and well structured so that search features and AI assistants can understand it and, potentially, cite it. They build on good SEO rather than replacing it. No one can guarantee inclusion in AI answers, but clear, evidence-backed content improves your chances. Read about our AEO and GEO service.",
+  },
+  {
+    id: "target-markets",
+    question: "Do you work with businesses outside India and the UK?",
+    answer:
+      "Yes. We work with businesses in the UK and India and support clients in other English-speaking markets remotely. Tell us where your customers are and we’ll confirm whether we’re the right fit.",
+  },
+  {
+    id: "website-builds",
+    question: "Can you build or fix my website as well?",
+    answer:
+      "Yes. We design and develop WordPress, WooCommerce and Shopify websites, and we can improve an existing site’s speed, structure and conversion paths without a full rebuild. See website design and development.",
   },
   {
     id: "getting-started",
-    question: "Can you build and fix my website too?",
+    question: "How do we get started?",
     answer:
-      "Yes. I build and maintain WordPress, Shopify, and WooCommerce sites with responsive design, speed, and SEO in mind from day one.",
-  },
-  {
-    id: "quality-assurance",
-    question: "How do we start working together?",
-    answer:
-      "Send me your website and your goal. I will review your current visibility, point out the biggest opportunities and suggest a practical plan.",
+      "Request a free search audit or send us a message. We’ll review your website, ask a few questions about your goals and come back with what we’d prioritise first. There’s no obligation to continue.",
   },
 ];
 
 export default function Faq() {
   // First item open by default like the reference design
-  const [openId, setOpenId] = useState<string | null>("specialization");
+  const [openId, setOpenId] = useState<string | null>("agency-scope");
 
   const toggleItem = (id: string) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -83,7 +83,7 @@ export default function Faq() {
             <h2 className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight text-stone-900 dark:text-white leading-[1.12] mb-8 sm:mb-10">
               Questions People
               <br />
-              <span className="text-[#2563EB]">
+              <span className="text-[#2563EB] dark:text-[#2f97ee]">
                 Ask Me
               </span>
             </h2>
