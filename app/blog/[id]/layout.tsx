@@ -3,8 +3,6 @@ import type { Metadata } from "next";
 import {
   constructMetadata,
   getBlogPostJsonLd,
-  getBreadcrumbJsonLd,
-  getFaqJsonLd,
 } from "@/lib/seo";
 import { FALLBACK_BLOGS, type BlogPost } from "@/lib/fallbackBlogs";
 
@@ -52,10 +50,10 @@ export async function generateMetadata({
   const blog = findBlog(id);
 
   return constructMetadata({
-    title: `${blog.title} | Muskan Shekh Blog`,
-    description: blog.excerpt,
+    title: blog.metaTitle || `${blog.title} | MBSA Digital Blog`,
+    description: blog.metaDescription || blog.excerpt,
     path: `/blog/${blog.slug || blog._id}`,
-    image: blog.coverImage,
+    image: blog.coverImage || blog.imageUrl,
     keywords: blog.tags,
   });
 }
@@ -68,15 +66,6 @@ export default async function BlogDetailLayout({
   const blog = findBlog(id);
 
   const blogPostJsonLd = getBlogPostJsonLd(blog);
-  const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Blog", path: "/blog" },
-    { name: blog.title, path: `/blog/${blog.slug || blog._id}` },
-  ]);
-  const faqJsonLd =
-    blog.faqs && blog.faqs.length > 0
-      ? getFaqJsonLd(blog.faqs.map((f) => ({ q: f.question, a: f.answer })))
-      : null;
 
   return (
     <>
@@ -84,16 +73,6 @@ export default async function BlogDetailLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
       {children}
     </>
   );

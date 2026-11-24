@@ -208,10 +208,10 @@ export const Banner: React.FC<BannerProps> = ({
         </div>
 
         {/* Left Side Cover Overlay (Deep multi-stop gradient) */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-28 sm:w-48 md:w-64 lg:w-80 bg-gradient-to-r from-white via-white/85 dark:from-[#0B1220] dark:via-[#0B1220]/85 to-transparent z-20" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 min-[400px]:w-14 sm:w-36 md:w-52 lg:w-64 xl:w-80 bg-gradient-to-r from-white via-white/85 dark:from-[#0B1220] dark:via-[#0B1220]/85 to-transparent z-20" />
 
         {/* Right Side Cover Overlay (Deep multi-stop gradient) */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-28 sm:w-48 md:w-64 lg:w-80 bg-gradient-to-l from-white via-white/85 dark:from-[#0B1220] dark:via-[#0B1220]/85 to-transparent z-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 min-[400px]:w-14 sm:w-36 md:w-52 lg:w-64 xl:w-80 bg-gradient-to-l from-white via-white/85 dark:from-[#0B1220] dark:via-[#0B1220]/85 to-transparent z-20" />
       </div>
     </div>
   );

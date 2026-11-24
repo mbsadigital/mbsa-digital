@@ -183,6 +183,23 @@ export default function BlogDetailPage() {
       .slice(0, 3);
   }, [allBlogs, blog]);
 
+  const formattedDate = useMemo(() => {
+    return new Date(blog?.createdAt || "2025-01-01").toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+  }, [blog?.createdAt]);
+
+  // Strip duplicate markdown FAQ block when structured blog.faqs accordion is rendered
+  const cleanedContent = useMemo(() => {
+    const raw = blog?.content || "";
+    if (!blog?.faqs || blog.faqs.length === 0) return raw;
+    return raw
+      .replace(/\n*#{2,3}\s+Frequently Asked Questions\b[\s\S]*?(?=\n##\s+|$)/i, "")
+      .trim();
+  }, [blog?.content, blog?.faqs]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[var(--background)] flex items-center justify-center">
@@ -213,14 +230,6 @@ export default function BlogDetailPage() {
       </div>
     );
   }
-
-  const formattedDate = useMemo(() => {
-    return new Date(blog.createdAt || "2025-01-01").toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-    });
-  }, [blog.createdAt]);
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] selection:bg-[#2563EB]/25 selection:text-[#2563EB] transition-colors duration-300">
@@ -406,24 +415,15 @@ export default function BlogDetailPage() {
         </div>
 
         {/* 3. BELOW DATE & READ TIME: LARGE IMAGE FOR BLOG */}
-        <div className="relative w-full h-72 sm:h-96 md:h-[480px] lg:h-[540px] rounded-3xl overflow-hidden border border-stone-200/90 dark:border-stone-800/90 shadow-2xl mb-10 group">
+        <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 shadow-xl mb-10 group bg-stone-50 dark:bg-black/40 flex items-center justify-center">
           <Image
-            src={blog.imageUrl || blog.coverImage || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"}
+            src={blog.imageUrl || blog.coverImage || "/Blog/Google November 2026 Core Update Blog 1.png"}
             alt={blog.title}
             fill
             unoptimized
             priority
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="object-contain transition-transform duration-500 group-hover:scale-[1.01]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-center justify-between pointer-events-none">
-            <span className="px-3 py-1.5 rounded-xl bg-black/65 backdrop-blur-md text-white/95 text-xs font-medium border border-white/20">
-              {blog.category} Strategic Case Study
-            </span>
-            <span className="text-white/80 text-xs font-medium drop-shadow hidden sm:inline">
-              Digital Marketing & SEO Blueprint
-            </span>
-          </div>
         </div>
 
         {/* 4. AFTER LARGE IMAGE: HIGHLIGHTED DESCRIPTION */}
@@ -442,7 +442,7 @@ export default function BlogDetailPage() {
 
         {/* 5. BELOW HIGHLIGHTED DESCRIPTION: CONTENT ARTICLE */}
         <div className="text-base sm:text-lg leading-relaxed mb-10">
-          <ArticleMarkdownRenderer content={blog.content} />
+          <ArticleMarkdownRenderer content={cleanedContent} />
         </div>
 
         {/* 5.1 BLOG-WISE FAQ ACCORDION */}

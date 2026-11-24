@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback, useTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -202,43 +202,23 @@ export function HeroEarthStaticGlobe() {
 function Hero3DEarthDashboard() {
   const [activeNode, setActiveNode] = useState<MarketingNodeData | null>(null);
   const [load3D, setLoad3D] = useState(false);
+  const [, startTransition] = useTransition();
 
-  const activate3D = () => {
-    if (!load3D) setLoad3D(true);
-  };
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    // Wake 3D canvas upon first user gesture
-    const onGesture = () => {
-      setLoad3D(true);
-      window.removeEventListener("mousemove", onGesture);
-      window.removeEventListener("scroll", onGesture);
-      window.removeEventListener("touchstart", onGesture);
-    };
-
-    window.addEventListener("mousemove", onGesture, { passive: true, once: true });
-    window.addEventListener("scroll", onGesture, { passive: true, once: true });
-    window.addEventListener("touchstart", onGesture, { passive: true, once: true });
-
-    // Idle fallback to guarantee smooth 3D activation without interrupting initial LCP or DevTools record
-    const timer = setTimeout(() => {
-      setLoad3D(true);
-    }, 3200);
-
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("mousemove", onGesture);
-      window.removeEventListener("scroll", onGesture);
-      window.removeEventListener("touchstart", onGesture);
-    };
-  }, []);
+  // Lazy activate 3D only when the user explicitly interacts (hover, touch, or click) with the globe
+  // Wrapping in startTransition ensures it never interrupts typing, scrolling, or user clicks
+  const activate3D = useCallback(() => {
+    if (!load3D) {
+      startTransition(() => {
+        setLoad3D(true);
+      });
+    }
+  }, [load3D]);
 
   return (
     <div className="w-full flex flex-col items-center">
       {/* 3D Earth Globe container */}
       <div
+        onClick={activate3D}
         onMouseEnter={activate3D}
         onTouchStart={activate3D}
         className="
@@ -327,11 +307,11 @@ function Hero3DEarthDashboard() {
                   </div>
 
                   {/* Title & Subtitle + 3-Bar Signal Chart Indicator */}
-                  <div className="flex flex-col text-left pr-0.5">
-                    <span className="text-[10px] min-[380px]:text-[11px] sm:text-[12px] lg:text-[11px] xl:text-[12px] 2xl:text-[12.5px] font-bold text-stone-900 dark:text-white leading-tight tracking-tight whitespace-nowrap">
+                  <div className="flex flex-col text-left pr-0.5 max-w-[85px] min-[380px]:max-w-[110px] sm:max-w-none">
+                    <span className="text-[9.5px] min-[380px]:text-[11px] sm:text-[12px] lg:text-[11px] xl:text-[12px] 2xl:text-[12.5px] font-bold text-stone-900 dark:text-white leading-tight tracking-tight truncate sm:whitespace-nowrap">
                       {node.name}
                     </span>
-                    <div className="flex items-center gap-1 sm:gap-1.5 mt-0.5">
+                    <div className="hidden sm:flex items-center gap-1 sm:gap-1.5 mt-0.5">
                       <span className="text-[8px] min-[380px]:text-[9px] sm:text-[10px] lg:text-[9px] xl:text-[9.5px] 2xl:text-[10px] text-stone-500 dark:text-stone-400 font-medium whitespace-nowrap">
                         {node.subtitle}
                       </span>
@@ -441,14 +421,14 @@ export default function Hero() {
                 <span
                   className="
                     block
-                    text-[2.7rem]
-                    min-[360px]:text-[3.2rem]
-                    min-[400px]:text-[3.7rem]
-                    sm:text-[4.8rem]
-                    md:text-[5.5rem]
-                    lg:text-[3.8rem]
-                    xl:text-[4.8rem]
-                    2xl:text-[5.6rem]
+                    text-[2.5rem]
+                    min-[360px]:text-[3.0rem]
+                    min-[400px]:text-[3.5rem]
+                    sm:text-[4.6rem]
+                    md:text-[5.2rem]
+                    lg:text-[3.6rem]
+                    xl:text-[4.6rem]
+                    2xl:text-[5.4rem]
                     text-[#1C1917]
                     dark:text-[#FFF7ED]
                     break-words
@@ -461,14 +441,14 @@ export default function Hero() {
                 <span
                   className="
                     block
-                    text-[2.2rem]
-                    min-[360px]:text-[2.6rem]
-                    min-[400px]:text-[3.1rem]
-                    sm:text-[4.2rem]
-                    md:text-[4.8rem]
-                    lg:text-[3.3rem]
-                    xl:text-[4.2rem]
-                    2xl:text-[4.9rem]
+                    text-[2.0rem]
+                    min-[360px]:text-[2.4rem]
+                    min-[400px]:text-[2.9rem]
+                    sm:text-[4.0rem]
+                    md:text-[4.6rem]
+                    lg:text-[3.1rem]
+                    xl:text-[4.0rem]
+                    2xl:text-[4.7rem]
                     text-transparent
                     [-webkit-text-stroke:1.5px_#2563EB]
                     sm:[-webkit-text-stroke:2.5px_#2563EB]
@@ -484,14 +464,14 @@ export default function Hero() {
                 <span
                   className="
                     block
-                    text-[2.7rem]
-                    min-[360px]:text-[3.2rem]
-                    min-[400px]:text-[3.7rem]
-                    sm:text-[4.8rem]
-                    md:text-[5.5rem]
-                    lg:text-[3.8rem]
-                    xl:text-[4.8rem]
-                    2xl:text-[5.6rem]
+                    text-[2.5rem]
+                    min-[360px]:text-[3.0rem]
+                    min-[400px]:text-[3.5rem]
+                    sm:text-[4.6rem]
+                    md:text-[5.2rem]
+                    lg:text-[3.6rem]
+                    xl:text-[4.6rem]
+                    2xl:text-[5.4rem]
                     text-[#1C1917]
                     dark:text-[#FFF7ED]
                     break-words
@@ -525,7 +505,7 @@ export default function Hero() {
             </div>
 
             {/* Description */}
-            <p className="text-xs sm:text-sm md:text-[14.5px] lg:text-[14px] xl:text-[15px] text-stone-700 dark:text-stone-300 leading-relaxed mb-3 sm:mb-4 lg:mb-3 max-w-lg lg:max-w-none">
+            <p className="text-base sm:text-lg text-stone-700 dark:text-stone-300 leading-relaxed mb-6 sm:mb-8 max-w-lg lg:max-w-none">
               MBSA Digital is a search-led digital marketing agency. We fix what is holding your website back, make your expertise easy for search engines and AI assistants to understand, and build the pages, campaigns and reporting that turn visits into customers.
             </p>
 

@@ -493,7 +493,6 @@ export default function Services() {
                 If any of these sound familiar, the fix usually starts with the same question: can the right people find you, and when they do, is it obvious why they should choose you?
               </p>
 
-              {/* Visual Diagnostic Callout Pill */}
 
             </div>
 

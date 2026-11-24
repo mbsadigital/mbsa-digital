@@ -5,6 +5,8 @@ export interface ProofHighlight {
 
 export interface ProofSlide {
   url: string;
+  lightUrl?: string;
+  darkUrl?: string;
   title: string;
   tag: string;
   client: string;

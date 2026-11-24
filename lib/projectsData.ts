@@ -311,9 +311,9 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
   },
   {
     id: "whispersinthewind",
-    title: "Whisper Sinth",
-    category: "ART & DESIGN PORTFOLIO",
-    client: "Studio Brush Collective",
+    title: "WhisperSinthWind",
+    category: "ART & DESIGN",
+    client: "WhisperSinthWind",
     duration: "3 Months",
     siteUrl: "https://whispersinthewind.uk/",
     image: "/whispersinth.jpg",

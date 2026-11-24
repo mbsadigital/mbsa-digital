@@ -96,8 +96,10 @@ export default function Blog() {
     return blogs.find((b) => b.featured) || blogs[0];
   }, [blogs]);
 
+  // Display exactly 5 blogs total on the homepage: 1 featured article + 4 regular grid cards
   const regularArticles = useMemo(() => {
-    return blogs.filter((b) => b._id !== featuredArticle?._id);
+    if (!featuredArticle) return blogs.slice(0, 5);
+    return blogs.filter((b) => b._id !== featuredArticle._id).slice(0, 4);
   }, [blogs, featuredArticle]);
 
   return (
@@ -166,7 +168,7 @@ export default function Blog() {
               {/* Image Column */}
               <Link
                 href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                className="relative lg:col-span-6 h-64 sm:h-80 lg:h-auto overflow-hidden block cursor-pointer"
+                className="relative lg:col-span-6 aspect-[16/9] lg:aspect-auto min-h-[240px] sm:min-h-[300px] overflow-hidden block cursor-pointer bg-stone-50 dark:bg-black/40 border-b lg:border-b-0 lg:border-r border-stone-100 dark:border-white/5"
               >
                 <Image
                   src={featuredArticle.coverImage || PRESET_COVERS[0].url}
@@ -174,15 +176,14 @@ export default function Blog() {
                   fill
                   unoptimized
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-contain p-2 sm:p-4 transition-transform duration-500 group-hover:scale-[1.01]"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-black/60" />
 
                 {/* Badge Overlay */}
                 <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-bold uppercase tracking-wider shadow-md shadow-[#2563EB]/25 flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3" />
+                  <span className="px-3 py-1 rounded-full bg-stone-900/90 dark:bg-white/10 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider shadow-sm border border-white/20 flex items-center gap-1.5">
+                    <Sparkles className="w-3 h-3 text-amber-400" />
                     Featured Insight
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white/90 text-[10px] font-medium border border-white/20">
@@ -330,7 +331,7 @@ export default function Blog() {
               >
                 <div>
                   {/* Article Card Image Container */}
-                  <div className="relative h-48 w-full overflow-hidden block">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden block bg-stone-50 dark:bg-black/40 border-b border-stone-100 dark:border-white/5">
                     <Link
                       href={`/blog/${article.slug || article._id}`}
                       className="absolute inset-0 block cursor-pointer"
@@ -342,10 +343,9 @@ export default function Blog() {
                         fill
                         unoptimized
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        className="object-contain p-1.5 transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                         priority={idx < 2}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
                     </Link>
 
                     {/* Category Pill on Image */}

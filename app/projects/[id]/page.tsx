@@ -578,31 +578,6 @@ export default function ProjectDetailPage() {
         </div>
       </section>
 
-      {/* FINAL CTA FOOTER */}
-      <footer className="relative z-10 py-16 bg-[#F8FAFC] dark:bg-[#0B1220] border-t border-stone-200/80 dark:border-white/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 dark:text-white mb-4">
-            Ready to Generate Similar Results?
-          </h2>
-          <p className="text-sm text-stone-600 dark:text-stone-400 mb-8 max-w-xl mx-auto">
-            Let&apos;s build an SEO strategy, high-intent Google Ads structure, or data-driven digital ecosystem tailored to your brand.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/#contact"
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#14B8A6] hover:from-[#1D4ED8] hover:to-[#2563EB] text-white text-sm font-bold shadow-lg shadow-[#2563EB]/25 hover:shadow-[#2563EB]/45 border border-blue-400/30 hover:-translate-y-0.5 active:translate-y-0 transition-all"
-            >
-              Discuss Your Project
-            </Link>
-            <Link
-              href="/#projects"
-              className="px-6 py-3.5 rounded-full border border-stone-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-stone-800 dark:text-white text-sm font-bold hover:border-orange-500 transition"
-            >
-              Browse All Projects
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

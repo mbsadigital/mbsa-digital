@@ -181,11 +181,12 @@ export default function Navbar() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setServicesDropdownOpen(false);
-        setAboutDropdownOpen(false);
+        setServicesDropdownOpen((prev) => (prev ? false : prev));
+        setAboutDropdownOpen((prev) => (prev ? false : prev));
+        setMobileMenuOpen((prev) => (prev ? false : prev));
       }
     };
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown, { passive: true });
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 

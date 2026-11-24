@@ -120,14 +120,15 @@ export default function AnalyticsGallery() {
 
   // Keyboard navigation for lightbox
   useEffect(() => {
+    if (activeLightboxIndex === null) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (activeLightboxIndex === null) return;
       if (e.key === "ArrowLeft") handlePrevLightbox();
       if (e.key === "ArrowRight") handleNextLightbox();
       if (e.key === "Escape") setActiveLightboxIndex(null);
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown, { passive: true });
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeLightboxIndex, handleNextLightbox, handlePrevLightbox]);
 

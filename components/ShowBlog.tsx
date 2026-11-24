@@ -374,13 +374,13 @@ export default function ShowBlog() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-12 group relative rounded-3xl overflow-hidden border border-[#2563EB]/25 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-md hover:shadow-[0_20px_50px_-10px_rgba(37,99,235,0.2)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300"
+            className="mb-12 group relative rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-sm hover:shadow-xl hover:border-stone-300 dark:hover:border-stone-700 transition-all duration-300"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
               {/* Visual Banner */}
               <Link
                 href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                className="relative lg:col-span-7 h-64 sm:h-80 lg:h-auto min-h-[260px] sm:min-h-[340px] lg:min-h-[420px] overflow-hidden block cursor-pointer"
+                className="relative lg:col-span-7 aspect-[16/9] lg:aspect-auto min-h-[260px] sm:min-h-[340px] lg:min-h-[420px] overflow-hidden block cursor-pointer bg-stone-50 dark:bg-black/40 border-b lg:border-b-0 lg:border-r border-stone-100 dark:border-white/5"
                 aria-label={featuredArticle.title}
               >
                 <Image
@@ -389,18 +389,17 @@ export default function ShowBlog() {
                   fill
                   unoptimized
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-contain p-2 sm:p-4 transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-stone-950/75" />
 
                 {/* Floating Badges */}
                 <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2 z-10">
-                  <span className="px-3 py-1 rounded-full bg-[#2563EB] text-white text-[10px] font-black uppercase tracking-wider shadow-lg shadow-[#2563EB]/30 flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3" />
+                  <span className="px-3 py-1 rounded-full bg-stone-900/90 dark:bg-white/10 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider border border-white/20 flex items-center gap-1.5 shadow-sm">
+                    <Sparkles className="w-3 h-3 text-amber-400" />
                     Featured Spotlight
                   </span>
-                  <span className="px-2.5 py-1 rounded-full bg-stone-950/70 backdrop-blur-md text-white text-[10px] font-mono border border-white/20">
+                  <span className="px-2.5 py-1 rounded-full bg-stone-900/80 dark:bg-black/70 backdrop-blur-md text-white text-[10px] font-mono border border-white/20">
                     {featuredArticle.category}
                   </span>
                 </div>
@@ -410,8 +409,8 @@ export default function ShowBlog() {
               <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400 mb-3.5 font-mono">
-                    <span className="flex items-center gap-1.5 text-[#2563EB] dark:text-[#14B8A6] font-semibold">
-                      <Clock className="w-3.5 h-3.5" />
+                    <span className="flex items-center gap-1.5 font-semibold text-stone-700 dark:text-stone-300">
+                      <Clock className="w-3.5 h-3.5 text-stone-400" />
                       {featuredArticle.readTime || "6 min read"}
                     </span>
                     <span>•</span>
@@ -427,7 +426,7 @@ export default function ShowBlog() {
 
                   <Link
                     href={`/blog/${featuredArticle.slug || featuredArticle._id}`}
-                    className="block text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 cursor-pointer leading-tight mb-4"
+                    className="block text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-stone-900 dark:text-white hover:text-stone-700 dark:hover:text-stone-300 transition-colors duration-200 cursor-pointer leading-tight mb-4"
                   >
                     {featuredArticle.title}
                   </Link>
@@ -627,11 +626,11 @@ export default function ShowBlog() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
-                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-sm hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.18)] dark:hover:shadow-[0_20px_45px_-12px_rgba(37,99,235,0.3)] hover:border-[#2563EB]/50 dark:hover:border-[#2563EB]/40 transition-all duration-300 hover:-translate-y-1.5"
+                className="group relative flex flex-col justify-between rounded-3xl overflow-hidden border border-stone-200/90 dark:border-white/10 bg-white dark:bg-[#111B2E] backdrop-blur-xl shadow-sm hover:shadow-xl hover:border-stone-300 dark:hover:border-stone-700 transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
                   {/* Article Card Image Container */}
-                  <div className="relative aspect-[16/10] w-full overflow-hidden block">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden block bg-stone-50 dark:bg-black/40 border-b border-stone-100 dark:border-white/5">
                     <Link
                       href={`/blog/${article.slug || article._id}`}
                       className="absolute inset-0 block cursor-pointer"
@@ -643,51 +642,38 @@ export default function ShowBlog() {
                         fill
                         unoptimized
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                        className="object-contain p-1.5 transition-transform duration-500 ease-out group-hover:scale-[1.01]"
                         priority={idx < 3}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
                     </Link>
 
-                    {/* Category pill on image */}
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-bold font-mono tracking-wider uppercase bg-stone-950/70 backdrop-blur-md text-white border border-white/20">
-                        {article.category}
-                      </span>
-                    </div>
-
                     {article.featured && (
-                      <div className="absolute top-3 right-3 z-10">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-[#2563EB] to-[#14B8A6] text-white flex items-center gap-1 shadow-md shadow-[#2563EB]/30">
-                          <Sparkles className="w-2.5 h-2.5" />
+                      <div className="absolute top-2.5 right-2.5 z-10 pointer-events-none">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-stone-900/90 dark:bg-white/10 backdrop-blur-md text-white flex items-center gap-1 shadow-sm border border-white/20">
+                          <Sparkles className="w-2.5 h-2.5 text-amber-400" />
                           Featured
                         </span>
                       </div>
                     )}
-
-                    {/* Bottom strip overlay with read time and date */}
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-white/90 font-mono pointer-events-none z-10">
-                      <span className="flex items-center gap-1 text-[#14B8A6] font-semibold">
-                        <Clock className="w-3 h-3" />
-                        {article.readTime || "5 min read"}
-                      </span>
-                      <span className="flex items-center gap-1 text-stone-300">
-                        <Calendar className="w-3 h-3" />
-                        {new Date(article.createdAt).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
-                      </span>
-                    </div>
                   </div>
 
                   {/* Body Content */}
                   <div className="p-5 sm:p-6">
+                    {/* Category & Read Time Bar */}
+                    <div className="flex items-center justify-between text-xs text-stone-500 dark:text-stone-400 font-mono mb-2.5">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider uppercase bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-700/80">
+                        {article.category}
+                      </span>
+                      <span className="flex items-center gap-1 text-[11px] text-stone-500 dark:text-stone-400 font-medium">
+                        <Clock className="w-3 h-3 text-stone-400" />
+                        {article.readTime || "5 min read"}
+                      </span>
+                    </div>
+
                     {/* Article Title */}
                     <Link
                       href={`/blog/${article.slug || article._id}`}
-                      className="block text-lg sm:text-xl font-bold tracking-tight text-stone-900 dark:text-white group-hover:text-[#2563EB] dark:group-hover:text-[#14B8A6] transition-colors duration-200 line-clamp-2 leading-snug mb-2.5 cursor-pointer"
+                      className="block text-lg sm:text-xl font-bold tracking-tight text-stone-900 dark:text-white hover:text-stone-700 dark:hover:text-stone-300 transition-colors duration-200 line-clamp-2 leading-snug mb-2.5 cursor-pointer"
                     >
                       {article.title}
                     </Link>
@@ -703,7 +689,7 @@ export default function ShowBlog() {
                         {article.tags.slice(0, 3).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] sm:text-[11px] font-mono text-stone-600 dark:text-stone-400 bg-stone-100 dark:bg-stone-800/80 px-2 py-0.5 rounded-md border border-stone-200/60 dark:border-stone-700/60 group-hover:border-[#2563EB]/30 transition-colors"
+                            className="text-[10px] sm:text-[11px] font-mono text-stone-600 dark:text-stone-400 bg-stone-100 dark:bg-stone-800/80 px-2 py-0.5 rounded-md border border-stone-200/60 dark:border-stone-700/60 transition-colors"
                           >
                             #{tag}
                           </span>

@@ -62,7 +62,10 @@ export function constructMetadata({
   noIndex?: boolean;
 }): Metadata {
   const canonicalUrl = `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-  const fullImageUrl = image.startsWith("http") ? image : `${SITE_URL}${image}`;
+  const rawImageUrl = image.startsWith("http")
+    ? image
+    : `${SITE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
+  const fullImageUrl = encodeURI(rawImageUrl);
 
   const defaultKeywords = [
     "MBSA Digital",
@@ -838,35 +841,114 @@ export function getBlogCollectionJsonLd(blogs: BlogPost[]) {
 // Dynamic Single BlogPosting Schema
 export function getBlogPostJsonLd(blog: BlogPost) {
   const blogUrl = `${SITE_URL}/blog/${blog.slug || blog._id}`;
+  const rawImage = blog.coverImage || blog.imageUrl || SITE_CONFIG.defaultOgImage;
+  const rawImageUrl = rawImage.startsWith("http")
+    ? rawImage
+    : `${SITE_URL}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
+  const imageUrl = encodeURI(rawImageUrl);
+
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "@id": `${blogUrl}#article`,
-    headline: blog.title,
-    description: blog.excerpt,
-    url: blogUrl,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": blogUrl,
-    },
-    datePublished: blog.createdAt,
-    dateModified: blog.updatedAt || blog.createdAt,
-    image: blog.coverImage
-      ? blog.coverImage.startsWith("http")
-        ? blog.coverImage
-        : `${SITE_URL}${blog.coverImage}`
-      : `${SITE_URL}${SITE_CONFIG.defaultOgImage}`,
-    author: {
-      "@type": "Person",
-      name: blog.author?.name || SITE_CONFIG.name,
-      jobTitle: blog.author?.role || SITE_CONFIG.role,
-      url: SITE_URL,
-    },
-    publisher: {
-      "@id": `${SITE_URL}/#organization`,
-    },
-    articleSection: blog.category,
-    keywords: blog.tags?.join(", "),
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${blogUrl}#article`,
+        isPartOf: {
+          "@id": `${blogUrl}#webpage`,
+        },
+        headline: blog.title,
+        description: blog.excerpt || blog.description,
+        url: blogUrl,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${blogUrl}#webpage`,
+        },
+        datePublished: blog.createdAt,
+        dateModified: blog.updatedAt || blog.createdAt,
+        image: {
+          "@type": "ImageObject",
+          "@id": `${blogUrl}#primaryimage`,
+          url: imageUrl,
+          caption: blog.title,
+        },
+        author: {
+          "@type": "Person",
+          name: blog.author?.name || "Muskan Shekh",
+          jobTitle: blog.author?.role || "SEO and Digital Marketing Specialist",
+          url: SITE_URL,
+        },
+        publisher: {
+          "@type": "Organization",
+          "@id": `${SITE_URL}/#organization`,
+          name: "MBSA Digital",
+          url: SITE_URL,
+          logo: {
+            "@type": "ImageObject",
+            url: `${SITE_URL}/logo.png`,
+          },
+        },
+        articleSection: blog.category,
+        keywords: blog.tags?.join(", "),
+        inLanguage: "en-GB",
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${blogUrl}#webpage`,
+        url: blogUrl,
+        name: blog.metaTitle || `${blog.title} | MBSA Digital Blog`,
+        description: blog.metaDescription || blog.excerpt || blog.description,
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        primaryImageOfPage: {
+          "@id": `${blogUrl}#primaryimage`,
+        },
+        breadcrumb: {
+          "@id": `${blogUrl}#breadcrumb`,
+        },
+        inLanguage: "en-GB",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${blogUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: `${SITE_URL}/blog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: blog.title,
+            item: blogUrl,
+          },
+        ],
+      },
+      ...(blog.faqs && blog.faqs.length > 0
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${blogUrl}#faq`,
+              mainEntity: blog.faqs.map((f) => ({
+                "@type": "Question",
+                name: f.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: f.answer,
+                },
+              })),
+            },
+          ]
+        : []),
+    ],
   };
 }
 

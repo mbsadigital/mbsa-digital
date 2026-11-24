@@ -44,7 +44,7 @@ import {
 } from "lucide-react";
 import { SERVICES_DATA, type ServiceDetail } from "@/lib/servicesData";
 import { getServiceFitDetails } from "@/lib/serviceFitData";
-import { getServiceProofSlides } from "@/lib/serviceProofData";
+import { getServiceProofSlides, type ProofSlide } from "@/lib/serviceProofData";
 import { ServiceCardIllustration } from "../page";
 
 // Icon mapping helper
@@ -114,9 +114,28 @@ export default function ServiceDetailPage() {
 
   const ServiceIcon = ICON_MAP[service.iconName] || Search;
 
-  // Verified real client telemetry proofs mapped to this service
-  const proofSlides = useMemo(() => {
-    return getServiceProofSlides(service.slug || service.id);
+  // Verified real client telemetry proofs mapped to this service, starting with primary 3D deliverable showcase
+  const proofSlides = useMemo<ProofSlide[]>(() => {
+    const rawProofs = getServiceProofSlides(service.slug || service.id);
+    const deliverableSlide: ProofSlide = {
+      url: service.lightImage || service.image || "/images/services/light/seo-services.png",
+      lightUrl: service.lightImage,
+      darkUrl: service.darkImage || service.lightImage,
+      title: `${service.title} Primary Deliverable`,
+      tag: "Live Execution Proof",
+      client: service.caseStudy?.client || "Harris Pharmacy UK",
+      metric: service.stats.highlight,
+      metricLabel: service.stats.label,
+      description: `Production-ready 3D architectural deliverable and performance deployment for ${service.title}, engineered for top-tier search visibility, technical stability, and sustained compounding growth.`,
+      highlights: [
+        { label: "Core Impact", value: service.stats.highlight },
+        { label: "Benchmark", value: service.stats.label },
+        { label: "Client Validation", value: service.caseStudy?.client || "Harris Pharmacy UK" },
+        { label: "Standard", value: "100% Core Web Vitals" },
+      ],
+      isArchitecture: true,
+    };
+    return [deliverableSlide, ...rawProofs];
   }, [service]);
 
   return (
@@ -431,16 +450,41 @@ export default function ServiceDetailPage() {
             {/* Left Column: Proof Viewer Preview */}
             <div className="lg:col-span-7 space-y-3">
               <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-stone-200/80 dark:border-white/10 bg-stone-900/5 dark:bg-black/80 shadow-2xl flex items-center justify-center group">
-                <Image
-                  src={proofSlides[currentSlide]?.url || "/Analytics/Harris/harrisgsc.png"}
-                  alt={proofSlides[currentSlide]?.title || "Live Performance Telemetry"}
-                  fill
-                  className="object-contain p-2 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  priority={currentSlide === 0}
-                  quality={90}
-                  unoptimized
-                />
+                {proofSlides[currentSlide]?.isArchitecture && proofSlides[currentSlide]?.lightUrl ? (
+                  <>
+                    <Image
+                      src={proofSlides[currentSlide].lightUrl!}
+                      alt={proofSlides[currentSlide].title}
+                      fill
+                      className="service-img-light object-contain p-2 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      priority={currentSlide === 0}
+                      quality={90}
+                      unoptimized
+                    />
+                    <Image
+                      src={proofSlides[currentSlide].darkUrl || proofSlides[currentSlide].lightUrl!}
+                      alt={proofSlides[currentSlide].title}
+                      fill
+                      className="service-img-dark object-contain p-2 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      priority={currentSlide === 0}
+                      quality={90}
+                      unoptimized
+                    />
+                  </>
+                ) : (
+                  <Image
+                    src={proofSlides[currentSlide]?.url || "/Analytics/Harris/harrisgsc.png"}
+                    alt={proofSlides[currentSlide]?.title || "Live Performance Telemetry"}
+                    fill
+                    className="object-contain p-2 sm:p-4 transition-transform duration-300 group-hover:scale-[1.01]"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    priority={currentSlide === 0}
+                    quality={90}
+                    unoptimized
+                  />
+                )}
 
                 {/* Top Badges: Channel / Telemetry Tag + Service Badge + Client */}
                 <div className="absolute top-2 sm:top-3 left-2 sm:left-3 right-2 sm:right-3 z-10 flex items-center justify-between gap-1.5 sm:gap-2 pointer-events-none">
@@ -463,7 +507,7 @@ export default function ServiceDetailPage() {
               </div>
 
               {/* Interactive Slide Thumbnails */}
-              <div className={`grid gap-2 pt-2 ${proofSlides.length > 4 ? "grid-cols-3 sm:grid-cols-5" : "grid-cols-2 sm:grid-cols-4"}`}>
+              <div className={`grid gap-2 pt-2 ${proofSlides.length > 5 ? "grid-cols-3 sm:grid-cols-6" : proofSlides.length > 4 ? "grid-cols-3 sm:grid-cols-5" : "grid-cols-2 sm:grid-cols-4"}`}>
                 {proofSlides.map((slide, pIdx) => (
                   <button
                     key={pIdx}
@@ -476,14 +520,35 @@ export default function ServiceDetailPage() {
                     }`}
                     aria-label={`View proof slide ${pIdx + 1}: ${slide.title}`}
                   >
-                    <Image
-                      src={slide.url}
-                      alt={slide.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 25vw, 140px"
-                      unoptimized
-                    />
+                    {slide.isArchitecture && slide.lightUrl ? (
+                      <>
+                        <Image
+                          src={slide.lightUrl}
+                          alt={slide.title}
+                          fill
+                          className="service-img-light object-contain p-1"
+                          sizes="(max-width: 640px) 25vw, 140px"
+                          unoptimized
+                        />
+                        <Image
+                          src={slide.darkUrl || slide.lightUrl}
+                          alt={slide.title}
+                          fill
+                          className="service-img-dark object-contain p-1"
+                          sizes="(max-width: 640px) 25vw, 140px"
+                          unoptimized
+                        />
+                      </>
+                    ) : (
+                      <Image
+                        src={slide.url}
+                        alt={slide.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 25vw, 140px"
+                        unoptimized
+                      />
+                    )}
                     <div className="absolute inset-0 bg-black/10 hover:bg-transparent transition-colors" />
                   </button>
                 ))}
