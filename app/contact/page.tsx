@@ -542,7 +542,7 @@ export default function ContactPage() {
                     <span>ADDRESS</span>
                   </div>
                   <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 block leading-relaxed">
-                    London, United Kingdom &amp; Surat, Gujarat, India
+                    London, United Kingdom &amp; Vadodara, Gujarat, India
                   </span>
                 </div>
               </div>
