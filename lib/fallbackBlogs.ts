@@ -49,9 +49,9 @@ export const FALLBACK_BLOGS: BlogPost[] = [
       "core update black friday"
     ],
     metaTitle: "Google November 2026 Core Update: What Changed & Next",
-    metaDescription: "The Google November 2026 core update began rolling out on 10 November. See what changed, which sites are affected and a 7-step plan to protect your rankings.",
-    excerpt: "The Google November 2026 core update began on 10 Nov. See what changed, who is affected and a 7-step plan to protect rankings. Book a free review.",
-    description: "The Google November 2026 core update started rolling out on 10 November 2026. Learn who is affected, what to do during the rollout, and how to recover.",
+    metaDescription: "The Google November 2026 core update began rolling out on 10 November.",
+    excerpt: "The Google November 2026 core update began on 10 Nov.",
+    description: "The Google November 2026 core update started rolling out on 10 November 2026.",
     content: `The Google November 2026 core update started rolling out on 10 November 2026 at 10:06 a.m. Pacific time (23:36 IST, 18:06 GMT). It applies to all sites and all languages, and Google says the rollout may take up to two weeks. It is a broad ranking change, not a penalty, and Google has published no update-specific guidance.
 
 If your rankings started wobbling last week, you're not imagining it. And the timing is awkward: the rollout could still be running on Black Friday. Here's what we know, what we don't, and the exact steps we're taking for clients right now.
@@ -1081,7 +1081,7 @@ Want more patients to find you? [Talk to our healthcare team](/contact).`,
       "independent pharmacy marketing uk"
     ],
     metaTitle: "Pharmacy SEO: Local Search Guide for UK Pharmacies",
-    metaDescription: "A pharmacy SEO guide for UK independents: Google Business Profile, Pharmacy First pages, reviews, compliance and AI search. Book a free local visibility check.",
+    metaDescription: "Pharmacy SEO guide for UK independents: Google Business Profile, Pharmacy First pages, reviews, compliance and AI search.",
     excerpt: "A pharmacy SEO guide for UK independents: Google Business Profile, Pharmacy First pages, reviews and AI search. Book a free local visibility check.",
     description: "Local SEO playbook for independent UK pharmacies: Google Business Profile optimization, Pharmacy First clinical pages, and review strategies.",
     content: `Pharmacy SEO is the work of making a pharmacy visible when nearby patients search Google, Google Maps and AI assistants for medicines, services and advice. For UK independents, it rests on four things: a complete Google Business Profile, service pages for NHS and private services such as Pharmacy First, a steady flow of recent reviews, and accurate, compliant information everywhere online.

@@ -5,7 +5,7 @@ import { constructMetadata, getContactGraphJsonLd } from "@/lib/seo";
 export const metadata: Metadata = constructMetadata({
   title: "Contact Us for a Free SEO Audit | MBSA Digital",
   description:
-    "Contact MBSA Digital for a free SEO audit or consultation. Share your goals and a specialist replies by email, or call our UK and India numbers on weekdays.",
+    "Contact MBSA Digital for a free SEO audit or consultation. Share your goals and a specialist replies by email, or call our UK and India.",
   path: "/contact",
   keywords: [
     "contact MBSA Digital",

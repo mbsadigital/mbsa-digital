@@ -5,7 +5,7 @@ import HowWeWorkClient from "@/app/how-we-work/HowWeWorkClient";
 export const metadata: Metadata = constructMetadata({
   title: "How We Work: Our 4-Step Process | MBSA Digital",
   description:
-    "See how MBSA Digital works: a free discovery call, then four steps from audit and roadmap to delivery and monthly reporting. Know what to expect at each stage.",
+    "MBSA Digital works: a free discovery call, then four steps from audit and roadmap to delivery and monthly reporting.",
   path: "/how-we-work",
 });
 

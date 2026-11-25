@@ -5,7 +5,7 @@ import AnalyticsClient from "./AnalyticsClient";
 export const metadata: Metadata = constructMetadata({
   title: "Client Results & Analytics Proof | MBSA Digital",
   description:
-    "See screenshots from Google Search Console, GA4, Google Business Profile and social media campaigns showing results MBSA Digital has delivered for its clients.",
+    "Google Search Console, GA4, Google Business Profile and social media campaigns showing results MBSA Digital has delivered for its clients.",
   path: "/analytics",
   keywords: [
     "client results",

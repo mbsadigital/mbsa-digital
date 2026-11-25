@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     default: "SEO & AI Search Agency in UK & India | MBSA Digital",
     template: "%s | MBSA Digital",
   },
-  description: "MBSA Digital is a search-led digital marketing agency for the UK and India. SEO, AI search visibility, ads and websites that turn visits into leads. Free audit.",
+  description: "MBSA Digital is a search-led digital marketing agency for the UK and India. SEO, AI search visibility, ads and websites that turn visits into leads.",
   keywords: [
     "digital marketing agency",
     "SEO agency",

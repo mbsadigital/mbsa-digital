@@ -5,7 +5,7 @@ import { constructMetadata } from "@/lib/seo";
 export const metadata: Metadata = constructMetadata({
   title: "Digital Marketing & SEO Services | MBSA Digital",
   description:
-    "Explore 25 digital marketing services from MBSA Digital: SEO, AI search, Google and Meta Ads, social media, websites, analytics and CRO. Pick one or a plan.",
+    "Explore 25 digital marketing services from MBSA Digital: SEO, AI search, Google and Meta Ads, social media, websites, analytics and CRO.",
   path: "/services",
   keywords: [
     "digital marketing services",

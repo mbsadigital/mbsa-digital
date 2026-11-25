@@ -5,7 +5,7 @@ import { constructMetadata, getAboutGraphJsonLd } from "@/lib/seo";
 export const metadata: Metadata = constructMetadata({
   title: "About MBSA Digital: Search-Led Marketing Agency",
   description:
-    "Meet MBSA Digital, a search-led marketing agency in India and the UK. Read our story, principles and leadership, and why we never promise rankings we can't.",
+    "MBSA Digital, a search-led marketing agency in India and the UK. Read our story, principles and leadership, and why we never promise rankings we can't.",
   path: "/about",
   keywords: [
     "MBSA Digital",
