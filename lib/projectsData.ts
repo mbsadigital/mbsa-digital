@@ -7,6 +7,8 @@ export interface SeoProofItem {
 
 export interface ProjectDetail {
   id: string;
+  metaTitle?: string;
+  metaDescription?: string;
   title: string;
   category: string;
   client: string;
@@ -31,6 +33,8 @@ export interface ProjectDetail {
 export const PROJECTS_DATA_FULL: ProjectDetail[] = [
   {
     id: "harris-pharmacy",
+    metaTitle: "Harris Pharmacy Case Study: 5.1x ROAS | MBSA Digital",
+    metaDescription: "How MBSA Digital improved local search visibility, high-intent paid search and prescription transfers for Harris Pharmacy's London branches over four months.",
     title: "Harris Pharmacy",
     category: "PHARMACY & HEALTHCARE",
     client: "Harris Healthcare UK",
@@ -110,6 +114,8 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
   },
   {
     id: "maia-health",
+    metaTitle: "Maia Health & Beauty SEO Case Study | MBSA Digital",
+    metaDescription: "How technical SEO, Core Web Vitals work and a skincare content strategy delivered +320% organic search growth for Maia Health & Beauty over six months.",
     title: "Maia Health & Beauty",
     category: "HEALTH & BEAUTY",
     client: "Maia Health Care UK",
@@ -183,6 +189,8 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
   },
   {
     id: "drtungs-uk",
+    metaTitle: "drTung's UK Ecommerce SEO Case Study | MBSA Digital",
+    metaDescription: "How a content strategy and better organic search visibility delivered a +240% ecommerce revenue lift for drTung's Natural Oral Care UK over five months.",
     title: "drTung's UK",
     category: "ORAL CARE & E-COMMERCE",
     client: "drTung's Natural Oral Care UK",
@@ -250,6 +258,8 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
   },
   {
     id: "artists-brush",
+    metaTitle: "Artist's Brush Web Redesign Case Study | MBSA Digital",
+    metaDescription: "How a website redesign, UX and conversion improvements and local search positioning helped Artist's Brush earn 4.2x more commission enquiries in three months.",
     title: "Artist's Brush",
     category: "ART & DESIGN PORTFOLIO",
     client: "Studio Brush Collective",
@@ -311,6 +321,8 @@ export const PROJECTS_DATA_FULL: ProjectDetail[] = [
   },
   {
     id: "whispersinthewind",
+    metaTitle: "Whispers in the Wind Case Study | MBSA Digital",
+    metaDescription: "Case study for Whispers in the Wind: website redesign, UX and conversion improvements and local search positioning, delivered by MBSA Digital in three months.",
     title: "WhisperSinthWind",
     category: "ART & DESIGN",
     client: "WhisperSinthWind",

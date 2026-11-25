@@ -3,9 +3,9 @@ import { constructMetadata, getHowWeWorkGraphJsonLd } from "@/lib/seo";
 import HowWeWorkClient from "./HowWeWorkClient";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Our Digital Marketing Process in 4 Steps | MBSA Digital",
+  title: "How We Work: Our 4-Step Process | MBSA Digital",
   description:
-    "See how MBSA Digital works: discovery call, audit, prioritised roadmap, delivery and monthly reporting. Know what happens at each stage before you sign up.",
+    "See how MBSA Digital works: a free discovery call, then four steps from audit and roadmap to delivery and monthly reporting. Know what to expect at each stage.",
   path: "/how-we-work",
   keywords: [
     "digital marketing process",

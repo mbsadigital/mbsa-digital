@@ -1,15 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import {
-  constructMetadata,
-  getProjectsCollectionJsonLd,
-} from "@/lib/seo";
-import { PROJECTS_DATA_FULL } from "@/lib/projectsData";
+import { constructMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Portfolio: SEO & Marketing Case Studies by MBSA Digital",
+  title: "SEO & Digital Marketing Case Studies | MBSA Digital",
   description:
-    "Browse MBSA Digital case studies in SEO, local search, websites, ads and social. Every result shows its baseline, timeframe and data source. View our work.",
+    "Browse MBSA Digital case studies in SEO, local search, websites, paid ads and social media, each showing the timeframe and data source behind the results.",
   path: "/projects",
   keywords: [
     "SEO case studies",
@@ -26,15 +22,5 @@ export default function ProjectsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const collectionJsonLd = getProjectsCollectionJsonLd(PROJECTS_DATA_FULL);
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

@@ -1,16 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import {
-  constructMetadata,
-  getServicesCollectionJsonLd,
-  getBreadcrumbJsonLd,
-} from "@/lib/seo";
-import { SERVICES_DATA } from "@/lib/servicesData";
+import { constructMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Digital Marketing Services: SEO, AI, Ads | MBSA Digital",
+  title: "Digital Marketing & SEO Services | MBSA Digital",
   description:
-    "Explore 25 digital marketing services from MBSA Digital: SEO, AI search, Google and Meta Ads, social, websites, analytics and CRO. Pick one or a full plan.",
+    "Explore 25 digital marketing services from MBSA Digital: SEO, AI search, Google and Meta Ads, social media, websites, analytics and CRO. Pick one or a plan.",
   path: "/services",
   keywords: [
     "digital marketing services",
@@ -29,15 +24,5 @@ export default function ServicesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const collectionJsonLd = getServicesCollectionJsonLd(SERVICES_DATA);
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

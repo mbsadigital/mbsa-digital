@@ -1,15 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import {
-  constructMetadata,
-  getBlogCollectionJsonLd,
-} from "@/lib/seo";
-import { FALLBACK_BLOGS } from "@/lib/fallbackBlogs";
+import { constructMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "SEO Blog: Guides on AI Search, Ads & GA4 | MBSA Digital",
+  title: "SEO & AI Search Blog: Guides & Insights | MBSA Digital",
   description:
-    "Plain-English guides on SEO, AI search, Google Ads, websites and GA4, written by MBSA Digital specialists and updated when things change. Explore our blog.",
+    "Plain-English guides on SEO, AI search, local SEO, ecommerce and GA4 from MBSA Digital, with practical checklists and steps you can put to work straight away.",
   path: "/blog",
   keywords: [
     "SEO blog",
@@ -27,15 +23,5 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const blogJsonLd = getBlogCollectionJsonLd(FALLBACK_BLOGS);
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

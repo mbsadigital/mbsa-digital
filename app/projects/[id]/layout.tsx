@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import {
   constructMetadata,
   getProjectJsonLd,
-  getBreadcrumbJsonLd,
 } from "@/lib/seo";
 import { PROJECTS_DATA_FULL, type ProjectDetail } from "@/lib/projectsData";
 
@@ -27,8 +26,8 @@ export async function generateMetadata({
   const project = findProject(id);
 
   return constructMetadata({
-    title: `${project.title} Case Study | ${project.heroMetric} ${project.heroMetricLabel}`,
-    description: project.overview,
+    title: project.metaTitle || `${project.title} Case Study | MBSA Digital`,
+    description: project.metaDescription || project.overview,
     path: `/projects/${project.id}`,
     image: project.image,
     keywords: [
@@ -46,23 +45,13 @@ export default async function ProjectDetailLayout({
 }: Props) {
   const { id } = await params;
   const project = findProject(id);
-
   const projectJsonLd = getProjectJsonLd(project);
-  const breadcrumbJsonLd = getBreadcrumbJsonLd([
-    { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
-    { name: project.title, path: `/projects/${project.id}` },
-  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {children}
     </>

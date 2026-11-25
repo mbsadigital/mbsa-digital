@@ -5,9 +5,9 @@ import { constructMetadata, getPrivacyPolicyGraphJsonLd } from "@/lib/seo";
 import { ShieldCheck, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Privacy Policy: How MBSA Digital Protects Personal Data",
+  title: "Privacy Policy | MBSA Digital",
   description:
-    "Learn how MBSA Digital collects, uses and protects the personal details shared through this website, and the rights you have under UK and Indian data laws.",
+    "Read how MBSA Digital collects, uses and protects the personal details shared through this website, and your rights under UK and Indian data protection laws.",
   path: "/privacy-policy",
   keywords: [
     "MBSA Digital privacy policy",

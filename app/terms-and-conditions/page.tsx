@@ -5,7 +5,7 @@ import { constructMetadata, getTermsGraphJsonLd } from "@/lib/seo";
 import { FileCheck, ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Terms and Conditions for Using the MBSA Digital Website",
+  title: "Terms and Conditions | MBSA Digital",
   description:
     "The terms for using the MBSA Digital website: content use, no guaranteed marketing outcomes, intellectual property, liability limits and third-party links.",
   path: "/terms-and-conditions",

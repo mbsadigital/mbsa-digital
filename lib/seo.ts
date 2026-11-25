@@ -4,7 +4,7 @@ import { type ProjectDetail } from "./projectsData";
 import { type BlogPost } from "./fallbackBlogs";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://mbsadigital.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.mbsadigital.com";
 
 export const SITE_CONFIG = {
   name: "MBSA Digital",
@@ -12,9 +12,8 @@ export const SITE_CONFIG = {
   role: "Search-Led Digital Marketing Agency",
   tagline: "DATA → INSIGHTS → ACTION → GROWTH",
   description:
-    "MBSA Digital is a search-led digital marketing agency for India and the UK. SEO, AI search, ads and websites that turn visits into leads. Get a free audit.",
+    "MBSA Digital is a search-led digital marketing agency for the UK and India. SEO, AI search visibility, ads and websites that turn visits into leads. Free audit.",
   defaultOgImage: "/image-photo.png",
-  logoUrl: `${SITE_URL}/assets/images/logo.svg`,
   email: "mbsadigitalsolutions@gmail.com",
   phones: {
     india: "+91-95746-96932",
@@ -26,6 +25,17 @@ export const SITE_CONFIG = {
     facebook: "https://www.facebook.com/mbsadigital",
     twitter: "https://twitter.com/mbsadigital",
   },
+  addresses: [
+    {
+      addressLocality: "London",
+      addressCountry: "GB",
+    },
+    {
+      addressLocality: "Vadodara",
+      addressRegion: "Gujarat",
+      addressCountry: "IN",
+    },
+  ],
   areaServed: ["India", "United Kingdom"],
   knowsAbout: [
     "Technical SEO",
@@ -61,7 +71,8 @@ export function constructMetadata({
   keywords?: string[];
   noIndex?: boolean;
 }): Metadata {
-  const canonicalUrl = `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+  const cleanPath = path ? (path.startsWith("/") ? path : `/${path}`) : "/";
+  const canonicalUrl = `${SITE_URL}${cleanPath === "/" ? "/" : cleanPath}`;
   const rawImageUrl = image.startsWith("http")
     ? image
     : `${SITE_URL}${image.startsWith("/") ? "" : "/"}${image}`;
@@ -82,7 +93,9 @@ export function constructMetadata({
   ];
 
   return {
-    title,
+    title: {
+      absolute: title,
+    },
     description,
     keywords: Array.from(new Set([...defaultKeywords, ...keywords])),
     authors: [{ name: SITE_CONFIG.name }],
@@ -140,22 +153,32 @@ export function constructMetadata({
 
 /* =========================================================
    STRUCTURED DATA (JSON-LD) GENERATORS
+   Exact schema matching MBSA Digital Schema Markup Audit
 ========================================================= */
 
-// Global Organization Schema
+// Full Organization Schema (Home, About, Contact)
 export function getOrganizationJsonLd() {
   return {
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: "MBSA Digital",
     url: `${SITE_URL}/`,
-    logo: {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/assets/images/logo.svg`,
-    },
     description:
       "MBSA Digital is a search-led digital marketing agency working with businesses in India, the UK and other English-speaking markets, bringing technical SEO, AI search visibility, websites, paid media and analytics together under one plan.",
     email: "mbsadigitalsolutions@gmail.com",
+    address: [
+      {
+        "@type": "PostalAddress",
+        addressLocality: "London",
+        addressCountry: "GB",
+      },
+      {
+        "@type": "PostalAddress",
+        addressLocality: "Vadodara",
+        addressRegion: "Gujarat",
+        addressCountry: "IN",
+      },
+    ],
     areaServed: [
       {
         "@type": "Country",
@@ -182,6 +205,19 @@ export function getOrganizationJsonLd() {
         availableLanguage: ["en"],
       },
     ],
+    founder: {
+      "@id": `${SITE_URL}/about#muskan-shekh`,
+    },
+  };
+}
+
+// Compact Organization Reference (for child pages)
+export function getOrganizationReferenceJsonLd() {
+  return {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "MBSA Digital",
+    url: `${SITE_URL}/`,
   };
 }
 
@@ -199,12 +235,14 @@ export function getWebsiteJsonLd() {
   };
 }
 
-// Person Schema
+// Person Schema (Founder)
 export function getPersonJsonLd() {
   return {
     "@type": "Person",
     "@id": `${SITE_URL}/about#muskan-shekh`,
     name: "Muskan Shekh",
+    jobTitle: "Founder & Head of Search",
+    url: `${SITE_URL}/about`,
     worksFor: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -214,10 +252,11 @@ export function getPersonJsonLd() {
     },
     description:
       "Muskan has worked in SEO for more than five years and holds a B.E. in Computer Engineering and an MSc in Advanced Computer Science from the University of Essex.",
+    sameAs: ["https://linkedin.com/in/muskanshekh"],
   };
 }
 
-// Complete Homepage @graph Schema (Organization + WebSite + WebPage + FAQPage)
+// Complete Homepage @graph Schema
 export function getHomeGraphJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -228,82 +267,27 @@ export function getHomeGraphJsonLd() {
         "@type": "WebPage",
         "@id": `${SITE_URL}/#webpage`,
         url: `${SITE_URL}/`,
-        name: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
+        name: "SEO & AI Search Agency in UK & India | MBSA Digital",
         description:
-          "MBSA Digital is a search-led digital marketing agency for India and the UK. SEO, AI search, ads and websites that turn visits into leads. Get a free audit.",
+          "MBSA Digital is a search-led digital marketing agency for the UK and India.",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
         },
         inLanguage: "en-GB",
-        about: {
-          "@id": `${SITE_URL}/#organization`,
-        },
         publisher: {
           "@id": `${SITE_URL}/#organization`,
         },
+        about: {
+          "@id": `${SITE_URL}/#organization`,
+        },
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${SITE_URL}/#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "What does an SEO and digital marketing agency actually do?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "We help the right people find your business online and make it easy for them to get in touch. In practice that means fixing technical problems on your website, improving and creating the pages people search for, building your local presence, running paid campaigns where they make sense, and reporting on the enquiries and sales that result.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How long does SEO take to show results?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Technical fixes and improvements to existing pages can show movement within a few weeks to a few months. New content and authority usually take longer, often several months, depending on your competition, your website’s history and how much you can invest. We will give you a realistic view after the audit, and we never guarantee rankings.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What are AEO and GEO, and do I need them?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Answer engine optimisation (AEO) and generative engine optimisation (GEO) are about making your content clear, accurate and well structured so that search features and AI assistants can understand it and, potentially, cite it. They build on good SEO rather than replacing it. No one can guarantee inclusion in AI answers, but clear, evidence-backed content improves your chances. Read about our AEO and GEO service.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Do you work with businesses outside India and the UK?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. We work with businesses in the UK and India and support clients in other English-speaking markets remotely. Tell us where your customers are and we’ll confirm whether we’re the right fit.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Can you build or fix my website as well?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. We design and develop WordPress, WooCommerce and Shopify websites, and we can improve an existing site’s speed, structure and conversion paths without a full rebuild. See website design and development.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How do we get started?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Request a free search audit or send us a message. We’ll review your website, ask a few questions about your goals and come back with what we’d prioritise first. There’s no obligation to continue.",
-            },
-          },
-        ],
-      },
+      getPersonJsonLd(),
     ],
   };
 }
 
-// BreadcrumbList Schema
-export function getBreadcrumbJsonLd(
-  items: { name: string; path: string }[]
-) {
+// BreadcrumbList Schema helper
+export function getBreadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -311,32 +295,34 @@ export function getBreadcrumbJsonLd(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.path.startsWith("http") ? item.path : `${SITE_URL}${item.path}`,
+      item: item.path.startsWith("http")
+        ? item.path
+        : `${SITE_URL}${item.path.startsWith("/") ? "" : "/"}${item.path}`,
     })),
   };
 }
 
-// Services CollectionPage Schema (CollectionPage + BreadcrumbList + ItemList)
+// Services CollectionPage Schema (/services hub)
 export function getServicesCollectionJsonLd(services: ServiceDetail[]) {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationReferenceJsonLd(),
       {
         "@type": "CollectionPage",
         "@id": `${SITE_URL}/services#webpage`,
         url: `${SITE_URL}/services`,
-        name: "Digital Marketing Services: SEO, AI, Ads | MBSA Digital",
-        description:
-          "Explore 25 digital marketing services from MBSA Digital: SEO, AI search, Google and Meta Ads, social, websites, analytics and CRO. Pick one or a full plan.",
+        name: "Digital Marketing & SEO Services | MBSA Digital",
+        description: "Explore 25 digital marketing services from MBSA Digital.",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/services#breadcrumb`,
         },
         inLanguage: "en-GB",
         publisher: {
           "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/services#breadcrumb`,
         },
         mainEntity: {
           "@id": `${SITE_URL}/services#services`,
@@ -376,292 +362,137 @@ export function getServicesCollectionJsonLd(services: ServiceDetail[]) {
   };
 }
 
-// Dynamic Single Service Schema (Combined @graph with WebPage, Service, Organization, WebSite, BreadcrumbList, and FAQPage)
+// Dynamic Single Service Schema (/services/[id])
 export function getServiceCombinedGraphJsonLd(service: ServiceDetail) {
   const serviceUrl = `${SITE_URL}/services/${service.id}`;
-  const graph: any[] = [
-    getOrganizationJsonLd(),
-    getWebsiteJsonLd(),
-    {
-      "@type": "WebPage",
-      "@id": `${serviceUrl}#webpage`,
-      url: serviceUrl,
-      name: service.metaTitle || `${service.title}: Technical and On-Page Optimisation | MBSA`,
-      description: service.metaDescription || service.longDescription || service.desc,
-      isPartOf: {
-        "@id": `${SITE_URL}/#website`,
-      },
-      breadcrumb: {
-        "@id": `${serviceUrl}#breadcrumb`,
-      },
-      inLanguage: "en-GB",
-      about: {
-        "@id": `${serviceUrl}#service`,
-      },
-      publisher: {
-        "@id": `${SITE_URL}/#organization`,
-      },
-    },
-    {
-      "@type": "Service",
-      "@id": `${serviceUrl}#service`,
-      name: service.title,
-      serviceType: service.serviceType || service.shortTitle || service.title,
-      description: service.schemaDescription || service.longDescription || service.desc,
-      url: serviceUrl,
-      provider: {
-        "@id": `${SITE_URL}/#organization`,
-      },
-      areaServed: [
-        {
-          "@type": "Country",
-          name: "India",
-        },
-        {
-          "@type": "Country",
-          name: "United Kingdom",
-        },
-      ],
-      category: service.category || "SEO & AI Search",
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${serviceUrl}#breadcrumb`,
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: `${SITE_URL}/`,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Services",
-          item: `${SITE_URL}/services`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: service.title,
-          item: serviceUrl,
-        },
-      ],
-    },
-  ];
-
-  if (service.faqs && service.faqs.length > 0) {
-    graph.push({
-      "@type": "FAQPage",
-      "@id": `${serviceUrl}#faq`,
-      mainEntity: service.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.a,
-        },
-      })),
-    });
-  }
+  const rawImage = service.image || "/images/services/dark/seo-services.png";
+  const imageUrl = rawImage.startsWith("http")
+    ? rawImage
+    : `${SITE_URL}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
 
   return {
     "@context": "https://schema.org",
-    "@graph": graph,
+    "@graph": [
+      getOrganizationReferenceJsonLd(),
+      {
+        "@type": "WebPage",
+        "@id": `${serviceUrl}#webpage`,
+        url: serviceUrl,
+        name: service.metaTitle || `${service.title} | MBSA Digital`,
+        description:
+          service.metaDescription || service.longDescription || service.desc,
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${serviceUrl}#breadcrumb`,
+        },
+        about: {
+          "@id": `${serviceUrl}#service`,
+        },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: imageUrl,
+        },
+      },
+      {
+        "@type": "Service",
+        "@id": `${serviceUrl}#service`,
+        name: service.title,
+        serviceType: service.serviceType || service.title,
+        category: service.category || "SEO & AI Search",
+        description:
+          service.schemaDescription || service.longDescription || service.desc,
+        url: serviceUrl,
+        image: imageUrl,
+        provider: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        areaServed: [
+          {
+            "@type": "Country",
+            name: "India",
+          },
+          {
+            "@type": "Country",
+            name: "United Kingdom",
+          },
+        ],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${serviceUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: `${SITE_URL}/services`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: service.title,
+            item: serviceUrl,
+          },
+        ],
+      },
+    ],
   };
 }
 
-// Backward-compatible individual generators if needed
 export function getServiceJsonLd(service: ServiceDetail) {
   return getServiceCombinedGraphJsonLd(service);
 }
 
-// FAQPage Schema helper
-export function getFaqJsonLd(faqs: { q: string; a: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
-    })),
-  };
-}
-
-// About Us @graph Schema
-export function getAboutGraphJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "AboutPage",
-        "@id": `${SITE_URL}/about#webpage`,
-        url: `${SITE_URL}/about`,
-        name: "About MBSA Digital: Search-Led Digital Marketing Agency",
-        description:
-          "Meet MBSA Digital, a search-led agency in India and the UK. See our story, principles and leadership, and why we never promise rankings nobody can control.",
-        isPartOf: {
-          "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/about#breadcrumb`,
-        },
-        inLanguage: "en-GB",
-        about: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-        mainEntity: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-        publisher: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${SITE_URL}/about#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: `${SITE_URL}/`,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "About Us",
-            item: `${SITE_URL}/about`,
-          },
-        ],
-      },
-      {
-        "@type": "Person",
-        "@id": `${SITE_URL}/about#muskan-shekh`,
-        name: "Muskan Shekh",
-        worksFor: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-        alumniOf: {
-          "@type": "CollegeOrUniversity",
-          name: "University of Essex",
-        },
-        description:
-          "Muskan has worked in SEO for more than five years and holds a B.E. in Computer Engineering and an MSc in Advanced Computer Science from the University of Essex.",
-      },
-    ],
-  };
-}
-
-// How We Work @graph Schema
-export function getHowWeWorkGraphJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${SITE_URL}/how-we-work#webpage`,
-        url: `${SITE_URL}/how-we-work`,
-        name: "Our Digital Marketing Process in 4 Steps | MBSA Digital",
-        description:
-          "See how MBSA Digital works: discovery call, audit, prioritised roadmap, delivery and monthly reporting. Know what happens at each stage before you sign up.",
-        isPartOf: {
-          "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/how-we-work#breadcrumb`,
-        },
-        inLanguage: "en-GB",
-        publisher: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${SITE_URL}/how-we-work#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: `${SITE_URL}/`,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "How We Work",
-            item: `${SITE_URL}/how-we-work`,
-          },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${SITE_URL}/how-we-work#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "What access will you need?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Usually Google Search Console, GA4, Google Tag Manager, your Business Profile, website admin and any ad accounts. You grant access through each platform’s user management, so you can remove it at any time and never need to share passwords.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How often will we hear from you?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "You receive a monthly report and review call, plus updates when important work goes live. You can contact your point of contact by email, phone or WhatsApp between reports.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What do you need from our team?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "A main contact who can answer questions and approve work, input from subject experts for content, and developer time if we are not managing your website directly.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How soon will we see results?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Paid campaigns and quick technical fixes can show results within weeks. SEO, content and reputation work usually build over three to six months. Your roadmap sets out what to expect and when.",
-            },
-          },
-        ],
-      },
-    ],
-  };
-}
-
-// Projects CollectionPage Schema
+// Projects / Portfolio Hub Schema (/projects)
 export function getProjectsCollectionJsonLd(projects: ProjectDetail[]) {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationReferenceJsonLd(),
       {
         "@type": "CollectionPage",
         "@id": `${SITE_URL}/projects#webpage`,
         url: `${SITE_URL}/projects`,
-        name: "Portfolio: SEO & Marketing Case Studies by MBSA Digital",
+        name: "SEO & Digital Marketing Case Studies | MBSA Digital",
         description:
-          "Browse MBSA Digital case studies in SEO, local search, websites, ads and social. Every result shows its baseline, timeframe and data source. View our work.",
+          "MBSA Digital case studies in SEO, local search, websites, paid ads and social media.",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/projects#breadcrumb`,
         },
         inLanguage: "en-GB",
         publisher: {
           "@id": `${SITE_URL}/#organization`,
         },
+        breadcrumb: {
+          "@id": `${SITE_URL}/projects#breadcrumb`,
+        },
+        mainEntity: {
+          "@id": `${SITE_URL}/projects#casestudies`,
+        },
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${SITE_URL}/projects#casestudies`,
+        name: "MBSA Digital case studies",
+        numberOfItems: projects.length,
+        itemListElement: projects.map((p, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: p.title,
+          url: `${SITE_URL}/projects/${p.id}`,
+        })),
       },
       {
         "@type": "BreadcrumbList",
@@ -676,7 +507,7 @@ export function getProjectsCollectionJsonLd(projects: ProjectDetail[]) {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Portfolio",
+            name: "Projects",
             item: `${SITE_URL}/projects`,
           },
         ],
@@ -685,70 +516,117 @@ export function getProjectsCollectionJsonLd(projects: ProjectDetail[]) {
   };
 }
 
-// Dynamic Single Case Study (CreativeWork / Article) Schema
+// Dynamic Single Case Study / Project Schema (/projects/[id])
 export function getProjectJsonLd(project: ProjectDetail) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "@id": `${SITE_URL}/projects/${project.id}#casestudy`,
-    name: `${project.title} - Growth Case Study`,
-    headline: `${project.title}: ${project.heroMetric} ${project.heroMetricLabel}`,
-    description: project.overview,
-    image: project.image.startsWith("http")
-      ? project.image
-      : `${SITE_URL}${project.image}`,
-    author: {
-      "@id": `${SITE_URL}/#organization`,
-    },
-    about: {
-      "@type": "Organization",
-      name: project.client,
-      url: project.siteUrl,
-    },
-    url: `${SITE_URL}/projects/${project.id}`,
-  };
-}
+  const projectUrl = `${SITE_URL}/projects/${project.id}`;
+  const rawImage = project.image.startsWith("http")
+    ? project.image
+    : `${SITE_URL}${project.image.startsWith("/") ? "" : "/"}${project.image}`;
+  const headline = project.metaTitle
+    ? project.metaTitle.replace(/\s*\|\s*MBSA Digital$/i, "")
+    : `${project.title} Case Study`;
 
-// Industries Schema
-export function getIndustriesGraphJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationReferenceJsonLd(),
       {
-        "@type": "CollectionPage",
-        "@id": `${SITE_URL}/industries#webpage`,
-        url: `${SITE_URL}/industries`,
-        name: "Digital Marketing by Industry: Healthcare to D2C | MBSA",
-        description:
-          "SEO and digital marketing for healthcare and pharmacy, beauty and wellness, ecommerce and D2C, and local services, shaped around how every sector searches.",
+        "@type": "WebPage",
+        "@id": `${projectUrl}#webpage`,
+        url: projectUrl,
+        name: project.metaTitle || `${project.title} Case Study | MBSA Digital`,
+        description: project.metaDescription || project.overview,
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/industries#breadcrumb`,
         },
         inLanguage: "en-GB",
         publisher: {
           "@id": `${SITE_URL}/#organization`,
         },
-        about: [
+        breadcrumb: {
+          "@id": `${projectUrl}#breadcrumb`,
+        },
+        mainEntity: {
+          "@id": `${projectUrl}#casestudy`,
+        },
+      },
+      {
+        "@type": "Article",
+        "@id": `${projectUrl}#casestudy`,
+        headline,
+        description: project.metaDescription || project.overview,
+        url: projectUrl,
+        image: encodeURI(rawImage),
+        author: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        mainEntityOfPage: {
+          "@id": `${projectUrl}#webpage`,
+        },
+        about: {
+          "@type": "Organization",
+          name: project.client,
+          url: project.siteUrl,
+        },
+        inLanguage: "en-GB",
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${projectUrl}#breadcrumb`,
+        itemListElement: [
           {
-            "@type": "Thing",
-            name: "Healthcare & pharmacy",
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
           },
           {
-            "@type": "Thing",
-            name: "Health, beauty & wellness",
+            "@type": "ListItem",
+            position: 2,
+            name: "Projects",
+            item: `${SITE_URL}/projects`,
           },
           {
-            "@type": "Thing",
-            name: "E-commerce & D2C brands",
-          },
-          {
-            "@type": "Thing",
-            name: "Local & professional services",
+            "@type": "ListItem",
+            position: 3,
+            name: project.title,
+            item: projectUrl,
           },
         ],
+      },
+    ],
+  };
+}
+
+// Industries Schema (/industries)
+export function getIndustriesGraphJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      getOrganizationReferenceJsonLd(),
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/industries#webpage`,
+        url: `${SITE_URL}/industries`,
+        name: "SEO for Healthcare, Pharmacy & D2C | MBSA Digital",
+        description:
+          "SEO and digital marketing for healthcare and pharmacy, health, beauty and wellness, and ecommerce and D2C brands.",
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/industries#breadcrumb`,
+        },
+        about: {
+          "@id": `${SITE_URL}/#organization`,
+        },
       },
       {
         "@type": "BreadcrumbList",
@@ -772,27 +650,188 @@ export function getIndustriesGraphJsonLd() {
   };
 }
 
-// Blog Hub Collection Schema
-export function getBlogCollectionJsonLd(blogs: BlogPost[]) {
+// About Us Schema (/about)
+export function getAboutGraphJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationJsonLd(),
       {
-        "@type": "CollectionPage",
-        "@id": `${SITE_URL}/blog#webpage`,
-        url: `${SITE_URL}/blog`,
-        name: "SEO Blog: Guides on AI Search, Ads & GA4 | MBSA Digital",
+        "@type": "AboutPage",
+        "@id": `${SITE_URL}/about#webpage`,
+        url: `${SITE_URL}/about`,
+        name: "About MBSA Digital: Search-Led Marketing Agency",
         description:
-          "Plain-English guides on SEO, AI search, Google Ads, websites and GA4, written by MBSA Digital specialists and updated when things change. Explore our blog.",
+          "Meet MBSA Digital, a search-led marketing agency in India and the UK.",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/blog#breadcrumb`,
         },
         inLanguage: "en-GB",
         publisher: {
           "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/about#breadcrumb`,
+        },
+        about: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        mainEntity: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+      getPersonJsonLd(),
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/about#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Us",
+            item: `${SITE_URL}/about`,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// How We Work Schema (/how-we-work)
+export function getHowWeWorkGraphJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      getOrganizationReferenceJsonLd(),
+      {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/how-we-work#webpage`,
+        url: `${SITE_URL}/how-we-work`,
+        name: "How We Work: Our 4-Step Process | MBSA Digital",
+        description:
+          "How MBSA Digital works: a free discovery call, then a four-step process from audit to monthly reporting.",
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/how-we-work#breadcrumb`,
+        },
+        about: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/how-we-work#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About",
+            item: `${SITE_URL}/about`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "How We Work",
+            item: `${SITE_URL}/how-we-work`,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// Contact Us Schema (/contact)
+export function getContactGraphJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      getOrganizationJsonLd(),
+      {
+        "@type": "ContactPage",
+        "@id": `${SITE_URL}/contact#webpage`,
+        url: `${SITE_URL}/contact`,
+        name: "Contact Us for a Free SEO Audit | MBSA Digital",
+        description:
+          "Contact MBSA Digital for a free SEO audit or consultation.",
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/contact#breadcrumb`,
+        },
+        about: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        mainEntity: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/contact#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Contact",
+            item: `${SITE_URL}/contact`,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// Blog Collection Hub Schema (/blog)
+export function getBlogCollectionJsonLd(blogs: BlogPost[]) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      getOrganizationReferenceJsonLd(),
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/blog#webpage`,
+        url: `${SITE_URL}/blog`,
+        name: "SEO & AI Search Blog: Guides & Insights | MBSA Digital",
+        description:
+          "Plain-English guides on SEO, AI search, local SEO, ecommerce and GA4 from MBSA Digital.",
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/blog#breadcrumb`,
         },
         mainEntity: {
           "@id": `${SITE_URL}/blog#blog`,
@@ -806,15 +845,26 @@ export function getBlogCollectionJsonLd(blogs: BlogPost[]) {
         publisher: {
           "@id": `${SITE_URL}/#organization`,
         },
-        blogPost: blogs.map((b) => ({
-          "@type": "BlogPosting",
-          headline: b.title,
-          description: b.excerpt,
-          url: `${SITE_URL}/blog/${b.slug || b._id}`,
-          datePublished: b.createdAt,
-          dateModified: b.updatedAt || b.createdAt,
-          image: b.coverImage,
-        })),
+        inLanguage: "en-GB",
+        blogPost: blogs.map((b) => {
+          const blogUrl = `${SITE_URL}/blog/${b.slug || b._id}`;
+          const rawImage =
+            b.coverImage || b.imageUrl || SITE_CONFIG.defaultOgImage;
+          const imageUrl = rawImage.startsWith("http")
+            ? rawImage
+            : `${SITE_URL}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
+          return {
+            "@type": "BlogPosting",
+            "@id": `${blogUrl}#article`,
+            headline: b.title,
+            url: blogUrl,
+            datePublished: "2026-11-16T10:00:00Z",
+            image: encodeURI(imageUrl),
+            author: {
+              "@id": `${SITE_URL}/about#muskan-shekh`,
+            },
+          };
+        }),
       },
       {
         "@type": "BreadcrumbList",
@@ -829,7 +879,7 @@ export function getBlogCollectionJsonLd(blogs: BlogPost[]) {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Insights",
+            name: "Blog",
             item: `${SITE_URL}/blog`,
           },
         ],
@@ -838,10 +888,11 @@ export function getBlogCollectionJsonLd(blogs: BlogPost[]) {
   };
 }
 
-// Dynamic Single BlogPosting Schema
+// Dynamic Single BlogPosting Schema (/blog/[id])
 export function getBlogPostJsonLd(blog: BlogPost) {
   const blogUrl = `${SITE_URL}/blog/${blog.slug || blog._id}`;
-  const rawImage = blog.coverImage || blog.imageUrl || SITE_CONFIG.defaultOgImage;
+  const rawImage =
+    blog.coverImage || blog.imageUrl || SITE_CONFIG.defaultOgImage;
   const rawImageUrl = rawImage.startsWith("http")
     ? rawImage
     : `${SITE_URL}${rawImage.startsWith("/") ? "" : "/"}${rawImage}`;
@@ -850,47 +901,7 @@ export function getBlogPostJsonLd(blog: BlogPost) {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "BlogPosting",
-        "@id": `${blogUrl}#article`,
-        isPartOf: {
-          "@id": `${blogUrl}#webpage`,
-        },
-        headline: blog.title,
-        description: blog.excerpt || blog.description,
-        url: blogUrl,
-        mainEntityOfPage: {
-          "@type": "WebPage",
-          "@id": `${blogUrl}#webpage`,
-        },
-        datePublished: blog.createdAt,
-        dateModified: blog.updatedAt || blog.createdAt,
-        image: {
-          "@type": "ImageObject",
-          "@id": `${blogUrl}#primaryimage`,
-          url: imageUrl,
-          caption: blog.title,
-        },
-        author: {
-          "@type": "Person",
-          name: blog.author?.name || "Muskan Shekh",
-          jobTitle: blog.author?.role || "SEO and Digital Marketing Specialist",
-          url: SITE_URL,
-        },
-        publisher: {
-          "@type": "Organization",
-          "@id": `${SITE_URL}/#organization`,
-          name: "MBSA Digital",
-          url: SITE_URL,
-          logo: {
-            "@type": "ImageObject",
-            url: `${SITE_URL}/logo.png`,
-          },
-        },
-        articleSection: blog.category,
-        keywords: blog.tags?.join(", "),
-        inLanguage: "en-GB",
-      },
+      getOrganizationReferenceJsonLd(),
       {
         "@type": "WebPage",
         "@id": `${blogUrl}#webpage`,
@@ -900,12 +911,47 @@ export function getBlogPostJsonLd(blog: BlogPost) {
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
         },
-        primaryImageOfPage: {
-          "@id": `${blogUrl}#primaryimage`,
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
         },
         breadcrumb: {
           "@id": `${blogUrl}#breadcrumb`,
         },
+        primaryImageOfPage: {
+          "@id": `${blogUrl}#primaryimage`,
+        },
+      },
+      {
+        "@type": "BlogPosting",
+        "@id": `${blogUrl}#article`,
+        headline: blog.title,
+        description: blog.metaDescription || blog.excerpt || blog.description,
+        url: blogUrl,
+        mainEntityOfPage: {
+          "@id": `${blogUrl}#webpage`,
+        },
+        isPartOf: {
+          "@id": `${SITE_URL}/blog#blog`,
+        },
+        image: {
+          "@type": "ImageObject",
+          "@id": `${blogUrl}#primaryimage`,
+          url: imageUrl,
+        },
+        datePublished: "2026-11-16T10:00:00Z",
+        dateModified: "2026-11-16T10:00:00Z",
+        author: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/about#muskan-shekh`,
+          name: "Muskan Shekh",
+          url: `${SITE_URL}/about`,
+        },
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        articleSection: blog.category,
+        keywords: blog.tags?.join(", "),
         inLanguage: "en-GB",
       },
       {
@@ -932,98 +978,32 @@ export function getBlogPostJsonLd(blog: BlogPost) {
           },
         ],
       },
-      ...(blog.faqs && blog.faqs.length > 0
-        ? [
-            {
-              "@type": "FAQPage",
-              "@id": `${blogUrl}#faq`,
-              mainEntity: blog.faqs.map((f) => ({
-                "@type": "Question",
-                name: f.question,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: f.answer,
-                },
-              })),
-            },
-          ]
-        : []),
     ],
   };
 }
 
-// Contact Us @graph Schema
-export function getContactGraphJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ContactPage",
-        "@id": `${SITE_URL}/contact#webpage`,
-        url: `${SITE_URL}/contact`,
-        name: "Contact MBSA Digital: Free SEO Audits and Consultations",
-        description:
-          "Contact MBSA Digital for a free SEO audit or consultation. Share your goals and a specialist replies by email, or call our India and UK numbers. Start now.",
-        isPartOf: {
-          "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/contact#breadcrumb`,
-        },
-        inLanguage: "en-GB",
-        about: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-        mainEntity: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-        publisher: {
-          "@id": `${SITE_URL}/#organization`,
-        },
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${SITE_URL}/contact#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: `${SITE_URL}/`,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Contact Us",
-            item: `${SITE_URL}/contact`,
-          },
-        ],
-      },
-    ],
-  };
-}
-
-// Privacy Policy Schema
+// Privacy Policy Schema (/privacy-policy)
 export function getPrivacyPolicyGraphJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationReferenceJsonLd(),
       {
         "@type": "WebPage",
         "@id": `${SITE_URL}/privacy-policy#webpage`,
         url: `${SITE_URL}/privacy-policy`,
-        name: "Privacy Policy: How MBSA Digital Protects Personal Data",
+        name: "Privacy Policy | MBSA Digital",
         description:
-          "Learn how MBSA Digital collects, uses and protects the personal details shared through this website, and the rights you have under UK and Indian data laws.",
+          "Read how MBSA Digital collects, uses and protects the personal details shared through this website, and your rights under UK and Indian data protection laws.",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
-        },
-        breadcrumb: {
-          "@id": `${SITE_URL}/privacy-policy#breadcrumb`,
         },
         inLanguage: "en-GB",
         publisher: {
           "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/privacy-policy#breadcrumb`,
         },
       },
       {
@@ -1048,27 +1028,28 @@ export function getPrivacyPolicyGraphJsonLd() {
   };
 }
 
-// Terms and Conditions Schema
+// Terms and Conditions Schema (/terms-and-conditions)
 export function getTermsGraphJsonLd() {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      getOrganizationReferenceJsonLd(),
       {
         "@type": "WebPage",
         "@id": `${SITE_URL}/terms-and-conditions#webpage`,
         url: `${SITE_URL}/terms-and-conditions`,
-        name: "Terms and Conditions for Using the MBSA Digital Website",
+        name: "Terms and Conditions | MBSA Digital",
         description:
           "The terms for using the MBSA Digital website: content use, no guaranteed marketing outcomes, intellectual property, liability limits and third-party links.",
         isPartOf: {
           "@id": `${SITE_URL}/#website`,
         },
-        breadcrumb: {
-          "@id": `${SITE_URL}/terms-and-conditions#breadcrumb`,
-        },
         inLanguage: "en-GB",
         publisher: {
           "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/terms-and-conditions#breadcrumb`,
         },
       },
       {
@@ -1086,6 +1067,55 @@ export function getTermsGraphJsonLd() {
             position: 2,
             name: "Terms and Conditions",
             item: `${SITE_URL}/terms-and-conditions`,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+// Client Analytics & Proofs Schema (/analytics)
+export function getAnalyticsGraphJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      getOrganizationReferenceJsonLd(),
+      {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/analytics#webpage`,
+        url: `${SITE_URL}/analytics`,
+        name: "Client Results & Analytics Proof | MBSA Digital",
+        description:
+          "Screenshots from Google Search Console, GA4, Google Business Profile and social media campaigns for MBSA Digital clients.",
+        isPartOf: {
+          "@id": `${SITE_URL}/#website`,
+        },
+        inLanguage: "en-GB",
+        publisher: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+        breadcrumb: {
+          "@id": `${SITE_URL}/analytics#breadcrumb`,
+        },
+        about: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${SITE_URL}/analytics#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Client Analytics & Proofs",
+            item: `${SITE_URL}/analytics`,
           },
         ],
       },

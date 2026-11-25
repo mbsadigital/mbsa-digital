@@ -22,8 +22,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const savedTheme = localStorage.getItem("portfolio-theme") as Theme | null;
       if (savedTheme === "light" || savedTheme === "dark") {
         setThemeState(savedTheme);
-      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        setThemeState("dark");
+      } else {
+        // Default strictly to light mode on initial visit
+        setThemeState("light");
       }
     } catch {
       // ignore

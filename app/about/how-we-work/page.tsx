@@ -3,10 +3,10 @@ import { constructMetadata } from "@/lib/seo";
 import HowWeWorkClient from "@/app/how-we-work/HowWeWorkClient";
 
 export const metadata: Metadata = constructMetadata({
-  title: "How We Work | Transparent 4-Step Process & Engagement Models",
+  title: "How We Work: Our 4-Step Process | MBSA Digital",
   description:
-    "Discover how MBSA Digital works with clients: discovery call, 4-step framework, plain English reporting, and transparent engagement models.",
-  path: "/about/how-we-work",
+    "See how MBSA Digital works: a free discovery call, then four steps from audit and roadmap to delivery and monthly reporting. Know what to expect at each stage.",
+  path: "/how-we-work",
 });
 
 export default function AboutHowWeWorkPage() {

@@ -40,6 +40,7 @@ import {
   Shield,
 } from "lucide-react";
 import { SERVICES_DATA } from "@/lib/servicesData";
+import { getServicesCollectionJsonLd } from "@/lib/seo";
 
 // Icon mapping helper
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -1968,5 +1969,14 @@ function ServicesContent() {
 }
 
 export default function ServicesPage() {
-  return <ServicesContent />;
+  const collectionJsonLd = getServicesCollectionJsonLd(SERVICES_DATA);
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <ServicesContent />
+    </>
+  );
 }

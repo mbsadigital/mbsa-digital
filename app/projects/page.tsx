@@ -16,6 +16,7 @@ import {
   Globe,
 } from "lucide-react";
 import { PROJECTS_DATA_FULL } from "@/lib/projectsData";
+import { getProjectsCollectionJsonLd } from "@/lib/seo";
 
 export default function AllProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
@@ -55,8 +56,14 @@ export default function AllProjectsPage() {
     });
   }, [selectedCategory, searchQuery]);
 
+  const collectionJsonLd = getProjectsCollectionJsonLd(PROJECTS_DATA_FULL);
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1220] text-stone-900 dark:text-white selection:bg-orange-500/20 selection:text-stone-900 dark:selection:text-white transition-colors duration-500">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
       {/* Background ambient soft glows */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="absolute top-10 right-1/4 w-[550px] h-[550px] rounded-full bg-blue-500/[0.04] dark:bg-blue-500/[0.06] blur-[150px]" />

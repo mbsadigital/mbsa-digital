@@ -56,10 +56,12 @@ function ScrollToTopButton() {
 
   useEffect(() => {
     const unsubscribeScroll = scrollY.on("change", (latest) => {
-      setShowScrollTop(latest > 500);
+      const shouldShow = latest > 500;
+      setShowScrollTop((prev) => (prev !== shouldShow ? shouldShow : prev));
     });
     const unsubscribeProgress = scrollYProgress.on("change", (latest) => {
-      setScrollPercent(Math.round(latest * 100));
+      const nextPct = Math.round(latest * 100);
+      setScrollPercent((prev) => (Math.abs(prev - nextPct) >= 2 ? nextPct : prev));
     });
 
     return () => {

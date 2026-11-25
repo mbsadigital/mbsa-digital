@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SITE_CONFIG, SITE_URL, getOrganizationJsonLd, getWebsiteJsonLd } from "@/lib/seo";
+import { SITE_CONFIG, SITE_URL } from "@/lib/seo";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -26,19 +26,16 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B1220" },
-  ],
+  themeColor: "#F8FAFC",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
+    default: "SEO & AI Search Agency in UK & India | MBSA Digital",
     template: "%s | MBSA Digital",
   },
-  description: "MBSA Digital is a search-led digital marketing agency for India and the UK. SEO, AI search, ads and websites that turn visits into leads. Get a free audit.",
+  description: "MBSA Digital is a search-led digital marketing agency for the UK and India. SEO, AI search visibility, ads and websites that turn visits into leads. Free audit.",
   keywords: [
     "digital marketing agency",
     "SEO agency",
@@ -55,7 +52,7 @@ export const metadata: Metadata = {
   creator: SITE_CONFIG.name,
   publisher: SITE_CONFIG.name,
   alternates: {
-    canonical: SITE_URL,
+    canonical: `${SITE_URL}/`,
   },
   robots: {
     index: true,
@@ -69,16 +66,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
-    description: "MBSA Digital is a search-led digital marketing agency for India and the UK. SEO, AI search, ads and websites that turn visits into leads. Get a free audit.",
-    url: SITE_URL,
+    title: "SEO & AI Search Agency in UK & India | MBSA Digital",
+    description: "MBSA Digital is a search-led digital marketing agency for the UK and India. SEO, AI search visibility, ads and websites that turn visits into leads. Free audit.",
+    url: `${SITE_URL}/`,
     siteName: SITE_CONFIG.siteName,
     images: [
       {
         url: `${SITE_URL}${SITE_CONFIG.defaultOgImage}`,
         width: 1200,
         height: 630,
-        alt: "SEO & AI Search Digital Marketing Agency | MBSA Digital",
+        alt: "SEO & AI Search Agency in UK & India | MBSA Digital",
       },
     ],
     locale: "en_GB",
@@ -91,9 +88,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const organizationJsonLd = getOrganizationJsonLd();
-  const websiteJsonLd = getWebsiteJsonLd();
-
   return (
     <html
       lang="en"
@@ -102,14 +96,31 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Global Structured Data: Organization & WebSite */}
+        {/* Anti-FOUC Theme Initializer - strictly defaults to light mode unless explicitly set to dark */}
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('portfolio-theme');
+                  if (saved === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    document.documentElement.style.colorScheme = 'dark';
+                  } else {
+                    document.documentElement.classList.add('light');
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    document.documentElement.style.colorScheme = 'light';
+                  }
+                } catch (e) {
+                  document.documentElement.classList.add('light');
+                  document.documentElement.setAttribute('data-theme', 'light');
+                }
+              })();
+            `,
+          }}
         />
       </head>
       <body

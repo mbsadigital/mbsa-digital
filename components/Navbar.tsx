@@ -312,34 +312,9 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  /* Active Section Detection on Homepage */
-  const updateActiveSection = useCallback(() => {
+  /* Active Section Detection on Homepage using IntersectionObserver for 0ms Layout Thrashing */
+  useEffect(() => {
     if (pathname !== "/") return;
-
-    const scrollY = window.scrollY;
-    setScrolled(scrollY > 25);
-
-    if (isManualScrollRef.current) return;
-
-    if (scrollY < 120) {
-      setActiveSection("hero");
-      return;
-    }
-
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
-
-    const contactEl = document.getElementById("contact");
-    if (contactEl) {
-      const contactRect = contactEl.getBoundingClientRect();
-      if (
-        windowHeight + scrollY >= documentHeight - 140 ||
-        contactRect.top <= windowHeight * 0.45
-      ) {
-        setActiveSection("contact");
-        return;
-      }
-    }
 
     const sectionIds = [
       "hero",
@@ -352,53 +327,50 @@ export default function Navbar() {
       "contact",
     ];
 
-    const focalY = Math.max(140, Math.min(windowHeight * 0.35, 280));
-    let detectedSection: string | null = null;
-
-    for (const id of sectionIds) {
-      const element = document.getElementById(id);
-      if (!element) continue;
-
-      const rect = element.getBoundingClientRect();
-      if (rect.top <= focalY && rect.bottom >= focalY) {
-        detectedSection = id;
-        break;
-      }
-    }
-
-    if (!detectedSection) {
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const element = document.getElementById(sectionIds[i]);
-        if (!element) continue;
-
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= focalY) {
-          detectedSection = sectionIds[i];
-          break;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isManualScrollRef.current) return;
+        // Find visible section with highest intersection ratio
+        let topEntry: IntersectionObserverEntry | null = null;
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            if (!topEntry || entry.intersectionRatio > topEntry.intersectionRatio) {
+              topEntry = entry;
+            }
+          }
         }
+        if (topEntry?.target.id) {
+          setActiveSection(topEntry.target.id);
+        }
+      },
+      {
+        rootMargin: "-15% 0px -40% 0px",
+        threshold: [0.1, 0.25, 0.5],
       }
-    }
+    );
 
-    if (detectedSection) {
-      setActiveSection(detectedSection);
-    }
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, [pathname]);
 
-  /* Scroll & Resize Listeners */
+  /* Passive Scroll Listener for Navbar Styling Only */
   useEffect(() => {
-    updateActiveSection();
-
     let ticking = false;
     const handleScroll = () => {
       if (ticking) return;
       window.requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 25);
-        updateActiveSection();
+        const isPastThreshold = window.scrollY > 25;
+        setScrolled((prev) => (prev !== isPastThreshold ? isPastThreshold : prev));
         ticking = false;
       });
       ticking = true;
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
 
@@ -406,7 +378,7 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [updateActiveSection]);
+  }, []);
 
   /* Compute current active tab */
   const currentActiveSection = useMemo(() => {

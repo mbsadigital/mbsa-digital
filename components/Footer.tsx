@@ -504,52 +504,70 @@ export default function Footer() {
               </div>
 
               {/* India HQ Phone Card */}
-              <div className="p-3.5 rounded-2xl bg-white dark:bg-[#111B2E] border border-slate-200/90 dark:border-white/10 shadow-xs flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5">
-                  <IndiaFlag className="w-4 h-3 shrink-0" />
-                  <div>
-                    <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                      INDIA HQ (IST)
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-[#111B2E] border border-slate-200/90 dark:border-white/10 shadow-xs flex flex-col gap-2">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <IndiaFlag className="w-4 h-3 shrink-0" />
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                      INDIA BRANCH (IST)
                     </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <a
+                      href="https://wa.me/919574696932"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 py-0.5 rounded-md bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold font-mono transition-colors"
+                    >
+                      WhatsApp ↗
+                    </a>
                     <a
                       href="tel:+919574696932"
-                      className="text-xs font-bold text-slate-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
+                      className="px-2 py-0.5 rounded-md bg-blue-500/10 hover:bg-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] text-[10px] font-bold font-mono transition-colors"
                     >
-                      +91 95746 96932
+                      Call ↗
                     </a>
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/919574696932"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10.5px] font-bold font-mono transition-colors shrink-0"
+                  href="tel:+919574696932"
+                  className="text-xs sm:text-[13px] font-bold text-slate-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors whitespace-nowrap block"
                 >
-                  WhatsApp ↗
+                  +91 95746 96932
                 </a>
               </div>
 
               {/* United Kingdom Office Phone Card */}
-              <div className="p-3.5 rounded-2xl bg-white dark:bg-[#111B2E] border border-slate-200/90 dark:border-white/10 shadow-xs flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2.5">
-                  <UKFlag className="w-4 h-3 shrink-0" />
-                  <div>
-                    <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                      UK BRANCH (GMT)
+              <div className="p-3.5 rounded-2xl bg-white dark:bg-[#111B2E] border border-slate-200/90 dark:border-white/10 shadow-xs flex flex-col gap-2">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <UKFlag className="w-4 h-3 shrink-0" />
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                      UK HQT (GMT)
                     </span>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <a
+                      href="https://wa.me/447393107859"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 py-0.5 rounded-md bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold font-mono transition-colors"
+                    >
+                      WhatsApp ↗
+                    </a>
                     <a
                       href="tel:+447393107859"
-                      className="text-xs font-bold text-slate-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
+                      className="px-2 py-0.5 rounded-md bg-blue-500/10 hover:bg-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] text-[10px] font-bold font-mono transition-colors"
                     >
-                      +44 7393 107859
+                      Call ↗
                     </a>
                   </div>
                 </div>
                 <a
                   href="tel:+447393107859"
-                  className="px-2.5 py-1 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] text-[10.5px] font-bold font-mono transition-colors shrink-0"
+                  className="text-xs sm:text-[13px] font-bold text-slate-900 dark:text-white hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors whitespace-nowrap block"
                 >
-                  Call ↗
+                  +44 7393 107859
                 </a>
               </div>
 
@@ -651,7 +669,7 @@ export default function Footer() {
               href="/about"
               className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
             >
-              Dossier
+              AboutUs
             </Link>
             <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
             <Link

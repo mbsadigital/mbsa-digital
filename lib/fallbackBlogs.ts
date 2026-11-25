@@ -48,8 +48,8 @@ export const FALLBACK_BLOGS: BlogPost[] = [
       "google search status dashboard",
       "core update black friday"
     ],
-    metaTitle: "November 2026 Core Update: What Changed & What to Do",
-    metaDescription: "The Google November 2026 core update began on 10 Nov. See what changed, who is affected and a 7-step plan to protect rankings. Book a free review.",
+    metaTitle: "Google November 2026 Core Update: What Changed & Next",
+    metaDescription: "The Google November 2026 core update began rolling out on 10 November. See what changed, which sites are affected and a 7-step plan to protect your rankings.",
     excerpt: "The Google November 2026 core update began on 10 Nov. See what changed, who is affected and a 7-step plan to protect rankings. Book a free review.",
     description: "The Google November 2026 core update started rolling out on 10 November 2026. Learn who is affected, what to do during the rollout, and how to recover.",
     content: `The Google November 2026 core update started rolling out on 10 November 2026 at 10:06 a.m. Pacific time (23:36 IST, 18:06 GMT). It applies to all sites and all languages, and Google says the rollout may take up to two weeks. It is a broad ranking change, not a penalty, and Google has published no update-specific guidance.
@@ -159,8 +159,8 @@ Worried about your traffic? [Book a free review](/contact) and we'll tell you wh
     category: "Technical SEO",
     tags: ["Google Core Update", "Technical SEO", "Algorithm Update", "Rankings", "Search Console", "SEO Strategy"],
     readTime: "6 min read",
-    coverImage: "/Blog/Google November 2026 Core Update Blog 1.png",
-    imageUrl: "/Blog/Google November 2026 Core Update Blog 1.png",
+    coverImage: "/Blog/Google November 2026 Core Update.png",
+    imageUrl: "/Blog/Google November 2026 Core Update.png",
     author: {
       name: "Muskan Shekh",
       role: "SEO and Digital Marketing Specialist",
@@ -207,7 +207,7 @@ Worried about your traffic? [Book a free review](/contact) and we'll tell you wh
       "google-extended vs ai opt out"
     ],
     metaTitle: "Search Console AI Report: How to Read Your AI Data",
-    metaDescription: "Learn how the Search Console AI report shows AI Overviews and AI Mode impressions, what it hides and what to do next. Book an AI visibility audit.",
+    metaDescription: "Learn how the Search Console AI report shows impressions in AI Overviews and AI Mode, what the data hides and what to do next. Book an AI visibility audit.",
     excerpt: "Learn how the Search Console AI report shows AI Overviews and AI Mode impressions, what it hides and what to do next. Book an AI visibility audit.",
     description: "The Search Console AI report shows how often your pages appear inside Google's AI Overviews, AI Mode and Discover. Learn how to read and act on the data.",
     content: `The Search Console AI report shows how often your pages appear inside Google's AI Overviews, AI Mode and Discover's generative AI features. Google announced it on 3 June 2026 and rolled it out to all websites worldwide by 31 August 2026. It reports impressions by page, country, date and device, but not clicks or queries.
@@ -354,7 +354,7 @@ Want to know where you stand? [Book an AI visibility audit](/contact).`,
       "ai mode in hindi"
     ],
     metaTitle: "Query Fan-Out Explained: Optimise for Google AI Mode",
-    metaDescription: "Query fan-out is how Google AI Mode turns one question into many searches. Learn how to structure content so it gets cited. Talk to our AI search team.",
+    metaDescription: "Query fan-out is how Google AI Mode splits one question into many sub-queries. Learn how to build topic hubs and structure content so AI Mode can cite it.",
     excerpt: "Query fan-out is how Google AI Mode turns one question into many searches. Learn how to structure content so it gets cited. Talk to our AI search team.",
     description: "Query fan-out is how Google AI Mode breaks one complex question into multiple sub-queries. Learn how to build topic hubs that get cited in AI Mode.",
     content: `Query fan-out is the technique Google's AI Mode and AI Overviews use to answer a question: the AI splits one query into several related sub-queries, searches across subtopics and sources at the same time, then combines the results into one answer. To get cited, your content needs to answer those hidden sub-questions clearly, not just the main keyword.
@@ -449,8 +449,8 @@ Ready to plan your topic clusters? [Talk to our AI search team](/contact).`,
     category: "AI & Automations",
     tags: ["Query Fan-Out", "Google AI Mode", "AEO", "GEO", "Topic Clusters", "AI Search"],
     readTime: "6 min read",
-    coverImage: "/Blog/Query Fan-Out_ Optimise for Google AI Mode Blog 3.png",
-    imageUrl: "/Blog/Query Fan-Out_ Optimise for Google AI Mode Blog 3.png",
+    coverImage: "/Blog/Query Fan-Out for Google AI Mode.png",
+    imageUrl: "/Blog/Query Fan-Out for Google AI Mode.png",
     author: {
       name: "Muskan Shekh",
       role: "SEO and Digital Marketing Specialist",
@@ -496,8 +496,8 @@ Ready to plan your topic clusters? [Talk to our AI search team](/contact).`,
       "why does chatgpt traffic show as direct",
       "perplexity traffic google analytics"
     ],
-    metaTitle: "How to Track AI Traffic in GA4: ChatGPT, Gemini, Claude",
-    metaDescription: "Learn how to track AI traffic in GA4 using the new AI Assistant channel, a regex backup and key events for ChatGPT and Gemini. Get a free GA4 check.",
+    metaTitle: "How to Track AI Traffic in GA4 (ChatGPT & Gemini)",
+    metaDescription: "Learn how to track AI traffic in GA4 with the AI Assistant channel, a regex backup and key events for ChatGPT and Gemini visits. Get a free GA4 tracking check.",
     excerpt: "Learn how to track AI traffic in GA4 using the new AI Assistant channel, a regex backup and key events for ChatGPT and Gemini. Get a free GA4 check.",
     description: "Learn how to track AI traffic in GA4 with the native AI Assistant channel, regex filters, and key conversion events for ChatGPT and Gemini.",
     content: `To track AI traffic in GA4, open Reports > Acquisition > Traffic acquisition and look for the AI Assistant channel that Google added on 13 May 2026. It groups visits from recognised chatbots such as ChatGPT, Gemini and Claude automatically. Then add a custom channel group with a regex backup to catch AI sources the default rule misses.
@@ -596,8 +596,8 @@ Not sure your tracking is right? [Get a free GA4 check](/contact).`,
     category: "CRO & Analytics",
     tags: ["GA4", "AI Traffic", "ChatGPT Traffic", "Google Analytics", "Tracking", "Analytics"],
     readTime: "6 min read",
-    coverImage: "/Blog/Tracking AI Traffic in GA4 Blog 4.png",
-    imageUrl: "/Blog/Tracking AI Traffic in GA4 Blog 4.png",
+    coverImage: "/Blog/Tracking AI Traffic in GA4.png",
+    imageUrl: "/Blog/Tracking AI Traffic in GA4.png",
     author: {
       name: "Muskan Shekh",
       role: "SEO and Digital Marketing Specialist",
@@ -643,8 +643,8 @@ Not sure your tracking is right? [Get a free GA4 check](/contact).`,
       "shopify chatgpt",
       "chatgpt shopping vs google shopping"
     ],
-    metaTitle: "ChatGPT Shopping Guide: How to Get Your Products Listed",
-    metaDescription: "ChatGPT Shopping now leans on merchant product feeds. Learn how to get your products listed, fix feed gaps and win AI picks. Book a store audit today.",
+    metaTitle: "ChatGPT Shopping: How to Get Your Products Listed",
+    metaDescription: "ChatGPT Shopping relies on merchant product feeds. Learn how to get your products listed, fix common feed gaps and measure AI-driven sales. Book a store audit.",
     excerpt: "ChatGPT Shopping now leans on merchant product feeds. Learn how to get your products listed, fix feed gaps and win AI picks. Book a store audit today.",
     description: "ChatGPT Shopping now leans heavily on merchant product feeds. Learn how to get your products recommended, fix feed gaps, and measure AI sales.",
     content: `ChatGPT Shopping is OpenAI's product discovery feature that recommends and compares products inside ChatGPT. To get listed, you need accurate, complete product data: a product feed submitted to OpenAI, crawlable product pages with structured data, and strong signals such as reviews and Google Shopping listings. In 2026, feeds became the main source of ChatGPT's product picks.
@@ -799,7 +799,7 @@ Want to know if ChatGPT recommends your products? [Book a store audit](/contact)
       "how to speed up shopify store"
     ],
     metaTitle: "Shopify SEO Checklist: 15 Fixes Before Peak Season",
-    metaDescription: "Use this Shopify SEO checklist to fix speed, collections, schema and feeds before Black Friday and the January sales. Get a free Shopify SEO review.",
+    metaDescription: "Use this 15-step Shopify SEO checklist to fix site speed, collection pages, product schema and feeds before Black Friday and the January sales rush begins.",
     excerpt: "Use this Shopify SEO checklist to fix speed, collections, schema and feeds before Black Friday and the January sales. Get a free Shopify SEO review.",
     description: "A complete 15-step Shopify SEO checklist covering technical speed, collections, product schema, and peak-season Black Friday readiness.",
     content: `A good Shopify SEO checklist before peak season covers five areas: technical health (speed, indexing, duplicates), collection pages, product pages, structured data and product feeds, and a plan for seasonal URLs. Fix the high-impact items now, freeze risky changes during Black Friday week, and keep evergreen sale pages so they build authority every year.
@@ -935,7 +935,7 @@ Want a second opinion before peak week? [Get a free Shopify SEO review](/contact
       "healthcare content medically reviewed"
     ],
     metaTitle: "Healthcare SEO Guide: How Clinics Build Trust & Rank",
-    metaDescription: "A practical healthcare SEO guide for UK and Indian clinics: E-E-A-T, medical review, local pages and AI citations. Talk to MBSA Digital's health team.",
+    metaDescription: "A practical healthcare SEO guide for UK and Indian clinics: E-E-A-T, medical review, clinic site structure, local pages, compliance and earning AI citations.",
     excerpt: "A practical healthcare SEO guide for UK and Indian clinics: E-E-A-T, medical review, local pages and AI citations. Talk to MBSA Digital's health team.",
     description: "Healthcare SEO guide for UK and Indian clinics: mastering E-E-A-T, medical review workflows, local citations, and AI search visibility.",
     content: `Healthcare SEO is the practice of helping clinics, hospitals and health brands rank in Google and appear in AI answers for medical searches. Because health is a "Your Money or Your Life" (YMYL) topic, Google holds it to higher standards of trust. Success depends on visible clinical expertise, medically reviewed content, strong local signals and compliant, patient-first pages.
@@ -1081,7 +1081,7 @@ Want more patients to find you? [Talk to our healthcare team](/contact).`,
       "independent pharmacy marketing uk"
     ],
     metaTitle: "Pharmacy SEO: Local Search Guide for UK Pharmacies",
-    metaDescription: "A pharmacy SEO guide for UK independents: Google Business Profile, Pharmacy First pages, reviews and AI search. Book a free local visibility check.",
+    metaDescription: "A pharmacy SEO guide for UK independents: Google Business Profile, Pharmacy First pages, reviews, compliance and AI search. Book a free local visibility check.",
     excerpt: "A pharmacy SEO guide for UK independents: Google Business Profile, Pharmacy First pages, reviews and AI search. Book a free local visibility check.",
     description: "Local SEO playbook for independent UK pharmacies: Google Business Profile optimization, Pharmacy First clinical pages, and review strategies.",
     content: `Pharmacy SEO is the work of making a pharmacy visible when nearby patients search Google, Google Maps and AI assistants for medicines, services and advice. For UK independents, it rests on four things: a complete Google Business Profile, service pages for NHS and private services such as Pharmacy First, a steady flow of recent reviews, and accurate, compliant information everywhere online.
@@ -1225,7 +1225,7 @@ Want more patients through the door? [Book a free local visibility check](/conta
       "local seo vadodara"
     ],
     metaTitle: "Google Business Profile Checklist: 15 Steps for 2026",
-    metaDescription: "Our Google Business Profile checklist covers categories, reviews, photos, posts and AI search in 15 clear steps for UK and India. Get a free GBP audit.",
+    metaDescription: "Our Google Business Profile checklist covers setup, categories, reviews, photos, posts and AI search in 15 clear steps for UK and Indian businesses. Free audit.",
     excerpt: "Our Google Business Profile checklist covers categories, reviews, photos, posts and AI search in 15 clear steps for UK and India. Get a free GBP audit.",
     description: "Complete 15-step Google Business Profile checklist for 2026: primary categories, review generation, local pack dominance, and AI search visibility.",
     content: `A Google Business Profile checklist is a step-by-step list for setting up and maintaining your free Google listing so you appear in Google Maps, the local pack and AI answers. The most important steps are choosing the right primary category, completing every field, collecting recent reviews, adding real photos and keeping hours and services accurate.
@@ -1362,7 +1362,7 @@ Not sure how your profile compares? [Get a free GBP audit](/contact).`,
       "hybrid seo model"
     ],
     metaTitle: "SEO Agency vs In-House vs Freelancer: Which to Pick?",
-    metaDescription: "SEO agency vs in-house vs freelancer: compare cost, skills, speed and risk with real pricing data, then choose the right model. Book a free SEO call.",
+    metaDescription: "SEO agency vs in-house vs freelancer: compare cost, skills, speed and risk with real pricing data, see when a hybrid model works, then choose the right fit.",
     excerpt: "SEO agency vs in-house vs freelancer: compare cost, skills, speed and risk with real pricing data, then choose the right model. Book a free SEO call.",
     description: "Compare SEO agency vs in-house vs freelancer across monthly costs, speed, skill breadth, and risk to choose the best model for your business.",
     content: `The SEO agency vs in-house decision depends on your budget, how much SEO work you have and how many skills you need. An agency gives you a full team of specialists quickly. An in-house hire gives you deep brand knowledge and daily focus. A freelancer is the most affordable for a narrow, well-defined job. Many growing businesses do best with a hybrid.

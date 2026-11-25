@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { constructMetadata, getIndustriesGraphJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Digital Marketing by Industry: Healthcare to D2C | MBSA",
+  title: "SEO for Healthcare, Pharmacy & D2C | MBSA Digital",
   description:
-    "SEO and digital marketing for healthcare and pharmacy, beauty and wellness, ecommerce and D2C, and local services, shaped around how every sector searches.",
+    "SEO and digital marketing for healthcare and pharmacy, health, beauty and wellness, and ecommerce and D2C brands, shaped around how each sector searches.",
   path: "/industries",
   keywords: [
     "digital marketing by industry",
