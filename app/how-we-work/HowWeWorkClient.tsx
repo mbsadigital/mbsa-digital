@@ -247,8 +247,8 @@ const ENGAGEMENT_MODELS = [
 
 export default function HowWeWorkClient() {
   return (
-    <div className="relative min-h-screen bg-slate-50 dark:bg-[#0B1220] text-slate-900 dark:text-slate-100 font-[family-name:var(--font-plus-jakarta-sans)] transition-colors duration-500 overflow-hidden">
-      
+    <div className="relative min-h-screen bg-white dark:bg-[#0B1220] text-stone-900 dark:text-stone-100 font-[family-name:var(--font-plus-jakarta-sans)] transition-colors duration-500 overflow-hidden">
+
       {/* Background Ambient Glows */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div className="absolute top-10 left-1/4 w-[650px] h-[650px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.12] blur-[160px]" />
@@ -263,7 +263,7 @@ export default function HowWeWorkClient() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
-        
+
         {/* =========================================================
             HEADER & BREADCRUMBS
         ========================================================= */}
@@ -272,7 +272,7 @@ export default function HowWeWorkClient() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-6"
+            className="flex items-center gap-2 text-xs font-semibold text-stone-500 dark:text-stone-400 mb-6"
           >
             <Link
               href="/"
@@ -281,65 +281,65 @@ export default function HowWeWorkClient() {
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Home</span>
             </Link>
-            <span className="text-slate-300 dark:text-slate-600">/</span>
+            <span className="text-stone-300 dark:text-stone-600">/</span>
             <Link
               href="/about"
               className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
             >
               About
             </Link>
-            <span className="text-slate-300 dark:text-slate-600">/</span>
+            <span className="text-stone-300 dark:text-stone-600">/</span>
             <span className="text-[#2563EB] dark:text-[#60A5FA] font-bold">How We Work</span>
           </motion.div>
 
           {/* Hero Row: Left Title & Pitch + Right "What You Can Expect" Card */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-10 border-b border-slate-200/80 dark:border-white/10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start pb-10 border-b border-stone-200/80 dark:border-white/10">
             <div className="lg:col-span-7">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 dark:bg-blue-500/20 border border-blue-500/20 text-[#2563EB] dark:text-[#60A5FA] text-[11px] font-black uppercase tracking-wider mb-4">
                 <Compass className="w-3.5 h-3.5" />
                 <span>HOW WE WORK · TRANSPARENT METHODOLOGY</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-slate-950 dark:text-white">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-stone-950 dark:text-white">
                 <AnimatedText text="A Clear Process From First Call to" />
-                <span className="block mt-1 sm:mt-2 bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#14B8A6] bg-clip-text text-transparent">
+                <span className="block mt-1 sm:mt-2 text-[#2563EB] dark:text-[#2f97ee]">
                   Measurable Growth.
                 </span>
               </h1>
 
-              <p className="mt-5 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+              <p className="mt-5 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl font-normal">
                 You should always know what we&apos;re working on, why, and what happens next. Every MBSA Digital engagement, whether SEO, a new website, paid media or social, follows the same simple four-step process.
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
+                  className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border border-transparent hover:bg-blue-600 shadow-md shadow-[#2563EB]/25 hover:shadow-[#2563EB]/40 hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
                 >
                   <span>Book a Discovery Call</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <a
                   href="#the-process"
-                  className="relative group/link inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 dark:bg-[#0f0f11] backdrop-blur-xl text-stone-800 dark:text-white text-xs sm:text-[13.5px] font-semibold shadow-sm hover:bg-orange-600/[0.10] transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-r before:from-orange-500 before:via-amber-400 before:to-orange-600 before:opacity-0 before:transition-opacity before:duration-300 before:pointer-events-none hover:before:opacity-100 after:content-[''] after:absolute after:inset-[1px] after:rounded-full after:bg-white/90 dark:after:bg-[#0f0f11] after:opacity-0 after:transition-opacity after:duration-300 after:pointer-events-none hover:after:opacity-100"
+                  className="group/link inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 dark:bg-[#0f0f11] backdrop-blur-xl text-stone-800 dark:text-white text-xs sm:text-[13.5px] font-semibold border border-stone-200/80 dark:border-white/10 shadow-xs hover:bg-blue-50/50 dark:hover:bg-white/5 hover:border-[#2563EB]/40 transition-all duration-300 min-h-[42px] sm:min-h-[44px]"
                 >
-                  <span className="relative z-10">Explore the 4 Steps</span>
-                  <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
+                  <span>Explore the 4 Steps</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover/link:text-[#2563EB] group-hover/link:translate-x-1 transition-all duration-300" />
                 </a>
               </div>
             </div>
 
-            {/* Right: "What You Can Expect" Box (Exact match to Image 2) */}
+            {/* Right: "What You Can Expect" Box */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               className="lg:col-span-5"
             >
-              <div className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#111B2E] border border-blue-500/20 dark:border-blue-500/30 shadow-xl shadow-blue-500/[0.05] relative overflow-hidden">
+              <div className="p-6 sm:p-7 rounded-3xl bg-white/90 dark:bg-[#070D1A]/90 border border-stone-200/90 dark:border-white/10 shadow-xl shadow-blue-500/5 backdrop-blur-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
 
-                <h3 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <h3 className="text-sm font-black uppercase tracking-wider text-stone-900 dark:text-white mb-4 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-[#2563EB] dark:text-[#60A5FA]" />
                   <span>What You Can Expect</span>
                 </h3>
@@ -350,14 +350,14 @@ export default function HowWeWorkClient() {
                       <span className="w-5 h-5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20">
                         <Check className="w-3 h-3" />
                       </span>
-                      <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200">
+                      <span className="text-xs sm:text-sm font-bold text-stone-700 dark:text-stone-200">
                         {item}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                <div className="mt-6 pt-4 border-t border-stone-200/80 dark:border-white/10 flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-400">
                   <span>Guaranteed transparency</span>
                   <span className="text-[#2563EB] dark:text-[#60A5FA] font-bold">100% Client Ownership</span>
                 </div>
@@ -367,7 +367,7 @@ export default function HowWeWorkClient() {
         </div>
 
         {/* =========================================================
-            "IN SHORT" CALLOUT BOX (EXACT MATCH TO IMAGE 2)
+            "IN SHORT" CALLOUT BOX
         ========================================================= */}
         <section className="mb-20 sm:mb-24">
           <motion.div
@@ -375,7 +375,7 @@ export default function HowWeWorkClient() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#111B2E] border border-blue-500/20 dark:border-blue-500/30 shadow-md shadow-blue-500/[0.03] relative"
+            className="p-6 sm:p-8 rounded-3xl bg-white/90 dark:bg-[#070D1A]/90 border border-stone-200/80 dark:border-white/10 shadow-xs relative"
           >
             <div className="flex items-center gap-2 mb-3">
               <span className="w-3 h-3 rounded-xs bg-[#2563EB]" />
@@ -383,7 +383,7 @@ export default function HowWeWorkClient() {
                 IN SHORT
               </span>
             </div>
-            <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-200 font-medium">
+            <p className="text-sm sm:text-base leading-relaxed text-stone-700 dark:text-stone-200 font-medium">
               We start with a free discovery call, then follow four steps:{" "}
               <strong className="text-[#2563EB] dark:text-[#60A5FA] font-black">Discover &amp; Analyse</strong> (audit your data and competitors),{" "}
               <strong className="text-[#2563EB] dark:text-[#60A5FA] font-black">Plan &amp; Optimise</strong> (agree a prioritised roadmap and fix the biggest issues),{" "}
@@ -479,11 +479,11 @@ export default function HowWeWorkClient() {
                   className="
                     p-6 sm:p-8
                     rounded-3xl
-                    bg-white dark:bg-[#111B2E]
-                    border border-slate-200/80 dark:border-white/10
-                    shadow-xl shadow-blue-500/[0.03]
+                    bg-white/90 dark:bg-[#070D1A]/90
+                    border border-stone-200/80 dark:border-white/10
+                    shadow-xs
                     relative overflow-hidden
-                    hover:border-blue-500/30 transition-all
+                    hover:border-[#2563EB]/40 dark:hover:border-blue-500/40 transition-all
                   "
                 >
                   <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
@@ -492,29 +492,29 @@ export default function HowWeWorkClient() {
                         <span className="px-2.5 py-0.5 rounded-md bg-blue-500/10 text-[#2563EB] dark:text-[#60A5FA] text-[10px] font-mono font-black">
                           {phase.phase}
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">
                           {phase.badge}
                         </span>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-black text-slate-950 dark:text-white leading-snug">
+                      <h3 className="text-xl sm:text-2xl font-black text-stone-950 dark:text-white leading-snug">
                         {phase.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-3 max-w-3xl">
+                      <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed mt-3 max-w-3xl font-normal">
                         {phase.summary}
                       </p>
                     </div>
 
-                    <div className="lg:w-80 p-4 rounded-2xl bg-slate-50 dark:bg-[#0B1220]/70 border border-slate-200/60 dark:border-white/5 shrink-0">
-                      <span className="text-[11px] font-black uppercase tracking-wider text-slate-900 dark:text-white block mb-2.5">
+                    <div className="lg:w-80 p-4 rounded-2xl bg-stone-50/90 dark:bg-[#0E1726]/80 border border-stone-200/80 dark:border-white/10 shrink-0">
+                      <span className="text-[11px] font-black uppercase tracking-wider text-stone-900 dark:text-white block mb-2.5">
                         Key Deliverables
                       </span>
                       <div className="space-y-2">
                         {phase.keyOutcomes.map((outcome, oIdx) => (
                           <div key={oIdx} className="flex items-start gap-2">
                             <span className="text-emerald-500 shrink-0 text-xs mt-0.5">✓</span>
-                            <span className="text-xs text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
+                            <span className="text-xs text-stone-600 dark:text-stone-300 font-medium leading-relaxed">
                               {outcome}
                             </span>
                           </div>
@@ -550,11 +550,11 @@ export default function HowWeWorkClient() {
                 className="
                   p-6 sm:p-7
                   rounded-3xl
-                  bg-white dark:bg-[#111B2E]
-                  border border-slate-200/80 dark:border-white/10
-                  shadow-xl shadow-blue-500/[0.04]
+                  bg-white/90 dark:bg-[#070D1A]/90
+                  border border-stone-200/80 dark:border-white/10
+                  shadow-xs
                   flex flex-col justify-between
-                  hover:border-[#2563EB] dark:hover:border-[#2563EB]
+                  hover:border-[#2563EB]/40 dark:hover:border-blue-500/40
                   transition-all group
                 "
               >
@@ -563,25 +563,25 @@ export default function HowWeWorkClient() {
                     <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-[#2563EB] dark:text-[#60A5FA]">
                       {model.badge}
                     </span>
-                    <span className="text-xs text-slate-400 font-mono">0{idx + 1}</span>
+                    <span className="text-xs text-stone-400 font-mono">0{idx + 1}</span>
                   </div>
 
-                  <h3 className="text-lg font-black text-slate-950 dark:text-white leading-snug">
+                  <h3 className="text-lg font-black text-stone-950 dark:text-white leading-snug">
                     {model.title}
                   </h3>
                   <p className="text-xs font-bold text-[#2563EB] dark:text-[#38BDF8] mt-0.5">
                     {model.tagline}
                   </p>
 
-                  <p className="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                  <p className="text-xs text-stone-600 dark:text-stone-300 mt-3 leading-relaxed font-normal">
                     {model.description}
                   </p>
 
-                  <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-white/10 space-y-2.5">
+                  <div className="mt-5 pt-4 border-t border-stone-200/80 dark:border-white/10 space-y-2.5">
                     {model.features.map((feat, fIdx) => (
                       <div key={fIdx} className="flex items-start gap-2">
                         <span className="text-emerald-500 shrink-0 text-xs mt-0.5">✓</span>
-                        <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
+                        <span className="text-xs text-stone-700 dark:text-stone-300 font-medium">
                           {feat}
                         </span>
                       </div>
@@ -591,7 +591,7 @@ export default function HowWeWorkClient() {
 
                 <Link
                   href="/contact"
-                  className="mt-6 w-full py-2.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-[#2563EB] hover:text-white dark:hover:bg-[#2563EB] text-slate-900 dark:text-white text-xs font-bold transition-all inline-flex items-center justify-center gap-1.5"
+                  className="mt-6 w-full py-2.5 rounded-xl bg-stone-100 dark:bg-white/5 hover:bg-[#2563EB] hover:text-white dark:hover:bg-[#2563EB] text-stone-900 dark:text-white text-xs font-bold transition-all inline-flex items-center justify-center gap-1.5"
                 >
                   <span>{model.cta}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -601,51 +601,7 @@ export default function HowWeWorkClient() {
           </div>
         </section>
 
-        {/* =========================================================
-            BOTTOM STRATEGIC CTA
-        ========================================================= */}
-        <section className="
-          rounded-[32px] sm:rounded-[40px]
-          bg-gradient-to-br from-[#2563EB] via-[#1D4ED8] to-[#0F172A]
-          p-8 sm:p-12 lg:p-16
-          text-white
-          shadow-2xl shadow-blue-500/25
-          relative overflow-hidden
-        ">
-          <div className="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-sky-400/20 blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md text-[11px] font-black uppercase tracking-wider text-white mb-4 border border-white/20">
-              <Calendar className="w-3.5 h-3.5 text-white" />
-              <span>Free Diagnostic Conversation</span>
-            </span>
-
-            <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
-              Ready to begin with a free discovery call?
-            </h3>
-
-            <p className="mt-4 text-sm sm:text-base text-blue-100/90 leading-relaxed max-w-2xl">
-              No sales pitches, no jargon. Just an honest discussion about who your best customers are and what will move your numbers.
-            </p>
-
-            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#2563EB] text-white text-xs sm:text-[13.5px] font-bold border hover:border-blue-800 shadow-md shadow-[#2563EB] hover:shadow-[#2563EB] hover:-translate-y-0.5 transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation"
-              >
-                <span>Book a Discovery Call</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/analytics"
-                className="relative group/link inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/90 dark:bg-[#0f0f11] backdrop-blur-xl text-stone-800 dark:text-white text-xs sm:text-[13.5px] font-semibold shadow-sm hover:bg-orange-600/[0.10] transition-all duration-300 min-h-[42px] sm:min-h-[44px] touch-manipulation before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[1px] before:bg-gradient-to-r before:from-orange-500 before:via-amber-400 before:to-orange-600 before:opacity-0 before:transition-opacity before:duration-300 before:pointer-events-none hover:before:opacity-100 after:content-[''] after:absolute after:inset-[1px] after:rounded-full after:bg-white/90 dark:after:bg-[#0f0f11] after:opacity-0 after:transition-opacity after:duration-300 after:pointer-events-none hover:after:opacity-100"
-              >
-                <span className="relative z-10">Inspect Verified Proofs</span>
-                <ArrowRight className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover/link:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
       </div>
     </div>

@@ -232,16 +232,16 @@ export default function Testimonials() {
                       shrink-0 w-[280px] min-[360px]:w-[310px] sm:w-[360px] lg:w-[385px]
                       rounded-2xl sm:rounded-3xl p-4.5 sm:p-6
                       bg-[#F8FAFC] dark:bg-[#111B2E]
-                      border border-orange-200/80 dark:border-white/10
-                      hover:border-orange-500/70 dark:hover:border-orange-500/70
-                      hover:shadow-xl hover:shadow-orange-500/15
+                      border border-stone-200/90 dark:border-white/10
+                      hover:border-[#2563EB]/60 dark:hover:border-blue-500/60
+                      hover:shadow-xl hover:shadow-blue-500/10
                       transition-all duration-300
                       flex flex-col justify-between
                       relative overflow-hidden
                     "
                   >
-                    {/* Subtle Top Orange Glow Accent on Hover */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 via-amber-400 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm" />
+                    {/* Subtle Top Brand Glow Accent on Hover */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2563EB] via-[#38BDF8] to-[#14B8A6] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm" />
 
                     {/* Watermark Quote Icon */}
                     <Quote className="absolute top-3 right-3 w-14 h-14 text-stone-200/35 dark:text-white/[0.02] pointer-events-none" />

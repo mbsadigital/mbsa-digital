@@ -88,7 +88,7 @@ function ScrollToTopButton() {
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
           aria-label="Scroll to top"
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-2.5 sm:p-3 rounded-2xl bg-white/90 dark:bg-[#111B2E]/90 text-[#2563EB] border border-orange-600/35 backdrop-blur-xl shadow-[0_4px_25px_rgba(37,99,235,0.25)] hover:border-orange-600 hover:shadow-[0_8px_35px_rgba(37,99,235,0.50)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 group cursor-pointer"
+          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-2.5 sm:p-3 rounded-2xl bg-white/90 dark:bg-[#111B2E]/90 text-[#2563EB] border border-[#2563EB]/40 backdrop-blur-xl shadow-[0_4px_25px_rgba(37,99,235,0.25)] hover:border-[#2563EB] hover:shadow-[0_8px_35px_rgba(37,99,235,0.50)] transition-all duration-300 flex items-center gap-1.5 sm:gap-2 group cursor-pointer"
         >
           <ArrowUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#2563EB] transition-transform duration-300 group-hover:-translate-y-0.5" />
           <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-stone-700 dark:text-stone-300">

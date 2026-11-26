@@ -247,7 +247,7 @@ export default function Contact() {
   };
 
   const mailtoFallbackUrl = `mailto:mbsadigitalsolutions@gmail.com?subject=${encodeURIComponent(
-    `Portfolio Inquiry: ${formState.service || "Growth"} from ${formState.name || "Visitor"}`
+    `MBSA Digital Inquiry: ${formState.service || "Growth"} from ${formState.name || "Client"}`
   )}&body=${encodeURIComponent(
     `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone || "Not provided"}\nService: ${formState.service || "General"}\n\nMessage:\n${formState.message}`
   )}`;
@@ -265,8 +265,8 @@ export default function Contact() {
           <div className="lg:col-span-5 lg:sticky lg:top-24 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-px bg-[#14B8A6]" />
-                <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#14B8A6]">
+                <span className="w-8 h-px bg-[#2564EB]" />
+                <span className="text-xs font-bold uppercase tracking-[0.28em] text-[#2564EB]">
                   CONTACT
                 </span>
               </div>
@@ -274,7 +274,7 @@ export default function Contact() {
               <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.04]">
                 Let&apos;s Talk
                 <br />
-                <span className="text-[#2563EB] dark:text-[#2f97ee]">
+                <span className="text-[#2564EB] dark:text-[#2f97ee]">
                   Growth
                 </span>
               </h2>
@@ -495,7 +495,7 @@ export default function Contact() {
                           <div className="relative">
                             <input
                               type="tel"
-                              placeholder="Enter Your Number"
+                              placeholder="Enter your phone number"
                               value={formState.phone}
                               disabled={loading}
                               onChange={(e) =>
@@ -515,7 +515,7 @@ export default function Contact() {
                             <input
                               type="email"
                               required
-                              placeholder="Enter Your Email"
+                              placeholder="Enter your email address"
                               value={formState.email}
                               disabled={loading}
                               onChange={(e) =>

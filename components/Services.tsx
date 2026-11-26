@@ -274,6 +274,7 @@ function MaskedProblemsContainer() {
 
       {/* 2. REVEALED LAYER: Black in light mode, Pure White in dark mode */}
       <div
+        aria-hidden="true"
         className="absolute inset-0 z-20 pointer-events-none bg-black dark:bg-white text-white dark:text-black"
         style={{
           WebkitMaskImage: `radial-gradient(circle ${maskRadius}px at ${mousePosition.x}px ${mousePosition.y}px, black 99.5%, transparent 100%)`,
@@ -514,7 +515,7 @@ export default function Services() {
           <div className="lg:col-span-4 lg:sticky lg:top-28 xl:top-32 flex flex-col justify-between pt-1">
             <div className="inline-flex items-center gap-2.5 text-xs font-bold uppercase tracking-widest text-[#2563EB] dark:text-blue-400">
               <span className="w-6 h-[2px] bg-[#2563EB] dark:bg-blue-500 rounded-full" />
-              <span>WHAT I DO </span>
+              <span>WHAT WE DO</span>
             </div>
             <div>
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] font-black tracking-tight leading-[1.14] text-stone-900 dark:text-white mb-4 pt-5 sm:mb-5">
@@ -528,7 +529,7 @@ export default function Services() {
               </h2>
 
               <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed mb-6 sm:mb-8 max-w-lg lg:max-w-none font-normal">
-                I look at the data, find what is holding a site back, fix the highest value problems first and measure what changes across all organic and conversion touchpoints.
+                We look at the data, find what is holding a site back, fix the highest value problems first, and measure what changes across all organic and conversion touchpoints.
               </p>
 
 
@@ -948,7 +949,7 @@ export default function Services() {
     sm:text-[13.5px]
     font-semibold
     shadow-sm
-    hover:bg-orange-600/[0.10]
+    hover:bg-blue-500/[0.08]
     transition-all
     duration-300
     min-h-[42px]
@@ -961,9 +962,9 @@ export default function Services() {
     before:rounded-full
     before:p-[1px]
     before:bg-gradient-to-r
-    before:from-orange-500
-    before:via-amber-400
-    before:to-orange-600
+    before:from-[#2563EB]
+    before:via-[#38BDF8]
+    before:to-[#14B8A6]
     before:opacity-0
     before:transition-opacity
     before:duration-300
@@ -983,7 +984,7 @@ export default function Services() {
     hover:after:opacity-100
   "
                 >
-                  <span className="relative z-10">About MBSA</span>
+                  <span className="relative z-10">About MBSA Digital</span>
 
                   <ArrowRight
                     className="
@@ -992,7 +993,7 @@ export default function Services() {
       w-3.5
       h-3.5
       text-stone-400
-      group-hover/link:text-orange-500
+      group-hover/link:text-[#2563EB]
       group-hover/link:translate-x-1
       transition-all
       duration-300

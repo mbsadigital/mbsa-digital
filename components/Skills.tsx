@@ -39,7 +39,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "01 SEO",
     domain: "FIND, FIX AND PROVE ORGANIC GROWTH",
     overview:
-    "I crawl your site, fix what blocks rankings and track how Google sees every page.",
+    "We crawl your site, fix what blocks rankings, and track how Google sees every page.",
     image: "/banner/googlesearchconsole.png",
     accentColor: "#14B8A6",
     frequency: "98.4 kHz",
@@ -60,7 +60,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "02 Analytics",
     domain: "MEASURE WHAT ACTUALLY BRINGS REVENUE",
     overview:
-    "I set up tracking you can trust and build dashboards that show which channels bring leads and sales.",
+    "We set up tracking you can trust and build dashboards that show which channels bring leads and sales.",
     image: "/banner/googleanalytics.png",
     accentColor: "#FB923C",
     frequency: "102.1 kHz",
@@ -81,7 +81,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "03 Web Dev",
     domain: "FAST, CLEAN, SEO-READY WEBSITES",
     overview:
-    "I build and fix websites that load quickly, work well on mobile and are ready to rank from day one.",
+    "We build and fix websites that load quickly, work well on mobile, and are ready to rank from day one.",
     image: "/banner/webdevelopement.png",
     accentColor: "#2563EB",
     frequency: "144.0 kHz",
@@ -102,7 +102,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "04 Paid Ads",
     domain: "ADS THAT REACH BUYERS, NOT JUST CLICKS",
     overview:
-    "I run Google Ads that target high-intent searches, cut wasted spend and track real return.",
+    "We run Google Ads that target high-intent searches, cut wasted spend, and track real return.",
     image: "/banner/googleads.png",
     accentColor: "#14B8A6",
     frequency: "86.2 kHz",
@@ -123,7 +123,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "05 Business",
     domain: "GET FOUND IN YOUR AREA",
     overview:
-    "I help local and multi-location businesses show up in the Map Pack with strong profiles and reviews.",
+    "We help local and multi-location businesses show up in the Map Pack with strong profiles and reviews.",
     image: "/banner/googlebussiness.png",
     accentColor: "#FB923C",
     frequency: "112.5 kHz",
@@ -144,7 +144,7 @@ const SKILLS_MATRIX: SkillItem[] = [
     shortName: "06 AI Tools",
     domain: "FASTER RESEARCH, SMARTER VISIBILITY",
     overview:
-    "I use AI to speed up research and to test how your brand appears in ChatGPT, Gemini and Perplexity answers.",
+    "We use AI to speed up research and test how your brand appears in ChatGPT, Gemini, and Perplexity answers.",
     image: "/banner/aitools.png",
     accentColor: "#2563EB",
     frequency: "128.8 kHz",
@@ -290,7 +290,7 @@ export default function Skills() {
             <motion.div variants={leftItemVariants} className="flex items-center gap-3 mb-4">
               <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
-                TechStack
+                Tech Stack
               </span>
             </motion.div>
 
@@ -298,10 +298,10 @@ export default function Skills() {
               variants={leftItemVariants}
               className="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-[1.08]"
             >
-              Honeycomb Reactors.
+              Enterprise Tech Stack.
               <br />
               <span className="text-[#2563EB] dark:text-[#2f97ee]">
-                Hardware-Grade Execution.
+                Measurable Growth.
               </span>
             </motion.h2>
 
@@ -309,16 +309,14 @@ export default function Skills() {
               variants={leftItemVariants}
               className="mt-4 max-w-md text-sm sm:text-base leading-relaxed text-stone-700 dark:text-stone-300"
             >
-              Tessellated hexagon clusters routed through a continuous motherbus.
-              Hover over or select any cell to inspect its internal logic, stack,
-              and bandwidth.
+              We connect enterprise tools across technical SEO, real-time analytics, and web engineering. Select any platform to inspect our workflow and deliverables.
             </motion.p>
 
 
 
             <motion.div variants={leftItemVariants} className="mt-8">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="
     relative
     group/link
@@ -342,7 +340,7 @@ export default function Skills() {
     sm:text-[13.5px]
     font-semibold
     shadow-sm
-    hover:bg-orange-600/[0.10]
+    hover:bg-blue-500/[0.08]
     transition-all
     duration-300
     min-h-[42px]
@@ -355,9 +353,9 @@ export default function Skills() {
     before:rounded-full
     before:p-[1px]
     before:bg-gradient-to-r
-    before:from-orange-500
-    before:via-amber-400
-    before:to-orange-600
+    before:from-[#2563EB]
+    before:via-[#38BDF8]
+    before:to-[#14B8A6]
     before:opacity-0
     before:transition-opacity
     before:duration-300
@@ -377,7 +375,7 @@ export default function Skills() {
     hover:after:opacity-100
   "
               >
-                <span className="relative z-10">Let's Start Your Project</span>
+                <span className="relative z-10">Start Your Project</span>
 
                 <ArrowRight
                   className="
@@ -386,7 +384,7 @@ export default function Skills() {
       w-3.5
       h-3.5
       text-stone-400
-      group-hover/link:text-orange-500
+      group-hover/link:text-[#2563EB]
       group-hover/link:translate-x-1
       transition-all
       duration-300
@@ -468,7 +466,7 @@ export default function Skills() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -20, scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 300, damping: 26 }}
-                className="relative overflow-hidden rounded-3xl border border-orange-200/80 bg-white dark:bg-[#111B2E] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/10 sm:p-8"
+                className="relative overflow-hidden rounded-3xl border border-stone-200/90 bg-white dark:bg-[#111B2E] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.06)] backdrop-blur-2xl transition-colors duration-500 dark:border-white/10 sm:p-8"
               >
                 {/* High-tech Scanning Sweep Wave */}
                 <motion.div

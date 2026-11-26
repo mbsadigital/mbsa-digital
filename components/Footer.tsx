@@ -286,12 +286,12 @@ export default function Footer() {
               <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-xs font-semibold text-slate-700 dark:text-slate-300">
                 <span className="flex items-center gap-1.5">
                   <IndiaFlag className="w-4 h-3" />
-                  <span>Vadodara , Gujarat</span>
+                  <span>Vadodara, Gujarat</span>
                 </span>
                 <span className="text-[#2563EB] font-bold">⇄</span>
                 <span className="flex items-center gap-1.5">
                   <UKFlag className="w-4 h-3" />
-                  <span>London , UK</span>
+                  <span>London, UK</span>
                 </span>
               </div>
             </div>
@@ -423,7 +423,7 @@ export default function Footer() {
                   href="/analytics"
                   className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors block"
                 >
-                  Live GSC Proof
+                  Live Search Proof
                 </Link>
               </li>
               <li>
@@ -431,7 +431,7 @@ export default function Footer() {
                   href="/industries"
                   className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors block"
                 >
-                  Insights &amp; Editorial Plan
+                  Industries We Serve
                 </Link>
               </li>
               <li>
@@ -439,7 +439,7 @@ export default function Footer() {
                   href="/blog"
                   className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors block"
                 >
-                  Articles &amp; Guides
+                  Insights &amp; Blog
                 </Link>
               </li>
               <li>
@@ -660,7 +660,8 @@ export default function Footer() {
             <p>© {currentYear} MBSA Digital Marketing Solutions. All rights reserved.</p>
             <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
             <p className="font-semibold text-slate-700 dark:text-slate-300">
-              Aadil Pathan            </p>
+              Muskan Shekh, Founder &amp; Head of Search
+            </p>
           </div>
 
           {/* Right: Quick Links & Back To Top */}
@@ -669,7 +670,7 @@ export default function Footer() {
               href="/about"
               className="hover:text-[#2563EB] dark:hover:text-[#60A5FA] transition-colors"
             >
-              AboutUs
+              About Us
             </Link>
             <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
             <Link

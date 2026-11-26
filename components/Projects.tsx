@@ -274,11 +274,11 @@ export default function Projects() {
                       rounded-[24px] sm:rounded-[36px]
                       border-2
                       ${isFront
-                        ? "border-orange-500/40 dark:border-orange-500/30 shadow-[0_20px_50px_rgba(37,99,235,0.14)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.75)]"
-                        : "border-stone-300/80 dark:border-white/10 shadow-lg cursor-pointer hover:border-orange-500/60"
+                        ? "border-[#2563EB]/50 dark:border-blue-500/40 shadow-[0_20px_50px_rgba(37,99,235,0.16)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.75)]"
+                        : "border-stone-300/80 dark:border-white/10 shadow-lg cursor-pointer hover:border-[#2563EB]/60"
                       }
                       bg-[#F8FAFC]
-                      dark:bg-[#14110E]
+                      dark:bg-[#0E1726]
                       p-4 sm:p-7 md:p-8
                       overflow-hidden
                       transition-colors duration-300

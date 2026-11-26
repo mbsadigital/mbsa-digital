@@ -292,7 +292,7 @@ export default function BlogDetailPage() {
             {adminToken && (
               <Link
                 href="/blog/create"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#2563EB] hover:bg-orange-600 text-white text-xs font-bold transition shadow-sm"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm"
               >
                 <Plus className="w-3.5 h-3.5" />
                 <span>Write</span>
@@ -427,7 +427,7 @@ export default function BlogDetailPage() {
         </div>
 
         {/* 4. AFTER LARGE IMAGE: HIGHLIGHTED DESCRIPTION */}
-        <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-orange-500/15 via-amber-500/10 to-orange-500/5 dark:from-orange-500/15 dark:via-amber-500/5 dark:to-transparent border-l-4 border-[#2563EB] shadow-sm mb-10">
+        <div className="relative p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-teal-500/5 dark:from-blue-500/15 dark:via-sky-500/5 dark:to-transparent border-l-4 border-[#2563EB] shadow-sm mb-10">
           <div className="flex items-start gap-3.5 sm:gap-4">
             <div className="p-2.5 rounded-2xl bg-[#2563EB]/15 text-[#2563EB] shrink-0 mt-0.5">
               <ArrowRight className="w-5 h-5 text-[#2563EB]" />
@@ -706,7 +706,7 @@ export default function BlogDetailPage() {
                   <button
                     type="submit"
                     disabled={adminLoginLoading}
-                    className="flex-1 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-orange-600 transition disabled:opacity-50 cursor-pointer"
+                    className="flex-1 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-blue-700 transition disabled:opacity-50 cursor-pointer"
                   >
                     {adminLoginLoading ? "Verifying..." : "Unlock Admin"}
                   </button>

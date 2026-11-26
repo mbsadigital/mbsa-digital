@@ -63,8 +63,8 @@ export default function About() {
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-orange-500/[0.06] dark:bg-orange-500/[0.08] blur-[120px]" />
-        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-orange-500/[0.05] dark:bg-orange-500/[0.07] blur-[130px]" />
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-[#2563EB]/[0.06] dark:bg-[#2563EB]/[0.08] blur-[120px]" />
+        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full bg-[#14B8A6]/[0.05] dark:bg-[#14B8A6]/[0.07] blur-[130px]" />
         <div
           className="absolute inset-0 opacity-[0.025] dark:opacity-[0.035]"
           style={{
@@ -79,7 +79,7 @@ export default function About() {
         <div className="flex items-center gap-3 mb-4 sm:mb-5">
           <span className="w-8 h-px bg-[#2563EB] dark:bg-[#14B8A6]" />
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.28em] text-[#2563EB] dark:text-[#14B8A6]">
-            About me
+            About MBSA Digital
           </span>
         </div>
 
@@ -96,14 +96,14 @@ export default function About() {
 
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08] text-slate-950 dark:text-white">
-              Smart business With
+              Smart Business with
               <span className="block mt-1 sm:mt-2 text-[#2563EB] dark:text-[#2f97ee]">
-                Smart people
+                Smart People
               </span>
             </h2>
 
             <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
-              I combine rigorous technical SEO, GA4 revenue attribution, and clean engineering architecture to help ambitious brands transform organic search into high-margin commercial velocity.
+              We combine rigorous technical SEO, GA4 revenue attribution, and clean engineering architecture to help ambitious brands transform organic search into high-margin commercial velocity.
             </p>
 
             {/* Strategic Value Pillars Strip */}
@@ -164,7 +164,7 @@ export default function About() {
                   sm:min-h-[44px]
                   touch-manipulation"
               >
-                <span>Explore About</span>
+                <span>About MBSA Digital</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
 
@@ -179,11 +179,11 @@ export default function About() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="lg:col-span-6 xl:col-span-6 relative mx-auto w-full max-w-[560px]"
           >
-            {/* Background Ambient Aura - Colors unchanged */}
-            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#2563EB]/15 via-[#6366F1]/10 to-[#F97316]/15 blur-2xl" />
+            {/* Background Ambient Aura */}
+            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#2563EB]/15 via-[#6366F1]/10 to-[#14B8A6]/15 blur-2xl" />
 
             {/* Glass Cockpit Console */}
-            <div className="relative overflow-hidden rounded-[26px] sm:rounded-[30px] border border-white/80 dark:border-white/10 bg-gradient-to-br from-white/95 via-[#F8FAFF]/90 to-orange-50/70 dark:from-[#131722]/95 dark:via-[#11141F]/90 dark:to-[#1C1613]/90 p-4 sm:p-6 shadow-[0_25px_80px_rgba(37,99,235,0.12)] backdrop-blur-2xl">
+            <div className="relative overflow-hidden rounded-[26px] sm:rounded-[30px] border border-white/80 dark:border-white/10 bg-gradient-to-br from-white/95 via-[#F8FAFF]/90 to-blue-50/70 dark:from-[#131722]/95 dark:via-[#11141F]/90 dark:to-[#0B1220]/90 p-4 sm:p-6 shadow-[0_25px_80px_rgba(37,99,235,0.12)] backdrop-blur-2xl">
 
               {/* Top Console Bar */}
               <div className="flex items-center justify-between pb-3.5 border-b border-slate-200/80 dark:border-white/10">
@@ -244,7 +244,7 @@ export default function About() {
                     </div>
                     <div className="text-right">
                       <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 block">Top 3 Rankings</span>
-                      <span className="text-xs font-black text-orange-500">42+ High-Intent KWs</span>
+                      <span className="text-xs font-black text-[#2563EB] dark:text-[#60A5FA]">42+ High-Intent KWs</span>
                     </div>
                   </div>
 
@@ -254,8 +254,8 @@ export default function About() {
                       <defs>
                         <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
                           <stop offset="0%" stopColor="#2563EB" stopOpacity="0.45" />
-                          <stop offset="85%" stopColor="#F97316" stopOpacity="0.05" />
-                          <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
+                          <stop offset="85%" stopColor="#14B8A6" stopOpacity="0.05" />
+                          <stop offset="100%" stopColor="#14B8A6" stopOpacity="0" />
                         </linearGradient>
                       </defs>
                       <path
@@ -269,7 +269,7 @@ export default function About() {
                         strokeWidth="3"
                         strokeLinecap="round"
                       />
-                      <circle cx="400" cy="6" r="4" fill="#F97316" stroke="#FFFFFF" strokeWidth="2" />
+                      <circle cx="400" cy="6" r="4" fill="#14B8A6" stroke="#FFFFFF" strokeWidth="2" />
                     </svg>
                   </div>
 
@@ -321,9 +321,9 @@ export default function About() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between p-2 rounded-xl bg-orange-500/[0.06] border border-orange-500/20 text-[11px] text-orange-700 dark:text-orange-300 font-semibold">
+                  <div className="flex items-center justify-between p-2 rounded-xl bg-emerald-500/[0.06] border border-emerald-500/20 text-[11px] text-emerald-700 dark:text-emerald-300 font-semibold">
                     <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-orange-500" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                       100% Crawl Efficiency &amp; Indexation
                     </span>
                     <span className="text-[10px] font-mono text-slate-500">200 OK</span>
@@ -343,7 +343,7 @@ export default function About() {
                         <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Cross-Border</span>
                       </div>
                     </div>
-                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-orange-500/10 text-orange-500">
+                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-[#2563EB]/10 text-[#2563EB] dark:text-[#60A5FA]">
                       LONDON EXPERIENCE
                     </span>
                   </div>
@@ -385,7 +385,7 @@ export default function About() {
               {/* Bottom Quick Feature Pill */}
               <div className="mt-3.5 pt-3 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-[11px]">
                 <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 font-medium">
-                  <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
                   <span>High-performance digital engineering</span>
                 </div>
                 <Link

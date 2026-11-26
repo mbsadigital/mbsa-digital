@@ -941,7 +941,7 @@ export default function AdminPage() {
 
                   <Link
                     href="/blog/create"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-orange-600 text-white text-xs font-bold transition shadow-sm cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm cursor-pointer"
                   >
                     <Plus className="w-3.5 h-3.5 stroke-[3]" />
                     <span>Create Blog</span>
@@ -966,7 +966,7 @@ export default function AdminPage() {
                     </p>
                     <Link
                       href="/blog/create"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-orange-600 transition"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2563EB] text-white text-xs font-bold hover:bg-blue-700 transition"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Write First Article</span>

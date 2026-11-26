@@ -827,7 +827,7 @@ function CreateBlogContent() {
             <button
               type="button"
               onClick={() => setIsAdminLoginOpen(true)}
-              className="px-3.5 py-1.5 rounded-xl bg-[#2563EB] text-white font-bold hover:bg-orange-600 transition shrink-0 cursor-pointer text-center"
+              className="px-3.5 py-1.5 rounded-xl bg-[#2563EB] text-white font-bold hover:bg-blue-700 transition shrink-0 cursor-pointer text-center"
             >
               Enter Admin Key
             </button>
@@ -930,10 +930,10 @@ function CreateBlogContent() {
             </div>
 
             {/* 2.1 SEO METADATA: META TITLE & META DESCRIPTION */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-orange-500/20 dark:border-orange-500/25 bg-gradient-to-b from-orange-500/[0.03] to-transparent bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-6">
+            <div className="p-6 sm:p-8 rounded-3xl border border-blue-500/20 dark:border-blue-500/25 bg-gradient-to-b from-blue-500/[0.03] to-transparent bg-white/80 dark:bg-[#111B2E]/90 backdrop-blur-xl shadow-lg space-y-6">
               <div className="flex items-center justify-between pb-3 border-b border-stone-200/80 dark:border-stone-800">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-orange-500/10 text-[#2563EB] flex items-center justify-center font-bold">
+                  <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-[#2563EB] flex items-center justify-center font-bold">
                     <Globe className="w-4 h-4" />
                   </div>
                   <div>
@@ -2168,7 +2168,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={handleInsertLink}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-blue-700"
                 >
                   Insert Link
                 </button>
@@ -2240,7 +2240,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={handleInsertImage}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-blue-700"
                 >
                   Insert Image
                 </button>
@@ -2314,7 +2314,7 @@ function CreateBlogContent() {
                 <button
                   type="button"
                   onClick={handleInsertTable}
-                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600"
+                  className="px-4 py-2 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-blue-700"
                 >
                   Create Table
                 </button>
@@ -2574,7 +2574,7 @@ function CreateBlogContent() {
                   <button
                     type="submit"
                     disabled={adminLoginLoading}
-                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-orange-600 disabled:opacity-60"
+                    className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#2563EB] text-white hover:bg-blue-700 disabled:opacity-60"
                   >
                     {adminLoginLoading ? "Verifying..." : "Authenticate Key"}
                   </button>

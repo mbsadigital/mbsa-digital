@@ -84,7 +84,7 @@ export default function Faq() {
               Questions People
               <br />
               <span className="text-[#2563EB] dark:text-[#2f97ee]">
-                Ask Me
+                Ask Us
               </span>
             </h2>
 
@@ -115,7 +115,7 @@ export default function Faq() {
               return (
                 <div
                   key={faq.id}
-                  className="rounded-2xl sm:rounded-3xl bg-[#F8FAFC] dark:bg-[#111B2E] border border-orange-200/80 dark:border-white/10 p-5 sm:p-6 shadow-sm hover:border-orange-500/50 transition-all duration-200"
+                  className="rounded-2xl sm:rounded-3xl bg-[#F8FAFC] dark:bg-[#070D1A] border border-stone-200/90 dark:border-white/10 p-5 sm:p-6 shadow-sm hover:border-[#2563EB]/50 dark:hover:border-blue-500/50 transition-all duration-200"
                 >
                   {/* Question Header & Toggle Button */}
                   <button

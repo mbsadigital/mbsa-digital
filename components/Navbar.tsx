@@ -110,10 +110,10 @@ const NAV_ITEMS: NavItem[] = [
   { id: "hero", label: "Home", href: "/", number: "01", subtitle: "Welcome & Hero" },
   { id: "services", label: "Services", href: "/services", number: "02", subtitle: "Growth Solutions", hasDropdown: true },
   { id: "projects", label: "Portfolio", href: "/projects", number: "03", subtitle: "Case Studies" },
-  { id: "analytics", label: "Analytics", href: "/analytics", number: "04", subtitle: "Live GSC Proof" },
-  { id: "about", label: "About", href: "/about", number: "05", subtitle: "Profile & Dossier", hasDropdown: true },
+  { id: "analytics", label: "Analytics", href: "/analytics", number: "04", subtitle: "Live Search Proof" },
+  { id: "about", label: "About", href: "/about", number: "05", subtitle: "Profile & Principles", hasDropdown: true },
   { id: "industries", label: "Industries", href: "/industries", number: "06", subtitle: "Industries We Serve" },
-  { id: "blog", label: "Blogs", href: "/blog", number: "07", subtitle: "Articles & Guides" },
+  { id: "blog", label: "Blog", href: "/blog", number: "07", subtitle: "Insights & Guides" },
   { id: "contact", label: "Contact", href: "/contact", number: "08", subtitle: "Start a Discussion" },
 ];
 

@@ -243,7 +243,7 @@ function Hero3DEarthDashboard() {
       >
         {/* Spherical Rounded Ambient Glow & Orbit Ring */}
         <div className="absolute inset-8 sm:inset-12 rounded-full bg-gradient-to-tr from-[#2563EB]/20 via-[#14B8A6]/10 to-cyan-500/15 blur-3xl pointer-events-none" />
-        <div className="absolute inset-4 sm:inset-6 rounded-full border border-orange-500/15 dark:border-cyan-500/20 pointer-events-none" />
+        <div className="absolute inset-4 sm:inset-6 rounded-full border border-[#2563EB]/20 dark:border-cyan-500/20 pointer-events-none" />
 
         {/* Dynamic Three.js 3D WebGL Canvas with instant static globe fallback */}
         <div className="absolute inset-0 flex items-center justify-center">
@@ -288,8 +288,8 @@ function Hero3DEarthDashboard() {
                   className={`
                     flex items-center gap-2 sm:gap-3 lg:gap-2.5 xl:gap-3.5 px-2 sm:px-3 lg:px-2.5 xl:px-3 py-1 sm:py-1.5 rounded-xl sm:rounded-2xl backdrop-blur-2xl border transition-all duration-300 shadow-md sm:shadow-lg
                     ${isActive
-                      ? "bg-white dark:bg-[#111B2E] border-[#2563EB] shadow-[0_10px_30px_rgba(37,99,235,0.40)] ring-2 ring-orange-500/30 scale-105"
-                      : "bg-white/95 dark:bg-[#121110]/95 text-stone-900 dark:text-white border-stone-200/90 dark:border-white/10 hover:border-orange-500/70 hover:shadow-[0_10px_28px_rgba(37,99,235,0.22)]"
+                      ? "bg-white dark:bg-[#111B2E] border-[#2563EB] shadow-[0_10px_30px_rgba(37,99,235,0.40)] ring-2 ring-[#2563EB]/30 scale-105"
+                      : "bg-white/95 dark:bg-[#121110]/95 text-stone-900 dark:text-white border-stone-200/90 dark:border-white/10 hover:border-[#2563EB]/70 hover:shadow-[0_10px_28px_rgba(37,99,235,0.22)]"
                     }
                   `}
                 >
@@ -317,8 +317,8 @@ function Hero3DEarthDashboard() {
                       </span>
                       {/* 3-Bar Signal / Growth Indicator */}
                       <span className="inline-flex items-end gap-[1.5px] h-2.5 sm:h-3 pb-0.5 shrink-0" aria-hidden="true">
-                        <span className="w-[2px] h-1 sm:h-1.5 rounded-full bg-orange-400" />
-                        <span className="w-[2px] h-1.5 sm:h-2.5 rounded-full bg-orange-600" />
+                        <span className="w-[2px] h-1 sm:h-1.5 rounded-full bg-[#38BDF8]" />
+                        <span className="w-[2px] h-1.5 sm:h-2.5 rounded-full bg-[#14B8A6]" />
                         <span className="w-[2px] h-2 sm:h-3 rounded-full bg-[#2563EB]" />
                       </span>
                     </div>
@@ -369,14 +369,14 @@ export default function Hero() {
     >
       {/* Background Ambience & Lighting */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Dark Orange Flare */}
-        <div className="absolute left-[8%] top-[12%] h-[480px] w-[480px] rounded-full bg-orange-600/[0.10] dark:bg-orange-600/[0.14] blur-[140px]" />
+        {/* Deep Brand Blue Flare */}
+        <div className="absolute left-[8%] top-[12%] h-[480px] w-[480px] rounded-full bg-[#2563EB]/[0.08] dark:bg-[#2563EB]/[0.12] blur-[140px]" />
         {/* Electric Cyan Flare */}
         <div className="absolute right-[5%] top-[20%] h-[520px] w-[520px] rounded-full bg-cyan-500/[0.08] dark:bg-cyan-500/[0.12] blur-[150px]" />
         {/* Subtle Grid */}
         <div className="absolute inset-0 opacity-[0.025] dark:opacity-[0.04] bg-[linear-gradient(rgba(37,99,235,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(37,99,235,0.5)_1px,transparent_1px)] bg-[size:60px_60px]" />
         {/* Top Gradient Divider */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#2563EB]/40 to-transparent" />
       </div>
 
       {/* Main Container */}
@@ -496,10 +496,10 @@ export default function Hero() {
                     uppercase
                     tracking-[0.14em]
                     -rotate-1
-                    shadow-[3px_3px_0_rgba(194,65,12,0.25)]
+                    shadow-[3px_3px_0_rgba(37,99,235,0.25)]
                   "
                 >
-                  Explore Our Business Solution
+                  Explore Our Business Solutions
                 </span>
               </div>
             </div>
@@ -521,10 +521,10 @@ export default function Hero() {
               </div>
               <div className="px-1 sm:px-1.5 border-x border-stone-200 dark:border-white/10">
                 <div className="text-base sm:text-xl font-black text-stone-900 dark:text-white">
-                  5<span className="text-[#2563EB]">+</span>
+                  15<span className="text-[#2563EB]">+</span>
                 </div>
                 <div className="text-[9.5px] sm:text-[11px] font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
-                  Happy Clients
+                  Client Partners
                 </div>
               </div>
               <div className="px-1 sm:px-1.5">
@@ -532,7 +532,7 @@ export default function Hero() {
                   15<span className="text-[#2563EB]">+</span>
                 </div>
                 <div className="text-[9.5px] sm:text-[11px] font-semibold text-stone-500 dark:text-stone-400 mt-0.5 leading-tight">
-                  Projects Done
+                  Growth Projects
                 </div>
               </div>
             </div>
@@ -606,7 +606,7 @@ export default function Hero() {
     sm:text-[13.5px]
     font-semibold
     shadow-sm
-    hover:bg-orange-600/[0.10]
+    hover:bg-blue-500/[0.08]
     transition-all
     duration-300
     min-h-[42px]
@@ -619,9 +619,9 @@ export default function Hero() {
     before:rounded-full
     before:p-[1px]
     before:bg-gradient-to-r
-    before:from-orange-500
-    before:via-amber-400
-    before:to-orange-600
+    before:from-[#2563EB]
+    before:via-[#38BDF8]
+    before:to-[#14B8A6]
     before:opacity-0
     before:transition-opacity
     before:duration-300
@@ -641,7 +641,7 @@ export default function Hero() {
     hover:after:opacity-100
   "
               >
-                <span className="relative z-10">Explore Our Sevices</span>
+                <span className="relative z-10">Explore Our Services</span>
 
                 <ArrowRight
                   className="
@@ -650,7 +650,7 @@ export default function Hero() {
       w-3.5
       h-3.5
       text-stone-400
-      group-hover/link:text-orange-500
+      group-hover/link:text-[#2563EB]
       group-hover/link:translate-x-1
       transition-all
       duration-300

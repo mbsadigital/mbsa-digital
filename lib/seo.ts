@@ -6,6 +6,9 @@ import { type BlogPost } from "./fallbackBlogs";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.mbsadigital.com";
 
+export const GA_MEASUREMENT_ID = "G-69X8H55WJ6";
+export const GTM_ID = "GTM-KH967JPZ";
+
 export const SITE_CONFIG = {
   name: "MBSA Digital",
   siteName: "MBSA Digital",
