@@ -199,12 +199,12 @@ export default function Gsc() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [nextSlide, prevSlide, isLightboxOpen]);
 
-  // Auto-play interval
+  // Auto-play interval (set to 3000ms for faster, smooth auto-rotation)
   useEffect(() => {
     if (!isAutoPlaying || isHovered || totalCategorySlides <= 1) return;
     const interval = setInterval(() => {
       nextSlide();
-    }, 5500);
+    }, 3000);
     return () => clearInterval(interval);
   }, [isAutoPlaying, isHovered, nextSlide, totalCategorySlides]);
 
@@ -373,8 +373,8 @@ export default function Gsc() {
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
-                  damping: 26,
+                  stiffness: 320,
+                  damping: 24,
                 }}
                 className={`absolute ${isSocial
                     ? "w-[280px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl sm:rounded-3xl"

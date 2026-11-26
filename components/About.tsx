@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -11,44 +12,120 @@ import {
   Zap,
   Search,
   CheckCircle2,
-  Plane,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 
-function IndiaFlag({ className = "w-4 h-3" }: { className?: string }) {
-  return (
-    <span className={`inline-block rounded-xs overflow-hidden shadow-xs ring-1 ring-black/10 shrink-0 ${className}`}>
-      <svg viewBox="0 0 640 480" className="w-full h-full block">
-        <path fill="#FF9933" d="M0 0h640v160H0z" />
-        <path fill="#FFFFFF" d="M0 160h640v160H0z" />
-        <path fill="#128807" d="M0 320h640v160H0z" />
-        <circle cx="320" cy="240" r="38" fill="#000080" />
-        <circle cx="320" cy="240" r="30" fill="#FFFFFF" />
-        <circle cx="320" cy="240" r="8" fill="#000080" />
-      </svg>
-    </span>
-  );
-}
-
-function UKFlag({ className = "w-4 h-3" }: { className?: string }) {
-  return (
-    <span className={`inline-block rounded-xs overflow-hidden shadow-xs ring-1 ring-black/10 shrink-0 ${className}`}>
-      <svg viewBox="0 0 60 30" className="w-full h-full block">
-        <clipPath id="uk-flag-clip-hero">
-          <path d="M0 0v30h60V0z" />
-        </clipPath>
-        <path d="M0 0v30h60V0z" fill="#012169" />
-        <path d="M0 0l60 30m0-30L0 30" stroke="#FFFFFF" strokeWidth="6" />
-        <path d="M0 0l60 30m0-30L0 30" clipPath="url(#uk-flag-clip-hero)" stroke="#C8102E" strokeWidth="4" />
-        <path d="M30 0v30M0 15h60" stroke="#FFFFFF" strokeWidth="10" />
-        <path d="M30 0v30M0 15h60" stroke="#C8102E" strokeWidth="6" />
-      </svg>
-    </span>
-  );
-}
+const SEARCH_PROOFS = [
+  {
+    id: "artish-1",
+    client: "Artish Brush",
+    market: "UK & International D2C",
+    query: "artish brush oral care uk",
+    highlight: "#1 Google Search Rank",
+    stat: "+340% Impressions",
+    image: "/SearchResult/artishbrushresult.png",
+  },
+  {
+    id: "drtungs-1",
+    client: "Dr. Tung's",
+    market: "Holistic Health & Oral Care",
+    query: "dr tungs natural dental products",
+    highlight: "Page 1 Organic SERP",
+    stat: "Top 3 Authority",
+    image: "/SearchResult/drtungssearchresult.png",
+  },
+  {
+    id: "harris-1",
+    client: "Harris Pharmacy",
+    market: "London, UK Healthcare",
+    query: "pharmacy clinic london local search",
+    highlight: "Google Maps 3-Pack & #1",
+    stat: "100% Local Inbound",
+    image: "/SearchResult/harrissearchresult.png",
+  },
+  {
+    id: "maiahb-1",
+    client: "Maiah B Clinic",
+    market: "London Medical Aesthetics",
+    query: "skin aesthetics clinic london",
+    highlight: "First Page Leadership",
+    stat: "+210% Consults",
+    image: "/SearchResult/maiahbsearchresult.png",
+  },
+  {
+    id: "artish-2",
+    client: "Artish Brush",
+    market: "E-Commerce Search Growth",
+    query: "best ionic toothbrush reviews",
+    highlight: "Featured Rich Snippet",
+    stat: "Zero-Click Visibility",
+    image: "/SearchResult/artishbrushresult2.png",
+  },
+  {
+    id: "drtungs-2",
+    client: "Dr. Tung's",
+    market: "Organic Category Growth",
+    query: "natural oral health hygiene products",
+    highlight: "High Search Volume SERP",
+    stat: "+180% Organic Leads",
+    image: "/SearchResult/drtungssearch2.png",
+  },
+  {
+    id: "harris-2",
+    client: "Harris Pharmacy",
+    market: "London Local Authority",
+    query: "nhs private pharmacy london clinic",
+    highlight: "Top Rated London Clinic",
+    stat: "Leading SERP Position",
+    image: "/SearchResult/harrissearchresult2.png",
+  },
+  {
+    id: "maiahb-2",
+    client: "Maiah B Clinic",
+    market: "Aesthetic Dermatology",
+    query: "dermatology treatments london reviews",
+    highlight: "Top Tier SERP Takeover",
+    stat: "High-Margin Pipeline",
+    image: "/SearchResult/maiahbsearchresult2.png",
+  },
+  {
+    id: "maiahb-3",
+    client: "Maiah B Clinic",
+    market: "Category Dominance",
+    query: "aesthetic skincare treatments uk",
+    highlight: "Multiple Page 1 Placements",
+    stat: "Dominant Footprint",
+    image: "/SearchResult/maiahbsearchresult3.png",
+  },
+];
 
 export default function About() {
-  const [heroActiveTab, setHeroActiveTab] = React.useState<"growth" | "vitals" | "market">("growth");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const total = SEARCH_PROOFS.length;
+
+  const nextSlide = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % total);
+  }, [total]);
+
+  const prevSlide = useCallback(() => {
+    setActiveIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+  const goToSlide = useCallback((idx: number) => {
+    setActiveIndex(idx);
+  }, []);
+
+  // Auto-advance every 4.5 seconds unless paused
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isPaused, nextSlide]);
 
   return (
     <section
@@ -83,7 +160,7 @@ export default function About() {
           </span>
         </div>
 
-        {/* BUSINESS-FIRST ABOUT HERO - ELEVATED EXECUTIVE ARCHITECTURE */}
+        {/* BUSINESS-FIRST ABOUT HERO */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,8 +170,6 @@ export default function About() {
         >
           {/* Left Column: Strategic Positioning */}
           <div className="lg:col-span-6 xl:col-span-6 max-w-2xl">
-
-
             <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08] text-slate-950 dark:text-white">
               Smart Business with
               <span className="block mt-1 sm:mt-2 text-[#2563EB] dark:text-[#2f97ee]">
@@ -102,7 +177,7 @@ export default function About() {
               </span>
             </h2>
 
-            <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300 font-normal">
               We combine rigorous technical SEO, GA4 revenue attribution, and clean engineering architecture to help ambitious brands transform organic search into high-margin commercial velocity.
             </p>
 
@@ -134,7 +209,8 @@ export default function About() {
             <div className="mt-6 flex flex-wrap items-center gap-3.5">
               <Link
                 href="/about"
-                className=" group
+                className="
+                  group
                   inline-flex
                   items-center
                   justify-center
@@ -152,253 +228,200 @@ export default function About() {
                   sm:text-[13.5px]
                   font-bold
                   border
-
-                  hover:border-blue-800
+                  border-transparent
+                  hover:bg-blue-600
                   shadow-md
-                  shadow-[#2563EB]
-                  hover:shadow-[#2563EB]
+                  shadow-[#2563EB]/25
+                  hover:shadow-[#2563EB]/40
                   hover:-translate-y-0.5
                   transition-all
                   duration-300
                   min-h-[42px]
                   sm:min-h-[44px]
-                  touch-manipulation"
+                  touch-manipulation
+                "
               >
                 <span>About MBSA Digital</span>
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
-
             </div>
           </div>
 
-          {/* Right Column: Interactive Multi-View SEO Intelligence Cockpit */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 14 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="lg:col-span-6 xl:col-span-6 relative mx-auto w-full max-w-[560px]"
+          {/* Right Column: Stacked Card Deck of Search Result Proofs */}
+          <div
+            className="lg:col-span-6 xl:col-span-6 relative mx-auto w-full max-w-[500px]"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
             {/* Background Ambient Aura */}
-            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#2563EB]/15 via-[#6366F1]/10 to-[#14B8A6]/15 blur-2xl" />
+            <div className="absolute -inset-4 rounded-[36px] bg-gradient-to-br from-[#2563EB]/15 via-[#6366F1]/10 to-[#14B8A6]/15 blur-2xl pointer-events-none" />
 
-            {/* Glass Cockpit Console */}
-            <div className="relative overflow-hidden rounded-[26px] sm:rounded-[30px] border border-white/80 dark:border-white/10 bg-gradient-to-br from-white/95 via-[#F8FAFF]/90 to-blue-50/70 dark:from-[#131722]/95 dark:via-[#11141F]/90 dark:to-[#0B1220]/90 p-4 sm:p-6 shadow-[0_25px_80px_rgba(37,99,235,0.12)] backdrop-blur-2xl">
-
-              {/* Top Console Bar */}
-              <div className="flex items-center justify-between pb-3.5 border-b border-slate-200/80 dark:border-white/10">
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400/80 inline-block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80 inline-block" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80 inline-block" />
-                  </div>
-                  <span className="ml-1 text-[10px] font-mono font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400">
-                    mbsa.growth.telemetry
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[9.5px] font-bold text-emerald-600 dark:text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>LIVE ENGINE</span>
-                </div>
+            {/* Deck Top Header Bar */}
+            <div className="relative z-10 flex items-center justify-between pb-3 mb-2 border-b border-slate-200/80 dark:border-white/10">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                </span>
+                <span className="text-[11px] font-black uppercase tracking-wider text-slate-800 dark:text-white flex items-center gap-1.5">
+                  <span>VERIFIED SEARCH PROOFS</span>
+                  <span className="text-[10px] font-bold text-[#2563EB] dark:text-[#60A5FA]">({total})</span>
+                </span>
               </div>
 
-              {/* Interactive View Switcher Tabs */}
-              <div className="grid grid-cols-3 gap-1.5 my-3 p-1 rounded-xl bg-slate-200/60 dark:bg-white/5 border border-slate-200/60 dark:border-white/5">
-                {[
-                  { id: "growth", label: "Organic Reach", icon: TrendingUp },
-                  { id: "vitals", label: "Core Vitals", icon: Zap },
-                  { id: "market", label: "Global Route", icon: Globe2 },
-                ].map((tab) => {
-                  const Icon = tab.icon;
-                  const isActive = heroActiveTab === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      onClick={() => setHeroActiveTab(tab.id as "growth" | "vitals" | "market")}
-                      className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-[10px] sm:text-[11px] font-bold transition-all duration-200 cursor-pointer ${isActive
-                        ? "bg-white dark:bg-[#1E2538] text-[#2563EB] dark:text-[#60A5FA] shadow-xs"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                        }`}
-                    >
-                      <Icon className="w-3 h-3" />
-                      <span className="truncate">{tab.label}</span>
-                    </button>
-                  );
-                })}
+              {/* Slider Controls (Prev / Next & Counter) */}
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400">
+                  {String(activeIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                </span>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={prevSlide}
+                    aria-label="Previous proof"
+                    className="w-7 h-7 rounded-full bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all shadow-xs cursor-pointer"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextSlide}
+                    aria-label="Next proof"
+                    className="w-7 h-7 rounded-full bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-[#2563EB] hover:text-white hover:border-[#2563EB] transition-all shadow-xs cursor-pointer"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
-
-              {/* Dynamic View Content */}
-              {heroActiveTab === "growth" && (
-                <div className="space-y-3 pt-1">
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                        Organic Search Footprint
-                      </p>
-                      <div className="flex items-baseline gap-2 mt-0.5">
-                        <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">+340%</span>
-                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Qualified Inbound</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 block">Top 3 Rankings</span>
-                      <span className="text-xs font-black text-[#2563EB] dark:text-[#60A5FA]">42+ High-Intent KWs</span>
-                    </div>
-                  </div>
-
-                  {/* SVG Wave Visualizer */}
-                  <div className="relative h-20 w-full overflow-hidden rounded-xl bg-slate-100/70 dark:bg-white/[0.03] border border-slate-200/50 dark:border-white/5 p-2 flex items-end">
-                    <svg viewBox="0 0 400 90" className="w-full h-full overflow-visible" preserveAspectRatio="none">
-                      <defs>
-                        <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#2563EB" stopOpacity="0.45" />
-                          <stop offset="85%" stopColor="#14B8A6" stopOpacity="0.05" />
-                          <stop offset="100%" stopColor="#14B8A6" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                      <path
-                        d="M0,75 Q40,65 80,68 T160,50 T240,42 T320,18 T400,6 L400,90 L0,90 Z"
-                        fill="url(#heroGradient)"
-                      />
-                      <path
-                        d="M0,75 Q40,65 80,68 T160,50 T240,42 T320,18 T400,6"
-                        fill="none"
-                        stroke="#2563EB"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                      />
-                      <circle cx="400" cy="6" r="4" fill="#14B8A6" stroke="#FFFFFF" strokeWidth="2" />
-                    </svg>
-                  </div>
-
-                  {/* Live Search Query Simulation Bar */}
-                  <div className="flex items-center gap-2 p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-xs">
-                    <Search className="w-3.5 h-3.5 text-[#2563EB] shrink-0" />
-                    <span className="font-mono text-[11px] text-slate-700 dark:text-slate-300 truncate">
-                      google.co.uk: &ldquo;uk healthcare seo strategy&rdquo;
-                    </span>
-                    <span className="ml-auto text-[9.5px] font-bold px-1.5 py-0.5 rounded-sm bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0">
-                      #1 RANK
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {heroActiveTab === "vitals" && (
-                <div className="space-y-3 pt-1">
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                        Technical Architecture Health
-                      </p>
-                      <div className="flex items-baseline gap-2 mt-0.5">
-                        <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">99/100</span>
-                        <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Zero Technical Debt</span>
-                      </div>
-                    </div>
-                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-[#2563EB]/10 text-[#2563EB]">
-                      TURBOPACK SPEED
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-center">
-                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block">LCP</span>
-                      <span className="text-base font-black text-emerald-600 dark:text-emerald-400">0.8s</span>
-                      <span className="text-[9px] text-slate-400 block">Good (&lt;2.5s)</span>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-center">
-                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block">CLS</span>
-                      <span className="text-base font-black text-emerald-600 dark:text-emerald-400">0.00</span>
-                      <span className="text-[9px] text-slate-400 block">Zero Shift</span>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10 text-center">
-                      <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 block">INP</span>
-                      <span className="text-base font-black text-emerald-600 dark:text-emerald-400">24ms</span>
-                      <span className="text-[9px] text-slate-400 block">Instant</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between p-2 rounded-xl bg-emerald-500/[0.06] border border-emerald-500/20 text-[11px] text-emerald-700 dark:text-emerald-300 font-semibold">
-                    <span className="flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                      100% Crawl Efficiency &amp; Indexation
-                    </span>
-                    <span className="text-[10px] font-mono text-slate-500">200 OK</span>
-                  </div>
-                </div>
-              )}
-
-              {heroActiveTab === "market" && (
-                <div className="space-y-3 pt-1">
-                  <div className="flex items-baseline justify-between">
-                    <div>
-                      <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-                        Transatlantic Practice
-                      </p>
-                      <div className="flex items-baseline gap-2 mt-0.5">
-                        <span className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">UK ↔ India</span>
-                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Cross-Border</span>
-                      </div>
-                    </div>
-                    <span className="text-[10px] font-bold px-2 py-1 rounded-lg bg-[#2563EB]/10 text-[#2563EB] dark:text-[#60A5FA]">
-                      LONDON EXPERIENCE
-                    </span>
-                  </div>
-
-                  {/* Flight Route Simulator */}
-                  <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/10">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-1.5">
-                        <IndiaFlag className="w-4 h-3" />
-                        <div>
-                          <span className="text-xs font-black text-slate-900 dark:text-white block">India</span>
-                          <span className="text-[9px] text-slate-500">Execution &amp; Leadership</span>
-                        </div>
-                      </div>
-
-                      <div className="flex-1 flex items-center justify-center relative px-2">
-                        <div className="w-full h-px border-t border-dashed border-[#2563EB]/60 relative" />
-                        <div className="absolute px-1.5 py-0.5 rounded-full bg-[#2563EB]/15 text-[#2563EB] border border-[#2563EB]/30">
-                          <Plane className="w-3 h-3 rotate-45" />
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-1.5 text-right">
-                        <div>
-                          <span className="text-xs font-black text-slate-900 dark:text-white block">London, UK</span>
-                          <span className="text-[9px] text-slate-500">Market Psychology</span>
-                        </div>
-                        <UKFlag className="w-4 h-3" />
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-[11px] leading-relaxed text-slate-600 dark:text-slate-300">
-                    2+ years on-the-ground in London managing health, beauty &amp; e-commerce brands, combined with 5+ years full-stack SEO execution in India.
-                  </p>
-                </div>
-              )}
-
-              {/* Bottom Quick Feature Pill */}
-              <div className="mt-3.5 pt-3 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-[11px]">
-                <div className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400 font-medium">
-                  <Sparkles className="w-3.5 h-3.5 text-[#2563EB] dark:text-[#60A5FA]" />
-                  <span>High-performance digital engineering</span>
-                </div>
-                <Link
-                  href="/about"
-                  className="font-bold text-[#2563EB] hover:text-[#1D4ED8] dark:text-[#60A5FA] flex items-center gap-0.5"
-                >
-                  <span>Full story</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-
             </div>
-          </motion.div>
+
+            {/* Stacked Cards Deck Viewport (Compact Size) */}
+            <div className="relative w-full h-[360px] sm:h-[390px]">
+              {SEARCH_PROOFS.map((proof, idx) => {
+                const relIndex = (idx - activeIndex + total) % total;
+                if (relIndex > 2) return null;
+
+                const xOffset = relIndex * 20;
+                const yOffset = -relIndex * 8;
+                const scale = 1 - relIndex * 0.04;
+                const zIndex = 30 - relIndex * 10;
+                const opacity = relIndex === 0 ? 1 : relIndex === 1 ? 0.90 : 0.70;
+                const isFront = relIndex === 0;
+
+                return (
+                  <motion.div
+                    key={proof.id}
+                    initial={false}
+                    animate={{
+                      x: xOffset,
+                      y: yOffset,
+                      scale: scale,
+                      zIndex: zIndex,
+                      opacity: opacity,
+                    }}
+                    drag={isFront ? "x" : false}
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.15}
+                    onDragEnd={(_, info) => {
+                      if (info.offset.x < -40) nextSlide();
+                      else if (info.offset.x > 40) prevSlide();
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 280,
+                      damping: 26,
+                    }}
+                    onClick={() => {
+                      if (!isFront) goToSlide(idx);
+                    }}
+                    className={`
+                      absolute left-0 top-0
+                      w-[calc(100%-20px)] sm:w-[calc(100%-36px)]
+                      h-[340px] sm:h-[370px]
+                      rounded-[22px] sm:rounded-[26px]
+                      border-2
+                      ${isFront
+                        ? "border-[#2563EB]/50 dark:border-blue-500/40 shadow-[0_16px_40px_rgba(37,99,235,0.14)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.65)]"
+                        : "border-stone-200/90 dark:border-white/10 shadow-md cursor-pointer hover:border-[#2563EB]/50"
+                      }
+                      bg-white dark:bg-[#0E1726]
+                      p-3.5 sm:p-4
+                      flex flex-col justify-between
+                      overflow-hidden
+                      transition-colors duration-300
+                      touch-pan-y
+                    `}
+                  >
+                    {/* Top Row: Client Info + Rank Badge */}
+                    <div className="flex items-center justify-between gap-2 pb-2 border-b border-stone-100 dark:border-white/5">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs sm:text-[13px] font-black text-slate-900 dark:text-white truncate">
+                            {proof.client}
+                          </span>
+                          <span className="text-[10px] text-slate-400 dark:text-slate-500">•</span>
+                          <span className="text-[10.5px] font-medium text-slate-500 dark:text-slate-400 truncate">
+                            {proof.market}
+                          </span>
+                        </div>
+                      </div>
+                      <span className="shrink-0 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[9.5px] font-black text-emerald-600 dark:text-emerald-400">
+                        <CheckCircle2 className="w-2.5 h-2.5" />
+                        <span>{proof.highlight}</span>
+                      </span>
+                    </div>
+
+                    {/* Simulated Search Query Bar */}
+                    <div className="my-1.5 flex items-center gap-2 px-2.5 py-1 rounded-lg bg-stone-100/90 dark:bg-white/[0.04] border border-stone-200/60 dark:border-white/5 text-[11px]">
+                      <Search className="w-3 h-3 text-[#2563EB] shrink-0" />
+                      <span className="font-mono text-slate-600 dark:text-slate-300 truncate">
+                        google: &ldquo;{proof.query}&rdquo;
+                      </span>
+                    </div>
+
+                    {/* Proof Screenshot Image Viewport */}
+                    <div className="relative flex-1 w-full rounded-xl overflow-hidden bg-stone-50 dark:bg-[#070D1A] border border-stone-200/70 dark:border-white/10">
+                      <Image
+                        src={proof.image}
+                        alt={`${proof.client} - Google Search Result Proof`}
+                        fill
+                        className="object-contain object-top p-1"
+                        sizes="(max-width: 768px) 100vw, 460px"
+                        priority={idx === 0}
+                      />
+                    </div>
+
+                    {/* Bottom Metadata & Metric Badge */}
+                    <div className="mt-2 pt-2 border-t border-stone-100 dark:border-white/5 flex items-center justify-between text-[11px]">
+                      <span className="font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <TrendingUp className="w-3 h-3 text-[#2563EB]" />
+                        <span>Live Google SERP Placement</span>
+                      </span>
+
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Pagination Bullet Indicators */}
+            <div className="flex items-center justify-center gap-1.5 mt-2">
+              {SEARCH_PROOFS.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={() => goToSlide(dotIdx)}
+                  aria-label={`Go to proof ${dotIdx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${dotIdx === activeIndex
+                      ? "w-6 bg-[#2563EB]"
+                      : "w-1.5 bg-stone-300 dark:bg-white/20 hover:bg-stone-400"
+                    }`}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

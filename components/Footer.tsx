@@ -660,7 +660,7 @@ export default function Footer() {
             <p>© {currentYear} MBSA Digital Marketing Solutions. All rights reserved.</p>
             <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
             <p className="font-semibold text-slate-700 dark:text-slate-300">
-              Muskan Shekh, Founder &amp; Head of Search
+              Aadil Pathan
             </p>
           </div>
 
